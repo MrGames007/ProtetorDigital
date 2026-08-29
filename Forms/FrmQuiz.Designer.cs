@@ -34,20 +34,23 @@
             RBtnAlt3 = new RadioButton();
             RBtnAlt4 = new RadioButton();
             BtnVoltar = new Button();
+            BtnConfirmar = new Button();
             SuspendLayout();
             // 
             // lblPergunta
             // 
             lblPergunta.AutoSize = true;
-            lblPergunta.Location = new Point(12, 76);
+            lblPergunta.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPergunta.Location = new Point(12, 56);
             lblPergunta.Name = "lblPergunta";
-            lblPergunta.Size = new Size(0, 20);
+            lblPergunta.Size = new Size(0, 31);
             lblPergunta.TabIndex = 0;
             // 
             // RBtnAlt1
             // 
             RBtnAlt1.AutoSize = true;
-            RBtnAlt1.Location = new Point(12, 250);
+            RBtnAlt1.Font = new Font("Segoe UI", 16.2F);
+            RBtnAlt1.Location = new Point(12, 255);
             RBtnAlt1.Name = "RBtnAlt1";
             RBtnAlt1.Size = new Size(17, 16);
             RBtnAlt1.TabIndex = 1;
@@ -57,7 +60,8 @@
             // RBtnAlt2
             // 
             RBtnAlt2.AutoSize = true;
-            RBtnAlt2.Location = new Point(12, 305);
+            RBtnAlt2.Font = new Font("Segoe UI", 16.2F);
+            RBtnAlt2.Location = new Point(12, 294);
             RBtnAlt2.Name = "RBtnAlt2";
             RBtnAlt2.Size = new Size(17, 16);
             RBtnAlt2.TabIndex = 2;
@@ -67,7 +71,8 @@
             // RBtnAlt3
             // 
             RBtnAlt3.AutoSize = true;
-            RBtnAlt3.Location = new Point(12, 358);
+            RBtnAlt3.Font = new Font("Segoe UI", 16.2F);
+            RBtnAlt3.Location = new Point(12, 337);
             RBtnAlt3.Name = "RBtnAlt3";
             RBtnAlt3.Size = new Size(17, 16);
             RBtnAlt3.TabIndex = 3;
@@ -77,7 +82,8 @@
             // RBtnAlt4
             // 
             RBtnAlt4.AutoSize = true;
-            RBtnAlt4.Location = new Point(12, 399);
+            RBtnAlt4.Font = new Font("Segoe UI", 16.2F);
+            RBtnAlt4.Location = new Point(12, 388);
             RBtnAlt4.Name = "RBtnAlt4";
             RBtnAlt4.Size = new Size(17, 16);
             RBtnAlt4.TabIndex = 4;
@@ -94,11 +100,22 @@
             BtnVoltar.UseVisualStyleBackColor = true;
             BtnVoltar.Click += BtnVoltar_Click;
             // 
+            // BtnConfirmar
+            // 
+            BtnConfirmar.Location = new Point(694, 12);
+            BtnConfirmar.Name = "BtnConfirmar";
+            BtnConfirmar.Size = new Size(94, 29);
+            BtnConfirmar.TabIndex = 6;
+            BtnConfirmar.Text = "Confirmar";
+            BtnConfirmar.UseVisualStyleBackColor = true;
+            BtnConfirmar.Click += BtnConfirmar_Click;
+            // 
             // FrmQuiz
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BtnConfirmar);
             Controls.Add(BtnVoltar);
             Controls.Add(RBtnAlt4);
             Controls.Add(RBtnAlt3);
@@ -119,5 +136,6 @@
         private RadioButton RBtnAlt3;
         private RadioButton RBtnAlt4;
         private Button BtnVoltar;
+        private Button BtnConfirmar;
     }
 }
