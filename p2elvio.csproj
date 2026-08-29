@@ -14,10 +14,4 @@
     <None Remove="Forms\NewFile1.txt" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="dados\atalho.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
