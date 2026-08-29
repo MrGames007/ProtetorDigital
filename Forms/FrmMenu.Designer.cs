@@ -45,9 +45,9 @@
             // 
             // BtnQuiz
             // 
-            BtnQuiz.Location = new Point(362, 114);
+            BtnQuiz.Location = new Point(288, 102);
             BtnQuiz.Name = "BtnQuiz";
-            BtnQuiz.Size = new Size(94, 29);
+            BtnQuiz.Size = new Size(188, 299);
             BtnQuiz.TabIndex = 1;
             BtnQuiz.Text = "Quiz";
             BtnQuiz.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             // BtnSair
             // 
             BtnSair.AutoSize = true;
-            BtnSair.Location = new Point(12, 113);
+            BtnSair.Location = new Point(534, 310);
             BtnSair.Name = "BtnSair";
             BtnSair.Size = new Size(254, 128);
             BtnSair.TabIndex = 5;
