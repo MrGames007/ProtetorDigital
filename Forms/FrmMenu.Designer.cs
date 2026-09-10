@@ -31,6 +31,7 @@
             label1 = new Label();
             BtnQuiz = new Button();
             BtnSair = new Button();
+            BtnVoM = new Button();
             SuspendLayout();
             // 
             // label1
@@ -64,11 +65,23 @@
             BtnSair.UseVisualStyleBackColor = true;
             BtnSair.Click += BtnSair_Click;
             // 
+            // BtnVoM
+            // 
+            BtnVoM.AutoSize = true;
+            BtnVoM.Location = new Point(116, 204);
+            BtnVoM.Name = "BtnVoM";
+            BtnVoM.Size = new Size(139, 30);
+            BtnVoM.TabIndex = 6;
+            BtnVoM.Text = "Verdade ou Golpe";
+            BtnVoM.UseVisualStyleBackColor = true;
+            BtnVoM.Click += BtnVoM_Click;
+            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(957, 505);
+            Controls.Add(BtnVoM);
             Controls.Add(BtnSair);
             Controls.Add(BtnQuiz);
             Controls.Add(label1);
@@ -83,5 +96,6 @@
         private Label label1;
         private Button BtnQuiz;
         private Button BtnSair;
+        private Button BtnVoM;
     }
 }

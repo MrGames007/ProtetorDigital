@@ -3,7 +3,7 @@ using p2elvio.Forms;
 namespace p2elvio
 {
     public partial class FrmMenu : Form
-    {   
+    {
         public FrmMenu()
         {
             InitializeComponent();
@@ -18,6 +18,13 @@ namespace p2elvio
         private void BtnSair_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BtnVoM_Click(object sender, EventArgs e)
+        {
+            FrmVerdadeOuMentira terceiraJanela = new FrmVerdadeOuMentira(this);
+            terceiraJanela.Show();
+            this.Hide();
         }
     }
 }
