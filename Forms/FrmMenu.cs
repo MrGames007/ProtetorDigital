@@ -26,5 +26,12 @@ namespace p2elvio
             terceiraJanela.Show();
             this.Hide();
         }
+
+        private void BtnBiblioteca_Click(object sender, EventArgs e)
+        {
+            FrmBiblioteca quartaJanela = new FrmBiblioteca(this);
+            quartaJanela.Show();
+            this.Hide();
+        }
     }
 }

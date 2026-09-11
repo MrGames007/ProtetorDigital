@@ -60,6 +60,7 @@
             BtnVerdade.TabIndex = 2;
             BtnVerdade.Text = "Verdade";
             BtnVerdade.UseVisualStyleBackColor = true;
+            BtnVerdade.Click += BtnVerdade_Click;
             // 
             // BtnMentira
             // 

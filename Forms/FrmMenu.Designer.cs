@@ -32,6 +32,7 @@
             BtnQuiz = new Button();
             BtnSair = new Button();
             BtnVoM = new Button();
+            BtnBiblioteca = new Button();
             SuspendLayout();
             // 
             // label1
@@ -76,11 +77,22 @@
             BtnVoM.UseVisualStyleBackColor = true;
             BtnVoM.Click += BtnVoM_Click;
             // 
+            // BtnBiblioteca
+            // 
+            BtnBiblioteca.Location = new Point(77, 342);
+            BtnBiblioteca.Name = "BtnBiblioteca";
+            BtnBiblioteca.Size = new Size(94, 29);
+            BtnBiblioteca.TabIndex = 7;
+            BtnBiblioteca.Text = "Biblioteca";
+            BtnBiblioteca.UseVisualStyleBackColor = true;
+            BtnBiblioteca.Click += BtnBiblioteca_Click;
+            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(957, 505);
+            Controls.Add(BtnBiblioteca);
             Controls.Add(BtnVoM);
             Controls.Add(BtnSair);
             Controls.Add(BtnQuiz);
@@ -97,5 +109,6 @@
         private Button BtnQuiz;
         private Button BtnSair;
         private Button BtnVoM;
+        private Button BtnBiblioteca;
     }
 }

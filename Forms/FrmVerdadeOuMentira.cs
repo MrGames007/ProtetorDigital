@@ -72,5 +72,10 @@ namespace p2elvio.Forms
         {
 
         }
+
+        private void BtnVerdade_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
