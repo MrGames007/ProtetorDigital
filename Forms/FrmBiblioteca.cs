@@ -22,6 +22,16 @@ namespace p2elvio.Forms
             _janelaOrigem.Show();
             this.Close();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmBiblioteca_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

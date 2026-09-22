@@ -36,51 +36,62 @@
             // 
             // BtnVoltar
             // 
-            BtnVoltar.Location = new Point(12, 12);
+            BtnVoltar.BackColor = SystemColors.Highlight;
+            BtnVoltar.Font = new Font("Lucida Sans Unicode", 21.75F);
+            BtnVoltar.ForeColor = SystemColors.ButtonHighlight;
+            BtnVoltar.Location = new Point(10, 9);
+            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(94, 29);
+            BtnVoltar.Size = new Size(166, 49);
             BtnVoltar.TabIndex = 0;
-            BtnVoltar.Text = "Voltar";
-            BtnVoltar.UseVisualStyleBackColor = true;
+            BtnVoltar.Text = "◀ Voltar";
+            BtnVoltar.UseVisualStyleBackColor = false;
             BtnVoltar.Click += BtnVoltar_Click;
             // 
             // lblPergunta
             // 
             lblPergunta.AutoSize = true;
-            lblPergunta.Location = new Point(12, 57);
+            lblPergunta.Location = new Point(10, 43);
             lblPergunta.Name = "lblPergunta";
-            lblPergunta.Size = new Size(0, 20);
+            lblPergunta.Size = new Size(0, 15);
             lblPergunta.TabIndex = 1;
             // 
             // BtnVerdade
             // 
-            BtnVerdade.Location = new Point(129, 290);
+            BtnVerdade.BackColor = Color.Lime;
+            BtnVerdade.Font = new Font("Lucida Sans Unicode", 21.75F);
+            BtnVerdade.Location = new Point(106, 116);
+            BtnVerdade.Margin = new Padding(3, 2, 3, 2);
             BtnVerdade.Name = "BtnVerdade";
-            BtnVerdade.Size = new Size(194, 111);
+            BtnVerdade.Size = new Size(170, 83);
             BtnVerdade.TabIndex = 2;
             BtnVerdade.Text = "Verdade";
-            BtnVerdade.UseVisualStyleBackColor = true;
+            BtnVerdade.UseVisualStyleBackColor = false;
             BtnVerdade.Click += BtnVerdade_Click;
             // 
             // BtnMentira
             // 
-            BtnMentira.Location = new Point(478, 290);
+            BtnMentira.BackColor = Color.Red;
+            BtnMentira.Font = new Font("Lucida Sans Unicode", 21.75F);
+            BtnMentira.Location = new Point(401, 116);
+            BtnMentira.Margin = new Padding(3, 2, 3, 2);
             BtnMentira.Name = "BtnMentira";
-            BtnMentira.Size = new Size(194, 111);
+            BtnMentira.Size = new Size(170, 83);
             BtnMentira.TabIndex = 3;
             BtnMentira.Text = "Mentira";
-            BtnMentira.UseVisualStyleBackColor = true;
+            BtnMentira.UseVisualStyleBackColor = false;
             BtnMentira.Click += BtnMentira_Click;
             // 
             // FrmVerdadeOuMentira
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(BtnMentira);
             Controls.Add(BtnVerdade);
             Controls.Add(lblPergunta);
             Controls.Add(BtnVoltar);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmVerdadeOuMentira";
             Text = "FrmVerdadeOuMentira";
             ResumeLayout(false);

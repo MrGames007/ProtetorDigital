@@ -39,64 +39,84 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(146, 9);
+            label1.Location = new Point(96, 9);
             label1.Name = "label1";
-            label1.Size = new Size(490, 81);
+            label1.Size = new Size(648, 65);
             label1.TabIndex = 0;
-            label1.Text = "Proteção Digital";
+            label1.Text = "Proteção Digital Aos Idosos";
+            label1.Click += label1_Click;
             // 
             // BtnQuiz
             // 
-            BtnQuiz.Location = new Point(288, 102);
+            BtnQuiz.AutoSize = true;
+            BtnQuiz.BackColor = SystemColors.Highlight;
+            BtnQuiz.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnQuiz.ForeColor = SystemColors.ButtonHighlight;
+            BtnQuiz.Location = new Point(265, 95);
+            BtnQuiz.Margin = new Padding(3, 2, 3, 2);
             BtnQuiz.Name = "BtnQuiz";
-            BtnQuiz.Size = new Size(188, 299);
+            BtnQuiz.Size = new Size(287, 93);
             BtnQuiz.TabIndex = 1;
             BtnQuiz.Text = "Quiz";
-            BtnQuiz.UseVisualStyleBackColor = true;
+            BtnQuiz.UseVisualStyleBackColor = false;
             BtnQuiz.Click += BtnQuiz_Click;
             // 
             // BtnSair
             // 
             BtnSair.AutoSize = true;
-            BtnSair.Location = new Point(534, 310);
+            BtnSair.BackColor = SystemColors.Highlight;
+            BtnSair.Font = new Font("Lucida Sans Unicode", 21.75F);
+            BtnSair.ForeColor = SystemColors.ButtonHighlight;
+            BtnSair.Location = new Point(637, 284);
+            BtnSair.Margin = new Padding(3, 2, 3, 2);
             BtnSair.Name = "BtnSair";
-            BtnSair.Size = new Size(254, 128);
+            BtnSair.Size = new Size(188, 84);
             BtnSair.TabIndex = 5;
-            BtnSair.Text = "Sair";
-            BtnSair.UseVisualStyleBackColor = true;
+            BtnSair.Text = "◀ Sair";
+            BtnSair.UseVisualStyleBackColor = false;
             BtnSair.Click += BtnSair_Click;
             // 
             // BtnVoM
             // 
             BtnVoM.AutoSize = true;
-            BtnVoM.Location = new Point(116, 204);
+            BtnVoM.BackColor = SystemColors.Highlight;
+            BtnVoM.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnVoM.ForeColor = SystemColors.ButtonHighlight;
+            BtnVoM.Location = new Point(265, 205);
+            BtnVoM.Margin = new Padding(3, 2, 3, 2);
             BtnVoM.Name = "BtnVoM";
-            BtnVoM.Size = new Size(139, 30);
+            BtnVoM.Size = new Size(293, 60);
             BtnVoM.TabIndex = 6;
             BtnVoM.Text = "Verdade ou Golpe";
-            BtnVoM.UseVisualStyleBackColor = true;
+            BtnVoM.UseVisualStyleBackColor = false;
             BtnVoM.Click += BtnVoM_Click;
             // 
             // BtnBiblioteca
             // 
-            BtnBiblioteca.Location = new Point(77, 342);
+            BtnBiblioteca.AutoSize = true;
+            BtnBiblioteca.BackColor = SystemColors.Highlight;
+            BtnBiblioteca.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnBiblioteca.ForeColor = SystemColors.ButtonHighlight;
+            BtnBiblioteca.Location = new Point(265, 284);
+            BtnBiblioteca.Margin = new Padding(3, 2, 3, 2);
             BtnBiblioteca.Name = "BtnBiblioteca";
-            BtnBiblioteca.Size = new Size(94, 29);
+            BtnBiblioteca.Size = new Size(293, 75);
             BtnBiblioteca.TabIndex = 7;
             BtnBiblioteca.Text = "Biblioteca";
-            BtnBiblioteca.UseVisualStyleBackColor = true;
+            BtnBiblioteca.UseVisualStyleBackColor = false;
             BtnBiblioteca.Click += BtnBiblioteca_Click;
             // 
             // FrmMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(957, 505);
+            ClientSize = new Size(837, 379);
             Controls.Add(BtnBiblioteca);
             Controls.Add(BtnVoM);
             Controls.Add(BtnSair);
             Controls.Add(BtnQuiz);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenu";
             Text = "Form1";
             ResumeLayout(false);

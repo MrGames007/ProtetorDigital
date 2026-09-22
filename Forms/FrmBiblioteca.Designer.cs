@@ -1,4 +1,5 @@
-﻿namespace p2elvio.Forms
+﻿```csharp
+namespace p2elvio.Forms
 {
     partial class FrmBiblioteca
     {
@@ -34,28 +35,34 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.Control;
-            label1.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlText;
-            label1.ImageAlign = ContentAlignment.MiddleRight;
-            label1.Location = new Point(163, 142);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(33, 37, 41);
+            label1.Location = new Point(204, -23);
             label1.Name = "label1";
-            label1.Size = new Size(402, 36);
+            label1.Size = new Size(295, 109);
             label1.TabIndex = 0;
-            label1.Text = "Aparece pra todo mundo";
-            label1.TextAlign = ContentAlignment.TopCenter;
+            label1.Text = "Biblioteca";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // BtnVoltar
             // 
-            BtnVoltar.AutoSize = true;
-            BtnVoltar.Location = new Point(10, 9);
+            BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
+            BtnVoltar.Cursor = Cursors.Hand;
+            BtnVoltar.FlatAppearance.BorderSize = 0;
+            BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
+            BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
+            BtnVoltar.FlatStyle = FlatStyle.Flat;
+            BtnVoltar.Font = new Font("Lucida Sans Unicode", 21.75F);
+            BtnVoltar.ForeColor = Color.White;
+            BtnVoltar.Location = new Point(12, 12);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(82, 25);
+            BtnVoltar.Size = new Size(156, 54);
             BtnVoltar.TabIndex = 1;
-            BtnVoltar.Text = "Voltar";
-            BtnVoltar.UseVisualStyleBackColor = true;
+            BtnVoltar.Text = "◀ Voltar";
+            BtnVoltar.UseVisualStyleBackColor = false;
             BtnVoltar.Click += BtnVoltar_Click;
             // 
             // FrmBiblioteca
@@ -68,8 +75,8 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmBiblioteca";
             Text = "FrmBiblioteca";
+            Load += FrmBiblioteca_Load;
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -78,3 +85,4 @@
         private Button BtnVoltar;
     }
 }
+```
