@@ -32,6 +32,11 @@ namespace p2elvio.Forms
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        
+        }
     }
 }
 
