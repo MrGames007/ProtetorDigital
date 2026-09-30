@@ -20,12 +20,7 @@ namespace p2elvio
             Application.Exit();
         }
 
-        private void BtnVoM_Click(object sender, EventArgs e)
-        {
-            FrmVerdadeOuMentira terceiraJanela = new FrmVerdadeOuMentira(this);
-            terceiraJanela.Show();
-            this.Hide();
-        }
+        
 
         private void BtnBiblioteca_Click(object sender, EventArgs e)
         {

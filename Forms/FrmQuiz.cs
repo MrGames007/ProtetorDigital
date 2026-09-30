@@ -126,5 +126,10 @@ namespace p2elvio.Forms
                 this.Close();
             }
         }
+
+        private void FrmQuiz_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -31,7 +31,6 @@
             label1 = new Label();
             BtnQuiz = new Button();
             BtnSair = new Button();
-            BtnVoM = new Button();
             BtnBiblioteca = new Button();
             SuspendLayout();
             // 
@@ -39,9 +38,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(96, 9);
+            label1.Location = new Point(110, 12);
             label1.Name = "label1";
-            label1.Size = new Size(648, 65);
+            label1.Size = new Size(811, 81);
             label1.TabIndex = 0;
             label1.Text = "Proteção Digital Aos Idosos";
             label1.Click += label1_Click;
@@ -52,10 +51,9 @@
             BtnQuiz.BackColor = SystemColors.Highlight;
             BtnQuiz.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnQuiz.ForeColor = SystemColors.ButtonHighlight;
-            BtnQuiz.Location = new Point(265, 95);
-            BtnQuiz.Margin = new Padding(3, 2, 3, 2);
+            BtnQuiz.Location = new Point(303, 127);
             BtnQuiz.Name = "BtnQuiz";
-            BtnQuiz.Size = new Size(287, 93);
+            BtnQuiz.Size = new Size(328, 124);
             BtnQuiz.TabIndex = 1;
             BtnQuiz.Text = "Quiz";
             BtnQuiz.UseVisualStyleBackColor = false;
@@ -67,29 +65,13 @@
             BtnSair.BackColor = SystemColors.Highlight;
             BtnSair.Font = new Font("Lucida Sans Unicode", 21.75F);
             BtnSair.ForeColor = SystemColors.ButtonHighlight;
-            BtnSair.Location = new Point(637, 284);
-            BtnSair.Margin = new Padding(3, 2, 3, 2);
+            BtnSair.Location = new Point(728, 379);
             BtnSair.Name = "BtnSair";
-            BtnSair.Size = new Size(188, 84);
+            BtnSair.Size = new Size(215, 112);
             BtnSair.TabIndex = 5;
             BtnSair.Text = "◀ Sair";
             BtnSair.UseVisualStyleBackColor = false;
             BtnSair.Click += BtnSair_Click;
-            // 
-            // BtnVoM
-            // 
-            BtnVoM.AutoSize = true;
-            BtnVoM.BackColor = SystemColors.Highlight;
-            BtnVoM.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnVoM.ForeColor = SystemColors.ButtonHighlight;
-            BtnVoM.Location = new Point(265, 205);
-            BtnVoM.Margin = new Padding(3, 2, 3, 2);
-            BtnVoM.Name = "BtnVoM";
-            BtnVoM.Size = new Size(293, 60);
-            BtnVoM.TabIndex = 6;
-            BtnVoM.Text = "Verdade ou Golpe";
-            BtnVoM.UseVisualStyleBackColor = false;
-            BtnVoM.Click += BtnVoM_Click;
             // 
             // BtnBiblioteca
             // 
@@ -97,10 +79,9 @@
             BtnBiblioteca.BackColor = SystemColors.Highlight;
             BtnBiblioteca.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnBiblioteca.ForeColor = SystemColors.ButtonHighlight;
-            BtnBiblioteca.Location = new Point(265, 284);
-            BtnBiblioteca.Margin = new Padding(3, 2, 3, 2);
+            BtnBiblioteca.Location = new Point(303, 379);
             BtnBiblioteca.Name = "BtnBiblioteca";
-            BtnBiblioteca.Size = new Size(293, 75);
+            BtnBiblioteca.Size = new Size(335, 100);
             BtnBiblioteca.TabIndex = 7;
             BtnBiblioteca.Text = "Biblioteca";
             BtnBiblioteca.UseVisualStyleBackColor = false;
@@ -108,15 +89,13 @@
             // 
             // FrmMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(837, 379);
+            ClientSize = new Size(957, 505);
             Controls.Add(BtnBiblioteca);
-            Controls.Add(BtnVoM);
             Controls.Add(BtnSair);
             Controls.Add(BtnQuiz);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenu";
             Text = "Form1";
             ResumeLayout(false);
@@ -128,7 +107,6 @@
         private Label label1;
         private Button BtnQuiz;
         private Button BtnSair;
-        private Button BtnVoM;
         private Button BtnBiblioteca;
     }
 }

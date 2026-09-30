@@ -1,5 +1,4 @@
-﻿```csharp
-namespace p2elvio.Forms
+﻿namespace p2elvio.Forms
 {
     partial class FrmBiblioteca
     {
@@ -132,4 +131,3 @@ namespace p2elvio.Forms
         private Button livro3;
     }
 }
-```
