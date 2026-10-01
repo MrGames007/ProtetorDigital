@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace p2elvio.Forms
+namespace ProtetorDigital.Forms
 {
     public partial class FrmRelatos : Form
     {

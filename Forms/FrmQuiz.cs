@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
-namespace p2elvio.Forms
+namespace ProtetorDigital.Forms
 {
     public partial class FrmQuiz : Form
     {

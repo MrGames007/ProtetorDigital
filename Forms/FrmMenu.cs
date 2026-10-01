@@ -1,6 +1,6 @@
-using p2elvio.Forms;
+using ProtetorDigital.Forms;
 
-namespace p2elvio
+namespace ProtetorDigital
 {
     public partial class FrmMenu : Form
     {
@@ -20,8 +20,6 @@ namespace p2elvio
             Application.Exit();
         }
 
-        
-
         private void BtnBiblioteca_Click(object sender, EventArgs e)
         {
             FrmBiblioteca quartaJanela = new FrmBiblioteca(this);
@@ -29,9 +27,5 @@ namespace p2elvio
             this.Hide();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

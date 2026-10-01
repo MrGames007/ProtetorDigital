@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ProtetorDigital</RootNamespace>
+    <AssemblyName>ProtetorDigital</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Imagens\" />
+    <Folder Include="imagens\" />
   </ItemGroup>
 
 </Project>

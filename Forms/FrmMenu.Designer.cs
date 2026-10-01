@@ -1,4 +1,4 @@
-﻿namespace p2elvio
+﻿namespace ProtetorDigital
 {
     partial class FrmMenu
     {
@@ -43,7 +43,6 @@
             label1.Size = new Size(811, 81);
             label1.TabIndex = 0;
             label1.Text = "Proteção Digital Aos Idosos";
-            label1.Click += label1_Click;
             // 
             // BtnQuiz
             // 
@@ -62,7 +61,7 @@
             // BtnSair
             // 
             BtnSair.AutoSize = true;
-            BtnSair.BackColor = SystemColors.Highlight;
+            BtnSair.BackColor = Color.Red;
             BtnSair.Font = new Font("Lucida Sans Unicode", 21.75F);
             BtnSair.ForeColor = SystemColors.ButtonHighlight;
             BtnSair.Location = new Point(728, 379);
@@ -76,12 +75,15 @@
             // BtnBiblioteca
             // 
             BtnBiblioteca.AutoSize = true;
-            BtnBiblioteca.BackColor = SystemColors.Highlight;
+            BtnBiblioteca.BackColor = Color.LawnGreen;
+            BtnBiblioteca.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnBiblioteca.CausesValidation = false;
             BtnBiblioteca.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnBiblioteca.ForeColor = SystemColors.ButtonHighlight;
+            BtnBiblioteca.ImageAlign = ContentAlignment.MiddleRight;
             BtnBiblioteca.Location = new Point(303, 379);
             BtnBiblioteca.Name = "BtnBiblioteca";
-            BtnBiblioteca.Size = new Size(335, 100);
+            BtnBiblioteca.Size = new Size(328, 100);
             BtnBiblioteca.TabIndex = 7;
             BtnBiblioteca.Text = "Biblioteca";
             BtnBiblioteca.UseVisualStyleBackColor = false;
@@ -91,6 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(957, 505);
             Controls.Add(BtnBiblioteca);
             Controls.Add(BtnSair);

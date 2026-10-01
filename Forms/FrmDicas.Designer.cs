@@ -1,4 +1,4 @@
-﻿namespace p2elvio.Forms
+﻿namespace ProtetorDigital.Forms
 {
     partial class FrmDicas
     {
