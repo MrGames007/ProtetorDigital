@@ -23,11 +23,7 @@ namespace ProtetorDigital.Forms
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void FrmBiblioteca_Load(object sender, EventArgs e)
         {
 

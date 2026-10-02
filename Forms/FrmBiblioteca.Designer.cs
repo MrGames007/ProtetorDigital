@@ -30,9 +30,9 @@
         {
             label1 = new Label();
             BtnVoltar = new Button();
-            livro1 = new Button();
-            livro2 = new Button();
-            livro3 = new Button();
+            BtnDicas = new Button();
+            BtnExGolpes = new Button();
+            BtnRelatos = new Button();
             SuspendLayout();
             // 
             // label1
@@ -46,7 +46,6 @@
             label1.TabIndex = 0;
             label1.Text = "Biblioteca";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
             // 
             // BtnVoltar
             // 
@@ -67,52 +66,52 @@
             BtnVoltar.UseVisualStyleBackColor = false;
             BtnVoltar.Click += BtnVoltar_Click;
             // 
-            // livro1
+            // BtnDicas
             // 
-            livro1.BackColor = Color.Green;
-            livro1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            livro1.ForeColor = SystemColors.ButtonHighlight;
-            livro1.Location = new Point(204, 101);
-            livro1.Name = "livro1";
-            livro1.Size = new Size(66, 151);
-            livro1.TabIndex = 2;
-            livro1.Text = "Dicas";
-            livro1.UseVisualStyleBackColor = false;
-            livro1.Click += button1_Click;
+            BtnDicas.BackColor = Color.Green;
+            BtnDicas.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnDicas.ForeColor = SystemColors.ButtonHighlight;
+            BtnDicas.Location = new Point(204, 101);
+            BtnDicas.Name = "BtnDicas";
+            BtnDicas.Size = new Size(66, 151);
+            BtnDicas.TabIndex = 2;
+            BtnDicas.Text = "Dicas";
+            BtnDicas.UseVisualStyleBackColor = false;
+            BtnDicas.Click += button1_Click;
             // 
-            // livro2
+            // BtnExGolpes
             // 
-            livro2.BackColor = Color.Red;
-            livro2.Font = new Font("Segoe UI", 14.25F);
-            livro2.ForeColor = SystemColors.ButtonHighlight;
-            livro2.Location = new Point(302, 101);
-            livro2.Name = "livro2";
-            livro2.Size = new Size(108, 151);
-            livro2.TabIndex = 3;
-            livro2.Text = "Exemplos de golpes";
-            livro2.UseVisualStyleBackColor = false;
+            BtnExGolpes.BackColor = Color.Red;
+            BtnExGolpes.Font = new Font("Segoe UI", 14.25F);
+            BtnExGolpes.ForeColor = SystemColors.ButtonHighlight;
+            BtnExGolpes.Location = new Point(302, 101);
+            BtnExGolpes.Name = "BtnExGolpes";
+            BtnExGolpes.Size = new Size(108, 151);
+            BtnExGolpes.TabIndex = 3;
+            BtnExGolpes.Text = "Exemplos de golpes";
+            BtnExGolpes.UseVisualStyleBackColor = false;
             // 
-            // livro3
+            // BtnRelatos
             // 
-            livro3.BackColor = Color.Blue;
-            livro3.Font = new Font("Segoe UI", 14.25F);
-            livro3.ForeColor = SystemColors.ButtonHighlight;
-            livro3.Location = new Point(433, 101);
-            livro3.Name = "livro3";
-            livro3.Size = new Size(85, 151);
-            livro3.TabIndex = 4;
-            livro3.Text = "Relatos de casos";
-            livro3.UseVisualStyleBackColor = false;
+            BtnRelatos.BackColor = Color.Blue;
+            BtnRelatos.Font = new Font("Segoe UI", 14.25F);
+            BtnRelatos.ForeColor = SystemColors.ButtonHighlight;
+            BtnRelatos.Location = new Point(433, 101);
+            BtnRelatos.Name = "BtnRelatos";
+            BtnRelatos.Size = new Size(85, 151);
+            BtnRelatos.TabIndex = 4;
+            BtnRelatos.Text = "Relatos de casos";
+            BtnRelatos.UseVisualStyleBackColor = false;
             // 
             // FrmBiblioteca
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(700, 338);
-            Controls.Add(livro3);
-            Controls.Add(livro2);
-            Controls.Add(livro1);
+            ClientSize = new Size(692, 387);
+            Controls.Add(BtnRelatos);
+            Controls.Add(BtnExGolpes);
+            Controls.Add(BtnDicas);
             Controls.Add(BtnVoltar);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
@@ -126,8 +125,8 @@
 
         private Label label1;
         private Button BtnVoltar;
-        private Button livro1;
-        private Button livro2;
-        private Button livro3;
+        private Button BtnDicas;
+        private Button BtnExGolpes;
+        private Button BtnRelatos;
     }
 }

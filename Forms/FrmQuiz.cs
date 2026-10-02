@@ -127,7 +127,8 @@ namespace ProtetorDigital.Forms
             }
         }
 
-        private void FrmQuiz_Load_1(object sender, EventArgs e)
+       
+        private void RBtnAlt1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

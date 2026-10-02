@@ -43,9 +43,9 @@
             lblPergunta.AutoSize = true;
             lblPergunta.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPergunta.ForeColor = Color.FromArgb(33, 37, 41);
-            lblPergunta.Location = new Point(17, 100);
+            lblPergunta.Location = new Point(15, 64);
             lblPergunta.Name = "lblPergunta";
-            lblPergunta.Size = new Size(0, 32);
+            lblPergunta.Size = new Size(0, 25);
             lblPergunta.TabIndex = 0;
             // 
             // RBtnAlt1
@@ -53,23 +53,24 @@
             RBtnAlt1.AutoSize = true;
             RBtnAlt1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt1.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt1.Location = new Point(17, 173);
-            RBtnAlt1.Margin = new Padding(3, 5, 3, 5);
+            RBtnAlt1.Location = new Point(15, 203);
+            RBtnAlt1.Margin = new Padding(3, 4, 3, 4);
             RBtnAlt1.Name = "RBtnAlt1";
-            RBtnAlt1.Size = new Size(17, 16);
+            RBtnAlt1.Size = new Size(14, 13);
             RBtnAlt1.TabIndex = 1;
             RBtnAlt1.TabStop = true;
             RBtnAlt1.UseVisualStyleBackColor = true;
+            RBtnAlt1.CheckedChanged += RBtnAlt1_CheckedChanged;
             // 
             // RBtnAlt2
             // 
             RBtnAlt2.AutoSize = true;
             RBtnAlt2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt2.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt2.Location = new Point(17, 219);
-            RBtnAlt2.Margin = new Padding(3, 5, 3, 5);
+            RBtnAlt2.Location = new Point(15, 275);
+            RBtnAlt2.Margin = new Padding(3, 4, 3, 4);
             RBtnAlt2.Name = "RBtnAlt2";
-            RBtnAlt2.Size = new Size(17, 16);
+            RBtnAlt2.Size = new Size(14, 13);
             RBtnAlt2.TabIndex = 2;
             RBtnAlt2.TabStop = true;
             RBtnAlt2.UseVisualStyleBackColor = true;
@@ -79,10 +80,10 @@
             RBtnAlt3.AutoSize = true;
             RBtnAlt3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt3.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt3.Location = new Point(17, 264);
-            RBtnAlt3.Margin = new Padding(3, 5, 3, 5);
+            RBtnAlt3.Location = new Point(15, 351);
+            RBtnAlt3.Margin = new Padding(3, 4, 3, 4);
             RBtnAlt3.Name = "RBtnAlt3";
-            RBtnAlt3.Size = new Size(17, 16);
+            RBtnAlt3.Size = new Size(14, 13);
             RBtnAlt3.TabIndex = 3;
             RBtnAlt3.TabStop = true;
             RBtnAlt3.UseVisualStyleBackColor = true;
@@ -92,10 +93,10 @@
             RBtnAlt4.AutoSize = true;
             RBtnAlt4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt4.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt4.Location = new Point(17, 309);
-            RBtnAlt4.Margin = new Padding(3, 5, 3, 5);
+            RBtnAlt4.Location = new Point(15, 427);
+            RBtnAlt4.Margin = new Padding(3, 4, 3, 4);
             RBtnAlt4.Name = "RBtnAlt4";
-            RBtnAlt4.Size = new Size(17, 16);
+            RBtnAlt4.Size = new Size(14, 13);
             RBtnAlt4.TabIndex = 4;
             RBtnAlt4.TabStop = true;
             RBtnAlt4.UseVisualStyleBackColor = true;
@@ -110,9 +111,10 @@
             BtnVoltar.FlatStyle = FlatStyle.Flat;
             BtnVoltar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(17, 20);
+            BtnVoltar.Location = new Point(15, 15);
+            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(103, 43);
+            BtnVoltar.Size = new Size(90, 32);
             BtnVoltar.TabIndex = 5;
             BtnVoltar.Text = "◀ Voltar";
             BtnVoltar.UseVisualStyleBackColor = false;
@@ -128,9 +130,10 @@
             BtnConfirmar.FlatStyle = FlatStyle.Flat;
             BtnConfirmar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnConfirmar.ForeColor = Color.White;
-            BtnConfirmar.Location = new Point(595, 20);
+            BtnConfirmar.Location = new Point(677, 11);
+            BtnConfirmar.Margin = new Padding(3, 2, 3, 2);
             BtnConfirmar.Name = "BtnConfirmar";
-            BtnConfirmar.Size = new Size(171, 43);
+            BtnConfirmar.Size = new Size(150, 32);
             BtnConfirmar.TabIndex = 6;
             BtnConfirmar.Text = "Confirmar ✓";
             BtnConfirmar.UseVisualStyleBackColor = false;
@@ -145,10 +148,10 @@
             // 
             // FrmQuiz
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 451);
+            ClientSize = new Size(839, 476);
             Controls.Add(BtnConfirmar);
             Controls.Add(BtnVoltar);
             Controls.Add(RBtnAlt4);
@@ -156,9 +159,9 @@
             Controls.Add(RBtnAlt2);
             Controls.Add(RBtnAlt1);
             Controls.Add(lblPergunta);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmQuiz";
             Text = "FrmQuiz";
-            Load += FrmQuiz_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
