@@ -28,24 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             BtnVoltar = new Button();
             BtnAvancar = new Button();
+            groupBox1 = new GroupBox();
+            lblFuncionamento = new Label();
+            lbl = new Label();
+            lblSinaisAlerta = new Label();
+            groupBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.BackColor = SystemColors.ControlDark;
-            label1.Location = new Point(35, 78);
-            label1.Name = "label1";
-            label1.Size = new Size(714, 213);
-            label1.TabIndex = 0;
             // 
             // BtnVoltar
             // 
-            BtnVoltar.Location = new Point(26, 29);
+            BtnVoltar.Location = new Point(23, 22);
+            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(94, 29);
+            BtnVoltar.Size = new Size(82, 22);
             BtnVoltar.TabIndex = 1;
             BtnVoltar.Text = "Voltar";
             BtnVoltar.UseVisualStyleBackColor = true;
@@ -53,31 +50,73 @@
             // BtnAvancar
             // 
             BtnAvancar.AutoSize = true;
-            BtnAvancar.Location = new Point(345, 353);
+            BtnAvancar.Location = new Point(319, 344);
+            BtnAvancar.Margin = new Padding(3, 2, 3, 2);
             BtnAvancar.Name = "BtnAvancar";
-            BtnAvancar.Size = new Size(117, 30);
+            BtnAvancar.Size = new Size(102, 25);
             BtnAvancar.TabIndex = 2;
             BtnAvancar.Text = "Próximo golpe";
             BtnAvancar.UseVisualStyleBackColor = true;
+            BtnAvancar.Click += BtnAvancar_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(lblSinaisAlerta);
+            groupBox1.Controls.Add(lblFuncionamento);
+            groupBox1.Controls.Add(lbl);
+            groupBox1.Location = new Point(12, 49);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(718, 290);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            // 
+            // lblFuncionamento
+            // 
+            lblFuncionamento.AutoSize = true;
+            lblFuncionamento.Location = new Point(11, 67);
+            lblFuncionamento.Name = "lblFuncionamento";
+            lblFuncionamento.Size = new Size(0, 15);
+            lblFuncionamento.TabIndex = 1;
+            // 
+            // lbl
+            // 
+            lbl.AutoSize = true;
+            lbl.Location = new Point(11, 19);
+            lbl.Name = "lbl";
+            lbl.Size = new Size(0, 15);
+            lbl.TabIndex = 0;
+            // 
+            // lblSinaisAlerta
+            // 
+            lblSinaisAlerta.AutoSize = true;
+            lblSinaisAlerta.Location = new Point(11, 138);
+            lblSinaisAlerta.Name = "lblSinaisAlerta";
+            lblSinaisAlerta.Size = new Size(0, 15);
+            lblSinaisAlerta.TabIndex = 2;
             // 
             // FrmExGolpes
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(742, 380);
+            Controls.Add(groupBox1);
             Controls.Add(BtnAvancar);
             Controls.Add(BtnVoltar);
-            Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmExGolpes";
             Text = "FrmExGolpes";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private Button BtnVoltar;
         private Button BtnAvancar;
+        private GroupBox groupBox1;
+        private Label lblFuncionamento;
+        private Label lbl;
+        private Label lblSinaisAlerta;
     }
 }

@@ -30,46 +30,81 @@
         {
             BtnAvancar = new Button();
             BtnVoltar = new Button();
-            lblDica = new Label();
+            groupBox1 = new GroupBox();
+            lblTítulo = new Label();
+            lblDescricao = new Label();
+            lblPassos = new Label();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // BtnAvancar
             // 
-            BtnAvancar.Location = new Point(351, 385);
+            BtnAvancar.Location = new Point(354, 383);
+            BtnAvancar.Margin = new Padding(3, 2, 3, 2);
             BtnAvancar.Name = "BtnAvancar";
-            BtnAvancar.Size = new Size(94, 29);
+            BtnAvancar.Size = new Size(82, 22);
             BtnAvancar.TabIndex = 0;
             BtnAvancar.Text = "Avançar";
             BtnAvancar.UseVisualStyleBackColor = true;
             // 
             // BtnVoltar
             // 
-            BtnVoltar.Location = new Point(30, 19);
+            BtnVoltar.Location = new Point(26, 14);
+            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(94, 29);
+            BtnVoltar.Size = new Size(82, 22);
             BtnVoltar.TabIndex = 1;
             BtnVoltar.Text = "Voltar";
             BtnVoltar.UseVisualStyleBackColor = true;
             // 
-            // lblDica
+            // groupBox1
             // 
-            lblDica.BackColor = SystemColors.ControlDark;
-            lblDica.ForeColor = SystemColors.ControlText;
-            lblDica.Location = new Point(12, 80);
-            lblDica.Name = "lblDica";
-            lblDica.Size = new Size(776, 264);
-            lblDica.TabIndex = 2;
+            groupBox1.Controls.Add(lblPassos);
+            groupBox1.Controls.Add(lblDescricao);
+            groupBox1.Controls.Add(lblTítulo);
+            groupBox1.Location = new Point(12, 50);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(743, 328);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            // 
+            // lblTítulo
+            // 
+            lblTítulo.AutoSize = true;
+            lblTítulo.Location = new Point(12, 21);
+            lblTítulo.Name = "lblTítulo";
+            lblTítulo.Size = new Size(0, 15);
+            lblTítulo.TabIndex = 0;
+            // 
+            // lblDescricao
+            // 
+            lblDescricao.AutoSize = true;
+            lblDescricao.Location = new Point(12, 88);
+            lblDescricao.Name = "lblDescricao";
+            lblDescricao.Size = new Size(0, 15);
+            lblDescricao.TabIndex = 1;
+            // 
+            // lblPassos
+            // 
+            lblPassos.AutoSize = true;
+            lblPassos.Location = new Point(14, 183);
+            lblPassos.Name = "lblPassos";
+            lblPassos.Size = new Size(0, 15);
+            lblPassos.TabIndex = 2;
             // 
             // FrmDicas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lblDica);
+            ClientSize = new Size(767, 425);
+            Controls.Add(groupBox1);
             Controls.Add(BtnVoltar);
             Controls.Add(BtnAvancar);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmDicas";
             Text = "FrmDicas";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -77,6 +112,9 @@
 
         private Button BtnAvancar;
         private Button BtnVoltar;
-        private Label lblDica;
+        private GroupBox groupBox1;
+        private Label lblPassos;
+        private Label lblDescricao;
+        private Label lblTítulo;
     }
 }

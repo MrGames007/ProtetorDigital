@@ -14,5 +14,10 @@ namespace ProtetorDigital.Forms
         {
             InitializeComponent();
         }
+
+        private void BtnAvancar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
