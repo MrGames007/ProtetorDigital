@@ -31,15 +31,16 @@
             BtnVoltar = new Button();
             BtnAvancar = new Button();
             groupBox1 = new GroupBox();
+            lblSinaisAlerta = new Label();
             lblFuncionamento = new Label();
             lbl = new Label();
-            lblSinaisAlerta = new Label();
+            BtnRetornar = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // BtnVoltar
             // 
-            BtnVoltar.Location = new Point(23, 22);
+            BtnVoltar.Location = new Point(210, 345);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
             BtnVoltar.Size = new Size(82, 22);
@@ -50,7 +51,7 @@
             // BtnAvancar
             // 
             BtnAvancar.AutoSize = true;
-            BtnAvancar.Location = new Point(319, 344);
+            BtnAvancar.Location = new Point(446, 345);
             BtnAvancar.Margin = new Padding(3, 2, 3, 2);
             BtnAvancar.Name = "BtnAvancar";
             BtnAvancar.Size = new Size(102, 25);
@@ -70,6 +71,14 @@
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             // 
+            // lblSinaisAlerta
+            // 
+            lblSinaisAlerta.AutoSize = true;
+            lblSinaisAlerta.Location = new Point(11, 138);
+            lblSinaisAlerta.Name = "lblSinaisAlerta";
+            lblSinaisAlerta.Size = new Size(0, 15);
+            lblSinaisAlerta.TabIndex = 2;
+            // 
             // lblFuncionamento
             // 
             lblFuncionamento.AutoSize = true;
@@ -86,19 +95,22 @@
             lbl.Size = new Size(0, 15);
             lbl.TabIndex = 0;
             // 
-            // lblSinaisAlerta
+            // BtnRetornar
             // 
-            lblSinaisAlerta.AutoSize = true;
-            lblSinaisAlerta.Location = new Point(11, 138);
-            lblSinaisAlerta.Name = "lblSinaisAlerta";
-            lblSinaisAlerta.Size = new Size(0, 15);
-            lblSinaisAlerta.TabIndex = 2;
+            BtnRetornar.Location = new Point(12, 12);
+            BtnRetornar.Name = "BtnRetornar";
+            BtnRetornar.Size = new Size(75, 23);
+            BtnRetornar.TabIndex = 4;
+            BtnRetornar.Text = "Voltar";
+            BtnRetornar.UseVisualStyleBackColor = true;
+            BtnRetornar.Click += BtnRetornar_Click;
             // 
             // FrmExGolpes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(742, 380);
+            Controls.Add(BtnRetornar);
             Controls.Add(groupBox1);
             Controls.Add(BtnAvancar);
             Controls.Add(BtnVoltar);
@@ -118,5 +130,6 @@
         private Label lblFuncionamento;
         private Label lbl;
         private Label lblSinaisAlerta;
+        private Button BtnRetornar;
     }
 }

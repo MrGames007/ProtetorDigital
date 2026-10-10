@@ -31,15 +31,16 @@
             BtnAvancar = new Button();
             BtnVoltar = new Button();
             groupBox1 = new GroupBox();
-            lblTítulo = new Label();
-            lblDescricao = new Label();
             lblPassos = new Label();
+            lblDescricao = new Label();
+            lblTítulo = new Label();
+            BtnRetornar = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // BtnAvancar
             // 
-            BtnAvancar.Location = new Point(354, 383);
+            BtnAvancar.Location = new Point(438, 383);
             BtnAvancar.Margin = new Padding(3, 2, 3, 2);
             BtnAvancar.Name = "BtnAvancar";
             BtnAvancar.Size = new Size(82, 22);
@@ -49,7 +50,7 @@
             // 
             // BtnVoltar
             // 
-            BtnVoltar.Location = new Point(26, 14);
+            BtnVoltar.Location = new Point(270, 383);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
             BtnVoltar.Size = new Size(82, 22);
@@ -68,13 +69,13 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             // 
-            // lblTítulo
+            // lblPassos
             // 
-            lblTítulo.AutoSize = true;
-            lblTítulo.Location = new Point(12, 21);
-            lblTítulo.Name = "lblTítulo";
-            lblTítulo.Size = new Size(0, 15);
-            lblTítulo.TabIndex = 0;
+            lblPassos.AutoSize = true;
+            lblPassos.Location = new Point(14, 183);
+            lblPassos.Name = "lblPassos";
+            lblPassos.Size = new Size(0, 15);
+            lblPassos.TabIndex = 2;
             // 
             // lblDescricao
             // 
@@ -84,19 +85,30 @@
             lblDescricao.Size = new Size(0, 15);
             lblDescricao.TabIndex = 1;
             // 
-            // lblPassos
+            // lblTítulo
             // 
-            lblPassos.AutoSize = true;
-            lblPassos.Location = new Point(14, 183);
-            lblPassos.Name = "lblPassos";
-            lblPassos.Size = new Size(0, 15);
-            lblPassos.TabIndex = 2;
+            lblTítulo.AutoSize = true;
+            lblTítulo.Location = new Point(12, 21);
+            lblTítulo.Name = "lblTítulo";
+            lblTítulo.Size = new Size(0, 15);
+            lblTítulo.TabIndex = 0;
+            // 
+            // BtnRetornar
+            // 
+            BtnRetornar.Location = new Point(12, 12);
+            BtnRetornar.Name = "BtnRetornar";
+            BtnRetornar.Size = new Size(75, 23);
+            BtnRetornar.TabIndex = 3;
+            BtnRetornar.Text = "Voltar";
+            BtnRetornar.UseVisualStyleBackColor = true;
+            BtnRetornar.Click += BtnRetornar_Click;
             // 
             // FrmDicas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(767, 425);
+            Controls.Add(BtnRetornar);
             Controls.Add(groupBox1);
             Controls.Add(BtnVoltar);
             Controls.Add(BtnAvancar);
@@ -116,5 +128,6 @@
         private Label lblPassos;
         private Label lblDescricao;
         private Label lblTítulo;
+        private Button BtnRetornar;
     }
 }

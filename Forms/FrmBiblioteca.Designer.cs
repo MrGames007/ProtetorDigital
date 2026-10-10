@@ -77,7 +77,7 @@
             BtnDicas.TabIndex = 2;
             BtnDicas.Text = "Dicas";
             BtnDicas.UseVisualStyleBackColor = false;
-            BtnDicas.Click += button1_Click;
+            BtnDicas.Click += BtnDicas_Click;
             // 
             // BtnExGolpes
             // 
@@ -90,6 +90,7 @@
             BtnExGolpes.TabIndex = 3;
             BtnExGolpes.Text = "Exemplos de golpes";
             BtnExGolpes.UseVisualStyleBackColor = false;
+            BtnExGolpes.Click += BtnExGolpes_Click;
             // 
             // BtnRelatos
             // 
@@ -102,6 +103,7 @@
             BtnRelatos.TabIndex = 4;
             BtnRelatos.Text = "Relatos de casos";
             BtnRelatos.UseVisualStyleBackColor = false;
+            BtnRelatos.Click += BtnRelatos_Click;
             // 
             // FrmBiblioteca
             // 
@@ -117,7 +119,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmBiblioteca";
             Text = "FrmBiblioteca";
-            Load += FrmBiblioteca_Load;
             ResumeLayout(false);
         }
 

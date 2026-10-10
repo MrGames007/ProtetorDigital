@@ -23,15 +23,25 @@ namespace ProtetorDigital.Forms
             this.Close();
         }
 
-     
-        private void FrmBiblioteca_Load(object sender, EventArgs e)
+        private void BtnRelatos_Click(object sender, EventArgs e)
         {
-
+            var frmRelatos = new FrmRelatos(this);
+            frmRelatos.Show();
+            this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnDicas_Click(object sender, EventArgs e)
         {
-        
+            var frmDicas = new FrmDicas(this);
+            frmDicas.Show();
+            this.Hide();
+        }
+
+        private void BtnExGolpes_Click(object sender, EventArgs e)
+        {
+            var frmExGolpes = new FrmExGolpes(this);
+            frmExGolpes.Show();
+            this.Hide();
         }
     }
 }
