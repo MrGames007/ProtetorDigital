@@ -1,1 +1,98 @@
-﻿
+﻿[
+  {
+    "id": 1,
+    "pergunta": "Uma pessoa liga dizendo ser do banco e pede sua senha. O que fazer?",
+    "opcoes": [
+      "Informar a senha para confirmar a identidade",
+      "Desligar e entrar em contato com o banco por um canal oficial",
+      "Passar apenas os quatro primeiros números da senha",
+      "Pedir para a pessoa ligar novamente depois"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Senhas e códigos de segurança não devem ser informados por telefone. O contato deve ser encerrado e o banco procurado por um canal oficial."
+  },
+  {
+    "id": 2,
+    "pergunta": "Qual atitude ajuda a prevenir golpes pela internet?",
+    "opcoes": [
+      "Clicar em qualquer link recebido por mensagem",
+      "Compartilhar códigos de confirmação com familiares e desconhecidos",
+      "Verificar a origem da mensagem antes de fornecer qualquer informação",
+      "Enviar uma foto do cartão quando solicitada"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Antes de fornecer informações ou clicar em links, é importante verificar a origem da mensagem e confirmar se o contato é realmente legítimo."
+  },
+  {
+    "explicacao": "Antes de realizar qualquer transferência, confirme diretamente com a pessoa por um meio confiável.",
+    "id": 3,
+    "opcoes": [
+      "Enviar imediatamente para evitar problemas",
+      "Confirmar a identidade da pessoa por outro meio confiável",
+      "Compartilhar a mensagem com todos os contatos",
+      "Fornecer os dados bancários para confirmar a transferência"
+    ],
+    "pergunta": "O que fazer ao receber uma mensagem suspeita pedindo dinheiro?",
+    "respostaCorreta": 2
+  },
+  {
+    "id": 4,
+    "pergunta": "Você recebe um e-mail dizendo que sua conta será bloqueada e pedindo para clicar em um link. O que fazer?",
+    "opcoes": [
+      "Clicar no link imediatamente",
+      "Responder ao e-mail com seus dados",
+      "Não clicar e verificar a informação por um canal oficial",
+      "Encaminhar o e-mail para amigos"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Links recebidos por e-mail podem ser usados em golpes de phishing. É mais seguro não clicar e verificar a situação diretamente no site ou aplicativo oficial."
+  },
+  {
+    "id": 5,
+    "pergunta": "Ao criar uma senha para uma conta, qual é a opção mais segura?",
+    "opcoes": [
+      "Usar 123456",
+      "Usar o nome e a data de nascimento",
+      "Usar uma senha longa, única e difícil de adivinhar",
+      "Usar a mesma senha em todas as contas"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Uma senha longa, única e difícil de adivinhar aumenta a segurança da conta e reduz os riscos caso outra senha seja descoberta."
+  },
+  {
+    "id": 6,
+    "pergunta": "Você recebe uma mensagem informando que ganhou um prêmio, mas precisa pagar uma taxa para recebê-lo. O que fazer?",
+    "opcoes": [
+      "Pagar a taxa imediatamente",
+      "Enviar seus dados pessoais",
+      "Desconfiar e verificar a informação antes de tomar qualquer atitude",
+      "Compartilhar a mensagem com outras pessoas"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Mensagens que prometem prêmios e exigem pagamentos antecipados podem ser tentativas de golpe. Verifique a informação em fontes oficiais antes de fornecer dados ou dinheiro."
+  },
+  {
+    "id": 7,
+    "pergunta": "Ao usar uma rede Wi-Fi pública, qual atitude ajuda a proteger seus dados?",
+    "opcoes": [
+      "Acessar livremente contas bancárias",
+      "Compartilhar senhas com outras pessoas",
+      "Evitar acessar informações sensíveis e usar uma conexão segura",
+      "Desativar todas as senhas do celular"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Redes Wi-Fi públicas podem apresentar riscos de segurança. Evite realizar atividades sensíveis e prefira conexões confiáveis e seguras."
+  },
+  {
+    "id": 8,
+    "pergunta": "Uma pessoa desconhecida pede o código de verificação enviado para o seu celular. O que fazer?",
+    "opcoes": [
+      "Informar o código para confirmar sua identidade",
+      "Enviar apenas parte do código",
+      "Não informar o código e encerrar o contato",
+      "Pedir outro código e enviar também"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Códigos de verificação são pessoais e podem permitir o acesso às suas contas. Eles nunca devem ser compartilhados com outras pessoas."
+  }
+]
