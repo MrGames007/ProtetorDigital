@@ -2,15 +2,8 @@
 {
     partial class FrmQuiz
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,11 +14,6 @@
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             lblPergunta = new Label();
@@ -35,28 +23,29 @@
             RBtnAlt4 = new RadioButton();
             BtnVoltar = new Button();
             BtnConfirmar = new Button();
-            button1 = new Button();
             SuspendLayout();
             // 
             // lblPergunta
             // 
             lblPergunta.AutoSize = true;
-            lblPergunta.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPergunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPergunta.ForeColor = Color.FromArgb(33, 37, 41);
-            lblPergunta.Location = new Point(15, 64);
+            lblPergunta.Location = new Point(15, 75);
+            lblPergunta.MaximumSize = new Size(1170, 0);
             lblPergunta.Name = "lblPergunta";
-            lblPergunta.Size = new Size(0, 25);
+            lblPergunta.Size = new Size(0, 30);
             lblPergunta.TabIndex = 0;
             // 
             // RBtnAlt1
             // 
             RBtnAlt1.AutoSize = true;
-            RBtnAlt1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RBtnAlt1.Cursor = Cursors.Hand;
+            RBtnAlt1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt1.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt1.Location = new Point(15, 203);
-            RBtnAlt1.Margin = new Padding(3, 4, 3, 4);
+            RBtnAlt1.Location = new Point(15, 170);
+            RBtnAlt1.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt1.Name = "RBtnAlt1";
-            RBtnAlt1.Size = new Size(14, 13);
+            RBtnAlt1.Size = new Size(24, 28);
             RBtnAlt1.TabIndex = 1;
             RBtnAlt1.TabStop = true;
             RBtnAlt1.UseVisualStyleBackColor = true;
@@ -65,12 +54,13 @@
             // RBtnAlt2
             // 
             RBtnAlt2.AutoSize = true;
-            RBtnAlt2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RBtnAlt2.Cursor = Cursors.Hand;
+            RBtnAlt2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt2.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt2.Location = new Point(15, 275);
-            RBtnAlt2.Margin = new Padding(3, 4, 3, 4);
+            RBtnAlt2.Location = new Point(15, 235);
+            RBtnAlt2.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt2.Name = "RBtnAlt2";
-            RBtnAlt2.Size = new Size(14, 13);
+            RBtnAlt2.Size = new Size(24, 28);
             RBtnAlt2.TabIndex = 2;
             RBtnAlt2.TabStop = true;
             RBtnAlt2.UseVisualStyleBackColor = true;
@@ -78,12 +68,13 @@
             // RBtnAlt3
             // 
             RBtnAlt3.AutoSize = true;
-            RBtnAlt3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RBtnAlt3.Cursor = Cursors.Hand;
+            RBtnAlt3.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt3.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt3.Location = new Point(15, 351);
-            RBtnAlt3.Margin = new Padding(3, 4, 3, 4);
+            RBtnAlt3.Location = new Point(15, 300);
+            RBtnAlt3.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt3.Name = "RBtnAlt3";
-            RBtnAlt3.Size = new Size(14, 13);
+            RBtnAlt3.Size = new Size(24, 28);
             RBtnAlt3.TabIndex = 3;
             RBtnAlt3.TabStop = true;
             RBtnAlt3.UseVisualStyleBackColor = true;
@@ -91,12 +82,13 @@
             // RBtnAlt4
             // 
             RBtnAlt4.AutoSize = true;
-            RBtnAlt4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RBtnAlt4.Cursor = Cursors.Hand;
+            RBtnAlt4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt4.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt4.Location = new Point(15, 427);
-            RBtnAlt4.Margin = new Padding(3, 4, 3, 4);
+            RBtnAlt4.Location = new Point(15, 365);
+            RBtnAlt4.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt4.Name = "RBtnAlt4";
-            RBtnAlt4.Size = new Size(14, 13);
+            RBtnAlt4.Size = new Size(24, 28);
             RBtnAlt4.TabIndex = 4;
             RBtnAlt4.TabStop = true;
             RBtnAlt4.UseVisualStyleBackColor = true;
@@ -122,6 +114,7 @@
             // 
             // BtnConfirmar
             // 
+            BtnConfirmar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnConfirmar.BackColor = Color.FromArgb(40, 167, 69);
             BtnConfirmar.Cursor = Cursors.Hand;
             BtnConfirmar.FlatAppearance.BorderSize = 0;
@@ -130,7 +123,7 @@
             BtnConfirmar.FlatStyle = FlatStyle.Flat;
             BtnConfirmar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnConfirmar.ForeColor = Color.White;
-            BtnConfirmar.Location = new Point(677, 11);
+            BtnConfirmar.Location = new Point(1036, 15);
             BtnConfirmar.Margin = new Padding(3, 2, 3, 2);
             BtnConfirmar.Name = "BtnConfirmar";
             BtnConfirmar.Size = new Size(150, 32);
@@ -139,19 +132,12 @@
             BtnConfirmar.UseVisualStyleBackColor = false;
             BtnConfirmar.Click += BtnConfirmar_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            // 
             // FrmQuiz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(839, 476);
+            ClientSize = new Size(1201, 476);
             Controls.Add(BtnConfirmar);
             Controls.Add(BtnVoltar);
             Controls.Add(RBtnAlt4);
@@ -161,7 +147,8 @@
             Controls.Add(lblPergunta);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmQuiz";
-            Text = "FrmQuiz";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Quiz";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,6 +162,5 @@
         private RadioButton RBtnAlt4;
         private Button BtnVoltar;
         private Button BtnConfirmar;
-        private Button button1;
     }
 }

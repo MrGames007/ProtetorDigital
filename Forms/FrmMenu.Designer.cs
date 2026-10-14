@@ -2,15 +2,8 @@
 {
     partial class FrmMenu
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        ///  Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,95 +14,102 @@
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             label1 = new Label();
             BtnQuiz = new Button();
-            BtnSair = new Button();
             BtnBiblioteca = new Button();
+            BtnSair = new Button();
             SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(110, 12);
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = false;
+            label1.Font = new Font("Segoe UI", 28F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(33, 37, 41);
+            label1.Location = new Point(0, 25);
             label1.Name = "label1";
-            label1.Size = new Size(811, 81);
+            label1.Size = new Size(957, 80);
             label1.TabIndex = 0;
             label1.Text = "Proteção Digital Aos Idosos";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BtnQuiz
             // 
-            BtnQuiz.AutoSize = true;
-            BtnQuiz.BackColor = SystemColors.Highlight;
-            BtnQuiz.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnQuiz.ForeColor = SystemColors.ButtonHighlight;
-            BtnQuiz.Location = new Point(303, 127);
+            BtnQuiz.BackColor = Color.FromArgb(0, 120, 215);
+            BtnQuiz.Cursor = Cursors.Hand;
+            BtnQuiz.FlatAppearance.BorderSize = 0;
+            BtnQuiz.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
+            BtnQuiz.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
+            BtnQuiz.FlatStyle = FlatStyle.Flat;
+            BtnQuiz.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnQuiz.ForeColor = Color.White;
+            BtnQuiz.Location = new Point(288, 140);
             BtnQuiz.Name = "BtnQuiz";
-            BtnQuiz.Size = new Size(328, 124);
+            BtnQuiz.Size = new Size(380, 85);
             BtnQuiz.TabIndex = 1;
             BtnQuiz.Text = "Quiz";
             BtnQuiz.UseVisualStyleBackColor = false;
             BtnQuiz.Click += BtnQuiz_Click;
             // 
-            // BtnSair
-            // 
-            BtnSair.AutoSize = true;
-            BtnSair.BackColor = Color.Red;
-            BtnSair.Font = new Font("Lucida Sans Unicode", 21.75F);
-            BtnSair.ForeColor = SystemColors.ButtonHighlight;
-            BtnSair.Location = new Point(728, 379);
-            BtnSair.Name = "BtnSair";
-            BtnSair.Size = new Size(215, 112);
-            BtnSair.TabIndex = 5;
-            BtnSair.Text = "◀ Sair";
-            BtnSair.UseVisualStyleBackColor = false;
-            BtnSair.Click += BtnSair_Click;
-            // 
             // BtnBiblioteca
             // 
-            BtnBiblioteca.AutoSize = true;
-            BtnBiblioteca.BackColor = Color.LawnGreen;
-            BtnBiblioteca.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnBiblioteca.CausesValidation = false;
-            BtnBiblioteca.Font = new Font("Lucida Sans Unicode", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnBiblioteca.ForeColor = SystemColors.ButtonHighlight;
-            BtnBiblioteca.ImageAlign = ContentAlignment.MiddleRight;
-            BtnBiblioteca.Location = new Point(303, 379);
+            BtnBiblioteca.BackColor = Color.FromArgb(0, 120, 215);
+            BtnBiblioteca.Cursor = Cursors.Hand;
+            BtnBiblioteca.FlatAppearance.BorderSize = 0;
+            BtnBiblioteca.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
+            BtnBiblioteca.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
+            BtnBiblioteca.FlatStyle = FlatStyle.Flat;
+            BtnBiblioteca.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnBiblioteca.ForeColor = Color.White;
+            BtnBiblioteca.Location = new Point(288, 245);
             BtnBiblioteca.Name = "BtnBiblioteca";
-            BtnBiblioteca.Size = new Size(328, 100);
-            BtnBiblioteca.TabIndex = 7;
+            BtnBiblioteca.Size = new Size(380, 85);
+            BtnBiblioteca.TabIndex = 2;
             BtnBiblioteca.Text = "Biblioteca";
             BtnBiblioteca.UseVisualStyleBackColor = false;
             BtnBiblioteca.Click += BtnBiblioteca_Click;
+            // 
+            // BtnSair
+            // 
+            BtnSair.BackColor = Color.FromArgb(220, 53, 69);
+            BtnSair.Cursor = Cursors.Hand;
+            BtnSair.FlatAppearance.BorderSize = 0;
+            BtnSair.FlatAppearance.MouseOverBackColor = Color.FromArgb(189, 45, 59);
+            BtnSair.FlatAppearance.MouseDownBackColor = Color.FromArgb(160, 38, 50);
+            BtnSair.FlatStyle = FlatStyle.Flat;
+            BtnSair.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSair.ForeColor = Color.White;
+            BtnSair.Location = new Point(288, 365);
+            BtnSair.Name = "BtnSair";
+            BtnSair.Size = new Size(380, 65);
+            BtnSair.TabIndex = 3;
+            BtnSair.Text = "◀ Sair";
+            BtnSair.UseVisualStyleBackColor = false;
+            BtnSair.Click += BtnSair_Click;
             // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.Zoom;
+            BackColor = Color.White;
             ClientSize = new Size(957, 505);
-            Controls.Add(BtnBiblioteca);
             Controls.Add(BtnSair);
+            Controls.Add(BtnBiblioteca);
             Controls.Add(BtnQuiz);
             Controls.Add(label1);
             Name = "FrmMenu";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Proteção Digital Aos Idosos";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Label label1;
         private Button BtnQuiz;
-        private Button BtnSair;
         private Button BtnBiblioteca;
+        private Button BtnSair;
     }
 }

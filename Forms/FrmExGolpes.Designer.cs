@@ -45,8 +45,9 @@
             BtnVoltar.Name = "BtnVoltar";
             BtnVoltar.Size = new Size(82, 22);
             BtnVoltar.TabIndex = 1;
-            BtnVoltar.Text = "Voltar";
+            BtnVoltar.Text = "Sair";
             BtnVoltar.UseVisualStyleBackColor = true;
+            BtnVoltar.Click += BtnVoltar_Click_1;
             // 
             // BtnAvancar
             // 
@@ -70,6 +71,7 @@
             groupBox1.Size = new Size(718, 290);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // lblSinaisAlerta
             // 

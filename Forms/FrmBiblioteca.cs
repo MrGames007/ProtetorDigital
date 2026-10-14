@@ -43,6 +43,11 @@ namespace ProtetorDigital.Forms
             frmExGolpes.Show();
             this.Hide();
         }
+
+        private void FrmBiblioteca_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

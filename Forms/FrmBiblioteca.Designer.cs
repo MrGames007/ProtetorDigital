@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBiblioteca));
             label1 = new Label();
             BtnVoltar = new Button();
             BtnDicas = new Button();
-            BtnExGolpes = new Button();
             BtnRelatos = new Button();
             SuspendLayout();
             // 
@@ -39,8 +39,8 @@
             // 
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(33, 37, 41);
-            label1.Location = new Point(223, -23);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(134, 60);
             label1.Name = "label1";
             label1.Size = new Size(295, 109);
             label1.TabIndex = 0;
@@ -69,37 +69,26 @@
             // BtnDicas
             // 
             BtnDicas.BackColor = Color.Green;
+            BtnDicas.FlatStyle = FlatStyle.Flat;
             BtnDicas.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnDicas.ForeColor = SystemColors.ButtonHighlight;
-            BtnDicas.Location = new Point(204, 101);
+            BtnDicas.Location = new Point(134, 172);
             BtnDicas.Name = "BtnDicas";
-            BtnDicas.Size = new Size(66, 151);
+            BtnDicas.Size = new Size(73, 129);
             BtnDicas.TabIndex = 2;
             BtnDicas.Text = "Dicas";
             BtnDicas.UseVisualStyleBackColor = false;
             BtnDicas.Click += BtnDicas_Click;
             // 
-            // BtnExGolpes
-            // 
-            BtnExGolpes.BackColor = Color.Red;
-            BtnExGolpes.Font = new Font("Segoe UI", 14.25F);
-            BtnExGolpes.ForeColor = SystemColors.ButtonHighlight;
-            BtnExGolpes.Location = new Point(302, 101);
-            BtnExGolpes.Name = "BtnExGolpes";
-            BtnExGolpes.Size = new Size(108, 151);
-            BtnExGolpes.TabIndex = 3;
-            BtnExGolpes.Text = "Exemplos de golpes";
-            BtnExGolpes.UseVisualStyleBackColor = false;
-            BtnExGolpes.Click += BtnExGolpes_Click;
-            // 
             // BtnRelatos
             // 
             BtnRelatos.BackColor = Color.Blue;
+            BtnRelatos.FlatStyle = FlatStyle.Flat;
             BtnRelatos.Font = new Font("Segoe UI", 14.25F);
             BtnRelatos.ForeColor = SystemColors.ButtonHighlight;
-            BtnRelatos.Location = new Point(433, 101);
+            BtnRelatos.Location = new Point(344, 172);
             BtnRelatos.Name = "BtnRelatos";
-            BtnRelatos.Size = new Size(85, 151);
+            BtnRelatos.Size = new Size(85, 129);
             BtnRelatos.TabIndex = 4;
             BtnRelatos.Text = "Relatos de casos";
             BtnRelatos.UseVisualStyleBackColor = false;
@@ -110,15 +99,16 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(692, 387);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(524, 387);
             Controls.Add(BtnRelatos);
-            Controls.Add(BtnExGolpes);
             Controls.Add(BtnDicas);
             Controls.Add(BtnVoltar);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmBiblioteca";
             Text = "FrmBiblioteca";
+            Load += FrmBiblioteca_Load;
             ResumeLayout(false);
         }
 
@@ -127,7 +117,6 @@
         private Label label1;
         private Button BtnVoltar;
         private Button BtnDicas;
-        private Button BtnExGolpes;
         private Button BtnRelatos;
     }
 }

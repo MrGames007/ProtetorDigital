@@ -90,5 +90,15 @@ namespace ProtetorDigital.Forms
             _janelaOrigem.Show();
             this.Close();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnVoltar_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
