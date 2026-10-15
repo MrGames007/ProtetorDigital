@@ -60,7 +60,7 @@ namespace ProtetorDigital.Forms
             if (indice < 0 || indice >= _golpes.Count) return;
             _indice = indice;
             var g = _golpes[indice];
-            lbl.Text = g.NomeGolpe ?? string.Empty;
+            lblNomeGolpe.Text = g.NomeGolpe ?? string.Empty;
             lblFuncionamento.Text = g.ComoFunciona ?? string.Empty;
             if (g.SinaisDeAlerta != null && g.SinaisDeAlerta.Any())
             {
@@ -91,14 +91,6 @@ namespace ProtetorDigital.Forms
             this.Close();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnVoltar_Click_1(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

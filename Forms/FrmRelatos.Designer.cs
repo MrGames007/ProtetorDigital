@@ -18,16 +18,13 @@
         {
             BtnVoltar = new Button();
             BtnAvancar = new Button();
-            groupBox1 = new GroupBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            BtnRetornar = new Button();
             lblTitulo = new Label();
             lblFonte = new Label();
-            lblVitima = new Label();
-            lblRelato = new Label();
+            lblTexto = new Label();
             lblLicoesAprendidas = new Label();
-            BtnRetornar = new Button();
-            groupBox1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
+            lblRelato = new Label();
+            lblVitima = new Label();
             SuspendLayout();
             // 
             // BtnVoltar
@@ -68,93 +65,6 @@
             BtnAvancar.Text = "Avançar ▶";
             BtnAvancar.UseVisualStyleBackColor = false;
             // 
-            // groupBox1
-            // 
-            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox1.BackColor = Color.FromArgb(248, 249, 250);
-            groupBox1.Controls.Add(flowLayoutPanel1);
-            groupBox1.Location = new Point(15, 60);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1086, 480);
-            groupBox1.TabIndex = 3;
-            groupBox1.TabStop = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Controls.Add(lblTitulo);
-            flowLayoutPanel1.Controls.Add(lblFonte);
-            flowLayoutPanel1.Controls.Add(lblVitima);
-            flowLayoutPanel1.Controls.Add(lblRelato);
-            flowLayoutPanel1.Controls.Add(lblLicoesAprendidas);
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(3, 19);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(12, 8, 12, 8);
-            flowLayoutPanel1.Size = new Size(1080, 458);
-            flowLayoutPanel1.TabIndex = 0;
-            flowLayoutPanel1.WrapContents = false;
-            // 
-            // lblTitulo
-            // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.ForeColor = Color.FromArgb(33, 37, 41);
-            lblTitulo.Location = new Point(15, 8);
-            lblTitulo.Margin = new Padding(3, 0, 3, 12);
-            lblTitulo.MaximumSize = new Size(1030, 0);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(0, 37);
-            lblTitulo.TabIndex = 0;
-            // 
-            // lblFonte
-            // 
-            lblFonte.AutoSize = true;
-            lblFonte.Font = new Font("Segoe UI", 11F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblFonte.ForeColor = Color.FromArgb(90, 98, 106);
-            lblFonte.Location = new Point(15, 57);
-            lblFonte.Margin = new Padding(3, 0, 3, 14);
-            lblFonte.MaximumSize = new Size(1030, 0);
-            lblFonte.Name = "lblFonte";
-            lblFonte.Size = new Size(0, 20);
-            lblFonte.TabIndex = 1;
-            // 
-            // lblVitima
-            // 
-            lblVitima.AutoSize = true;
-            lblVitima.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVitima.ForeColor = Color.FromArgb(0, 99, 177);
-            lblVitima.Location = new Point(15, 91);
-            lblVitima.Margin = new Padding(3, 0, 3, 14);
-            lblVitima.MaximumSize = new Size(1030, 0);
-            lblVitima.Name = "lblVitima";
-            lblVitima.Size = new Size(0, 25);
-            lblVitima.TabIndex = 2;
-            // 
-            // lblRelato
-            // 
-            lblRelato.AutoSize = true;
-            lblRelato.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRelato.ForeColor = Color.FromArgb(33, 37, 41);
-            lblRelato.Location = new Point(15, 130);
-            lblRelato.Margin = new Padding(3, 0, 3, 18);
-            lblRelato.MaximumSize = new Size(1030, 0);
-            lblRelato.Name = "lblRelato";
-            lblRelato.Size = new Size(0, 25);
-            lblRelato.TabIndex = 3;
-            // 
-            // lblLicoesAprendidas
-            // 
-            lblLicoesAprendidas.AutoSize = true;
-            lblLicoesAprendidas.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLicoesAprendidas.ForeColor = Color.FromArgb(33, 136, 56);
-            lblLicoesAprendidas.Location = new Point(15, 173);
-            lblLicoesAprendidas.MaximumSize = new Size(1030, 0);
-            lblLicoesAprendidas.Name = "lblLicoesAprendidas";
-            lblLicoesAprendidas.Size = new Size(0, 25);
-            lblLicoesAprendidas.TabIndex = 4;
-            // 
             // BtnRetornar
             // 
             BtnRetornar.BackColor = Color.FromArgb(0, 120, 215);
@@ -172,7 +82,60 @@
             BtnRetornar.TabIndex = 4;
             BtnRetornar.Text = "◀ Voltar";
             BtnRetornar.UseVisualStyleBackColor = false;
-            BtnRetornar.Click += BtnRetornar_Click;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Location = new Point(18, 101);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(38, 15);
+            lblTitulo.TabIndex = 5;
+            lblTitulo.Text = "label1";
+            // 
+            // lblFonte
+            // 
+            lblFonte.AutoSize = true;
+            lblFonte.Location = new Point(18, 165);
+            lblFonte.Name = "lblFonte";
+            lblFonte.Size = new Size(38, 15);
+            lblFonte.TabIndex = 6;
+            lblFonte.Text = "label1";
+            // 
+            // lblTexto
+            // 
+            lblTexto.AutoSize = true;
+            lblTexto.Location = new Point(18, 371);
+            lblTexto.Name = "lblTexto";
+            lblTexto.Size = new Size(103, 15);
+            lblTexto.TabIndex = 9;
+            lblTexto.Text = "Lições Aprendidas";
+            // 
+            // lblLicoesAprendidas
+            // 
+            lblLicoesAprendidas.AutoSize = true;
+            lblLicoesAprendidas.Location = new Point(18, 429);
+            lblLicoesAprendidas.Name = "lblLicoesAprendidas";
+            lblLicoesAprendidas.Size = new Size(38, 15);
+            lblLicoesAprendidas.TabIndex = 10;
+            lblLicoesAprendidas.Text = "label1";
+            // 
+            // lblRelato
+            // 
+            lblRelato.AutoSize = true;
+            lblRelato.Location = new Point(18, 287);
+            lblRelato.Name = "lblRelato";
+            lblRelato.Size = new Size(38, 15);
+            lblRelato.TabIndex = 8;
+            lblRelato.Text = "label1";
+            // 
+            // lblVitima
+            // 
+            lblVitima.AutoSize = true;
+            lblVitima.Location = new Point(18, 229);
+            lblVitima.Name = "lblVitima";
+            lblVitima.Size = new Size(38, 15);
+            lblVitima.TabIndex = 7;
+            lblVitima.Text = "label1";
             // 
             // FrmRelatos
             // 
@@ -180,31 +143,33 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
+            Controls.Add(lblLicoesAprendidas);
+            Controls.Add(lblTexto);
+            Controls.Add(lblRelato);
+            Controls.Add(lblVitima);
+            Controls.Add(lblFonte);
+            Controls.Add(lblTitulo);
             Controls.Add(BtnRetornar);
-            Controls.Add(groupBox1);
             Controls.Add(BtnAvancar);
             Controls.Add(BtnVoltar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmRelatos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Relatos";
-            groupBox1.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button BtnVoltar;
         private Button BtnAvancar;
-        private GroupBox groupBox1;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Label lblVitima;
-        private Label lblFonte;
+        private Button BtnRetornar;
         private Label lblTitulo;
+        private Label lblFonte;
+        private Label lblTexto;
         private Label lblLicoesAprendidas;
         private Label lblRelato;
-        private Button BtnRetornar;
+        private Label lblVitima;
     }
 }

@@ -1,0 +1,172 @@
+{
+  "categoria": "Dicas de Segurança e Proteção Digital",
+  "itens": [
+    {
+      "id": 1,
+      "titulo": "Desconfie de Pedidos Urgentes por Mensagem",
+      "descricao": "Golpistas utilizam a pressão do tempo para que a vítima tome atitudes impensadas em nome de parentes.",
+      "passos_recomendados": [
+        "Ligue para o número antigo do parente antes de fazer qualquer transferência.",
+        "Não envie valores sem ouvir a voz do familiar no telefone fixo ou canal confiável."
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Proteja Suas Senhas e Tokens Bancários",
+      "descricao": "Bancos e órgãos do governo não exigem dados confidenciais por ligação ou mensagem.",
+      "passos_recomendados": [
+        "Nunca digite senhas do cartão no teclado do telefone.",
+        "Nunca compartilhe códigos de validação de SMS com terceiros."
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "Ative a Confirmação em Duas Etapas",
+      "descricao": "Impede que criminosos clonem seu perfil do WhatsApp mesmo que tenham acesso ao número.",
+      "passos_recomendados": [
+        "No WhatsApp, acesse Configurações > Conta > Confirmação em duas etapas.",
+        "Crie um PIN de 6 dígitos que apenas você conheça."
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "Não Clique em Links de Promoções ou Prêmios",
+      "descricao": "Links em SMS e e-mails podem instalar vírus ou direcionar para páginas falsas.",
+      "passos_recomendados": [
+        "Confira se o domínio termina com .gov.br ou .com.br oficial da empresa.",
+        "Evite clicar em encurtadores de links desconhecidos."
+      ]
+    },
+    {
+      "id": 5,
+      "titulo": "Jamais Instale Aplicativos Pedidos por Telefone",
+      "descricao": "Atendentes falsos pedem a instalação de softwares de suporte remoto para assumir o controle do aparelho.",
+      "passos_recomendados": [
+        "Desconfie imediatamente se pedirem para baixar 'AnyDesk', 'TeamViewer' ou 'QuickSupport'.",
+        "Desligue a chamada e informe a instituição bancária."
+      ]
+    },
+    {
+      "id": 6,
+      "titulo": "Confira o Destinatário Antes do PIX",
+      "descricao": "Sempre verifique o nome do favorecido, instituição bancária e CPF/CNPJ antes de autorizar qualquer pagamento.",
+      "passos_recomendados": [
+        "Caso o nome pertença a um estranho ou chave aleatória não reconhecida, cancele a operação."
+      ]
+    },
+    {
+      "id": 7,
+      "titulo": "Exija Ver o Visor da Maquininha de Cartão",
+      "descricao": "Entregadores e golpistas costumam adulterar visores ou utilizar telas quebradas para ocultar o valor real da cobrança.",
+      "passos_recomendados": [
+        "Sempre verifique o valor antes de encostar o cartão por aproximação ou digitar a senha.",
+        "Nunca entregue o cartão para que o entregador o insira na máquina fora da sua vista."
+      ]
+    },
+    {
+      "id": 8,
+      "titulo": "Não Recorra a Números Enviados por SMS em Casos de Bloqueio",
+      "descricao": "Mensagens de texto informando 'compra aprovada' ou 'conta bloqueada' trazem telefones 0800 falsos controlados por criminosos.",
+      "passos_recomendados": [
+        "Ligue apenas para os telefones no verso do seu cartão físico."
+      ]
+    },
+    {
+      "id": 9,
+      "titulo": "Restrinja a Visualização da Sua Foto de Perfil",
+      "descricao": "Evita que criminosos salvem sua foto de redes sociais para criar contas falsas no seu nome.",
+      "passos_recomendados": [
+        "Acesse a privacidade do WhatsApp e limite a visualização da foto apenas para 'Meus Contatos'."
+      ]
+    },
+    {
+      "id": 10,
+      "titulo": "Prova de Vida do INSS É Feita via Bases Governamentais",
+      "descricao": "O INSS cruza dados de vacinação e renovação de documentos automaticamente, dispensando links do WhatsApp.",
+      "passos_recomendados": [
+        "Utilize apenas o aplicativo Meu INSS ou o número oficial 135 para informações.",
+        "Não envie selfies ou fotos de documentos para cadastros não solicitados."
+      ]
+    },
+    {
+      "id": 11,
+      "titulo": "Acompanhe Rastreios de Encomendas no Site Oficial",
+      "descricao": "Avisos sobre taxas alfandegárias cobradas via chave PIX por SMS costumam ser falsos.",
+      "passos_recomendados": [
+        "Digite o código de rastreamento diretamente na página oficial dos Correios."
+      ]
+    },
+    {
+      "id": 12,
+      "titulo": "Crie uma Palavra-Chave Familiar para Emergências",
+      "descricao": "Uma senha secreta acordada em família evita que idosos caiam no golpe do falso sequestro ou novo número.",
+      "passos_recomendados": [
+        "Antes de transferir dinheiro, exija que quem está escrevendo informe a senha da família."
+      ]
+    },
+    {
+      "id": 13,
+      "titulo": "Cuidado com Vídeochamadas de Números Desconhecidos",
+      "descricao": "Criminosos usam capturas da sua imagem facial para burlar sistemas de reconhecimento de aplicativos de bancos.",
+      "passos_recomendados": [
+        "Não atenda chamadas de vídeo de números que não estejam gravados na sua agenda."
+      ]
+    },
+    {
+      "id": 14,
+      "titulo": "Empréstimos Legítimos Não Exigem Taxas Prévias",
+      "descricao": "Pedir depósitos adiantados sob pretexto de 'fiador' ou 'liberação de cadastro' é sinal claro de estelionato.",
+      "passos_recomendados": [
+        "Interrompa a negociação caso exijam pagamentos adiantados para conceder crédito."
+      ]
+    },
+    {
+      "id": 15,
+      "titulo": "Cuidado com o Destino de Cartões Cancelados",
+      "descricao": "Bancos nunca enviam funcionários ou motoboys à residência dos clientes para recolher cartões inutilizados.",
+      "passos_recomendados": [
+        "Ao inutilizar um cartão, destrua por completo o chip magnético e a tarja antes do descarte."
+      ]
+    },
+    {
+      "id": 16,
+      "titulo": "Utilize Cartão Virtual para Compras Online",
+      "descricao": "Recurso oferecido por bancos que gera dados temporários, reduzindo o risco de fraude em sites falsos.",
+      "passos_recomendados": [
+        "Gere um novo cartão virtual pelo aplicativo do banco antes de efetuar transações na internet."
+      ]
+    },
+    {
+      "id": 17,
+      "titulo": "Verifique a Autenticidade de E-mails Institucionais",
+      "descricao": "Órgãos públicos e grandes instituições não utilizam domínios de e-mail gratuitos.",
+      "passos_recomendados": [
+        "Certifique-se de que comunicações do governo utilizem a extensão @gov.br ou @org.br."
+      ]
+    },
+    {
+      "id": 18,
+      "titulo": "Ajuste Limites de Transferências Noturnas",
+      "descricao": "Reduzir o limite diário de transações via PIX diminui o prejuízo em eventuais abordagens criminosas.",
+      "passos_recomendados": [
+        "Acesse as configurações do seu aplicativo bancário e defina valores mais baixos para o período noturno."
+      ]
+    },
+    {
+      "id": 19,
+      "titulo": "Não Confie em Ofertas de Investimento Exageradas",
+      "descricao": "Promessas de ganhos expressivos em curto prazo ocultam plataformas de esquemas de pirâmide.",
+      "passos_recomendados": [
+        "Consulte o registro de corretoras e instituições financeiras no site oficial da CVM."
+      ]
+    },
+    {
+      "id": 20,
+      "titulo": "Mantenha o Sistema Operacional e Apps Atualizados",
+      "descricao": "Correções de sistema eliminam falhas conhecidas de segurança exploradas por invasores.",
+      "passos_recomendados": [
+        "Habilite o download automático de atualizações no Google Play Store ou Apple App Store."
+      ]
+    }
+  ]
+}

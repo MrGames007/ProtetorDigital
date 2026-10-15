@@ -37,16 +37,11 @@ namespace ProtetorDigital.Forms
             this.Hide();
         }
 
-        private void BtnExGolpes_Click(object sender, EventArgs e)
+        private void BtnExGolpe_Click(object sender, EventArgs e)
         {
-            var frmExGolpes = new FrmExGolpes(this);
-            frmExGolpes.Show();
+            var frmExGolpe = new FrmExGolpes(this);
+            frmExGolpe.Show();
             this.Hide();
-        }
-
-        private void FrmBiblioteca_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

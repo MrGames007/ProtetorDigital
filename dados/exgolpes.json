@@ -1,0 +1,141 @@
+{
+  "categoria": "Exemplos e Modalidades de Golpes",
+  "itens": [
+    {
+      "id": 1,
+      "nome_golpe": "Golpe do Falso Familiar (WhatsApp)",
+      "como_funciona": "Criminosos usam a foto da vítima no perfil de um número novo alegando mudança de aparelho e pedem dinheiro para quitar boletos urgentes.",
+      "sinais_de_alerta": [
+        "Mensagem de número novo se passando por parente.",
+        "Solicitação de PIX imediato.",
+        "Recusa em receber chamadas telefônicas clássicas."
+      ]
+    },
+    {
+      "id": 2,
+      "nome_golpe": "Falsa Central de Atendimento Bancária",
+      "como_funciona": "Ligação automatizada simula o banco informando compra suspeita no cartão, conduzindo a vítima a digitar senhas ou fazer 'transferência de segurança'.",
+      "sinais_de_alerta": [
+        "Solicitação de senhas via teclado telefônico.",
+        "Pedido de transferência de recursos para conta de terceiros."
+      ]
+    },
+    {
+      "id": 3,
+      "nome_golpe": "Falso Recadastramento da Prova de Vida do INSS",
+      "como_funciona": "Envio de mensagens alegando o bloqueio de proventos caso a vítima não conclua a validação biométrica via link externo.",
+      "sinais_de_alerta": [
+        "Links direcionando para páginas fora dos portais .gov.br.",
+        "Exigência de envio imediato de documentos digitalizados."
+      ]
+    },
+    {
+      "id": 4,
+      "nome_golpe": "Golpe do Bilhete Premiado",
+      "como_funciona": "Abordagem presencial onde o golpista promete dividir um prêmio milionário caso a vítima entregue um valor em dinheiro como sinal de boa-fé.",
+      "sinais_de_alerta": [
+        "Promessa de enriquecimento fácil na via pública.",
+        "Solicitação de saques em dinheiro vivo no banco."
+      ]
+    },
+    {
+      "id": 5,
+      "nome_golpe": "Golpe do Falso Motoboy",
+      "como_funciona": "Ligação informa clonagem do cartão e orienta a vítima a cortar o plástico e entregá-lo a um entregador para perícia, mantendo o chip íntegro.",
+      "sinais_de_alerta": [
+        "Envio de emissários do banco à residência do cliente.",
+        "Instrução para cortar o cartão preservando a área do chip."
+      ]
+    },
+    {
+      "id": 6,
+      "nome_golpe": "Taxa em Entrega de Presente Surpresa",
+      "como_funciona": "O entregador comparece ao local com flores ou presentes e exige o pagamento exclusivo de uma taxa de entrega via máquina com tela ilegível.",
+      "sinais_de_alerta": [
+        "Inexistência de aviso prévio do remetente.",
+        "Cobrança insistente no débito ou crédito."
+      ]
+    },
+    {
+      "id": 7,
+      "nome_golpe": "Acesso Remoto (Mão Virtual)",
+      "como_funciona": "Indução à instalação de programas que dão controle completo do celular ao estelionatário, permitindo empréstimos não autorizados.",
+      "sinais_de_alerta": [
+        "Pedidos para baixar programas fora das lojas oficiais.",
+        "Solicitação para autorizar permissões de tela."
+      ]
+    },
+    {
+      "id": 8,
+      "nome_golpe": "Falsos Leilões na Internet",
+      "como_funciona": "Páginas falsas de leilão de veículos utilizam nomes de pátios conhecidos e pedem PIX de sinal para confirmação do lance vencedor.",
+      "sinais_de_alerta": [
+        "Valores abaixo da tabela de mercado.",
+        "Chaves de transferência em nome de pessoas físicas."
+      ]
+    },
+    {
+      "id": 9,
+      "nome_golpe": "Falso Advogado de Ação Judicial",
+      "como_funciona": "Mensagens informam a liberação de precatórios ou causas cíveis, exigindo o recolhimento prévio de guias ou custas administrativas.",
+      "sinais_de_alerta": [
+        "Exigência de pagamentos para liberação de alvarás.",
+        "Contatos por números novos utilizando a foto do advogado."
+      ]
+    },
+    {
+      "id": 10,
+      "nome_golpe": "Falsa Herança ou Doação Internacional",
+      "como_funciona": "Golpistas entram em contato prometendo doar herança ou verba de caridade, solicitando depósitos prévios para pagar taxas bancárias e impostos.",
+      "sinais_de_alerta": [
+        "Promessas de repasse de quantias milionárias de desconhecidos.",
+        "Transferências para simulação de taxas antes do recebimento."
+      ]
+    },
+    {
+      "id": 11,
+      "nome_golpe": "Phishing por SMS de Compras Aprovadas",
+      "como_funciona": "Disparo de mensagens contendo links ou números 0800 alegando transação comercial de alto valor prestes a ser debitada.",
+      "sinais_de_alerta": [
+        "Gatilho de pânico para forçar a ligação ao número fornecido.",
+        "Solicitação de confirmação de dados sigilosos."
+      ]
+    },
+    {
+      "id": 12,
+      "nome_golpe": "Falso Sequestro Telefônico",
+      "como_funciona": "Ligação com gritos e simulação de pânico ao fundo, onde o criminoso exige depósito imediato alegando a custódia de um parente.",
+      "sinais_de_alerta": [
+        "Pressão para não desligar nem checar o paradeiro do familiar.",
+        "Ameaças e agressividade verbal na ligação."
+      ]
+    },
+    {
+      "id": 13,
+      "nome_golpe": "Falsa Carta Premiada",
+      "como_funciona": "Correspondências físicas enviadas à casa da vítima informando prêmios a receber após o pagamento presencial de taxa de liberação.",
+      "sinais_de_alerta": [
+        "Correspondência física convidando a vítima a ir a um local comercial para retirar prêmios.",
+        "Cobrança de taxas presenciais para liberar o valor citado."
+      ]
+    },
+    {
+      "id": 14,
+      "nome_golpe": "Falsa Vaga de Emprego Renda Extra",
+      "como_funciona": "Mensagens de texto oferecendo tarefas simples de avaliação em plataformas com a condição de aportes prévios.",
+      "sinais_de_alerta": [
+        "Oferta de retorno financeiro desproporcional ao esforço.",
+        "Exigência de recargas de saldos para continuidade."
+      ]
+    },
+    {
+      "id": 15,
+      "nome_golpe": "Golpe do Pix Agendado ou Falso Comprovante",
+      "como_funciona": "O golpista envia um comprovante falso ou de transferência agendada para forçar o envio de trocos ou produtos pela vítima.",
+      "sinais_de_alerta": [
+        "Envio do comprovante sem a efetiva entrada do valor na conta.",
+        "Pressão para a entrega imediata do bem."
+      ]
+    }
+  ]
+}

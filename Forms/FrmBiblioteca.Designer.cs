@@ -33,6 +33,7 @@
             BtnVoltar = new Button();
             BtnDicas = new Button();
             BtnRelatos = new Button();
+            BtnExGolpe = new Button();
             SuspendLayout();
             // 
             // label1
@@ -57,7 +58,7 @@
             BtnVoltar.FlatStyle = FlatStyle.Flat;
             BtnVoltar.Font = new Font("Lucida Sans Unicode", 21.75F);
             BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(12, 12);
+            BtnVoltar.Location = new Point(12, 11);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
             BtnVoltar.Size = new Size(156, 54);
@@ -72,7 +73,7 @@
             BtnDicas.FlatStyle = FlatStyle.Flat;
             BtnDicas.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnDicas.ForeColor = SystemColors.ButtonHighlight;
-            BtnDicas.Location = new Point(134, 172);
+            BtnDicas.Location = new Point(66, 172);
             BtnDicas.Name = "BtnDicas";
             BtnDicas.Size = new Size(73, 129);
             BtnDicas.TabIndex = 2;
@@ -86,7 +87,7 @@
             BtnRelatos.FlatStyle = FlatStyle.Flat;
             BtnRelatos.Font = new Font("Segoe UI", 14.25F);
             BtnRelatos.ForeColor = SystemColors.ButtonHighlight;
-            BtnRelatos.Location = new Point(344, 172);
+            BtnRelatos.Location = new Point(381, 172);
             BtnRelatos.Name = "BtnRelatos";
             BtnRelatos.Size = new Size(85, 129);
             BtnRelatos.TabIndex = 4;
@@ -94,13 +95,25 @@
             BtnRelatos.UseVisualStyleBackColor = false;
             BtnRelatos.Click += BtnRelatos_Click;
             // 
+            // BtnExGolpe
+            // 
+            BtnExGolpe.AutoSize = true;
+            BtnExGolpe.Location = new Point(219, 357);
+            BtnExGolpe.Name = "BtnExGolpe";
+            BtnExGolpe.Size = new Size(122, 25);
+            BtnExGolpe.TabIndex = 5;
+            BtnExGolpe.Text = "Exemplos de Golpes";
+            BtnExGolpe.UseVisualStyleBackColor = true;
+            BtnExGolpe.Click += BtnExGolpe_Click;
+            // 
             // FrmBiblioteca
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(524, 387);
+            ClientSize = new Size(530, 466);
+            Controls.Add(BtnExGolpe);
             Controls.Add(BtnRelatos);
             Controls.Add(BtnDicas);
             Controls.Add(BtnVoltar);
@@ -108,8 +121,8 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmBiblioteca";
             Text = "FrmBiblioteca";
-            Load += FrmBiblioteca_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -118,5 +131,6 @@
         private Button BtnVoltar;
         private Button BtnDicas;
         private Button BtnRelatos;
+        private Button BtnExGolpe;
     }
 }

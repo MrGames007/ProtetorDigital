@@ -61,7 +61,7 @@ namespace ProtetorDigital.Forms
             if (indice < 0 || indice >= _dicas.Count) return;
             _indice = indice;
             var d = _dicas[indice];
-            lblTítulo.Text = d.Titulo ?? string.Empty;
+            lblTitulo.Text = d.Titulo ?? string.Empty;
             lblDescricao.Text = d.Descricao ?? string.Empty;
             if (d.PassosRecomendados != null && d.PassosRecomendados.Any())
             {

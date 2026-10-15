@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.Json;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace ProtetorDigital.Forms
 {
@@ -52,6 +51,7 @@ namespace ProtetorDigital.Forms
             }
             catch
             {
+                // ignorar erros de leitura para não quebrar a UI
             }
         }
 
@@ -60,13 +60,17 @@ namespace ProtetorDigital.Forms
             if (indice < 0 || indice >= _relatos.Count) return;
             _indice = indice;
             var r = _relatos[indice];
-            var sb = new StringBuilder();
-            sb.AppendLine(r.Titulo);
-            if (!string.IsNullOrWhiteSpace(r.Fonte)) sb.AppendLine().AppendLine("Fonte: " + r.Fonte);
-            if (!string.IsNullOrWhiteSpace(r.Vitima)) sb.AppendLine().AppendLine("Vítima: " + r.Vitima);
-            if (!string.IsNullOrWhiteSpace(r.Conteudo)) sb.AppendLine().AppendLine(r.Conteudo);
-            if (!string.IsNullOrWhiteSpace(r.LicoesAprendidas)) sb.AppendLine().AppendLine("Lições aprendidas: " + r.LicoesAprendidas);
-            lblRelato.Text = sb.ToString();
+
+            // Vincula cada campo JSON ao seu label correspondente
+            lblTitulo.Text = r.Titulo ?? string.Empty;
+            lblFonte.Text = r.Fonte ?? string.Empty;
+            lblVitima.Text = r.Vitima ?? string.Empty;
+            lblRelato.Text = r.Conteudo ?? string.Empty;
+            lblLicoesAprendidas.Text = r.LicoesAprendidas ?? string.Empty;
+
+            // Atualiza estado dos botões de navegação
+            BtnVoltar.Enabled = _indice > 0;
+            BtnAvancar.Enabled = _indice < _relatos.Count - 1;
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
@@ -76,8 +80,8 @@ namespace ProtetorDigital.Forms
 
         private void BtnVoltar_Click(object? sender, EventArgs e)
         {
+            // Navega para o relato anterior, se existir
             if (_indice - 1 >= 0) MostrarRelato(_indice - 1);
-            else Close();
         }
 
         private void BtnRetornar_Click(object sender, EventArgs e)
@@ -85,5 +89,7 @@ namespace ProtetorDigital.Forms
             _janelaOrigem.Show();
             this.Close();
         }
+
+        
     }
 }

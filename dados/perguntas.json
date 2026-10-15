@@ -24,16 +24,16 @@
     "explicacao": "Antes de fornecer informações ou clicar em links, é importante verificar a origem da mensagem e confirmar se o contato é realmente legítimo."
   },
   {
-    "explicacao": "Antes de realizar qualquer transferência, confirme diretamente com a pessoa por um meio confiável.",
     "id": 3,
+    "pergunta": "O que fazer ao receber uma mensagem suspeita pedindo dinheiro?",
     "opcoes": [
       "Enviar imediatamente para evitar problemas",
       "Confirmar a identidade da pessoa por outro meio confiável",
       "Compartilhar a mensagem com todos os contatos",
       "Fornecer os dados bancários para confirmar a transferência"
     ],
-    "pergunta": "O que fazer ao receber uma mensagem suspeita pedindo dinheiro?",
-    "respostaCorreta": 2
+    "respostaCorreta": 2,
+    "explicacao": "Antes de realizar qualquer transferência, confirme diretamente com a pessoa por um meio confiável."
   },
   {
     "id": 4,
@@ -94,5 +94,29 @@
     ],
     "respostaCorreta": 3,
     "explicacao": "Códigos de verificação são pessoais e podem permitir o acesso às suas contas. Eles nunca devem ser compartilhados com outras pessoas."
+  },
+  {
+    "id": 9,
+    "pergunta": "O que é a verificação em duas etapas (2FA) e por que ela é importante?",
+    "opcoes": [
+      "Uma segunda senha fixa que nunca muda",
+      "Uma camada extra de segurança que exige um código além da senha para entrar na conta",
+      "Um teste do banco enviado semanalmente para o seu e-mail",
+      "Um programa que apaga os dados do seu celular automaticamente"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "A verificação em duas etapas adiciona uma camada extra de proteção ao exigir uma segunda confirmação (como um código gerado por app ou enviado por SMS) no momento do login."
+  },
+  {
+    "id": 10,
+    "pergunta": "Você recebe uma mensagem de um familiar no WhatsApp pedindo um PIX urgente porque trocou de número. O que fazer?",
+    "opcoes": [
+      "Fazer o PIX imediatamente para ajudar o familiar",
+      "Pedir a chave PIX e transferir sem fazer perguntas",
+      "Ligar para o número antigo ou falar com a pessoa por outro meio antes de enviar qualquer valor",
+      "Apenas responder perguntando se ela precisa de mais dinheiro"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Criminosos usam fotos de conhecidos e novos números para aplicar golpes. Sempre confirme a identidade da pessoa ligando ou conversando por outro canal antes de fazer transferências."
   }
 ]

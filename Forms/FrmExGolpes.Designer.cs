@@ -30,12 +30,11 @@
         {
             BtnVoltar = new Button();
             BtnAvancar = new Button();
-            groupBox1 = new GroupBox();
-            lblSinaisAlerta = new Label();
-            lblFuncionamento = new Label();
-            lbl = new Label();
             BtnRetornar = new Button();
-            groupBox1.SuspendLayout();
+            lblNomeGolpe = new Label();
+            lblFuncionamento = new Label();
+            lblTexto = new Label();
+            lblSinaisAlerta = new Label();
             SuspendLayout();
             // 
             // BtnVoltar
@@ -47,7 +46,6 @@
             BtnVoltar.TabIndex = 1;
             BtnVoltar.Text = "Sair";
             BtnVoltar.UseVisualStyleBackColor = true;
-            BtnVoltar.Click += BtnVoltar_Click_1;
             // 
             // BtnAvancar
             // 
@@ -61,42 +59,6 @@
             BtnAvancar.UseVisualStyleBackColor = true;
             BtnAvancar.Click += BtnAvancar_Click;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(lblSinaisAlerta);
-            groupBox1.Controls.Add(lblFuncionamento);
-            groupBox1.Controls.Add(lbl);
-            groupBox1.Location = new Point(12, 49);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(718, 290);
-            groupBox1.TabIndex = 3;
-            groupBox1.TabStop = false;
-            groupBox1.Enter += groupBox1_Enter;
-            // 
-            // lblSinaisAlerta
-            // 
-            lblSinaisAlerta.AutoSize = true;
-            lblSinaisAlerta.Location = new Point(11, 138);
-            lblSinaisAlerta.Name = "lblSinaisAlerta";
-            lblSinaisAlerta.Size = new Size(0, 15);
-            lblSinaisAlerta.TabIndex = 2;
-            // 
-            // lblFuncionamento
-            // 
-            lblFuncionamento.AutoSize = true;
-            lblFuncionamento.Location = new Point(11, 67);
-            lblFuncionamento.Name = "lblFuncionamento";
-            lblFuncionamento.Size = new Size(0, 15);
-            lblFuncionamento.TabIndex = 1;
-            // 
-            // lbl
-            // 
-            lbl.AutoSize = true;
-            lbl.Location = new Point(11, 19);
-            lbl.Name = "lbl";
-            lbl.Size = new Size(0, 15);
-            lbl.TabIndex = 0;
-            // 
             // BtnRetornar
             // 
             BtnRetornar.Location = new Point(12, 12);
@@ -107,20 +69,57 @@
             BtnRetornar.UseVisualStyleBackColor = true;
             BtnRetornar.Click += BtnRetornar_Click;
             // 
+            // lblNomeGolpe
+            // 
+            lblNomeGolpe.AutoSize = true;
+            lblNomeGolpe.Location = new Point(12, 76);
+            lblNomeGolpe.Name = "lblNomeGolpe";
+            lblNomeGolpe.Size = new Size(38, 15);
+            lblNomeGolpe.TabIndex = 5;
+            lblNomeGolpe.Text = "label1";
+            // 
+            // lblFuncionamento
+            // 
+            lblFuncionamento.AutoSize = true;
+            lblFuncionamento.Location = new Point(12, 149);
+            lblFuncionamento.Name = "lblFuncionamento";
+            lblFuncionamento.Size = new Size(38, 15);
+            lblFuncionamento.TabIndex = 6;
+            lblFuncionamento.Text = "label1";
+            // 
+            // lblTexto
+            // 
+            lblTexto.AutoSize = true;
+            lblTexto.Location = new Point(12, 236);
+            lblTexto.Name = "lblTexto";
+            lblTexto.Size = new Size(93, 15);
+            lblTexto.TabIndex = 7;
+            lblTexto.Text = "Sinais de Alerta!!";
+            // 
+            // lblSinaisAlerta
+            // 
+            lblSinaisAlerta.AutoSize = true;
+            lblSinaisAlerta.Location = new Point(12, 272);
+            lblSinaisAlerta.Name = "lblSinaisAlerta";
+            lblSinaisAlerta.Size = new Size(38, 15);
+            lblSinaisAlerta.TabIndex = 8;
+            lblSinaisAlerta.Text = "label1";
+            // 
             // FrmExGolpes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(742, 380);
+            Controls.Add(lblSinaisAlerta);
+            Controls.Add(lblTexto);
+            Controls.Add(lblFuncionamento);
+            Controls.Add(lblNomeGolpe);
             Controls.Add(BtnRetornar);
-            Controls.Add(groupBox1);
             Controls.Add(BtnAvancar);
             Controls.Add(BtnVoltar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmExGolpes";
             Text = "FrmExGolpes";
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,10 +127,10 @@
         #endregion
         private Button BtnVoltar;
         private Button BtnAvancar;
-        private GroupBox groupBox1;
-        private Label lblFuncionamento;
-        private Label lbl;
-        private Label lblSinaisAlerta;
         private Button BtnRetornar;
+        private Label lblNomeGolpe;
+        private Label lblFuncionamento;
+        private Label lblTexto;
+        private Label lblSinaisAlerta;
     }
 }
