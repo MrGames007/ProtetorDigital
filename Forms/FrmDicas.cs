@@ -86,10 +86,5 @@ namespace ProtetorDigital.Forms
             else Close();
         }
 
-        private void BtnRetornar_Click(object sender, EventArgs e)
-        {
-            _janelaOrigem.Show();
-            this.Close();
-        }
     }
 }

@@ -84,12 +84,10 @@ namespace ProtetorDigital.Forms
             if (_indice - 1 >= 0) MostrarRelato(_indice - 1);
         }
 
-        private void BtnRetornar_Click(object sender, EventArgs e)
+        private void BtnRetorno_Click(object sender, EventArgs e)
         {
             _janelaOrigem.Show();
             this.Close();
         }
-
-        
     }
 }

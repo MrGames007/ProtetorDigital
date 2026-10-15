@@ -18,13 +18,13 @@
         {
             BtnVoltar = new Button();
             BtnAvancar = new Button();
-            BtnRetornar = new Button();
             lblTitulo = new Label();
             lblFonte = new Label();
             lblTexto = new Label();
             lblLicoesAprendidas = new Label();
             lblRelato = new Label();
             lblVitima = new Label();
+            BtnRetorno = new Button();
             SuspendLayout();
             // 
             // BtnVoltar
@@ -64,24 +64,6 @@
             BtnAvancar.TabIndex = 2;
             BtnAvancar.Text = "Avançar ▶";
             BtnAvancar.UseVisualStyleBackColor = false;
-            // 
-            // BtnRetornar
-            // 
-            BtnRetornar.BackColor = Color.FromArgb(0, 120, 215);
-            BtnRetornar.Cursor = Cursors.Hand;
-            BtnRetornar.FlatAppearance.BorderSize = 0;
-            BtnRetornar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
-            BtnRetornar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
-            BtnRetornar.FlatStyle = FlatStyle.Flat;
-            BtnRetornar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BtnRetornar.ForeColor = Color.White;
-            BtnRetornar.Location = new Point(18, 11);
-            BtnRetornar.Margin = new Padding(3, 2, 3, 2);
-            BtnRetornar.Name = "BtnRetornar";
-            BtnRetornar.Size = new Size(157, 44);
-            BtnRetornar.TabIndex = 4;
-            BtnRetornar.Text = "◀ Voltar";
-            BtnRetornar.UseVisualStyleBackColor = false;
             // 
             // lblTitulo
             // 
@@ -137,19 +119,29 @@
             lblVitima.TabIndex = 7;
             lblVitima.Text = "label1";
             // 
+            // BtnRetorno
+            // 
+            BtnRetorno.Location = new Point(18, 12);
+            BtnRetorno.Name = "BtnRetorno";
+            BtnRetorno.Size = new Size(75, 23);
+            BtnRetorno.TabIndex = 11;
+            BtnRetorno.Text = "Retornar";
+            BtnRetorno.UseVisualStyleBackColor = true;
+            BtnRetorno.Click += BtnRetorno_Click;
+            // 
             // FrmRelatos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
+            Controls.Add(BtnRetorno);
             Controls.Add(lblLicoesAprendidas);
             Controls.Add(lblTexto);
             Controls.Add(lblRelato);
             Controls.Add(lblVitima);
             Controls.Add(lblFonte);
             Controls.Add(lblTitulo);
-            Controls.Add(BtnRetornar);
             Controls.Add(BtnAvancar);
             Controls.Add(BtnVoltar);
             Margin = new Padding(3, 2, 3, 2);
@@ -164,12 +156,12 @@
 
         private Button BtnVoltar;
         private Button BtnAvancar;
-        private Button BtnRetornar;
         private Label lblTitulo;
         private Label lblFonte;
         private Label lblTexto;
         private Label lblLicoesAprendidas;
         private Label lblRelato;
         private Label lblVitima;
+        private Button BtnRetorno;
     }
 }
