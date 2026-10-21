@@ -44,7 +44,7 @@
             BtnVoltar.Name = "BtnVoltar";
             BtnVoltar.Size = new Size(82, 22);
             BtnVoltar.TabIndex = 1;
-            BtnVoltar.Text = "Sair";
+            BtnVoltar.Text = "Voltar";
             BtnVoltar.UseVisualStyleBackColor = true;
             // 
             // BtnAvancar

@@ -89,5 +89,7 @@ namespace ProtetorDigital.Forms
             _janelaOrigem.Show();
             this.Close();
         }
+
+        
     }
 }

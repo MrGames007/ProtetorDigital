@@ -72,6 +72,9 @@ namespace ProtetorDigital.Forms
             {
                 lblSinaisAlerta.Text = string.Empty;
             }
+
+            BtnVoltar.Enabled = _indice > 0;
+            BtnAvancar.Enabled = _indice < _golpes.Count - 1;
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)

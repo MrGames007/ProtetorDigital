@@ -73,6 +73,9 @@ namespace ProtetorDigital.Forms
             {
                 lblPassos.Text = string.Empty;
             }
+
+            BtnVoltar.Enabled = _indice > 0;
+            BtnAvancar.Enabled = _indice < _dicas.Count - 1;
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
@@ -86,5 +89,10 @@ namespace ProtetorDigital.Forms
             else Close();
         }
 
+        private void BtnRetornar_Click(object sender, EventArgs e)
+        {
+            _janelaOrigem.Show();
+            this.Close();
+        }
     }
 }

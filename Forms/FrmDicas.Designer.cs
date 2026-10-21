@@ -80,6 +80,7 @@
             BtnRetornar.TabIndex = 3;
             BtnRetornar.Text = "◀ Voltar";
             BtnRetornar.UseVisualStyleBackColor = false;
+            BtnRetornar.Click += BtnRetornar_Click;
             // 
             // lblTitulo
             // 

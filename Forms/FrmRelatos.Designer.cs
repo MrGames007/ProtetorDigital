@@ -45,6 +45,7 @@
             BtnVoltar.TabIndex = 0;
             BtnVoltar.Text = "◀ Anterior";
             BtnVoltar.UseVisualStyleBackColor = false;
+            BtnVoltar.Click += BtnVoltar_Click;
             // 
             // BtnAvancar
             // 
