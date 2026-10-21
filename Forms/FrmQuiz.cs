@@ -16,6 +16,8 @@ namespace ProtetorDigital.Forms
         private List<Pergunta> _perguntas = new();
         private int _indiceAtual = 0;
         private int _pontuacao = 0;
+        private List<string> _opcoesExibidas = new();
+        private int _respostaCorretaExibida = -1;
 
         private Form _janelaOrigem;
         public FrmQuiz(FrmMenu origem)
@@ -76,10 +78,25 @@ namespace ProtetorDigital.Forms
 
             lblPergunta.Text = p.Texto ?? string.Empty;
 
-            RBtnAlt1.Text = p.Opcoes.Count > 0 ? p.Opcoes[0] : string.Empty;
-            RBtnAlt2.Text = p.Opcoes.Count > 1 ? p.Opcoes[1] : string.Empty;
-            RBtnAlt3.Text = p.Opcoes.Count > 2 ? p.Opcoes[2] : string.Empty;
-            RBtnAlt4.Text = p.Opcoes.Count > 3 ? p.Opcoes[3] : string.Empty;
+            var opcoes = (p.Opcoes ?? new List<string>()).ToList();
+            int indiceRespostaOriginal = p.RespostaCorreta - 1;
+            var opcoesComResposta = opcoes
+                .Select((texto, indice) => new
+                {
+                    Texto = texto,
+                    Correta = indice == indiceRespostaOriginal
+                })
+                .OrderBy(_ => Random.Shared.Next())
+                .ToList();
+
+            // Embaralha apenas as alternativas exibidas; o JSON permanece inalterado.
+            _opcoesExibidas = opcoesComResposta.Select(opcao => opcao.Texto).ToList();
+            _respostaCorretaExibida = opcoesComResposta.FindIndex(opcao => opcao.Correta);
+
+            RBtnAlt1.Text = _opcoesExibidas.Count > 0 ? _opcoesExibidas[0] : string.Empty;
+            RBtnAlt2.Text = _opcoesExibidas.Count > 1 ? _opcoesExibidas[1] : string.Empty;
+            RBtnAlt3.Text = _opcoesExibidas.Count > 2 ? _opcoesExibidas[2] : string.Empty;
+            RBtnAlt4.Text = _opcoesExibidas.Count > 3 ? _opcoesExibidas[3] : string.Empty;
 
             RBtnAlt1.Checked = RBtnAlt2.Checked = RBtnAlt3.Checked = RBtnAlt4.Checked = false;
         }
@@ -107,12 +124,32 @@ namespace ProtetorDigital.Forms
                 return;
             }
 
-            // 3. Valida a resposta com a propriedade Correta da classe Pergunta
+            // 3. Valida a resposta com a alternativa correta informada no JSON
             var perguntaAtual = _perguntas[_indiceAtual];
-            if (respostaSelecionada == perguntaAtual.RespostaCorreta)
+            bool acertou = respostaSelecionada == _respostaCorretaExibida;
+            if (acertou)
             {
                 _pontuacao++;
             }
+
+            var opcoesAtuais = _opcoesExibidas;
+            string alternativaEscolhida = respostaSelecionada < opcoesAtuais.Count
+                ? opcoesAtuais[respostaSelecionada]
+                : "Alternativa não identificada";
+            int indiceCorreto = _respostaCorretaExibida;
+            string alternativaCorreta = indiceCorreto >= 0 && indiceCorreto < opcoesAtuais.Count
+                ? opcoesAtuais[indiceCorreto]
+                : "Alternativa não identificada";
+
+            string explicacao = perguntaAtual.Explicacao ?? "Não há explicação cadastrada para esta pergunta.";
+            string feedback = acertou
+                ? $"Você acertou!\n\n{explicacao}"
+                : $"Você errou.\n\nSua resposta:\n{alternativaEscolhida}\n\n" +
+                  $"Alternativa correta:\n{alternativaCorreta}\n\nPor que a sua resposta está errada:\n{explicacao}";
+
+            MessageBox.Show(feedback, acertou ? "Resposta correta" : "Resposta incorreta",
+                MessageBoxButtons.OK,
+                acertou ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
 
             // 4. Avança para a próxima pergunta ou encerra o Quiz
             if (_indiceAtual + 1 < _perguntas.Count)
@@ -127,10 +164,5 @@ namespace ProtetorDigital.Forms
             }
         }
 
-       
-        private void RBtnAlt1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

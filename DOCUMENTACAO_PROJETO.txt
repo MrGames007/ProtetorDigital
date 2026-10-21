@@ -1,0 +1,336 @@
+DOCUMENTAÇÃO DO PROJETO — PROTETOR DIGITAL
+============================================================
+
+Arquivo de manutenção
+---------------------
+Este arquivo é a fonte de contexto funcional e técnico do projeto. Após cada novo pedido que alterar o projeto, ele deve ser atualizado com:
+1. data ou descrição da alteração;
+2. arquivos modificados;
+3. motivo da alteração;
+4. comportamento esperado e comportamento implementado;
+5. validações executadas e eventuais pendências.
+
+A documentação descreve o estado observado no workspace no momento da sua criação.
+
+
+1. IDENTIFICAÇÃO E OBJETIVO
+---------------------------
+Nome técnico do assembly: ProtetorDigital
+Projeto: ProtetorDigital
+Tipo: aplicação desktop Windows Forms
+Target framework: .NET 10 para Windows (net10.0-windows)
+Namespace principal: ProtetorDigital
+Arquivo de solução: ProtetorDigital.slnx
+Arquivo de projeto: ProtetorDigital.csproj
+Objetivo funcional: oferecer conteúdo educativo sobre prevenção de golpes digitais, incluindo dicas, exemplos de golpes, relatos e um quiz interativo.
+
+O público e o conteúdo indicam uma aplicação educativa, com navegação visual simples e textos carregados de arquivos JSON externos.
+
+
+2. ESTRUTURA DO PROJETO
+-----------------------
+
+/
+|-- ProtetorDigital.slnx
+|-- ProtetorDigital.csproj
+|-- Program.cs
+|-- DOCUMENTACAO_PROJETO.txt             <- este arquivo de manutenção
+|-- Forms/
+|   |-- FrmMenu.cs / FrmMenu.Designer.cs / FrmMenu.resx
+|   |-- FrmBiblioteca.cs / FrmBiblioteca.Designer.cs / FrmBiblioteca.resx
+|   |-- FrmDicas.cs / FrmDicas.Designer.cs / FrmDicas.resx
+|   |-- FrmExGolpes.cs / FrmExGolpes.Designer.cs / FrmExGolpes.resx
+|   |-- FrmRelatos.cs / FrmRelatos.Designer.cs / FrmRelatos.resx
+|   |-- FrmQuiz.cs / FrmQuiz.Designer.cs / FrmQuiz.resx
+|-- Models/
+|   |-- Dica.cs
+|   |-- ExGolpe.cs
+|   |-- Pergunta.cs
+|   |-- Relato.cs
+|-- dados/
+|   |-- dicas.json
+|   |-- exgolpes.json
+|   |-- perguntas.json
+|   |-- relatos.json
+|-- Properties/
+|   |-- Resources.resx
+|   |-- Resources.Designer.cs
+|-- imagens/
+    |-- idosos_felizes.jpg
+	|-- interrogação.png
+	|-- livro.jpg
+	|-- livro.png
+
+Os arquivos *.Designer.cs e *.resx são gerados/administrados pelo Windows Forms Designer e não devem ser editados manualmente sem necessidade. Os arquivos *.cs das telas contêm a lógica de comportamento.
+
+
+3. CONFIGURAÇÃO DO PROJETO
+--------------------------
+O ProtetorDigital.csproj define:
+- OutputType WinExe;
+- TargetFramework net10.0-windows;
+- UseWindowsForms true;
+- Nullable enable;
+- ImplicitUsings enable;
+- RootNamespace ProtetorDigital;
+- AssemblyName ProtetorDigital.
+
+Não há pacote NuGet adicional declarado no projeto. A desserialização usa System.Text.Json, incluído no .NET.
+
+O projeto possui recursos .resx para telas e imagens. A classe Properties.Resources é gerada para acesso aos recursos incorporados.
+
+
+4. FLUXO PRINCIPAL DA APLICAÇÃO
+--------------------------------
+Program.cs é o ponto de entrada. O método Main inicializa a configuração padrão do Windows Forms e abre FrmMenu.
+
+Fluxo de telas:
+1. FrmMenu é a tela inicial.
+2. O botão Quiz abre FrmQuiz e oculta o menu.
+3. O botão Biblioteca abre FrmBiblioteca e oculta o menu.
+4. FrmBiblioteca abre uma das telas de conteúdo:
+   - FrmDicas;
+   - FrmRelatos;
+   - FrmExGolpes.
+5. As telas filhas recebem a janela de origem para poder reexibi-la no retorno.
+6. O botão Sair chama Application.Exit().
+
+O padrão atual de navegação usa Show(), Hide() e Close(), mantendo referência à tela de origem. Não existe um mecanismo centralizado de navegação ou injeção de dependências.
+
+
+5. MODELOS DE DADOS
+-------------------
+
+Models/Dica.cs
+Representa uma dica educativa:
+- Id: identificador numérico;
+- Titulo: título;
+- Descricao: explicação;
+- PassosRecomendados: lista de orientações.
+O campo passos_recomendados do JSON é mapeado para PassosRecomendados com JsonPropertyName.
+
+Models/ExGolpe.cs
+Representa um exemplo de golpe:
+- Id;
+- NomeGolpe, mapeado de nome_golpe;
+- ComoFunciona, mapeado de como_funciona;
+- SinaisDeAlerta, mapeado de sinais_de_alerta.
+
+Models/Relato.cs
+Representa um caso noticiado:
+- Id;
+- Titulo;
+- Fonte;
+- Vitima;
+- Conteudo, mapeado de relato;
+- LicoesAprendidas, mapeado de licoes_aprendidas.
+
+Models/Pergunta.cs
+Representa uma questão do quiz:
+- Id;
+- Texto, mapeado de pergunta;
+- Opcoes: lista de alternativas;
+- RespostaCorreta: posição original da resposta correta, usando numeração iniciada em 1;
+- Explicacao.
+
+As propriedades textuais são nullable. As telas usam valores vazios ou listas vazias como fallback para evitar falhas de UI quando um campo estiver ausente.
+
+
+6. ARQUIVOS JSON E FORMATO DE CONTEÚDO
+--------------------------------------
+
+ dados/dicas.json
+- Objeto raiz com a propriedade categoria.
+- Os registros ficam dentro da propriedade itens.
+- Cada item contém id, titulo, descricao e passos_recomendados.
+- É consumido por FrmDicas.
+
+ dados/exgolpes.json
+- Objeto raiz com categoria.
+- Os registros ficam em itens.
+- Cada item contém id, nome_golpe, como_funciona e sinais_de_alerta.
+- É consumido por FrmExGolpes.
+
+ dados/relatos.json
+- Objeto raiz com categoria.
+- Os registros ficam em itens.
+- Cada item contém id, titulo, fonte, vitima, relato e licoes_aprendidas.
+- É consumido por FrmRelatos.
+
+ dados/perguntas.json
+- Array JSON diretamente na raiz.
+- Cada pergunta contém id, pergunta, opcoes, respostaCorreta, explicacao e explicacaoOpcoesErradas no conteúdo atual.
+- FrmQuiz desserializa o array diretamente em List<Pergunta>.
+- A classe Pergunta atualmente não possui uma propriedade para explicacaoOpcoesErradas; esse campo extra é ignorado pelo System.Text.Json.
+- O arquivo foi corrigido anteriormente: havia um caractere extra S depois do fechamento do array (final ]S), causando erro de JSON. O final correto passou a ser apenas ].
+
+Regra importante: alterações de conteúdo devem preservar o formato esperado pela tela correspondente. JSONs com raiz objeto precisam manter a propriedade itens; perguntas precisam manter a raiz como array.
+
+
+7. IMPLEMENTAÇÃO DAS TELAS
+---------------------------
+
+FrmMenu
+- Inicializa a tela principal.
+- BtnQuiz abre o quiz.
+- BtnBiblioteca abre a biblioteca.
+- BtnSair encerra a aplicação.
+
+FrmBiblioteca
+- Funciona como menu de conteúdos.
+- BtnDicas abre FrmDicas.
+- BtnRelatos abre FrmRelatos.
+- BtnExGolpe abre FrmExGolpes.
+- BtnVoltar exibe a janela de origem e fecha a atual.
+
+FrmDicas
+- Carrega dados/dicas.json.
+- Procura primeiro em bin/Debug/.../dados e depois usa fallback para ../../../../dados a partir da base de execução.
+- Faz JsonDocument.Parse, obtém itens e desserializa List<Dica>.
+- Mostra uma dica por vez.
+- BtnAvancar navega para o próximo item.
+- BtnVoltar navega para o item anterior ou fecha a tela no primeiro item.
+- Os passos são apresentados como linhas iniciadas por hífen.
+- O tratamento de erro atual ignora falhas de leitura para não interromper a UI.
+
+FrmExGolpes
+- Tem fluxo equivalente ao de FrmDicas.
+- Carrega dados/exgolpes.json e desserializa List<ExGolpe> a partir de itens.
+- Exibe nome do golpe, funcionamento e sinais de alerta.
+- Permite avançar, voltar e retornar à biblioteca.
+
+FrmRelatos
+- Carrega dados/relatos.json e desserializa List<Relato> a partir de itens.
+- Exibe título, fonte, vítima, relato e lições aprendidas.
+- Mantém os botões de avanço e retorno habilitados conforme o índice atual.
+- Permite voltar à biblioteca pelo botão de retorno.
+
+FrmQuiz
+- Carrega dados/perguntas.json.
+- Usa JsonSerializer.Deserialize<List<Pergunta>> com PropertyNameCaseInsensitive = true.
+- Exibe uma pergunta e quatro RadioButtons.
+- Confirma a resposta, calcula pontuação e mostra feedback.
+- Ao terminar, mostra a quantidade de acertos e retorna à janela de origem.
+- As alternativas são embaralhadas na memória somente no momento da exibição.
+- O JSON não é alterado pelo embaralhamento.
+- A alternativa correta é marcada antes da ordenação aleatória e sua nova posição é armazenada em _respostaCorretaExibida. Assim, a validação continua correta mesmo quando a alternativa muda de posição.
+- _opcoesExibidas guarda a ordem mostrada ao usuário.
+
+
+8. ALTERAÇÕES JÁ REALIZADAS E MOTIVAÇÃO
+---------------------------------------
+
+A. Correção do JSON de perguntas
+Problema original:
+- O parser acusava: 'S' is invalid after a single JSON value. Expected end of data.
+- O erro apontava para $[10], linha 181/182, posição inicial da linha.
+
+Causa:
+- Havia conteúdo extra depois do array: ]S.
+- O array já estava fechado em ], portanto o S não pertencia a nenhum valor JSON válido.
+
+Como deveria ser:
+- O arquivo deveria terminar no fechamento do array, com ] e nada depois, exceto espaços ou quebra de linha.
+
+Como ficou:
+- O caractere S foi removido.
+- As 10 perguntas válidas foram preservadas.
+- FrmQuiz.cs não precisou ser alterado para resolver o erro de sintaxe.
+
+B. Embaralhamento das alternativas
+Necessidade:
+- Apresentar as alternativas em ordem diferente a cada abertura/exibição do quiz sem modificar o arquivo de dados.
+
+Como deveria ser:
+- Copiar as alternativas para uma estrutura em memória.
+- Associar cada alternativa à indicação de correta/incorreta.
+- Embaralhar a cópia.
+- Validar a escolha pela nova posição, não pela posição original do JSON.
+
+Como ficou:
+- FrmQuiz.cs cria opcoesComResposta usando Select.
+- A ordenação usa OrderBy(_ => Random.Shared.Next()).
+- _opcoesExibidas recebe a ordem embaralhada.
+- _respostaCorretaExibida recebe o novo índice correto.
+- O JSON continua com a ordem original.
+- O feedback usa as alternativas na ordem exibida.
+
+C. Renomeação do projeto e solução
+Problema original:
+- O projeto estava nomeado como p2elvio, sem relação com o nome técnico ProtetorDigital.
+
+Como ficou:
+- O nome do projeto e da solução foi alterado para ProtetorDigital.
+- RootNamespace e AssemblyName permanecem como ProtetorDigital, sem necessidade de alteração.
+
+Motivação:
+- O novo nome é mais condizente com a finalidade do projeto e facilita a identificação do assembly gerado.
+
+9. PADRÕES DE CARREGAMENTO DE DADOS
+-----------------------------------
+Todas as telas que carregam JSON procuram o arquivo em dois locais:
+1. AppDomain.CurrentDomain.BaseDirectory/dados/<arquivo>;
+2. fallback relativo ao diretório do executável, voltando pastas até o diretório de desenvolvimento.
+
+Essa estratégia permite funcionar tanto com arquivos copiados para a saída quanto diretamente durante o desenvolvimento. A configuração de cópia dos JSONs para a saída não está explicitamente declarada no csproj; se a publicação depender deles, deve-se garantir que os arquivos sejam incluídos no output.
+
+
+10. COMO O PROJETO FOI FEITO E POR QUÊ
+--------------------------------------
+A aplicação foi estruturada com Windows Forms por ser uma solução desktop simples, visual e adequada para navegação por botões e controles tradicionais.
+
+A separação adotada foi:
+- Forms para interface e eventos;
+- Models para representar os dados;
+- JSON para manter o conteúdo educativo fora do código;
+- resx/imagens para recursos visuais e layout criado pelo Designer.
+
+Essa separação permite alterar textos, dicas, relatos e perguntas sem recompilar a lógica, desde que o formato dos dados seja preservado.
+
+A navegação entre telas foi feita com referências às janelas de origem porque o fluxo é pequeno e linear. O quiz mantém estado local de índice e pontuação porque seu ciclo é independente da biblioteca.
+
+
+11. COMO DEVERIA SER MELHORADO EM UMA EVOLUÇÃO FUTURA
+------------------------------------------------------
+As melhorias abaixo não foram aplicadas automaticamente nesta documentação:
+
+- Centralizar a localização e leitura dos JSONs em um serviço/utilitário compartilhado, eliminando código repetido entre FrmDicas, FrmExGolpes e FrmRelatos.
+- Trocar catch vazio por mensagens de erro ou logging controlado, para que problemas de conteúdo sejam diagnosticáveis.
+- Remover usings duplicados, observados em FrmDicas.cs e FrmExGolpes.cs.
+- Configurar explicitamente no csproj a cópia dos arquivos da pasta dados para o diretório de saída/publicação.
+- Usar um algoritmo Fisher-Yates ou Random.Shared.Shuffle para embaralhamento estatisticamente uniforme; a implementação atual atende ao requisito funcional, mas OrderBy com valores aleatórios não é a alternativa mais rigorosa.
+- Criar testes para desserialização, navegação e preservação do índice da resposta correta após o embaralhamento.
+- Validar os JSONs no carregamento e informar o arquivo/linha em caso de erro.
+- Separar a lógica de apresentação da lógica de navegação/dados se o projeto crescer.
+- Considerar um controlador de navegação ou fechamento coordenado de formulários para evitar múltiplas janelas abertas.
+- Modelar explicitamente explicacaoOpcoesErradas em Pergunta caso esse conteúdo passe a ser usado na interface.
+- Corrigir ou revisar datas e fontes dos relatos sempre que o conteúdo exigir precisão editorial.
+
+
+12. VALIDAÇÕES E ESTADO ATUAL
+-----------------------------
+- O JSON de perguntas foi corrigido para ser sintaticamente válido.
+- O carregamento do quiz usa o array diretamente.
+- O embaralhamento ocorre somente em memória.
+- A compilação/execução do projeto foi iniciada pelo depurador após as alterações anteriores; não foram observadas exceções no carregamento do projeto.
+- Não há testes automatizados identificados no projeto.
+- A validação visual completa do fluxo depende de abrir as telas e interagir com os botões.
+
+
+13. REGRA PARA PRÓXIMOS PEDIDOS
+-------------------------------
+Antes de alterar qualquer arquivo em um pedido futuro:
+1. consultar esta documentação e o código atual;
+2. identificar o comportamento atual e o esperado;
+3. registrar nesta seção o pedido e o plano;
+4. aplicar a alteração nos arquivos apropriados;
+5. atualizar as seções afetadas e o histórico;
+6. validar compilação e, quando aplicável, executar o fluxo alterado.
+
+Histórico incremental:
+- Estado inicial documentado: projeto Windows Forms .NET 10 com menu, biblioteca, dicas, exemplos de golpes, relatos e quiz.
+- Correção registrada: remoção do caractere extra S em dados/perguntas.json.
+- Correção registrada: embaralhamento das alternativas do quiz em FrmQuiz.cs sem alterar o JSON e com preservação da resposta correta.
+- Correção registrada: renomeação do projeto e da solução de p2elvio para ProtetorDigital, mantendo RootNamespace e AssemblyName já existentes.
+- A solução nova é ProtetorDigital.slnx e referencia ProtetorDigital.csproj. Se o Visual Studio ainda mostrar p2elvio.csproj na sessão aberta, é necessário fechar/reabrir ProtetorDigital.slnx para atualizar o estado da solução.
+- Próximas alterações devem acrescentar uma nova linha neste histórico, sem apagar as anteriores.

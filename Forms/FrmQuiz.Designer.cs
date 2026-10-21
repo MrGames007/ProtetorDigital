@@ -49,7 +49,6 @@
             RBtnAlt1.TabIndex = 1;
             RBtnAlt1.TabStop = true;
             RBtnAlt1.UseVisualStyleBackColor = true;
-            RBtnAlt1.CheckedChanged += RBtnAlt1_CheckedChanged;
             // 
             // RBtnAlt2
             // 
