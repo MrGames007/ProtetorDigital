@@ -45,7 +45,7 @@
             RBtnAlt1.Location = new Point(15, 170);
             RBtnAlt1.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt1.Name = "RBtnAlt1";
-            RBtnAlt1.Size = new Size(24, 28);
+            RBtnAlt1.Size = new Size(14, 13);
             RBtnAlt1.TabIndex = 1;
             RBtnAlt1.TabStop = true;
             RBtnAlt1.UseVisualStyleBackColor = true;
@@ -59,7 +59,7 @@
             RBtnAlt2.Location = new Point(15, 235);
             RBtnAlt2.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt2.Name = "RBtnAlt2";
-            RBtnAlt2.Size = new Size(24, 28);
+            RBtnAlt2.Size = new Size(14, 13);
             RBtnAlt2.TabIndex = 2;
             RBtnAlt2.TabStop = true;
             RBtnAlt2.UseVisualStyleBackColor = true;
@@ -73,7 +73,7 @@
             RBtnAlt3.Location = new Point(15, 300);
             RBtnAlt3.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt3.Name = "RBtnAlt3";
-            RBtnAlt3.Size = new Size(24, 28);
+            RBtnAlt3.Size = new Size(14, 13);
             RBtnAlt3.TabIndex = 3;
             RBtnAlt3.TabStop = true;
             RBtnAlt3.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             RBtnAlt4.Location = new Point(15, 365);
             RBtnAlt4.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt4.Name = "RBtnAlt4";
-            RBtnAlt4.Size = new Size(24, 28);
+            RBtnAlt4.Size = new Size(14, 13);
             RBtnAlt4.TabIndex = 4;
             RBtnAlt4.TabStop = true;
             RBtnAlt4.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             BtnVoltar.Location = new Point(15, 15);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(90, 32);
+            BtnVoltar.Size = new Size(160, 44);
             BtnVoltar.TabIndex = 5;
             BtnVoltar.Text = "◀ Voltar";
             BtnVoltar.UseVisualStyleBackColor = false;

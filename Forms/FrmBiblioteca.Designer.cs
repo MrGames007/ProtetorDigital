@@ -41,7 +41,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(134, 60);
+            label1.Location = new Point(140, 21);
             label1.Name = "label1";
             label1.Size = new Size(295, 109);
             label1.TabIndex = 0;
@@ -73,9 +73,9 @@
             BtnDicas.FlatStyle = FlatStyle.Flat;
             BtnDicas.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BtnDicas.ForeColor = SystemColors.ButtonHighlight;
-            BtnDicas.Location = new Point(66, 172);
+            BtnDicas.Location = new Point(220, 323);
             BtnDicas.Name = "BtnDicas";
-            BtnDicas.Size = new Size(73, 129);
+            BtnDicas.Size = new Size(103, 129);
             BtnDicas.TabIndex = 2;
             BtnDicas.Text = "Dicas";
             BtnDicas.UseVisualStyleBackColor = false;
@@ -87,9 +87,9 @@
             BtnRelatos.FlatStyle = FlatStyle.Flat;
             BtnRelatos.Font = new Font("Segoe UI", 14.25F);
             BtnRelatos.ForeColor = SystemColors.ButtonHighlight;
-            BtnRelatos.Location = new Point(381, 172);
+            BtnRelatos.Location = new Point(220, 475);
             BtnRelatos.Name = "BtnRelatos";
-            BtnRelatos.Size = new Size(85, 129);
+            BtnRelatos.Size = new Size(103, 129);
             BtnRelatos.TabIndex = 4;
             BtnRelatos.Text = "Relatos de casos";
             BtnRelatos.UseVisualStyleBackColor = false;
@@ -97,13 +97,16 @@
             // 
             // BtnExGolpe
             // 
-            BtnExGolpe.AutoSize = true;
-            BtnExGolpe.Location = new Point(219, 357);
+            BtnExGolpe.BackColor = Color.Red;
+            BtnExGolpe.FlatStyle = FlatStyle.Flat;
+            BtnExGolpe.Font = new Font("Segoe UI", 14.25F);
+            BtnExGolpe.ForeColor = SystemColors.ButtonHighlight;
+            BtnExGolpe.Location = new Point(220, 172);
             BtnExGolpe.Name = "BtnExGolpe";
-            BtnExGolpe.Size = new Size(122, 25);
+            BtnExGolpe.Size = new Size(103, 129);
             BtnExGolpe.TabIndex = 5;
             BtnExGolpe.Text = "Exemplos de Golpes";
-            BtnExGolpe.UseVisualStyleBackColor = true;
+            BtnExGolpe.UseVisualStyleBackColor = false;
             BtnExGolpe.Click += BtnExGolpe_Click;
             // 
             // FrmBiblioteca
@@ -112,7 +115,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(530, 466);
+            ClientSize = new Size(530, 632);
             Controls.Add(BtnExGolpe);
             Controls.Add(BtnRelatos);
             Controls.Add(BtnDicas);
@@ -122,7 +125,6 @@
             Name = "FrmBiblioteca";
             Text = "FrmBiblioteca";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

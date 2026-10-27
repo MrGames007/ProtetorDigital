@@ -19,10 +19,12 @@
             BtnAvancar = new Button();
             BtnVoltar = new Button();
             BtnRetornar = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             lblTitulo = new Label();
             lblDescricao = new Label();
             label3 = new Label();
             lblPassos = new Label();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // BtnAvancar
@@ -47,7 +49,7 @@
             // BtnVoltar
             // 
             BtnVoltar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BtnVoltar.BackColor = SystemColors.Highlight;
+            BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
             BtnVoltar.Cursor = Cursors.Hand;
             BtnVoltar.FlatAppearance.BorderSize = 0;
             BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
@@ -55,7 +57,7 @@
             BtnVoltar.FlatStyle = FlatStyle.Flat;
             BtnVoltar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(15, 556);
+            BtnVoltar.Location = new Point(18, 556);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
             BtnVoltar.Size = new Size(160, 48);
@@ -71,7 +73,7 @@
             BtnRetornar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnRetornar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnRetornar.FlatStyle = FlatStyle.Flat;
-            BtnRetornar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnRetornar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnRetornar.ForeColor = Color.White;
             BtnRetornar.Location = new Point(18, 11);
             BtnRetornar.Margin = new Padding(3, 2, 3, 2);
@@ -82,41 +84,69 @@
             BtnRetornar.UseVisualStyleBackColor = false;
             BtnRetornar.Click += BtnRetornar_Click;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.AutoScroll = true;
+            flowLayoutPanel1.BackColor = Color.FromArgb(248, 249, 250);
+            flowLayoutPanel1.Controls.Add(lblTitulo);
+            flowLayoutPanel1.Controls.Add(lblDescricao);
+            flowLayoutPanel1.Controls.Add(label3);
+            flowLayoutPanel1.Controls.Add(lblPassos);
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.Location = new Point(18, 70);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Padding = new Padding(20, 16, 20, 16);
+            flowLayoutPanel1.Size = new Size(1080, 470);
+            flowLayoutPanel1.TabIndex = 2;
+            flowLayoutPanel1.WrapContents = false;
+            // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(18, 127);
+            lblTitulo.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.FromArgb(0, 99, 177);
+            lblTitulo.Location = new Point(23, 16);
+            lblTitulo.Margin = new Padding(3, 0, 3, 14);
+            lblTitulo.MaximumSize = new Size(1000, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(38, 15);
+            lblTitulo.Size = new Size(0, 45);
             lblTitulo.TabIndex = 4;
-            lblTitulo.Text = "label1";
             // 
             // lblDescricao
             // 
             lblDescricao.AutoSize = true;
-            lblDescricao.Location = new Point(18, 211);
+            lblDescricao.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDescricao.ForeColor = Color.FromArgb(33, 37, 41);
+            lblDescricao.Location = new Point(23, 75);
+            lblDescricao.Margin = new Padding(3, 0, 3, 26);
+            lblDescricao.MaximumSize = new Size(1000, 0);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(38, 15);
+            lblDescricao.Size = new Size(0, 25);
             lblDescricao.TabIndex = 5;
-            lblDescricao.Text = "label2";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 342);
+            label3.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(33, 136, 56);
+            label3.Location = new Point(23, 126);
+            label3.Margin = new Padding(3, 0, 3, 8);
             label3.Name = "label3";
-            label3.Size = new Size(72, 15);
+            label3.Size = new Size(143, 30);
             label3.TabIndex = 6;
             label3.Text = "O que fazer?";
             // 
             // lblPassos
             // 
             lblPassos.AutoSize = true;
-            lblPassos.Location = new Point(18, 379);
+            lblPassos.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPassos.ForeColor = Color.FromArgb(33, 37, 41);
+            lblPassos.Location = new Point(23, 164);
+            lblPassos.MaximumSize = new Size(1000, 0);
             lblPassos.Name = "lblPassos";
-            lblPassos.Size = new Size(38, 15);
+            lblPassos.Size = new Size(0, 25);
             lblPassos.TabIndex = 7;
-            lblPassos.Text = "label4";
             // 
             // FrmDicas
             // 
@@ -124,10 +154,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
-            Controls.Add(lblPassos);
-            Controls.Add(label3);
-            Controls.Add(lblDescricao);
-            Controls.Add(lblTitulo);
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(BtnRetornar);
             Controls.Add(BtnVoltar);
             Controls.Add(BtnAvancar);
@@ -135,8 +162,9 @@
             Name = "FrmDicas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dicas";
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -144,6 +172,7 @@
         private Button BtnAvancar;
         private Button BtnVoltar;
         private Button BtnRetornar;
+        private FlowLayoutPanel flowLayoutPanel1;
         private Label lblTitulo;
         private Label lblDescricao;
         private Label label3;
