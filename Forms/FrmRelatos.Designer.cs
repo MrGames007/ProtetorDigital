@@ -22,6 +22,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblTitulo = new Label();
             lblFonte = new Label();
+            lblTipo = new Label();
             lblVitima = new Label();
             lblRelato = new Label();
             lblTexto = new Label();
@@ -94,6 +95,7 @@
             flowLayoutPanel1.BackColor = Color.FromArgb(248, 249, 250);
             flowLayoutPanel1.Controls.Add(lblTitulo);
             flowLayoutPanel1.Controls.Add(lblFonte);
+            flowLayoutPanel1.Controls.Add(lblTipo);
             flowLayoutPanel1.Controls.Add(lblVitima);
             flowLayoutPanel1.Controls.Add(lblRelato);
             flowLayoutPanel1.Controls.Add(lblTexto);
@@ -127,6 +129,17 @@
             lblFonte.Name = "lblFonte";
             lblFonte.Size = new Size(0, 21);
             lblFonte.TabIndex = 6;
+            // 
+            // lblTipo
+            // 
+            lblTipo.AutoSize = true;
+            lblTipo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTipo.ForeColor = Color.FromArgb(33, 136, 56);
+            lblTipo.Margin = new Padding(3, 0, 3, 10);
+            lblTipo.MaximumSize = new Size(1000, 0);
+            lblTipo.Name = "lblTipo";
+            lblTipo.Size = new Size(0, 21);
+            lblTipo.TabIndex = 12;
             // 
             // lblVitima
             // 
@@ -199,6 +212,7 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblTitulo;
         private Label lblFonte;
+        private Label lblTipo;
         private Label lblVitima;
         private Label lblRelato;
         private Label lblTexto;

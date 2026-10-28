@@ -1,6 +1,59 @@
 DOCUMENTAÇÃO DO PROJETO — PROTETOR DIGITAL
 ============================================================
 
+ESTRUTURA GERAL DA DOCUMENTAÇÃO
+===============================
+Esta documentação está organizada em três categorias. O conteúdo técnico e histórico que já existia foi mantido na íntegra dentro da Categoria 3.
+
+
+CATEGORIA 1 — APRESENTAÇÃO DO PRODUTO
+======================================
+
+Nome do produto: Protetor Digital
+Descrição breve: [Preencher com uma apresentação curta do produto.]
+Objetivo do produto: [Preencher com o objetivo principal da aplicação.]
+Público-alvo: [Preencher com o público-alvo e suas necessidades.]
+
+Como surgiu o projeto
+---------------------
+[Descrever o problema ou a necessidade que motivou a criação do Protetor Digital.]
+
+[Descrever como surgiu a ideia, quais objetivos iniciais existiam e como o projeto evoluiu.]
+
+Desenvolvimento do produto
+--------------------------
+[Registrar o contexto de criação, a disciplina, equipe, instituição ou situação em que o projeto foi desenvolvido, se aplicável.]
+
+
+CATEGORIA 2 — APRESENTAÇÃO DOS DESENVOLVEDORES
+===============================================
+Esta seção está preparada para receber os nomes e as apresentações individuais dos desenvolvedores.
+
+Desenvolvedor 1
+---------------
+Nome: [Inserir nome do desenvolvedor 1]
+Apresentação: [Inserir uma breve apresentação, função, interesses ou contribuição no projeto.]
+
+Desenvolvedor 2
+---------------
+Nome: [Inserir nome do desenvolvedor 2]
+Apresentação: [Inserir uma breve apresentação, função, interesses ou contribuição no projeto.]
+
+Desenvolvedor 3
+---------------
+Nome: [Inserir nome do desenvolvedor 3]
+Apresentação: [Inserir uma breve apresentação, função, interesses ou contribuição no projeto.]
+
+Desenvolvedor adicional
+-----------------------
+Nome: [Inserir nome, se necessário]
+Apresentação: [Inserir apresentação, função e contribuição no projeto.]
+
+
+CATEGORIA 3 — PARTE TÉCNICA E TECNOLÓGICA DO PROJETO
+======================================================
+As seções abaixo contêm o conteúdo técnico, funcional, histórico e de manutenção original desta documentação.
+
 Arquivo de manutenção
 ---------------------
 Este arquivo é a fonte de contexto funcional e técnico do projeto. Após cada novo pedido que alterar o projeto, ele deve ser atualizado com:
@@ -92,10 +145,10 @@ Fluxo de telas:
    - FrmDicas;
    - FrmRelatos;
    - FrmExGolpes.
-5. As telas filhas recebem a janela de origem para poder reexibi-la no retorno.
+5. As telas filhas são abertas modalmente pelo menu ou pela biblioteca.
 6. O botão Sair chama Application.Exit().
 
-O padrão atual de navegação usa Show(), Hide() e Close(), mantendo referência à tela de origem. Não existe um mecanismo centralizado de navegação ou injeção de dependências.
+O padrão atual de navegação usa `Hide()`, `ShowDialog(this)`, `Show()` e `Close()`. A janela filha não mantém referência própria à origem; o método que abriu o diálogo aguarda seu fechamento e reexibe a tela anterior.
 
 
 5. MODELOS DE DADOS
@@ -268,11 +321,9 @@ Motivação:
 
 9. PADRÕES DE CARREGAMENTO DE DADOS
 -----------------------------------
-Todas as telas que carregam JSON procuram o arquivo em dois locais:
-1. AppDomain.CurrentDomain.BaseDirectory/dados/<arquivo>;
-2. fallback relativo ao diretório do executável, voltando pastas até o diretório de desenvolvimento.
+Todas as telas que carregam JSON usam `ConteudoService`, que procura o arquivo em `AppDomain.CurrentDomain.BaseDirectory/dados/<arquivo>`.
 
-Essa estratégia permite funcionar tanto com arquivos copiados para a saída quanto diretamente durante o desenvolvimento. A configuração de cópia dos JSONs para a saída não está explicitamente declarada no csproj; se a publicação depender deles, deve-se garantir que os arquivos sejam incluídos no output.
+O `.csproj` copia explicitamente os arquivos de `dados` para a saída, portanto não existe fallback para `..\..\..`.
 
 
 10. COMO O PROJETO FOI FEITO E POR QUÊ
@@ -287,23 +338,83 @@ A separação adotada foi:
 
 Essa separação permite alterar textos, dicas, relatos e perguntas sem recompilar a lógica, desde que o formato dos dados seja preservado.
 
-A navegação entre telas foi feita com referências às janelas de origem porque o fluxo é pequeno e linear. O quiz mantém estado local de índice e pontuação porque seu ciclo é independente da biblioteca.
+A navegação entre telas usa diálogos modais porque o fluxo é pequeno e linear. O quiz mantém estado local de índice e pontuação porque seu ciclo é independente da biblioteca.
+
+
+10.1. GUIA DE MECÂNICAS DO CÓDIGO PARA ESTUDO
+----------------------------------------------
+Esta seção explica como as principais partes do código trabalham juntas.
+
+Inicialização da aplicação
+- `Program.cs` contém o método `Main`, marcado com `[STAThread]`, requisito padrão para aplicações Windows Forms.
+- `ApplicationConfiguration.Initialize()` aplica as configurações padrão do Windows Forms, incluindo temas e DPI.
+- `Application.Run(new FrmMenu())` cria o menu principal e mantém o loop de mensagens da aplicação ativo. Esse loop recebe cliques, teclado, pintura e fechamento das janelas.
+
+Formulários e arquivos Designer
+- Cada tela é dividida em um arquivo de lógica (`.cs`) e um arquivo parcial gerado pelo Designer (`.Designer.cs`).
+- O Designer cria controles, define propriedades visuais e conecta eventos como `Click`.
+- A lógica dos eventos fica no arquivo `.cs`; por isso, alterações de comportamento devem ser feitas ali sempre que possível.
+- `InitializeComponent()` deve ser chamado no construtor antes de usar os controles.
+
+Modelos e desserialização
+- As classes em `Models` representam o formato dos objetos JSON e são usadas como tipos genéricos pelo carregador.
+- Propriedades nullable, como `string?`, indicam que um campo pode estar ausente. As telas convertem esses valores para texto vazio quando necessário para evitar falhas de UI.
+- `JsonPropertyName` conecta nomes diferentes entre código e JSON, como `pergunta`/`Texto`, `relato`/`Conteudo` e `licoes_aprendidas`/`LicoesAprendidas`.
+
+Carregamento centralizado de conteúdo
+- `Services/ConteudoService.cs` concentra a leitura dos arquivos na pasta `dados` do diretório de execução.
+- `CarregarLista<T>` permite reutilizar a mesma mecânica para dicas, golpes, relatos e perguntas.
+- O método aceita tanto um array JSON na raiz quanto um objeto que contenha a propriedade `itens`.
+- `Encoding.UTF8` garante a leitura correta de acentos.
+- Falhas de arquivo, permissão, JSON inválido ou estrutura incompatível são convertidas em `ConteudoException`, cuja mensagem cita o nome do arquivo.
+- Cada formulário captura essa exceção, mostra uma mensagem simples ao usuário e fecha a janela para retornar ao fluxo anterior.
+
+Eventos e ciclo de vida das telas
+- O evento `Load` é usado para carregar o conteúdo quando a tela está prestes a ser exibida.
+- Eventos `Click` respondem aos botões e chamam métodos de navegação ou atualização da tela.
+- Eventos `KeyDown`, combinados com `KeyPreview = true`, permitem tratar Esc e as setas mesmo quando o foco está em outro controle.
+- Fechar uma janela modal libera o controle para o método que chamou `ShowDialog`.
+
+Navegação modal
+- O menu oculta a si mesmo com `Hide()` antes de abrir Quiz ou Biblioteca.
+- A janela filha é aberta com `ShowDialog(this)`, tornando-a modal e mantendo o fluxo aguardando seu fechamento.
+- Depois que a janela filha fecha pelo botão, pelo Esc ou pelo X, o método retorna e executa `Show()` para reexibir a origem.
+- O menu usa `Application.Exit()` no botão Sair; assim, sair pelo menu encerra a aplicação inteira.
+- As telas de leitura mantêm um índice (`_indice`) e só habilitam Anterior quando existe item anterior e Avançar quando existe item seguinte.
+
+Exibição das telas de leitura
+- `MostrarDica`, `MostrarGolpe` e `MostrarRelato` recebem um índice, validam seus limites e copiam os campos do modelo para os labels.
+- Listas como passos recomendados e sinais de alerta são convertidas em texto com uma linha iniciada por hífen.
+- O índice atual é atualizado antes de recalcular o estado dos botões.
+- Setas esquerda/direita chamam o mesmo método usado pelos botões, evitando duplicação da regra de navegação.
+- Em relatos, o tipo `ilustrativo` controla a exibição da etiqueta que informa que o caso é baseado em modalidades reais.
+
+Mecânica do Quiz
+- `_indiceAtual` identifica a pergunta mostrada e `_pontuacao` guarda a quantidade de acertos.
+- Ao exibir uma pergunta, cada alternativa é associada ao seu índice original por `OpcaoExibida`.
+- `Random.Shared.Shuffle` embaralha somente a cópia em memória; o JSON permanece inalterado.
+- `_respostaCorretaExibida` localiza a posição atual da resposta cujo índice original corresponde a `RespostaCorreta`.
+- A confirmação identifica qual RadioButton está marcado, compara sua posição exibida com a posição correta e bloqueia as alternativas após o feedback.
+- `ExplicacaoOpcoesErradas` é consultada pelo índice original da alternativa escolhida, garantindo que a explicação continue correta depois do embaralhamento.
+- `LimparPrefixo` remove os marcadores editoriais `Errado!` e `Correta!` antes de exibir a explicação.
+- O painel de feedback muda entre verde e vermelho, conforme o resultado, sem abrir uma segunda tela ou MessageBox para o feedback.
+- A ProgressBar e o label de progresso usam o índice atual para mostrar “Pergunta X de N”.
+- Após a última confirmação, `MostrarResultado` apresenta o total, uma mensagem por faixa de desempenho e as perguntas erradas com a resposta correta.
+- `Refazer` limpa pontuação e erros, volta ao primeiro item e embaralha novamente as alternativas. `Voltar ao menu` fecha o diálogo do quiz.
+
+Projeto, conteúdo e recursos
+- O `.csproj` copia `dados\**` e `imagens\**` para a saída com `PreserveNewest`, permitindo que os arquivos externos acompanhem o executável.
+- `ApplicationHighDpiMode=PerMonitorV2` permite que a interface se adapte ao monitor usado.
+- Arquivos JSON são conteúdo editável; imagens e arquivos `.resx` são recursos visuais usados pelos designers.
+- O conteúdo educativo não deve receber fontes, URLs, telefones ou fatos novos sem verificação. Informações pendentes devem ser registradas em `docs/RELATOS_A_VERIFICAR.md`.
 
 
 11. COMO DEVERIA SER MELHORADO EM UMA EVOLUÇÃO FUTURA
 ------------------------------------------------------
-As melhorias abaixo não foram aplicadas automaticamente nesta documentação:
+As melhorias abaixo permanecem como possibilidades futuras:
 
-- Centralizar a localização e leitura dos JSONs em um serviço/utilitário compartilhado, eliminando código repetido entre FrmDicas, FrmExGolpes e FrmRelatos.
-- Trocar catch vazio por mensagens de erro ou logging controlado, para que problemas de conteúdo sejam diagnosticáveis.
-- Remover usings duplicados, observados em FrmDicas.cs e FrmExGolpes.cs.
-- Configurar explicitamente no csproj a cópia dos arquivos da pasta dados para o diretório de saída/publicação.
-- Usar um algoritmo Fisher-Yates ou Random.Shared.Shuffle para embaralhamento estatisticamente uniforme; a implementação atual atende ao requisito funcional, mas OrderBy com valores aleatórios não é a alternativa mais rigorosa.
 - Criar testes para desserialização, navegação e preservação do índice da resposta correta após o embaralhamento.
-- Validar os JSONs no carregamento e informar o arquivo/linha em caso de erro.
 - Separar a lógica de apresentação da lógica de navegação/dados se o projeto crescer.
-- Considerar um controlador de navegação ou fechamento coordenado de formulários para evitar múltiplas janelas abertas.
-- Modelar explicitamente explicacaoOpcoesErradas em Pergunta caso esse conteúdo passe a ser usado na interface.
 - Corrigir ou revisar datas e fontes dos relatos sempre que o conteúdo exigir precisão editorial.
 
 
@@ -334,3 +445,6 @@ Histórico incremental:
 - Correção registrada: renomeação do projeto e da solução de p2elvio para ProtetorDigital, mantendo RootNamespace e AssemblyName já existentes.
 - A solução nova é ProtetorDigital.slnx e referencia ProtetorDigital.csproj. Se o Visual Studio ainda mostrar p2elvio.csproj na sessão aberta, é necessário fechar/reabrir ProtetorDigital.slnx para atualizar o estado da solução.
 - Próximas alterações devem acrescentar uma nova linha neste histórico, sem apagar as anteriores.
+- Pedido registrado: configurar a cópia dos conteúdos e imagens, centralizar o carregamento JSON em Services, revisar a navegação e acessibilidade, reformular o quiz, atualizar os metadados dos relatos e revisar os dados e a documentação; plano: aplicar por etapas e compilar ao final de cada item.
+- Pedido registrado: criar uma seção didática explicando as mecânicas do código, incluindo inicialização, formulários, modelos, carregamento JSON, navegação, leitura de conteúdo, quiz e recursos do projeto.
+- Pedido registrado: organizar a documentação em três categorias — apresentação do produto, apresentação dos desenvolvedores e parte técnica/tecnológica — mantendo todo o conteúdo existente e deixando campos prontos para preenchimento dos nomes.

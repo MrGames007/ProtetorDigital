@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Text.Json;
 using System.Linq;
-using System.Collections.Generic;
+using ProtetorDigital.Services;
 
 namespace ProtetorDigital.Forms
 {
@@ -16,42 +11,30 @@ namespace ProtetorDigital.Forms
     {
         private List<ExGolpe> _golpes = new();
         private int _indice = 0;
+        private readonly ConteudoService _conteudoService = new();
 
-        private Form _janelaOrigem;
-        public FrmExGolpes(Form origem)
+        public FrmExGolpes()
         {
-            _janelaOrigem = origem;
             InitializeComponent();
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
             Load += FrmExGolpes_Load;
+            KeyPreview = true;
+            KeyDown += FrmExGolpes_KeyDown;
         }
 
         private void FrmExGolpes_Load(object? sender, EventArgs e)
         {
             try
             {
-                string caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", "exgolpes.json");
-                if (!File.Exists(caminho))
-                {
-                    string caminhoProjeto = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "dados", "exgolpes.json");
-                    if (File.Exists(caminhoProjeto)) caminho = caminhoProjeto;
-                }
-
-                if (!File.Exists(caminho)) return;
-
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var json = File.ReadAllText(caminho, Encoding.UTF8);
-                using var doc = JsonDocument.Parse(json);
-                if (doc.RootElement.TryGetProperty("itens", out var itens))
-                {
-                    _golpes = JsonSerializer.Deserialize<List<ExGolpe>>(itens.GetRawText(), options) ?? new List<ExGolpe>();
-                }
+                _golpes = _conteudoService.CarregarLista<ExGolpe>("exgolpes.json");
 
                 if (_golpes.Any()) MostrarGolpe(0);
             }
-            catch
+            catch (ConteudoException ex)
             {
+                MessageBox.Show($"Não foi possível carregar os exemplos de golpes.\n{ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
             }
         }
 
@@ -85,13 +68,27 @@ namespace ProtetorDigital.Forms
         private void BtnVoltar_Click(object? sender, EventArgs e)
         {
             if (_indice - 1 >= 0) MostrarGolpe(_indice - 1);
-            else Close();
         }
 
         private void BtnRetornar_Click(object sender, EventArgs e)
         {
-            _janelaOrigem.Show();
-            this.Close();
+            Close();
+        }
+
+        private void FrmExGolpes_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+            else if (e.KeyCode == Keys.Left && BtnVoltar.Enabled)
+            {
+                MostrarGolpe(_indice - 1);
+            }
+            else if (e.KeyCode == Keys.Right && BtnAvancar.Enabled)
+            {
+                MostrarGolpe(_indice + 1);
+            }
         }
 
         

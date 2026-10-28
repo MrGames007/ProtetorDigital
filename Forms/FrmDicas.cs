@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Text.Json;
 using System.Linq;
-using System.Collections.Generic;
+using ProtetorDigital.Services;
 
 namespace ProtetorDigital.Forms
 {
@@ -16,43 +11,30 @@ namespace ProtetorDigital.Forms
     {
         private List<Dica> _dicas = new();
         private int _indice = 0;
+        private readonly ConteudoService _conteudoService = new();
 
-        private Form _janelaOrigem;
-        public FrmDicas(Form origem)
+        public FrmDicas()
         {
-            _janelaOrigem = origem;
             InitializeComponent();
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
             Load += FrmDicas_Load;
+            KeyPreview = true;
+            KeyDown += FrmDicas_KeyDown;
         }
 
         private void FrmDicas_Load(object? sender, EventArgs e)
         {
             try
             {
-                string caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", "dicas.json");
-                if (!File.Exists(caminho))
-                {
-                    string caminhoProjeto = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "dados", "dicas.json");
-                    if (File.Exists(caminhoProjeto)) caminho = caminhoProjeto;
-                }
-
-                if (!File.Exists(caminho)) return;
-
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var json = File.ReadAllText(caminho, Encoding.UTF8);
-                using var doc = JsonDocument.Parse(json);
-                if (doc.RootElement.TryGetProperty("itens", out var itens))
-                {
-                    _dicas = JsonSerializer.Deserialize<List<Dica>>(itens.GetRawText(), options) ?? new List<Dica>();
-                }
+                _dicas = _conteudoService.CarregarLista<Dica>("dicas.json");
 
                 if (_dicas.Any()) MostrarDica(0);
             }
-            catch
+            catch (ConteudoException ex)
             {
-                // ignorar erro de leitura para não quebrar a UI
+                MessageBox.Show($"Não foi possível carregar as dicas.\n{ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
             }
         }
 
@@ -86,13 +68,27 @@ namespace ProtetorDigital.Forms
         private void BtnVoltar_Click(object? sender, EventArgs e)
         {
             if (_indice - 1 >= 0) MostrarDica(_indice - 1);
-            else Close();
         }
 
         private void BtnRetornar_Click(object sender, EventArgs e)
         {
-            _janelaOrigem.Show();
-            this.Close();
+            Close();
+        }
+
+        private void FrmDicas_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+            else if (e.KeyCode == Keys.Left && BtnVoltar.Enabled)
+            {
+                MostrarDica(_indice - 1);
+            }
+            else if (e.KeyCode == Keys.Right && BtnAvancar.Enabled)
+            {
+                MostrarDica(_indice + 1);
+            }
         }
     }
 }

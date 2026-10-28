@@ -133,7 +133,7 @@
             lblTexto.Name = "lblTexto";
             lblTexto.Size = new Size(212, 30);
             lblTexto.TabIndex = 7;
-            lblTexto.Text = "⚠ Sinais de Alerta!!";
+            lblTexto.Text = "⚠ Sinais de Alerta";
             // 
             // lblSinaisAlerta
             // 

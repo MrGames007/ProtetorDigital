@@ -100,7 +100,7 @@
             BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnVoltar.FlatStyle = FlatStyle.Flat;
-            BtnVoltar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnVoltar.ForeColor = Color.White;
             BtnVoltar.Location = new Point(15, 15);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
@@ -120,7 +120,7 @@
             BtnConfirmar.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 105, 43);
             BtnConfirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(33, 136, 56);
             BtnConfirmar.FlatStyle = FlatStyle.Flat;
-            BtnConfirmar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnConfirmar.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnConfirmar.ForeColor = Color.White;
             BtnConfirmar.Location = new Point(1036, 15);
             BtnConfirmar.Margin = new Padding(3, 2, 3, 2);
