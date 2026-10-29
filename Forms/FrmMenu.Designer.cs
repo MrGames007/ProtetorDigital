@@ -32,7 +32,7 @@
             label1.Name = "label1";
             label1.Size = new Size(957, 80);
             label1.TabIndex = 0;
-            label1.Text = "Proteção Digital aos Idosos";
+            label1.Text = "Proteção Digital Aos Idosos";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // BtnQuiz
@@ -101,7 +101,7 @@
             Controls.Add(label1);
             Name = "FrmMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Proteção Digital aos Idosos";
+            Text = "Proteção Digital Aos Idosos";
             ResumeLayout(false);
         }
 

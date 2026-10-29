@@ -17,8 +17,7 @@
       "como_funciona": "Ligação automatizada simula o banco informando compra suspeita no cartão, conduzindo a vítima a digitar senhas ou fazer 'transferência de segurança'.",
       "sinais_de_alerta": [
         "Solicitação de senhas via teclado telefônico.",
-        "Pedido de transferência de recursos para conta de terceiros.",
-        "Ameaça de bloqueio imediato se a ligação for encerrada."
+        "Pedido de transferência de recursos para conta de terceiros."
       ]
     },
     {
@@ -27,8 +26,7 @@
       "como_funciona": "Envio de mensagens alegando o bloqueio de proventos caso a vítima não conclua a validação biométrica via link externo.",
       "sinais_de_alerta": [
         "Links direcionando para páginas fora dos portais .gov.br.",
-        "Exigência de envio imediato de documentos digitalizados.",
-        "Mensagem que cria urgência para evitar a suspensão do benefício."
+        "Exigência de envio imediato de documentos digitalizados."
       ]
     },
     {
@@ -37,8 +35,7 @@
       "como_funciona": "Abordagem presencial onde o golpista promete dividir um prêmio milionário caso a vítima entregue um valor em dinheiro como sinal de boa-fé.",
       "sinais_de_alerta": [
         "Promessa de enriquecimento fácil na via pública.",
-        "Solicitação de saques em dinheiro vivo no banco.",
-        "Pedido de pagamento para liberar um prêmio que não foi comprovado."
+        "Solicitação de saques em dinheiro vivo no banco."
       ]
     },
     {
@@ -47,8 +44,7 @@
       "como_funciona": "Ligação informa clonagem do cartão e orienta a vítima a cortar o plástico e entregá-lo a um entregador para perícia, mantendo o chip íntegro.",
       "sinais_de_alerta": [
         "Envio de emissários do banco à residência do cliente.",
-        "Instrução para cortar o cartão preservando a área do chip.",
-        "Orientação para entregar o cartão a um desconhecido."
+        "Instrução para cortar o cartão preservando a área do chip."
       ]
     },
     {
@@ -57,8 +53,7 @@
       "como_funciona": "O entregador comparece ao local com flores ou presentes e exige o pagamento exclusivo de uma taxa de entrega via máquina com tela ilegível.",
       "sinais_de_alerta": [
         "Inexistência de aviso prévio do remetente.",
-        "Cobrança insistente no débito ou crédito.",
-        "Máquina com visor apagado, quebrado ou ilegível."
+        "Cobrança insistente no débito ou crédito."
       ]
     },
     {
@@ -67,8 +62,7 @@
       "como_funciona": "Indução à instalação de programas que dão controle completo do celular ao estelionatário, permitindo empréstimos não autorizados.",
       "sinais_de_alerta": [
         "Pedidos para baixar programas fora das lojas oficiais.",
-        "Solicitação para autorizar permissões de tela.",
-        "Pedido para permanecer ao telefone enquanto o aplicativo é instalado."
+        "Solicitação para autorizar permissões de tela."
       ]
     },
     {
@@ -77,8 +71,7 @@
       "como_funciona": "Páginas falsas de leilão de veículos utilizam nomes de pátios conhecidos e pedem PIX de sinal para confirmação do lance vencedor.",
       "sinais_de_alerta": [
         "Valores abaixo da tabela de mercado.",
-        "Chaves de transferência em nome de pessoas físicas.",
-        "Site sem endereço, edital ou contato verificável do leiloeiro."
+        "Chaves de transferência em nome de pessoas físicas."
       ]
     },
     {
@@ -87,8 +80,7 @@
       "como_funciona": "Mensagens informam a liberação de precatórios ou causas cíveis, exigindo o recolhimento prévio de guias ou custas administrativas.",
       "sinais_de_alerta": [
         "Exigência de pagamentos para liberação de alvarás.",
-        "Contatos por números novos utilizando a foto do advogado.",
-        "Recusa em confirmar a cobrança pelo escritório conhecido."
+        "Contatos por números novos utilizando a foto do advogado."
       ]
     },
     {
@@ -97,8 +89,7 @@
       "como_funciona": "Golpistas entram em contato prometendo doar herança ou verba de caridade, solicitando depósitos prévios para pagar taxas bancárias e impostos.",
       "sinais_de_alerta": [
         "Promessas de repasse de quantias milionárias de desconhecidos.",
-        "Transferências para simulação de taxas antes do recebimento.",
-        "Pedido de dados bancários ou documentos para iniciar o pagamento."
+        "Transferências para simulação de taxas antes do recebimento."
       ]
     },
     {
@@ -107,8 +98,7 @@
       "como_funciona": "Disparo de mensagens contendo links ou números 0800 alegando transação comercial de alto valor prestes a ser debitada.",
       "sinais_de_alerta": [
         "Gatilho de pânico para forçar a ligação ao número fornecido.",
-        "Solicitação de confirmação de dados sigilosos.",
-        "Mensagem com link encurtado ou remetente desconhecido."
+        "Solicitação de confirmação de dados sigilosos."
       ]
     },
     {
@@ -117,8 +107,7 @@
       "como_funciona": "Ligação com gritos e simulação de pânico ao fundo, onde o criminoso exige depósito imediato alegando a custódia de um parente.",
       "sinais_de_alerta": [
         "Pressão para não desligar nem checar o paradeiro do familiar.",
-        "Ameaças e agressividade verbal na ligação.",
-        "Exigência de pagamento antes de qualquer confirmação."
+        "Ameaças e agressividade verbal na ligação."
       ]
     },
     {
@@ -127,8 +116,7 @@
       "como_funciona": "Correspondências físicas enviadas à casa da vítima informando prêmios a receber após o pagamento presencial de taxa de liberação.",
       "sinais_de_alerta": [
         "Correspondência física convidando a vítima a ir a um local comercial para retirar prêmios.",
-        "Cobrança de taxas presenciais para liberar o valor citado.",
-        "Promessa de prêmio sem concurso ou documento oficial verificável."
+        "Cobrança de taxas presenciais para liberar o valor citado."
       ]
     },
     {
@@ -137,8 +125,7 @@
       "como_funciona": "Mensagens de texto oferecendo tarefas simples de avaliação em plataformas com a condição de aportes prévios.",
       "sinais_de_alerta": [
         "Oferta de retorno financeiro desproporcional ao esforço.",
-        "Exigência de recargas de saldos para continuidade.",
-        "Contato que impede o saque até novo depósito."
+        "Exigência de recargas de saldos para continuidade."
       ]
     },
     {
@@ -147,8 +134,7 @@
       "como_funciona": "O golpista envia um comprovante falso ou de transferência agendada para forçar o envio de trocos ou produtos pela vítima.",
       "sinais_de_alerta": [
         "Envio do comprovante sem a efetiva entrada do valor na conta.",
-        "Pressão para a entrega imediata do bem.",
-        "Recusa em aguardar a confirmação no aplicativo bancário."
+        "Pressão para a entrega imediata do bem."
       ]
     }
   ]

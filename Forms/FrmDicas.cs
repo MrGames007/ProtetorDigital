@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Text.Json;
 using System.Linq;
-using ProtetorDigital.Services;
+using System.Collections.Generic;
 
 namespace ProtetorDigital.Forms
 {
@@ -11,30 +16,47 @@ namespace ProtetorDigital.Forms
     {
         private List<Dica> _dicas = new();
         private int _indice = 0;
-        private readonly ConteudoService _conteudoService = new();
 
-        public FrmDicas()
+        private Form _janelaOrigem;
+        public FrmDicas(Form origem)
         {
+            _janelaOrigem = origem;
             InitializeComponent();
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
             Load += FrmDicas_Load;
-            KeyPreview = true;
-            KeyDown += FrmDicas_KeyDown;
+            MinimumSize = new Size(800, 600);
+            MaximizeBox = true;
+            StartPosition = FormStartPosition.CenterScreen;
+            ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
         }
 
         private void FrmDicas_Load(object? sender, EventArgs e)
         {
             try
             {
-                _dicas = _conteudoService.CarregarLista<Dica>("dicas.json");
+                string caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", "dicas.json");
+                if (!File.Exists(caminho))
+                {
+                    string caminhoProjeto = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "dados", "dicas.json");
+                    if (File.Exists(caminhoProjeto)) caminho = caminhoProjeto;
+                }
+
+                if (!File.Exists(caminho)) return;
+
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var json = File.ReadAllText(caminho, Encoding.UTF8);
+                using var doc = JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("itens", out var itens))
+                {
+                    _dicas = JsonSerializer.Deserialize<List<Dica>>(itens.GetRawText(), options) ?? new List<Dica>();
+                }
 
                 if (_dicas.Any()) MostrarDica(0);
             }
-            catch (ConteudoException ex)
+            catch
             {
-                MessageBox.Show($"Não foi possível carregar as dicas.\n{ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Close();
+                // ignorar erro de leitura para não quebrar a UI
             }
         }
 
@@ -55,9 +77,6 @@ namespace ProtetorDigital.Forms
             {
                 lblPassos.Text = string.Empty;
             }
-
-            BtnVoltar.Enabled = _indice > 0;
-            BtnAvancar.Enabled = _indice < _dicas.Count - 1;
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
@@ -68,27 +87,14 @@ namespace ProtetorDigital.Forms
         private void BtnVoltar_Click(object? sender, EventArgs e)
         {
             if (_indice - 1 >= 0) MostrarDica(_indice - 1);
+            else Close();
         }
 
-        private void BtnRetornar_Click(object sender, EventArgs e)
+        private void BtnRetornar_Click(object? sender, EventArgs e)
         {
+            _janelaOrigem.Show();
             Close();
         }
 
-        private void FrmDicas_KeyDown(object? sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-            else if (e.KeyCode == Keys.Left && BtnVoltar.Enabled)
-            {
-                MostrarDica(_indice - 1);
-            }
-            else if (e.KeyCode == Keys.Right && BtnAvancar.Enabled)
-            {
-                MostrarDica(_indice + 1);
-            }
-        }
     }
 }

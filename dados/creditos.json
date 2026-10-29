@@ -1,0 +1,20 @@
+{
+  "titulo": "Créditos", // TODO versão final
+  "subtitulo": "Aplicativo desenvolvido no contexto da disciplina Programação de Computadores", // TODO versão final
+  "linhas": [
+    { "rotulo": "Disciplina:", "valor": "Programação de Computadores" }, // TODO versão final
+    { "rotulo": "Professor responsável:", "valor": "Prof. Dr. Elvio Gilberto da Silva" }, // TODO versão final
+    { "rotulo": "Professor colaborador:", "valor": "Não houve" }, // TODO versão final
+    { "rotulo": "Colaborador externo:", "valor": "Não houve" }, // TODO versão final
+    { "rotulo": "Desenvolvedores:", "valor": "Lucas Gabriel Henriques Paulo; Thiago Forelli Cordeiro; Ricardo Kenji Korin Yogui; Pedro Mendonça Paulin" }, // TODO versão final
+    { "rotulo": "Curso:", "valor": "Ciência da Computação" }, // TODO versão final
+    { "rotulo": "Instituição:", "valor": "UNISAGRADO" }, // TODO versão final
+    { "rotulo": "Período:", "valor": "2º semestre de 2026" }, // TODO versão final
+    { "rotulo": "Versão:", "valor": "auto" }, // TODO versão final
+    { "rotulo": "Tecnologias:", "valor": "C#, .NET 10 e Windows Forms" } // TODO versão final
+  ],
+  "cartoes": [
+    { "titulo": "Desenvolvimento", "logo": "logo_desenvolvimento.png", "texto": "CIÊNCIA DA COMPUTAÇÃO" }, // TODO versão final
+    { "titulo": "Apoio", "logo": "logo_apoio.png", "texto": "COORDENADORIA DE EXTENSÃO" } // TODO versão final
+  ]
+}

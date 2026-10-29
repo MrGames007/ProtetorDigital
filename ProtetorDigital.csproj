@@ -6,18 +6,16 @@
 	<Nullable>enable</Nullable>
 	<UseWindowsForms>true</UseWindowsForms>
 	<ImplicitUsings>enable</ImplicitUsings>
-	<ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
 	<RootNamespace>ProtetorDigital</RootNamespace>
 	<AssemblyName>ProtetorDigital</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-	<Content Include="dados\**">
-	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-	<Content Include="imagens\**">
-	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
+	<None Update="dados\**\*" CopyToOutputDirectory="PreserveNewest" />
+	<None Update="imagens\**\*" CopyToOutputDirectory="PreserveNewest" />
+	<None Remove="dados\dados.json" />
+	<None Remove="dados\NewFile1.txt" />
+	<None Remove="Forms\NewFile1.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +31,10 @@
 	  <Generator>ResXFileCodeGenerator</Generator>
 	  <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	</EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+	<Folder Include="imagens\" />
   </ItemGroup>
 
 </Project>

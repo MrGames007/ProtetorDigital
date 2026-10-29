@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Text.Json;
 using System.Linq;
-using ProtetorDigital.Services;
 
 namespace ProtetorDigital.Forms
 {
@@ -11,30 +15,47 @@ namespace ProtetorDigital.Forms
     {
         private List<Relato> _relatos = new();
         private int _indice = 0;
-        private readonly ConteudoService _conteudoService = new();
 
-        public FrmRelatos()
+        private Form _janelaOrigem;
+        public FrmRelatos(Form origem)
         {
             InitializeComponent();
+            _janelaOrigem = origem;
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
             Load += FrmRelatos_Load;
-            KeyPreview = true;
-            KeyDown += FrmRelatos_KeyDown;
+            MinimumSize = new Size(800, 600);
+            MaximizeBox = true;
+            StartPosition = FormStartPosition.CenterScreen;
+            ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
         }
 
         private void FrmRelatos_Load(object? sender, EventArgs e)
         {
             try
             {
-                _relatos = _conteudoService.CarregarLista<Relato>("relatos.json");
+                string caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", "relatos.json");
+                if (!File.Exists(caminho))
+                {
+                    string caminhoProjeto = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "dados", "relatos.json");
+                    if (File.Exists(caminhoProjeto)) caminho = caminhoProjeto;
+                }
+
+                if (!File.Exists(caminho)) return;
+
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var json = File.ReadAllText(caminho, Encoding.UTF8);
+                using var doc = JsonDocument.Parse(json);
+                if (doc.RootElement.TryGetProperty("itens", out var itens))
+                {
+                    _relatos = JsonSerializer.Deserialize<List<Relato>>(itens.GetRawText(), options) ?? new List<Relato>();
+                }
 
                 if (_relatos.Any()) MostrarRelato(0);
             }
-            catch (ConteudoException ex)
+            catch
             {
-                MessageBox.Show($"Não foi possível carregar os relatos.\n{ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Close();
+                // ignorar erros de leitura para não quebrar a UI
             }
         }
 
@@ -46,10 +67,7 @@ namespace ProtetorDigital.Forms
 
             // Vincula cada campo JSON ao seu label correspondente
             lblTitulo.Text = r.Titulo ?? string.Empty;
-            lblFonte.Text = r.Tipo == "noticiado" ? r.Fonte ?? string.Empty : string.Empty;
-            lblTipo.Text = r.Tipo == "ilustrativo"
-                ? "Caso ilustrativo, baseado em modalidades reais"
-                : string.Empty;
+            lblFonte.Text = r.Fonte ?? string.Empty;
             lblVitima.Text = r.Vitima ?? string.Empty;
             lblRelato.Text = r.Conteudo ?? string.Empty;
             lblLicoesAprendidas.Text = r.LicoesAprendidas ?? string.Empty;
@@ -72,23 +90,8 @@ namespace ProtetorDigital.Forms
 
         private void BtnRetorno_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        private void FrmRelatos_KeyDown(object? sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-            else if (e.KeyCode == Keys.Left && BtnVoltar.Enabled)
-            {
-                MostrarRelato(_indice - 1);
-            }
-            else if (e.KeyCode == Keys.Right && BtnAvancar.Enabled)
-            {
-                MostrarRelato(_indice + 1);
-            }
+            _janelaOrigem.Show();
+            this.Close();
         }
 
         

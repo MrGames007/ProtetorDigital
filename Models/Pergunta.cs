@@ -15,7 +15,5 @@ namespace ProtetorDigital
         public int RespostaCorreta { get; set; }
 
         public string? Explicacao { get; set; }
-
-        public List<string>? ExplicacaoOpcoesErradas { get; set; }
     }
 }
