@@ -137,6 +137,7 @@ namespace ProtetorDigital.Forms
             txtFeedback.Text = (acertou ? "Você acertou!" : "Você errou.") +
                 $"\n{explicacaoEscolhida}\nA resposta certa é: {alternativaCorreta}\n{explicacao}";
             pnlFeedback.BackColor = acertou ? Color.FromArgb(220, 252, 231) : Color.FromArgb(254, 226, 226);
+            txtFeedback.BackColor = pnlFeedback.BackColor;
             pnlFeedback.Visible = true;
             _respostaConfirmada = true;
             RBtnAlt1.Enabled = RBtnAlt2.Enabled = RBtnAlt3.Enabled = RBtnAlt4.Enabled = false;
@@ -195,28 +196,30 @@ namespace ProtetorDigital.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                if (!pnlResultado.Visible && MessageBox.Show("Deseja sair do quiz? O progresso será perdido.", "Sair do quiz", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (pnlResultado.Visible || MessageBox.Show("Deseja sair do quiz? O progresso será perdido.", "Sair do quiz", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Close();
                 }
             }
             else if (e.KeyCode == Keys.Enter && BtnConfirmar.Visible)
             {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
                 BtnConfirmar.PerformClick();
             }
-            else if (e.KeyCode is Keys.D1 or Keys.NumPad1)
+            else if (!_respostaConfirmada && !pnlResultado.Visible && (e.KeyCode is Keys.D1 or Keys.NumPad1))
             {
                 RBtnAlt1.Checked = true;
             }
-            else if (e.KeyCode is Keys.D2 or Keys.NumPad2)
+            else if (!_respostaConfirmada && !pnlResultado.Visible && (e.KeyCode is Keys.D2 or Keys.NumPad2))
             {
                 RBtnAlt2.Checked = true;
             }
-            else if (e.KeyCode is Keys.D3 or Keys.NumPad3)
+            else if (!_respostaConfirmada && !pnlResultado.Visible && (e.KeyCode is Keys.D3 or Keys.NumPad3))
             {
                 RBtnAlt3.Checked = true;
             }
-            else if (e.KeyCode is Keys.D4 or Keys.NumPad4)
+            else if (!_respostaConfirmada && !pnlResultado.Visible && (e.KeyCode is Keys.D4 or Keys.NumPad4))
             {
                 RBtnAlt4.Checked = true;
             }
