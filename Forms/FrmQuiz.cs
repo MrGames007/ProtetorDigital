@@ -16,7 +16,7 @@ namespace ProtetorDigital.Forms
         private int _respostaCorretaExibida = -1;
         private bool _respostaConfirmada;
         private readonly List<ResultadoPergunta> _respostasErradas = new();
-        private readonly ConteudoService _conteudoService = new();
+        private readonly Form? _janelaOrigem;
         private readonly Label _lblProgresso = new();
         private readonly ProgressBar _progressQuiz = new();
         private readonly Panel _pnlFeedback = new();
@@ -33,6 +33,11 @@ namespace ProtetorDigital.Forms
             Load += FrmQuiz_Load;
             KeyPreview = true;
             KeyDown += FrmQuiz_KeyDown;
+        }
+
+        public FrmQuiz(FrmMenu origem) : this()
+        {
+            _janelaOrigem = origem;
         }
 
         private void ConfigurarInterface()
@@ -100,14 +105,14 @@ namespace ProtetorDigital.Forms
         {
             try
             {
-                _perguntas = _conteudoService.CarregarLista<Pergunta>("perguntas.json");
+                _perguntas = ConteudoService.CarregarObjeto<List<Pergunta>>("perguntas.json") ?? new();
 
                 if (_perguntas.Any())
                 {
                     MostrarPergunta(0);
                 }
             }
-            catch (ConteudoException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Não foi possível carregar o quiz.\n{ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Close();
@@ -150,6 +155,7 @@ namespace ProtetorDigital.Forms
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
+            _janelaOrigem?.Show();
             Close();
         }
 
@@ -199,10 +205,7 @@ namespace ProtetorDigital.Forms
                 ? _opcoesExibidas[indiceCorreto].Texto
                 : "Alternativa não identificada";
 
-            string explicacaoEscolhida = perguntaAtual.ExplicacaoOpcoesErradas != null &&
-                _opcoesExibidas[respostaSelecionada].IndiceOriginal < perguntaAtual.ExplicacaoOpcoesErradas.Count
-                ? LimparPrefixo(perguntaAtual.ExplicacaoOpcoesErradas[_opcoesExibidas[respostaSelecionada].IndiceOriginal])
-                : string.Empty;
+            string explicacaoEscolhida = string.Empty;
             string explicacao = perguntaAtual.Explicacao ?? "Não há explicação cadastrada para esta pergunta.";
             _lblFeedback.Text = (acertou ? "Você acertou!" : "Você errou.") +
                 $"\n{explicacaoEscolhida}\nA resposta certa é: {alternativaCorreta}\n{explicacao}";
@@ -259,7 +262,11 @@ namespace ProtetorDigital.Forms
             MostrarPergunta(0);
         }
 
-        private void BtnVoltarMenu_Click(object? sender, EventArgs e) => Close();
+        private void BtnVoltarMenu_Click(object? sender, EventArgs e)
+        {
+            _janelaOrigem?.Show();
+            Close();
+        }
 
         private void FrmQuiz_KeyDown(object? sender, KeyEventArgs e)
         {
