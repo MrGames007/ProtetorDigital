@@ -29,7 +29,11 @@ namespace ProtetorDigital.Forms
         public FrmQuiz()
         {
             InitializeComponent();
+            ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ConfigurarInterface();
+            MinimumSize = new Size(
+                Math.Max(MinimumSize.Width, Controls.Cast<Control>().Max(c => c.Right) + 15),
+                Math.Max(MinimumSize.Height, Controls.Cast<Control>().Max(c => c.Bottom) + 15));
             Load += FrmQuiz_Load;
             KeyPreview = true;
             KeyDown += FrmQuiz_KeyDown;

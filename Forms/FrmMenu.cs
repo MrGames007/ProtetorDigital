@@ -7,6 +7,7 @@ namespace ProtetorDigital
         public FrmMenu()
         {
             InitializeComponent();
+            ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
             StartPosition = FormStartPosition.CenterScreen;

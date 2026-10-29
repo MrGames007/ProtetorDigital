@@ -14,6 +14,7 @@ namespace ProtetorDigital.Forms
         public FrmBiblioteca(Form origem)
         {
             InitializeComponent();
+            ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             _janelaOrigem = origem;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;

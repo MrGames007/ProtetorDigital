@@ -20,6 +20,7 @@ namespace ProtetorDigital.Forms
         public FrmRelatos(Form origem)
         {
             InitializeComponent();
+            ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             _janelaOrigem = origem;
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
