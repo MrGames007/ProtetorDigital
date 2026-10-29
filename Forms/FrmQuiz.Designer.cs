@@ -23,10 +23,6 @@
             RBtnAlt4 = new RadioButton();
             BtnVoltar = new Button();
             BtnConfirmar = new Button();
-            pnlFeedback = new Panel();
-            txtFeedback = new RichTextBox();
-            lblVeredito = new Label();
-            pnlFeedback.SuspendLayout();
             SuspendLayout();
             // 
             // lblPergunta
@@ -104,7 +100,7 @@
             BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnVoltar.FlatStyle = FlatStyle.Flat;
-            BtnVoltar.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnVoltar.ForeColor = Color.White;
             BtnVoltar.Location = new Point(15, 15);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
@@ -124,9 +120,9 @@
             BtnConfirmar.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 105, 43);
             BtnConfirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(33, 136, 56);
             BtnConfirmar.FlatStyle = FlatStyle.Flat;
-            BtnConfirmar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnConfirmar.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnConfirmar.ForeColor = Color.White;
-            BtnConfirmar.Location = new Point(932, 15);
+            BtnConfirmar.Location = new Point(1036, 15);
             BtnConfirmar.Margin = new Padding(3, 2, 3, 2);
             BtnConfirmar.Name = "BtnConfirmar";
             BtnConfirmar.Size = new Size(150, 32);
@@ -135,53 +131,12 @@
             BtnConfirmar.UseVisualStyleBackColor = false;
             BtnConfirmar.Click += BtnConfirmar_Click;
             // 
-            // pnlFeedback
-            // 
-            pnlFeedback.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlFeedback.BackColor = Color.FromArgb(220, 252, 231);
-            pnlFeedback.Controls.Add(txtFeedback);
-            pnlFeedback.Controls.Add(lblVeredito);
-            pnlFeedback.Location = new Point(15, 467);
-            pnlFeedback.Name = "pnlFeedback";
-            pnlFeedback.Padding = new Padding(8);
-            pnlFeedback.Size = new Size(1066, 140);
-            pnlFeedback.TabIndex = 7;
-            pnlFeedback.Visible = false;
-            // 
-            // txtFeedback
-            // 
-            txtFeedback.BackColor = Color.FromArgb(220, 252, 231);
-            txtFeedback.BorderStyle = BorderStyle.None;
-            txtFeedback.Dock = DockStyle.Fill;
-            txtFeedback.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFeedback.ForeColor = Color.FromArgb(33, 37, 41);
-            txtFeedback.Location = new Point(8, 52);
-            txtFeedback.Name = "txtFeedback";
-            txtFeedback.ReadOnly = true;
-            txtFeedback.ScrollBars = RichTextBoxScrollBars.Vertical;
-            txtFeedback.Size = new Size(1050, 80);
-            txtFeedback.TabIndex = 1;
-            txtFeedback.Text = "";
-            // 
-            // lblVeredito
-            // 
-            lblVeredito.Dock = DockStyle.Top;
-            lblVeredito.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblVeredito.ForeColor = Color.FromArgb(20, 108, 67);
-            lblVeredito.Location = new Point(8, 8);
-            lblVeredito.Name = "lblVeredito";
-            lblVeredito.Padding = new Padding(4, 0, 0, 0);
-            lblVeredito.Size = new Size(1050, 44);
-            lblVeredito.TabIndex = 0;
-            lblVeredito.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // FrmQuiz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1097, 623);
-            Controls.Add(pnlFeedback);
+            ClientSize = new Size(1201, 476);
             Controls.Add(BtnConfirmar);
             Controls.Add(BtnVoltar);
             Controls.Add(RBtnAlt4);
@@ -193,7 +148,6 @@
             Name = "FrmQuiz";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quiz";
-            pnlFeedback.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -207,8 +161,5 @@
         private RadioButton RBtnAlt4;
         private Button BtnVoltar;
         private Button BtnConfirmar;
-        private Panel pnlFeedback;
-        private RichTextBox txtFeedback;
-        private Label lblVeredito;
     }
 }
