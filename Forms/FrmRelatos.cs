@@ -46,7 +46,7 @@ namespace ProtetorDigital.Forms
 
             // Vincula cada campo JSON ao seu label correspondente
             lblTitulo.Text = r.Titulo ?? string.Empty;
-            lblFonte.Text = r.Fonte ?? string.Empty;
+            lblFonte.Text = r.Tipo == "noticiado" ? r.Fonte ?? string.Empty : string.Empty;
             lblTipo.Text = r.Tipo == "ilustrativo"
                 ? "Caso ilustrativo, baseado em modalidades reais"
                 : string.Empty;

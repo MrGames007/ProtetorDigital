@@ -50,13 +50,41 @@ namespace ProtetorDigital.Services
                 return JsonSerializer.Deserialize<List<T>>(conteudo.GetRawText(),
                     new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<T>();
             }
-            catch (ConteudoException)
+            catch (ConteudoException ex)
             {
+                RegistrarErro(nomeArquivo, ex.Message, ex);
                 throw;
             }
-            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException or InvalidOperationException)
+            catch (JsonException ex)
             {
-                throw new ConteudoException($"Não foi possível ler o arquivo {nomeArquivo}.");
+                long linha = (ex.LineNumber ?? 0) + 1;
+                long posicao = (ex.BytePositionInLine ?? 0) + 1;
+                string mensagem = $"Erro no arquivo {nomeArquivo}, linha {linha}, posição {posicao}.";
+                RegistrarErro(nomeArquivo, mensagem, ex);
+                throw new ConteudoException(mensagem);
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+            {
+                string mensagem = $"Não foi possível ler o arquivo {nomeArquivo}.";
+                RegistrarErro(nomeArquivo, mensagem, ex);
+                throw new ConteudoException(mensagem);
+            }
+        }
+
+        private static void RegistrarErro(string nomeArquivo, string mensagem, Exception excecao)
+        {
+            try
+            {
+                string diretorio = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "ProtetorDigital");
+                Directory.CreateDirectory(diretorio);
+                string caminhoLog = Path.Combine(diretorio, "log.txt");
+                string linha = $"{DateTime.Now:O} | {nomeArquivo} | {mensagem} | {excecao.Message}{Environment.NewLine}";
+                File.AppendAllText(caminhoLog, linha, Encoding.UTF8);
+            }
+            catch
+            {
             }
         }
     }

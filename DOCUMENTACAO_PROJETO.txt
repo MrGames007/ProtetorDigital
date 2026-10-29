@@ -174,6 +174,10 @@ Representa um caso noticiado:
 - Id;
 - Titulo;
 - Fonte;
+- Data;
+- Url;
+- Tipo: noticiado ou ilustrativo;
+- Verificado;
 - Vitima;
 - Conteudo, mapeado de relato;
 - LicoesAprendidas, mapeado de licoes_aprendidas.
@@ -185,6 +189,7 @@ Representa uma questão do quiz:
 - Opcoes: lista de alternativas;
 - RespostaCorreta: posição original da resposta correta, usando numeração iniciada em 1;
 - Explicacao.
+- ExplicacaoOpcoesErradas: explicação correspondente ao índice original de cada alternativa.
 
 As propriedades textuais são nullable. As telas usam valores vazios ou listas vazias como fallback para evitar falhas de UI quando um campo estiver ausente.
 
@@ -207,14 +212,14 @@ As propriedades textuais são nullable. As telas usam valores vazios ou listas v
  dados/relatos.json
 - Objeto raiz com categoria.
 - Os registros ficam em itens.
-- Cada item contém id, titulo, fonte, vitima, relato e licoes_aprendidas.
+ - Cada item contém id, titulo, fonte, data, url, tipo, verificado, vitima, relato e licoes_aprendidas.
 - É consumido por FrmRelatos.
 
  dados/perguntas.json
 - Array JSON diretamente na raiz.
-- Cada pergunta contém id, pergunta, opcoes, respostaCorreta, explicacao e explicacaoOpcoesErradas no conteúdo atual.
+ - Cada pergunta contém id, pergunta, opcoes, respostaCorreta, explicacao e explicacaoOpcoesErradas.
 - FrmQuiz desserializa o array diretamente em List<Pergunta>.
-- A classe Pergunta atualmente não possui uma propriedade para explicacaoOpcoesErradas; esse campo extra é ignorado pelo System.Text.Json.
+ - A classe Pergunta possui a propriedade ExplicacaoOpcoesErradas para associar feedback à alternativa escolhida.
 - O arquivo foi corrigido anteriormente: havia um caractere extra S depois do fechamento do array (final ]S), causando erro de JSON. O final correto passou a ser apenas ].
 
 Regra importante: alterações de conteúdo devem preservar o formato esperado pela tela correspondente. JSONs com raiz objeto precisam manter a propriedade itens; perguntas precisam manter a raiz como array.
@@ -234,7 +239,7 @@ FrmBiblioteca
 - BtnDicas abre FrmDicas.
 - BtnRelatos abre FrmRelatos.
 - BtnExGolpe abre FrmExGolpes.
-- BtnVoltar exibe a janela de origem e fecha a atual.
+- BtnVoltar fecha o diálogo e devolve o controle ao formulário anterior.
 
 FrmDicas
 - Carrega dados/dicas.json.
@@ -427,6 +432,15 @@ As melhorias abaixo permanecem como possibilidades futuras:
 - Não há testes automatizados identificados no projeto.
 - A validação visual completa do fluxo depende de abrir as telas e interagir com os botões.
 
+12.1. IMPLEMENTAÇÃO E VALIDAÇÃO DO PEDIDO ATUAL
+------------------------------------------------
+1. Navegação: removidos `Hide()` e `Show()` ao redor de `ShowDialog` em FrmMenu e FrmBiblioteca. Validado com compilação bem-sucedida; o fluxo esperado deve ser conferido manualmente usando Biblioteca, Dicas, Retornar, X e Esc.
+2. Quiz: `RichTextBox` somente leitura e rolável substituiu os labels de feedback/resultado; o painel de botões usa `DockStyle.Bottom`, o formulário foi reduzido para 1100x640 e os atalhos Enter, 1–4 e Esc foram implementados. Validado com compilação bem-sucedida.
+3. Relatos: os 15 registros receberam data, url, tipo e verificado; fontes ausentes não foram inventadas; foi criado `docs/RELATOS_A_VERIFICAR.md` e a fonte é exibida somente para registros noticiados. JSON e compilação foram validados.
+4. Conteúdos: `perguntas.json` passou a ter 20 perguntas, quatro alternativas e explicações completas; cada dica tem pelo menos dois passos e cada golpe tem pelo menos três sinais. Os arquivos foram validados com `ConvertFrom-Json` e as cardinalidades foram conferidas.
+5. ConteudoService: erros JSON agora informam linha/posição e são registrados em `%AppData%\ProtetorDigital\log.txt`. Validado com compilação bem-sucedida; o cenário de JSON inválido/log deve ser testado manualmente.
+6. Documentação: este registro foi atualizado com implementação, validações e pendências. Não há alteração adicional de código nesta subetapa.
+
 
 13. REGRA PARA PRÓXIMOS PEDIDOS
 -------------------------------
@@ -448,3 +462,5 @@ Histórico incremental:
 - Pedido registrado: configurar a cópia dos conteúdos e imagens, centralizar o carregamento JSON em Services, revisar a navegação e acessibilidade, reformular o quiz, atualizar os metadados dos relatos e revisar os dados e a documentação; plano: aplicar por etapas e compilar ao final de cada item.
 - Pedido registrado: criar uma seção didática explicando as mecânicas do código, incluindo inicialização, formulários, modelos, carregamento JSON, navegação, leitura de conteúdo, quiz e recursos do projeto.
 - Pedido registrado: organizar a documentação em três categorias — apresentação do produto, apresentação dos desenvolvedores e parte técnica/tecnológica — mantendo todo o conteúdo existente e deixando campos prontos para preenchimento dos nomes.
+- Pedido registrado: corrigir navegação modal, tornar o Quiz rolável e acessível, completar metadados e verificação dos relatos, ampliar e revisar os conteúdos, adicionar diagnóstico/log ao ConteudoService e registrar implementação e validação por item.
+- Implementação do pedido atual: navegação modal corrigida; Quiz rolável com atalhos; metadados e pendências de relatos registrados; perguntas ampliadas para 20; dicas e golpes com cardinalidade mínima; ConteudoService com linha/posição e log. Validação: compilação após cada item, validação dos JSONs com `ConvertFrom-Json` e revisão documental das pendências manuais.

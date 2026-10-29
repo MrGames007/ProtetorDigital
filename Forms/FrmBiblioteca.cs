@@ -22,26 +22,20 @@ namespace ProtetorDigital.Forms
 
         private void BtnRelatos_Click(object sender, EventArgs e)
         {
-            Hide();
             using var frmRelatos = new FrmRelatos();
             frmRelatos.ShowDialog(this);
-            Show();
         }
 
         private void BtnDicas_Click(object sender, EventArgs e)
         {
-            Hide();
             using var frmDicas = new FrmDicas();
             frmDicas.ShowDialog(this);
-            Show();
         }
 
         private void BtnExGolpe_Click(object sender, EventArgs e)
         {
-            Hide();
             using var frmExGolpe = new FrmExGolpes();
             frmExGolpe.ShowDialog(this);
-            Show();
         }
     }
 }

@@ -7,7 +7,11 @@
       "fonte": "G1 - São Carlos e Araraquara (23/01/2024)",
       "vitima": "Idosa de 70 anos",
       "relato": "A idosa recebeu mensagens de um golpista se passando por sua filha pelo WhatsApp. O criminoso solicitou a quitação de boletos e transferências urgentes, fazendo a vítima pagar quatro boletos que somaram R$ 31,9 mil. A fraude só foi percebida quando a vítima conseguiu contato telefônico com a filha.",
-      "licoes_aprendidas": "Ligue para o canal de voz tradicional do parente antes de realizar quitação de boletos recebidos por aplicativos."
+      "licoes_aprendidas": "Ligue para o canal de voz tradicional do parente antes de realizar quitação de boletos recebidos por aplicativos.",
+      "data": "2024-01-23",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 2,
@@ -15,7 +19,11 @@
       "fonte": "Correio Braziliense (27/09/2026)",
       "vitima": "Aposentado de 72 anos",
       "relato": "Após ligação da falsa central bancária alertando sobre compras suspeitas, um entregador recolheu seu cartão cortado ao meio. Os golpistas usaram o chip mantido intacto e realizaram quatro compras consecutivas somando R$ 23 mil em poucas horas.",
-      "licoes_aprendidas": "Bancos não mandam motoboys para recolher cartões e o chip do cartão deve ser destruído por completo."
+      "licoes_aprendidas": "Bancos não mandam motoboys para recolher cartões e o chip do cartão deve ser destruído por completo.",
+      "data": "2026-09-27",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 3,
@@ -23,7 +31,11 @@
       "fonte": "G1 - Paraná (08/04/2025)",
       "vitima": "Idosa de 71 anos",
       "relato": "A vítima foi abordada por estelionatários que simularam uma ligação telefônica para um banco, confirmando falsamente que um dos suspeitos possuía R$ 3 milhões de herança a receber. A idosa repassou R$ 20 mil com a promessa de receber parte do valor.",
-      "licoes_aprendidas": "Nunca transfira valores antecipadamente para auxiliar no resgate de premiações ou heranças de terceiros."
+      "licoes_aprendidas": "Nunca transfira valores antecipadamente para auxiliar no resgate de premiações ou heranças de terceiros.",
+      "data": "2025-04-08",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 4,
@@ -31,7 +43,11 @@
       "fonte": "G1 - Bahia (07/08/2026)",
       "vitima": "Grupo de 14 idosos entre 60 e 80 anos",
       "relato": "Uma quadrilha enviou cartas físicas informando que as vítimas teriam valores a receber. Ao se dirigirem ao local indicado, os idosos eram induzidos a pagar taxas de R$ 3,5 mil a R$ 4 mil para a liberação de prêmios inexistentes.",
-      "licoes_aprendidas": "Desconfie de notificações por correspondência que exijam taxas prévias para concessão de valores."
+      "licoes_aprendidas": "Desconfie de notificações por correspondência que exijam taxas prévias para concessão de valores.",
+      "data": "2026-08-07",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 5,
@@ -39,7 +55,11 @@
       "fonte": "G1 - Norte Fluminense (24/07/2026)",
       "vitima": "Idoso residente em Santo Antônio de Pádua",
       "relato": "O idoso recebeu mensagens de um número desconhecido se passando por seu filho e solicitando a quitação de um boleto no valor de R$ 4.980. O estelionatário tentou aplicar um segundo boleto de R$ 7 mil, que só falhou por erro de leitura do código de barras.",
-      "licoes_aprendidas": "Mensagens solicitando pagamentos a partir de novos números devem ser checadas em ligação oficial."
+      "licoes_aprendidas": "Mensagens solicitando pagamentos a partir de novos números devem ser checadas em ligação oficial.",
+      "data": "2026-07-24",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 6,
@@ -47,7 +67,11 @@
       "fonte": "G1 - Santos e Região (23/04/2022)",
       "vitima": "Idosa de 65 anos",
       "relato": "Um perfil falso solicitou dinheiro à vítima via WhatsApp. Para atender aos sucessivos pedidos do golpista, a idosa chegou a contrair dois empréstimos bancários, somando um prejuízo de R$ 7 mil antes de perceber a fraude.",
-      "licoes_aprendidas": "Jamais faça empréstimos bancários para enviar valores solicitados por mensagens de texto."
+      "licoes_aprendidas": "Jamais faça empréstimos bancários para enviar valores solicitados por mensagens de texto.",
+      "data": "2022-04-23",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 7,
@@ -55,7 +79,11 @@
       "fonte": "UOL / Portal JC (16/09/2026)",
       "vitima": "Aposentados no Nordeste",
       "relato": "Golpistas contataram segurados através de mensagens com avisos de suspensão de benefício, criando senso de urgência para obter dados pessoais e cópias de documentos sob o pretexto de recadastramento.",
-      "licoes_aprendidas": "O INSS realiza a verificação de prova de vida através do cruzamento de bancos de dados governamentais."
+      "licoes_aprendidas": "O INSS realiza a verificação de prova de vida através do cruzamento de bancos de dados governamentais.",
+      "data": "2026-09-16",
+      "url": null,
+      "tipo": "noticiado",
+      "verificado": false
     },
     {
       "id": 8,
@@ -63,7 +91,11 @@
       "fonte": "UOL Notícias",
       "vitima": "Aposentada de 69 anos",
       "relato": "A vítima atendeu uma ligação telefônica na qual o suposto suporte do banco solicitava a atualização de segurança do aparelho. Seguindo as instruções, baixou um aplicativo de acesso remoto que bloqueou a tela do celular enquanto transações foram efetuadas.",
-      "licoes_aprendidas": "Bancos não solicitam o download de aplicativos terceiros durante contatos telefônicos."
+      "licoes_aprendidas": "Bancos não solicitam o download de aplicativos terceiros durante contatos telefônicos.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 9,
@@ -71,7 +103,11 @@
       "fonte": "G1 - São Paulo",
       "vitima": "Dona de casa de 67 anos",
       "relato": "Um entregador alegou estar entregando um presente de aniversário, mas exigiu o pagamento de R$ 5,00 referentes ao frete. A máquina utilizada possuía o visor danificado e registrou um débito de R$ 4.500 no cartão da vítima.",
-      "licoes_aprendidas": "Recuse pagamentos em máquinas cujo valor não esteja visível na tela."
+      "licoes_aprendidas": "Recuse pagamentos em máquinas cujo valor não esteja visível na tela.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 10,
@@ -79,7 +115,11 @@
       "fonte": "UOL Carros",
       "vitima": "Aposentado de 68 anos",
       "relato": "A vítima realizou a transferência de R$ 15 mil referente ao sinal de um veículo oferecido em um site clonado de leilões da Polícia Federal, descobrindo o golpe ao ir até o endereço presencial.",
-      "licoes_aprendidas": "Realize pagamentos de leilões apenas por contas judiciais oficiais."
+      "licoes_aprendidas": "Realize pagamentos de leilões apenas por contas judiciais oficiais.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 11,
@@ -87,7 +127,11 @@
       "fonte": "G1 - Política e Justiça",
       "vitima": "Servidor público aposentado de 73 anos",
       "relato": "O idoso recebeu uma mensagem pelo WhatsApp com o nome e número do registro profissional do seu advogado de confiança, cobrando o pagamento de guias para expedição de um alvará de R$ 80 mil.",
-      "licoes_aprendidas": "Confirme a cobrança de honorários no telefone fixo do escritório advocatício."
+      "licoes_aprendidas": "Confirme a cobrança de honorários no telefone fixo do escritório advocatício.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 12,
@@ -95,7 +139,11 @@
       "fonte": "G1 - Rio de Janeiro",
       "vitima": "Idosa de 78 anos",
       "relato": "A vítima atendeu uma ligação às 3h da manhã com ameaças contra seu sobrinho. Sob pânico, dirigiu-se até um caixa eletrônico para transferir R$ 8 mil antes de conseguir contato direto com o familiar.",
-      "licoes_aprendidas": "Desligue e faça contato de verificação com a suposta vítima de sequestro."
+      "licoes_aprendidas": "Desligue e faça contato de verificação com a suposta vítima de sequestro.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 13,
@@ -103,7 +151,11 @@
       "fonte": "G1 - Rio Grande do Sul",
       "vitima": "Aposentado de 75 anos",
       "relato": "Um criminoso alegou ter um bilhete premiado da Lotofácil e convenceu o idoso a ir ao banco sacar R$ 10 mil para assegurar a divisão do prêmio, sumindo logo após o repasse.",
-      "licoes_aprendidas": "Não existe transação financeira válida que exija dinheiro em espécie para recebimento de prêmios."
+      "licoes_aprendidas": "Não existe transação financeira válida que exija dinheiro em espécie para recebimento de prêmios.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 14,
@@ -111,7 +163,11 @@
       "fonte": "UOL Economia",
       "vitima": "Idosa de 63 anos",
       "relato": "A idosa ingressou em um grupo do Telegram que pagava pequenas quantias para curtir vídeos. Após acumular confiança, foi orientada a fazer depósitos de R$ 3.000 para liberar comissões maiores que nunca foram devolvidas.",
-      "licoes_aprendidas": "Evite esquemas que exigem transferências prévias para a liberação de remuneração de tarefas."
+      "licoes_aprendidas": "Evite esquemas que exigem transferências prévias para a liberação de remuneração de tarefas.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     },
     {
       "id": 15,
@@ -119,7 +175,11 @@
       "fonte": "G1 - Tecnologia",
       "vitima": "Aposentado de 66 anos",
       "relato": "A vítima clicou em um link enviado por SMS informando a retenção de uma encomenda alfandegária e realizou o pagamento da taxa via PIX para uma empresa fantasma de intermediação financeira.",
-      "licoes_aprendidas": "Acompanhe as taxas de importação na plataforma Minhas Importações no site dos Correios."
+      "licoes_aprendidas": "Acompanhe as taxas de importação na plataforma Minhas Importações no site dos Correios.",
+      "data": null,
+      "url": null,
+      "tipo": "ilustrativo",
+      "verificado": false
     }
   ]
 }

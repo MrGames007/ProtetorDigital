@@ -11,10 +11,8 @@ namespace ProtetorDigital
 
         private void BtnQuiz_Click(object sender, EventArgs e)
         {
-            Hide();
             using var janela = new FrmQuiz();
             janela.ShowDialog(this);
-            Show();
         }
         private void BtnSair_Click(object sender, EventArgs e)
         {
@@ -23,10 +21,8 @@ namespace ProtetorDigital
 
         private void BtnBiblioteca_Click(object sender, EventArgs e)
         {
-            Hide();
             using var janela = new FrmBiblioteca();
             janela.ShowDialog(this);
-            Show();
         }
 
     }
