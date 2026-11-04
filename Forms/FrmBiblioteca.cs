@@ -18,30 +18,6 @@ namespace ProtetorDigital.Forms
             _janelaOrigem = origem;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
-            StartPosition = FormStartPosition.CenterScreen;
-            Controls.Clear();
-            var layout = new TableLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                AutoSize = false,
-                ColumnCount = 3,
-                RowCount = 5,
-                Padding = new Padding(0)
-            };
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
-            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
-            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 18));
-            for (var i = 1; i < 5; i++) layout.RowStyles.Add(new RowStyle(SizeType.Percent, 20.5f));
-            label1.Dock = BtnDicas.Dock = BtnRelatos.Dock = BtnExGolpe.Dock = DockStyle.Fill;
-            BtnVoltar.Dock = DockStyle.Fill;
-            label1.Margin = BtnVoltar.Margin = BtnDicas.Margin = BtnRelatos.Margin = BtnExGolpe.Margin = new Padding(8);
-            layout.Controls.Add(label1, 1, 0);
-            layout.Controls.Add(BtnExGolpe, 1, 1);
-            layout.Controls.Add(BtnDicas, 1, 2);
-            layout.Controls.Add(BtnRelatos, 1, 3);
-            layout.Controls.Add(BtnVoltar, 1, 4);
-            Controls.Add(layout);
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1000, 700));
         }
 
@@ -71,6 +47,8 @@ namespace ProtetorDigital.Forms
             frmExGolpe.Show();
             this.Hide();
         }
+
+        
     }
 }
 
