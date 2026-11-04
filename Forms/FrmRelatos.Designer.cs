@@ -126,7 +126,7 @@
             BtnRetorno.Name = "BtnRetorno";
             BtnRetorno.Size = new Size(75, 23);
             BtnRetorno.TabIndex = 11;
-            BtnRetorno.Text = "Retornar";
+            BtnRetorno.Text = "Voltar";
             BtnRetorno.UseVisualStyleBackColor = true;
             BtnRetorno.Click += BtnRetorno_Click;
             // 
