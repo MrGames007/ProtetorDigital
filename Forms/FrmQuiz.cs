@@ -36,6 +36,7 @@ namespace ProtetorDigital.Forms
         {
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
+            ProtetorDigital.Services.Suavizar.Aplicar(this);
             ConfigurarInterface();
             MinimumSize = new Size(800, 600);
             Responsivo.Registrar(this, new Size(1201, 700));

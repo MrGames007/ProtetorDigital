@@ -135,7 +135,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1116, 618);
+            ClientSize = new Size(1201, 700);
             Controls.Add(BtnRetorno);
             Controls.Add(lblLicoesAprendidas);
             Controls.Add(lblTexto);

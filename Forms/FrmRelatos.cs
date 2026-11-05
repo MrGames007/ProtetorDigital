@@ -15,12 +15,14 @@ namespace ProtetorDigital.Forms
     {
         private List<Relato> _relatos = new();
         private int _indice = 0;
+        private LinkLabel _linkMateria = new();
 
         private Form _janelaOrigem;
         public FrmRelatos(Form origem)
         {
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
+            ProtetorDigital.Services.Suavizar.Aplicar(this);
             _janelaOrigem = origem;
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
@@ -29,6 +31,22 @@ namespace ProtetorDigital.Forms
             MaximizeBox = true;
             StartPosition = FormStartPosition.CenterScreen;
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
+            Resize += (_, _) => AjustarLarguras();
+            _linkMateria = new LinkLabel
+            {
+                AutoSize = true,
+                Font = new Font("Segoe UI", 16F),
+                Text = "Ler a matéria original",
+                Visible = false
+            };
+            _linkMateria.LinkClicked += (_, _) =>
+            {
+                if (_linkMateria.Tag is string url)
+                {
+                    try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true }); } catch { }
+                }
+            };
+            Controls.Add(_linkMateria);
         }
 
         private void FrmRelatos_Load(object? sender, EventArgs e)
@@ -53,13 +71,24 @@ namespace ProtetorDigital.Forms
                 }
 
                 if (_relatos.Any()) MostrarRelato(0);
+                AjustarLarguras();
             }
             catch
             {
-                // ignorar erros de leitura para não quebrar a UI
+                // ignorar erro de leitura para não quebrar a UI
             }
         }
 
+        private void AjustarLarguras()
+        {
+            var largura = Math.Max(100, ClientSize.Width - 70);
+            foreach (var label in new[] { lblFonte, lblVitima, lblRelato, lblLicoesAprendidas })
+            {
+                label.MaximumSize = new Size(largura, 0);
+                label.AutoSize = true;
+            }
+            _linkMateria.Location = new Point(18, Math.Min(ClientSize.Height - 90, lblLicoesAprendidas.Bottom + 12));
+        }
         private void MostrarRelato(int indice)
         {
             if (indice < 0 || indice >= _relatos.Count) return;
@@ -72,6 +101,11 @@ namespace ProtetorDigital.Forms
             lblVitima.Text = r.Vitima ?? string.Empty;
             lblRelato.Text = r.Conteudo ?? string.Empty;
             lblLicoesAprendidas.Text = r.LicoesAprendidas ?? string.Empty;
+            lblFonte.Text = !string.IsNullOrWhiteSpace(r.Tipo) && r.Tipo == "ilustrativo"
+                ? "Caso ilustrativo, baseado em modalidades reais"
+                : r.Tipo == "alerta_oficial" ? "Alerta oficial do INSS" : $"Fonte: {r.Fonte} ({r.Data})";
+            _linkMateria.Tag = r.Url;
+            _linkMateria.Visible = !string.IsNullOrWhiteSpace(r.Url);
 
             // Atualiza estado dos botões de navegação
             BtnVoltar.Enabled = _indice > 0;

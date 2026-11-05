@@ -12,6 +12,7 @@ public sealed class FrmCreditos : Form
     public FrmCreditos()
     {
         JanelaPadrao.Registrar(this);
+        Suavizar.Aplicar(this);
         var info = ConteudoService.CarregarObjeto<CreditosInfo>("creditos.json") ?? new CreditosInfo();
         Text = info.Titulo ?? string.Empty;
         MinimumSize = new Size(800, 600);

@@ -17,5 +17,11 @@ namespace ProtetorDigital
 
         [JsonPropertyName("licoes_aprendidas")]
         public string? LicoesAprendidas { get; set; }
+
+        public string? Cidade { get; set; }
+        public string? Url { get; set; }
+        public string? Data { get; set; }
+        public string? Tipo { get; set; }
+        public bool Verificado { get; set; }
     }
 }

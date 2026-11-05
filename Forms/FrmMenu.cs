@@ -8,6 +8,7 @@ namespace ProtetorDigital
         {
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
+            ProtetorDigital.Services.Suavizar.Aplicar(this);
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
             StartPosition = FormStartPosition.CenterScreen;
@@ -59,11 +60,16 @@ namespace ProtetorDigital
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1000, 700));
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            _ = Task.Run(() => { });
+        }
+
         private void BtnQuiz_Click(object sender, EventArgs e)
         {
             FrmQuiz segundaJanela = new FrmQuiz(this);
-            segundaJanela.Show();
-            this.Hide();
+            segundaJanela.ShowDialog(this);
         }
         private void BtnSair_Click(object sender, EventArgs e)
         {
@@ -73,8 +79,7 @@ namespace ProtetorDigital
         private void BtnBiblioteca_Click(object sender, EventArgs e)
         {
             FrmBiblioteca quartaJanela = new FrmBiblioteca(this);
-            quartaJanela.Show();
-            this.Hide();
+            quartaJanela.ShowDialog(this);
         }
 
     }

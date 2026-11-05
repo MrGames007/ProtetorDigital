@@ -4,15 +4,23 @@
     {
       "id": 1,
       "titulo": "Prejuízo de R$ 31,9 Mil em Boletos pelo WhatsApp",
-      "fonte": "G1 - São Carlos e Araraquara (23/01/2024)",
-      "vitima": "Idosa de 70 anos",
+      "fonte": "Só Notícias (operação das Polícias Civis de MT e SP)",
+      "vitima": "Idosa de 70 anos — São João da Boa Vista (SP)",
+      "cidade": "São João da Boa Vista (SP)",
+      "url": "https://www.sonoticias.com.br/policia/policia-faz-buscas-em-mato-grosso-a-quadrilha-suspeita-de-aplicar-golpe-de-r-31-mil-em-idosa/",
+      "data": "2024-01-23",
+      "tipo": "noticiado",
+      "verificado": true,
       "relato": "A idosa recebeu mensagens de um golpista se passando por sua filha pelo WhatsApp. O criminoso solicitou a quitação de boletos e transferências urgentes, fazendo a vítima pagar quatro boletos que somaram R$ 31,9 mil. A fraude só foi percebida quando a vítima conseguiu contato telefônico com a filha.",
       "licoes_aprendidas": "Ligue para o canal de voz tradicional do parente antes de realizar quitação de boletos recebidos por aplicativos."
     },
     {
       "id": 2,
       "titulo": "Perda de R$ 23 Mil e Compras Consecutivas no Falso Motoboy",
-      "fonte": "Correio Braziliense (27/09/2026)",
+      "fonte": "Correio Braziliense",
+      "url": "https://www.correiobraziliense.com.br/cbradar/golpe-falso-motoboy-banco-idoso/",
+      "tipo": "noticiado",
+      "verificado": true,
       "vitima": "Aposentado de 72 anos",
       "relato": "Após ligação da falsa central bancária alertando sobre compras suspeitas, um entregador recolheu seu cartão cortado ao meio. Os golpistas usaram o chip mantido intacto e realizaram quatro compras consecutivas somando R$ 23 mil em poucas horas.",
       "licoes_aprendidas": "Bancos não mandam motoboys para recolher cartões e o chip do cartão deve ser destruído por completo."
@@ -20,7 +28,12 @@
     {
       "id": 3,
       "titulo": "O Golpe da Falsa Herança de R$ 3 Milhões",
-      "fonte": "G1 - Paraná (08/04/2025)",
+      "fonte": "Polícia Civil do Paraná / Agência Estadual de Notícias",
+      "cidade": "Guarapuava (PR)",
+      "url": "https://www.parana.pr.gov.br/aen/Noticia/PCPR-prende-tres-homens-por-aplicarem-golpe-da-falsa-heranca-em-idosa-em-Guarapuava",
+      "data": "2025-04-08",
+      "tipo": "noticiado",
+      "verificado": true,
       "vitima": "Idosa de 71 anos",
       "relato": "A vítima foi abordada por estelionatários que simularam uma ligação telefônica para um banco, confirmando falsamente que um dos suspeitos possuía R$ 3 milhões de herança a receber. A idosa repassou R$ 20 mil com a promessa de receber parte do valor.",
       "licoes_aprendidas": "Nunca transfira valores antecipadamente para auxiliar no resgate de premiações ou heranças de terceiros."
@@ -28,7 +41,11 @@
     {
       "id": 4,
       "titulo": "Golpe da Falsa Carta Premiada em Salvador",
-      "fonte": "G1 - Bahia (07/08/2026)",
+      "fonte": "iBahia (Operação Carta Premiada, Polícia Civil da Bahia)",
+      "url": "https://www.ibahia.com/noticias/seguranca/trio-e-preso-suspeito-de-aplicar-golpe-contra-idosos-na-bahia-389137",
+      "data": "2026-08-07",
+      "tipo": "noticiado",
+      "verificado": true,
       "vitima": "Grupo de 14 idosos entre 60 e 80 anos",
       "relato": "Uma quadrilha enviou cartas físicas informando que as vítimas teriam valores a receber. Ao se dirigirem ao local indicado, os idosos eram induzidos a pagar taxas de R$ 3,5 mil a R$ 4 mil para a liberação de prêmios inexistentes.",
       "licoes_aprendidas": "Desconfie de notificações por correspondência que exijam taxas prévias para concessão de valores."
@@ -36,7 +53,10 @@
     {
       "id": 5,
       "titulo": "Transferência de R$ 4,9 Mil para Falso Filho em Pádua",
-      "fonte": "G1 - Norte Fluminense (24/07/2026)",
+      "fonte": "Baseado em modalidade real",
+      "tipo": "ilustrativo",
+      "verificado": false,
+      "url": null,
       "vitima": "Idoso residente em Santo Antônio de Pádua",
       "relato": "O idoso recebeu mensagens de um número desconhecido se passando por seu filho e solicitando a quitação de um boleto no valor de R$ 4.980. O estelionatário tentou aplicar um segundo boleto de R$ 7 mil, que só falhou por erro de leitura do código de barras.",
       "licoes_aprendidas": "Mensagens solicitando pagamentos a partir de novos números devem ser checadas em ligação oficial."
@@ -44,16 +64,22 @@
     {
       "id": 6,
       "titulo": "Empréstimos de R$ 7 Mil no WhatsApp",
-      "fonte": "G1 - Santos e Região (23/04/2022)",
+      "fonte": "Baseado em modalidade real",
+      "tipo": "ilustrativo",
+      "verificado": false,
+      "url": null,
       "vitima": "Idosa de 65 anos",
       "relato": "Um perfil falso solicitou dinheiro à vítima via WhatsApp. Para atender aos sucessivos pedidos do golpista, a idosa chegou a contrair dois empréstimos bancários, somando um prejuízo de R$ 7 mil antes de perceber a fraude.",
       "licoes_aprendidas": "Jamais faça empréstimos bancários para enviar valores solicitados por mensagens de texto."
     },
     {
       "id": 7,
-      "titulo": "Extorsão via Prova de Vida Falsa do INSS",
-      "fonte": "UOL / Portal JC (16/09/2026)",
-      "vitima": "Aposentados no Nordeste",
+      "titulo": "Falsa Prova de Vida do INSS",
+      "fonte": "Alerta do INSS (setembro de 2026)",
+      "vitima": "Aposentados e pensionistas",
+      "url": "https://gcmais.com.br/noticias/2026/09/15/inss-alerta-para-golpe-da-falsa-prova-de-vida-contra-aposentados-e-pensionistas",
+      "tipo": "alerta_oficial",
+      "verificado": true,
       "relato": "Golpistas contataram segurados através de mensagens com avisos de suspensão de benefício, criando senso de urgência para obter dados pessoais e cópias de documentos sob o pretexto de recadastramento.",
       "licoes_aprendidas": "O INSS realiza a verificação de prova de vida através do cruzamento de bancos de dados governamentais."
     },

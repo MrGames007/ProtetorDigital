@@ -22,11 +22,7 @@ public static class JanelaPadrao
 
         FormulariosRegistrados.Add(f, new object());
         f.StartPosition = FormStartPosition.Manual;
-        f.Load += (_, _) => Aplicar(f);
-        f.VisibleChanged += (_, _) =>
-        {
-            if (f.Visible) Aplicar(f);
-        };
+        Aplicar(f);
         f.ResizeEnd += (_, _) => Salvar(f);
         f.FormClosing += (_, _) => Salvar(f);
         f.SizeChanged += (_, _) =>

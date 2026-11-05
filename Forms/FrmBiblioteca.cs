@@ -15,37 +15,37 @@ namespace ProtetorDigital.Forms
         {
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
+            ProtetorDigital.Services.Suavizar.Aplicar(this);
             _janelaOrigem = origem;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1000, 700));
+            BackgroundImageLayout = ImageLayout.None;
+            BackgroundImage = ProtetorDigital.Services.FundoCache.Obter(BackgroundImage, ClientSize);
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
             _janelaOrigem.Show();
-            this.Close();
+            Close();
         }
 
         private void BtnRelatos_Click(object sender, EventArgs e)
         {
-            var frmRelatos = new FrmRelatos(this);
-            frmRelatos.Show();
-            this.Hide();
+            using var frmRelatos = new FrmRelatos(this);
+            frmRelatos.ShowDialog(this);
         }
 
         private void BtnDicas_Click(object sender, EventArgs e)
         {
-            var frmDicas = new FrmDicas(this);
-            frmDicas.Show();
-            this.Hide();
+            using var frmDicas = new FrmDicas(this);
+            frmDicas.ShowDialog(this);
         }
 
         private void BtnExGolpe_Click(object sender, EventArgs e)
         {
-            var frmExGolpe = new FrmExGolpes(this);
-            frmExGolpe.Show();
-            this.Hide();
+            using var frmExGolpe = new FrmExGolpes(this);
+            frmExGolpe.ShowDialog(this);
         }
 
         

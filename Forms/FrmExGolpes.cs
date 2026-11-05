@@ -23,6 +23,7 @@ namespace ProtetorDigital.Forms
             _janelaOrigem = origem;
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
+            ProtetorDigital.Services.Suavizar.Aplicar(this);
             BtnAvancar.Click += BtnAvancar_Click;
             BtnVoltar.Click += BtnVoltar_Click;
             Load += FrmExGolpes_Load;

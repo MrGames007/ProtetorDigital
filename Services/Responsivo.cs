@@ -24,6 +24,13 @@ public static class Responsivo
         var estado = new EstadoFormulario { TamanhoBase = tamanhoBase };
         Estados[formulario] = estado;
         RegistrarControles(formulario, estado);
+        formulario.Load += (_, _) =>
+        {
+            formulario.SuspendLayout();
+            Redimensionar(formulario, estado);
+            formulario.PerformLayout();
+            formulario.ResumeLayout(true);
+        };
         formulario.Resize += (_, _) => Redimensionar(formulario, estado);
         formulario.FormClosed += (_, _) =>
         {
