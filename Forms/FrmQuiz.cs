@@ -10,6 +10,8 @@ namespace ProtetorDigital.Forms
     public partial class FrmQuiz : Form
     {
         private List<Pergunta> _perguntas = new();
+        private List<Pergunta> _todasPerguntas = new();
+        private const int QuantidadePorRodada = 10;
         private int _indiceAtual = 0;
         private int _pontuacao = 0;
         private List<OpcaoExibida> _opcoesExibidas = new();
@@ -27,6 +29,8 @@ namespace ProtetorDigital.Forms
         private readonly Button _btnVoltarMenu = new();
         private TableLayoutPanel _tlpRaiz = new();
         private TableLayoutPanel _tlpBotoes = new();
+        private TableLayoutPanel _cabecalho = new();
+        private TableLayoutPanel _alternativas = new();
 
         public FrmQuiz()
         {
@@ -39,6 +43,7 @@ namespace ProtetorDigital.Forms
             {
                 Responsivo.Registrar(controle);
             }
+            Resize += (_, _) => AjustarControlesParaCaber();
             Load += FrmQuiz_Load;
             KeyPreview = true;
             KeyDown += FrmQuiz_KeyDown;
@@ -52,27 +57,32 @@ namespace ProtetorDigital.Forms
         private void ConfigurarInterface()
         {
             ClientSize = new Size(1201, 700);
-            _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent };
+            _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent, AutoScroll = true };
             foreach (var percentual in new[] { 8f, 14f, 34f, 28f, 16f }) _tlpRaiz.RowStyles.Add(new RowStyle(SizeType.Percent, percentual));
 
-            var cabecalho = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, BackColor = Color.Transparent };
-            cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-            cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            _cabecalho = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, BackColor = Color.Transparent };
+            _cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
+            _cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75));
             _lblProgresso.Dock = DockStyle.Fill;
+            _lblProgresso.AutoSize = false;
+            _lblProgresso.AutoEllipsis = false;
             _lblProgresso.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             _lblProgresso.TextAlign = ContentAlignment.MiddleLeft;
-            _progressQuiz.Dock = DockStyle.Fill;
-            _progressQuiz.Margin = new Padding(12, 8, 0, 8);
-            cabecalho.Controls.Add(_lblProgresso, 0, 0);
-            cabecalho.Controls.Add(_progressQuiz, 1, 0);
+            _lblProgresso.MinimumSize = new Size(0, 32);
+            _progressQuiz.Dock = DockStyle.None;
+            _progressQuiz.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            _progressQuiz.Height = 24;
+            _progressQuiz.Margin = new Padding(12, 0, 0, 0);
+            _cabecalho.Controls.Add(_lblProgresso, 0, 0);
+            _cabecalho.Controls.Add(_progressQuiz, 1, 0);
 
             lblPergunta.Dock = DockStyle.Fill;
             lblPergunta.AutoSize = false;
             lblPergunta.TextAlign = ContentAlignment.MiddleLeft;
             lblPergunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
 
-            var alternativas = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 4, BackColor = Color.Transparent };
-            for (var i = 0; i < 4; i++) alternativas.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+            _alternativas = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 4, BackColor = Color.Transparent };
+            for (var i = 0; i < 4; i++) _alternativas.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
             foreach (var opcao in new[] { RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4 })
             {
                 opcao.Dock = DockStyle.Fill;
@@ -80,7 +90,7 @@ namespace ProtetorDigital.Forms
                 opcao.TextAlign = ContentAlignment.MiddleLeft;
                 opcao.Font = new Font("Segoe UI", 13F, FontStyle.Regular);
                 opcao.Margin = new Padding(4);
-                alternativas.Controls.Add(opcao, 0, alternativas.Controls.Count);
+                _alternativas.Controls.Add(opcao, 0, _alternativas.Controls.Count);
             }
 
             _pnlFeedback.Dock = DockStyle.Fill;
@@ -107,9 +117,9 @@ namespace ProtetorDigital.Forms
             _tlpBotoes.Controls.Add(BtnVoltar, 0, 0);
             _tlpBotoes.Controls.Add(BtnConfirmar, 2, 0);
 
-            _tlpRaiz.Controls.Add(cabecalho, 0, 0);
+            _tlpRaiz.Controls.Add(_cabecalho, 0, 0);
             _tlpRaiz.Controls.Add(lblPergunta, 0, 1);
-            _tlpRaiz.Controls.Add(alternativas, 0, 2);
+            _tlpRaiz.Controls.Add(_alternativas, 0, 2);
             _tlpRaiz.Controls.Add(_pnlFeedback, 0, 3);
             _tlpRaiz.Controls.Add(_tlpBotoes, 0, 4);
             Controls.Clear();
@@ -147,7 +157,8 @@ namespace ProtetorDigital.Forms
         {
             try
             {
-                _perguntas = ConteudoService.CarregarObjeto<List<Pergunta>>("perguntas.json") ?? new();
+                _todasPerguntas = ConteudoService.CarregarObjeto<List<Pergunta>>("perguntas.json") ?? new();
+                IniciarRodada();
 
                 if (_perguntas.Any())
                 {
@@ -161,6 +172,30 @@ namespace ProtetorDigital.Forms
             }
         }
 
+        private void IniciarRodada()
+        {
+            var sorteadas = _todasPerguntas.ToArray();
+            Random.Shared.Shuffle(sorteadas);
+            _perguntas = sorteadas.Take(QuantidadePorRodada).ToList();
+        }
+
+        private void AjustarControlesParaCaber()
+        {
+            var controles = new Control[] { _lblProgresso, lblPergunta, RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4, BtnVoltar, BtnConfirmar };
+            foreach (var controle in controles) Responsivo.AjustarParaCaber(controle);
+
+            var menorFonte = new[] { RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4 }.Min(c => c.Font.Size);
+            foreach (var opcao in new[] { RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4 })
+            {
+                if (Math.Abs(opcao.Font.Size - menorFonte) > 0.01f)
+                {
+                    var antiga = opcao.Font;
+                    opcao.Font = new Font(antiga.FontFamily, menorFonte, antiga.Style, antiga.Unit);
+                    antiga.Dispose();
+                }
+            }
+            Responsivo.AjustarParaCaber(_lblProgresso);
+        }
         private void MostrarPergunta(int indice)
         {
             if (indice < 0 || indice >= _perguntas.Count) return;
@@ -303,6 +338,7 @@ namespace ProtetorDigital.Forms
             _indiceAtual = 0;
             _pontuacao = 0;
             _respostasErradas.Clear();
+            IniciarRodada();
             _pnlResultado.Visible = false;
             lblPergunta.Visible = true;
             _lblProgresso.Visible = true;

@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ProtetorDigital.Services;
 
@@ -73,7 +74,7 @@ public static class Responsivo
         var alturaBase = Math.Max(1, estado.TamanhoBase.Height);
         var escala = Math.Clamp(
             Math.Min((float)formulario.ClientSize.Width / larguraBase, (float)formulario.ClientSize.Height / alturaBase),
-            0.85f, 2f);
+            0.85f, 1.6f);
 
         if (Math.Abs(escala - estado.UltimaEscala) < 0.02f)
         {
@@ -103,6 +104,34 @@ public static class Responsivo
         finally
         {
             formulario.ResumeLayout(true);
+        }
+    }
+
+    public static void AjustarParaCaber(Control controle)
+    {
+        if (controle is not (Label or RadioButton or Button) || controle.Width <= 0 || controle.Height <= 0)
+        {
+            return;
+        }
+
+        while (controle.Font.Size > 12f)
+        {
+            var largura = Math.Max(1, controle.ClientSize.Width - controle.Padding.Horizontal);
+            var altura = Math.Max(1, controle.ClientSize.Height - controle.Padding.Vertical);
+            var flags = controle is Label or RadioButton ? TextFormatFlags.WordBreak : TextFormatFlags.NoPadding;
+            var medido = TextRenderer.MeasureText(controle.Text, controle.Font, new Size(largura, int.MaxValue), flags);
+            var palavraMaior = controle.Text.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Any(palavra => TextRenderer.MeasureText(palavra, controle.Font, Size.Empty, TextFormatFlags.NoPadding).Width > largura);
+            var umaLinha = controle is Button || controle == controle.Parent?.Controls[0] && controle.Text.StartsWith("Pergunta", StringComparison.Ordinal);
+            if ((!umaLinha && medido.Height <= altura && !palavraMaior) ||
+                (umaLinha && medido.Width <= largura))
+            {
+                break;
+            }
+
+            var antiga = controle.Font;
+            controle.Font = new Font(antiga.FontFamily, Math.Max(12f, antiga.Size - 1f), antiga.Style, antiga.Unit);
+            antiga.Dispose();
         }
     }
 
