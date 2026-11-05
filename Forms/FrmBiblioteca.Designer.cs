@@ -143,7 +143,6 @@
             tlpBiblioteca.RowStyles.Add(new RowStyle(SizeType.Percent, 14F));
             tlpBiblioteca.Size = new Size(1201, 700);
             tlpBiblioteca.TabIndex = 0;
-            tlpBiblioteca.Paint += tlpBiblioteca_Paint;
             // 
             // FrmBiblioteca
             // 

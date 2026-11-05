@@ -77,7 +77,6 @@ public static class Responsivo
 
         if (Math.Abs(escala - estado.UltimaEscala) < 0.02f)
         {
-            AtualizarLarguras(formulario);
             return;
         }
 
@@ -91,7 +90,7 @@ public static class Responsivo
                     continue;
                 }
 
-                var tamanho = Math.Max(12f, tamanhoBaseFonte * escala);
+                var tamanho = Math.Clamp(tamanhoBaseFonte * escala, 12f, 36f);
                 var fonteAnterior = controle.Font;
                 controle.Font = new Font(fonteAnterior.FontFamily, tamanho, fonteAnterior.Style, fonteAnterior.Unit, fonteAnterior.GdiCharSet, fonteAnterior.GdiVerticalFont);
                 if (!ReferenceEquals(fonteAnterior, formulario.Font))
@@ -100,7 +99,6 @@ public static class Responsivo
                 }
             }
             estado.UltimaEscala = escala;
-            AtualizarLarguras(formulario);
         }
         finally
         {
@@ -108,16 +106,4 @@ public static class Responsivo
         }
     }
 
-    private static void AtualizarLarguras(Control controle)
-    {
-        foreach (Control filho in controle.Controls)
-        {
-            if (filho is Label label && label.AutoSize && label.MaximumSize.Height == 0)
-            {
-                var margem = label.Parent is null ? 0 : label.Margin.Horizontal + label.Parent.Padding.Horizontal;
-                label.MaximumSize = new Size(Math.Max(100, label.Parent!.ClientSize.Width - label.Left - margem), 0);
-            }
-            AtualizarLarguras(filho);
-        }
-    }
 }

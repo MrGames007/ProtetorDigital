@@ -20,20 +20,25 @@ namespace ProtetorDigital.Forms
         private readonly Label _lblProgresso = new();
         private readonly ProgressBar _progressQuiz = new();
         private readonly Panel _pnlFeedback = new();
-        private readonly Label _lblFeedback = new();
+        private readonly RichTextBox _txtFeedback = new();
         private readonly Panel _pnlResultado = new();
         private readonly Label _lblResultado = new();
         private readonly Button _btnRefazer = new();
         private readonly Button _btnVoltarMenu = new();
+        private TableLayoutPanel _tlpRaiz = new();
+        private TableLayoutPanel _tlpBotoes = new();
 
         public FrmQuiz()
         {
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ConfigurarInterface();
-            MinimumSize = new Size(
-                Math.Max(MinimumSize.Width, Controls.Cast<Control>().Max(c => c.Right) + 15),
-                Math.Max(MinimumSize.Height, Controls.Cast<Control>().Max(c => c.Bottom) + 15));
+            MinimumSize = new Size(800, 600);
+            Responsivo.Registrar(this, new Size(1201, 700));
+            foreach (Control controle in Controls)
+            {
+                Responsivo.Registrar(controle);
+            }
             Load += FrmQuiz_Load;
             KeyPreview = true;
             KeyDown += FrmQuiz_KeyDown;
@@ -47,40 +52,68 @@ namespace ProtetorDigital.Forms
         private void ConfigurarInterface()
         {
             ClientSize = new Size(1201, 700);
+            _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent };
+            foreach (var percentual in new[] { 8f, 14f, 34f, 28f, 16f }) _tlpRaiz.RowStyles.Add(new RowStyle(SizeType.Percent, percentual));
 
-            _lblProgresso.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            _lblProgresso.Location = new Point(15, 75);
-            _lblProgresso.Size = new Size(250, 30);
-            Controls.Add(_lblProgresso);
+            var cabecalho = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, BackColor = Color.Transparent };
+            cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            _lblProgresso.Dock = DockStyle.Fill;
+            _lblProgresso.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            _lblProgresso.TextAlign = ContentAlignment.MiddleLeft;
+            _progressQuiz.Dock = DockStyle.Fill;
+            _progressQuiz.Margin = new Padding(12, 8, 0, 8);
+            cabecalho.Controls.Add(_lblProgresso, 0, 0);
+            cabecalho.Controls.Add(_progressQuiz, 1, 0);
 
-            _progressQuiz.Location = new Point(280, 78);
-            _progressQuiz.Size = new Size(880, 25);
-            Controls.Add(_progressQuiz);
+            lblPergunta.Dock = DockStyle.Fill;
+            lblPergunta.AutoSize = false;
+            lblPergunta.TextAlign = ContentAlignment.MiddleLeft;
+            lblPergunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
 
-            lblPergunta.Location = new Point(15, 120);
-            RBtnAlt1.Location = new Point(15, 205);
-            RBtnAlt2.Location = new Point(15, 270);
-            RBtnAlt3.Location = new Point(15, 335);
-            RBtnAlt4.Location = new Point(15, 400);
+            var alternativas = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 4, BackColor = Color.Transparent };
+            for (var i = 0; i < 4; i++) alternativas.RowStyles.Add(new RowStyle(SizeType.Percent, 25));
+            foreach (var opcao in new[] { RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4 })
+            {
+                opcao.Dock = DockStyle.Fill;
+                opcao.AutoSize = false;
+                opcao.TextAlign = ContentAlignment.MiddleLeft;
+                opcao.Font = new Font("Segoe UI", 13F, FontStyle.Regular);
+                opcao.Margin = new Padding(4);
+                alternativas.Controls.Add(opcao, 0, alternativas.Controls.Count);
+            }
 
-            BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            BtnVoltar.Size = new Size(180, 60);
-            BtnVoltar.Location = new Point(15, 615);
-
-            BtnConfirmar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            BtnConfirmar.Size = new Size(250, 60);
-            BtnConfirmar.Location = new Point(936, 615);
-            BtnConfirmar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-            _pnlFeedback.Location = new Point(15, 470);
-            _pnlFeedback.Size = new Size(1145, 120);
-            _pnlFeedback.Padding = new Padding(12);
+            _pnlFeedback.Dock = DockStyle.Fill;
+            _pnlFeedback.Padding = new Padding(8);
             _pnlFeedback.Visible = false;
-            _lblFeedback.Dock = DockStyle.Fill;
-            _lblFeedback.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            _lblFeedback.AutoEllipsis = true;
-            _pnlFeedback.Controls.Add(_lblFeedback);
-            Controls.Add(_pnlFeedback);
+            _pnlFeedback.BackColor = Color.FromArgb(220, 252, 231);
+            _txtFeedback.Dock = DockStyle.Fill;
+            _txtFeedback.ReadOnly = true;
+            _txtFeedback.BorderStyle = BorderStyle.None;
+            _txtFeedback.ScrollBars = RichTextBoxScrollBars.Vertical;
+            _txtFeedback.TabStop = false;
+            _txtFeedback.BackColor = _pnlFeedback.BackColor;
+            _txtFeedback.ForeColor = Color.FromArgb(33, 37, 41);
+            _txtFeedback.Font = new Font("Segoe UI", 13F);
+            _pnlFeedback.Controls.Add(_txtFeedback);
+
+            _tlpBotoes = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3, RowCount = 1, BackColor = Color.Transparent };
+            _tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+            _tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
+            _tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+            BtnVoltar.Dock = BtnConfirmar.Dock = DockStyle.Fill;
+            BtnVoltar.Margin = BtnConfirmar.Margin = new Padding(8);
+            BtnVoltar.Font = BtnConfirmar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            _tlpBotoes.Controls.Add(BtnVoltar, 0, 0);
+            _tlpBotoes.Controls.Add(BtnConfirmar, 2, 0);
+
+            _tlpRaiz.Controls.Add(cabecalho, 0, 0);
+            _tlpRaiz.Controls.Add(lblPergunta, 0, 1);
+            _tlpRaiz.Controls.Add(alternativas, 0, 2);
+            _tlpRaiz.Controls.Add(_pnlFeedback, 0, 3);
+            _tlpRaiz.Controls.Add(_tlpBotoes, 0, 4);
+            Controls.Clear();
+            Controls.Add(_tlpRaiz);
 
             _pnlResultado.Dock = DockStyle.Fill;
             _pnlResultado.BackColor = Color.White;
@@ -88,20 +121,25 @@ namespace ProtetorDigital.Forms
             _pnlResultado.Visible = false;
             _lblResultado.Dock = DockStyle.Fill;
             _lblResultado.Font = new Font("Segoe UI", 16F, FontStyle.Regular);
-            _lblResultado.AutoEllipsis = true;
+            _lblResultado.AutoEllipsis = false;
+            _lblResultado.AutoSize = false;
+            _lblResultado.TextAlign = ContentAlignment.TopLeft;
+            _lblResultado.Dock = DockStyle.Fill;
             _pnlResultado.Controls.Add(_lblResultado);
             _btnRefazer.Text = "Refazer";
             _btnRefazer.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            _btnRefazer.Size = new Size(200, 60);
-            _btnRefazer.Location = new Point(30, 610);
             _btnRefazer.Click += BtnRefazer_Click;
-            _pnlResultado.Controls.Add(_btnRefazer);
             _btnVoltarMenu.Text = "Voltar ao menu";
             _btnVoltarMenu.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            _btnVoltarMenu.Size = new Size(250, 60);
-            _btnVoltarMenu.Location = new Point(890, 610);
             _btnVoltarMenu.Click += BtnVoltarMenu_Click;
-            _pnlResultado.Controls.Add(_btnVoltarMenu);
+            var botoesResultado = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 76, FlowDirection = FlowDirection.LeftToRight, Padding = new Padding(0, 8, 0, 8) };
+            _btnRefazer.AutoSize = false;
+            _btnVoltarMenu.AutoSize = false;
+            _btnRefazer.Size = new Size(200, 60);
+            _btnVoltarMenu.Size = new Size(250, 60);
+            botoesResultado.Controls.Add(_btnRefazer);
+            botoesResultado.Controls.Add(_btnVoltarMenu);
+            _pnlResultado.Controls.Add(botoesResultado);
             Controls.Add(_pnlResultado);
         }
 
@@ -211,9 +249,18 @@ namespace ProtetorDigital.Forms
 
             string explicacaoEscolhida = string.Empty;
             string explicacao = perguntaAtual.Explicacao ?? "Não há explicação cadastrada para esta pergunta.";
-            _lblFeedback.Text = (acertou ? "Você acertou!" : "Você errou.") +
-                $"\n{explicacaoEscolhida}\nA resposta certa é: {alternativaCorreta}\n{explicacao}";
+            var blocos = new List<string> { acertou ? "Você acertou!" : "Você errou." };
+            if (!string.IsNullOrWhiteSpace(explicacaoEscolhida)) blocos.Add(explicacaoEscolhida);
+            blocos.Add($"A resposta certa é: {alternativaCorreta}");
+            if (!string.IsNullOrWhiteSpace(explicacao)) blocos.Add(explicacao);
+            _txtFeedback.Text = string.Join("\n\n", blocos);
+            _txtFeedback.SelectAll();
+            _txtFeedback.SelectionFont = new Font(_txtFeedback.Font, FontStyle.Regular);
+            _txtFeedback.Select(0, (acertou ? "Você acertou!" : "Você errou.").Length);
+            _txtFeedback.SelectionFont = new Font(_txtFeedback.Font, FontStyle.Bold);
+            _txtFeedback.Select(0, 0);
             _pnlFeedback.BackColor = acertou ? Color.FromArgb(220, 252, 231) : Color.FromArgb(254, 226, 226);
+            _txtFeedback.BackColor = _pnlFeedback.BackColor;
             _pnlFeedback.Visible = true;
             _respostaConfirmada = true;
             RBtnAlt1.Enabled = RBtnAlt2.Enabled = RBtnAlt3.Enabled = RBtnAlt4.Enabled = false;
