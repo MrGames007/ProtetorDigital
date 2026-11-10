@@ -44,11 +44,13 @@ O público e o conteúdo indicam uma aplicação educativa, com navegação visu
 |   |-- FrmQuiz.cs / FrmQuiz.Designer.cs / FrmQuiz.resx
 |   |-- FrmCreditos.cs
 |-- Models/
+|   |-- CreditosInfo.cs
 |   |-- Dica.cs
 |   |-- ExGolpe.cs
 |   |-- Pergunta.cs
 |   |-- Relato.cs
 |-- dados/
+|   |-- creditos.json
 |   |-- dicas.json
 |   |-- exgolpes.json
 |   |-- perguntas.json
@@ -57,10 +59,20 @@ O público e o conteúdo indicam uma aplicação educativa, com navegação visu
 |   |-- Resources.resx
 |   |-- Resources.Designer.cs
 |-- imagens/
-    |-- idosos_felizes.jpg
-	|-- interrogação.png
+	|-- Ciencias_da_computacao.png
+	|-- Coordenadoria-de-extensao.png
+	|-- idosos_felizes.jpg
+	|-- interrogacao.png
 	|-- livro.jpg
 	|-- livro.png
+|-- Services/
+|   |-- ConteudoService.cs
+|   |-- FundoCache.cs
+|   |-- JanelaPadrao.cs
+|   |-- Responsivo.cs
+|   |-- Suavizar.cs
+|-- docs/CODIGO/
+|   |-- documentação detalhada dos arquivos
 
 Os arquivos *.Designer.cs e *.resx são gerados/administrados pelo Windows Forms Designer e não devem ser editados manualmente sem necessidade. Os arquivos *.cs das telas contêm a lógica de comportamento.
 
@@ -96,7 +108,7 @@ Fluxo de telas:
 5. As telas filhas recebem a janela de origem para poder reexibi-la no retorno.
 6. O botão Sair chama Application.Exit().
 
-O padrão atual de navegação usa Show(), Hide() e Close(), mantendo referência à tela de origem. Não existe um mecanismo centralizado de navegação ou injeção de dependências.
+O código atual combina `Show()`, `Hide()`, `Close()` e `ShowDialog()`, mantendo referência à tela de origem. Créditos é aberto de forma modal; as demais transições dependem da implementação de cada formulário. Não existe um mecanismo centralizado de navegação ou injeção de dependências.
 
 
 5. MODELOS DE DADOS
@@ -125,6 +137,7 @@ Representa um caso noticiado:
 - Vitima;
 - Conteudo, mapeado de relato;
 - LicoesAprendidas, mapeado de licoes_aprendidas.
+- Cidade, Url, Data, Tipo e Verificado, usados para metadados, etiqueta de fonte e link da matéria.
 
 Models/Pergunta.cs
 Representa uma questão do quiz:
@@ -155,14 +168,14 @@ As propriedades textuais são nullable. As telas usam valores vazios ou listas v
  dados/relatos.json
 - Objeto raiz com categoria.
 - Os registros ficam em itens.
-- Cada item contém id, titulo, fonte, vitima, relato e licoes_aprendidas.
+ - Cada item contém id, titulo, fonte, vitima, relato, licoes_aprendidas e pode conter cidade, url, data, tipo e verificado.
 - É consumido por FrmRelatos.
 
  dados/perguntas.json
 - Array JSON diretamente na raiz.
 - Cada pergunta contém id, pergunta, opcoes, respostaCorreta, explicacao e explicacaoOpcoesErradas no conteúdo atual.
 - FrmQuiz desserializa o array diretamente em List<Pergunta>.
-- A classe Pergunta atualmente não possui uma propriedade para explicacaoOpcoesErradas; esse campo extra é ignorado pelo System.Text.Json.
+ - A classe Pergunta possui `ExplicacaoOpcoes`, mapeada de `explicacaoOpcoesErradas`.
 - O arquivo foi corrigido anteriormente: havia um caractere extra S depois do fechamento do array (final ]S), causando erro de JSON. O final correto passou a ser apenas ].
 
 Regra importante: alterações de conteúdo devem preservar o formato esperado pela tela correspondente. JSONs com raiz objeto precisam manter a propriedade itens; perguntas precisam manter a raiz como array.
@@ -211,7 +224,8 @@ FrmQuiz
 - Usa JsonSerializer.Deserialize<List<Pergunta>> com PropertyNameCaseInsensitive = true.
 - Exibe uma pergunta e quatro RadioButtons.
 - Confirma a resposta, calcula pontuação e mostra feedback.
-- Ao terminar, mostra a quantidade de acertos e retorna à janela de origem.
+- Cada rodada seleciona até 10 perguntas de `_todasPerguntas` e as sorteia.
+- Ao terminar, mostra resultado com acertos, faixa e perguntas erradas; permite refazer ou voltar ao menu.
 - As alternativas são embaralhadas na memória somente no momento da exibição.
 - O JSON não é alterado pelo embaralhamento.
 - A alternativa correta é marcada antes da ordenação aleatória e sua nova posição é armazenada em _respostaCorretaExibida. Assim, a validação continua correta mesmo quando a alternativa muda de posição.
@@ -224,6 +238,12 @@ FrmCreditos
 - Exibe linhas de identificação e cartões de Desenvolvimento e Apoio em layouts responsivos.
 - Logos opcionais são procurados em imagens; quando ausentes, o texto do cartão continua sendo exibido.
 - Enter e Esc fecham a janela modal.
+
+Serviços compartilhados
+- `JanelaPadrao` mantém em memória tamanho/posição/estado da janela, com tamanho padrão 1201x700 e fallback para maximizado quando necessário.
+- `Responsivo` registra formulários e controles, aplica escala de fontes entre 0,85 e 1,6 e usa debounce de 60 ms.
+- `FundoCache` mantém uma imagem redimensionada em cache para a Biblioteca.
+- `Suavizar` ativa `DoubleBuffered` via reflexão nos controles.
 
 
 8. ALTERAÇÕES JÁ REALIZADAS E MOTIVAÇÃO
@@ -330,7 +350,7 @@ As melhorias abaixo não foram aplicadas automaticamente nesta documentação:
 - O embaralhamento ocorre somente em memória.
 - A compilação/execução do projeto foi iniciada pelo depurador após as alterações anteriores; não foram observadas exceções no carregamento do projeto.
 - Não há testes automatizados identificados no projeto.
-- A validação visual completa do fluxo depende de abrir as telas e interagir com os botões.
+- A validação visual completa do fluxo depende de abrir as telas e interagir com os botões. Não há testes automatizados.
 
 
 13. REGRA PARA PRÓXIMOS PEDIDOS
@@ -368,3 +388,8 @@ Histórico incremental:
 - Correção registrada: a causa do deslocamento do Menu e da Biblioteca era o layout em uma única coluna combinado com padding fixo e controles criados fora da estrutura percentual. Os layouts agora usam uma única TableLayoutPanel com Dock Fill, AutoSize falso, colunas 20%/60%/20% e conteúdo na coluna central; o Responsivo continua restrito às fontes e não é usado pelo Quiz.
 - Arquivos alterados nesta correção: Forms/FrmQuiz.cs, Forms/FrmQuiz.Designer.cs, Forms/FrmMenu.cs, Forms/FrmBiblioteca.cs e DOCUMENTACAO_PROJETO.txt.
 - Teste manual pendente: abrir Quiz, Menu, Biblioteca e Créditos em 800x600, 1366x768 e maximizado, com escala do Windows em 100% e 125%, confirmando conteúdo centralizado, dentro da janela, quatro alternativas, progresso, botão Confirmar e feedback colorido visíveis.
+- Referência atual: commit `a1c33b1`, de 2026-11-10.
+- Documentação do código: `docs\CODIGO\00_INDICE.md`.
+- Divergências encontradas e corrigidas: inventário sem `CreditosInfo`, serviços, `creditos.json`, imagens de créditos e perfil de publicação; descrição antiga ignorava campos extras de `Relato`, o resultado final do Quiz e a escala atual do `Responsivo`.
+- Contagens conferidas nos JSONs: 20 perguntas, 20 dicas, 15 golpes e 15 relatos. `creditos.json` usa comentários e vírgulas aceitos por `ConteudoService`, portanto não é JSON estrito para ferramentas que não aplicam essas opções.
+- Documentação atualizada em 2026-11-10 para o commit a1c33b1.

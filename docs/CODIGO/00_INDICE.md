@@ -1,12 +1,12 @@
 # Como entender todo o código do ProtetorDigital
 
-**Data da documentação:** 2026-10-28  
-**Commit de referência:** `709f37212502cd7f8bbb3b5cad874964e91d2c30` (`709f372`, mensagem `.`)  
-**Estado:** documentação baseada no conteúdo atual do diretório de trabalho. O repositório possui alterações locais; o commit acima é apenas a referência solicitada.
+**Data da documentação:** 2026-11-10  
+**Commit de referência:** `a1c33b1` (`2026-11-10`, mensagem `ATUALIZAÇÃO 10/11`)  
+**Estado:** documentação baseada no commit `a1c33b1` e conferida contra o diretório de trabalho. Há alterações locais somente de documentação.
 
 ## Como usar este material
 
-Leia nesta ordem: conceitos, visão geral, arquivos simples, serviços, telas, designers, projeto e dados. Depois use o glossário, as receitas e os exercícios. Os números de linha apontam para os arquivos reais lidos em 28/10/2026.
+Os números de linha apontam para os arquivos reais lidos em 10/11/2026.
 
 ## Legenda
 
@@ -68,7 +68,7 @@ Leia nesta ordem: conceitos, visão geral, arquivos simples, serviços, telas, d
 - `.gitattributes`
 - `.gitignore`
 
-Não foram encontrados arquivos `.pubxml` nem outros arquivos `.md` de documentação antes desta pasta. `bin`, `obj`, `.vs` e `.git` foram ignorados.
+Existe `Properties/PublishProfiles/Windows.pubxml`; `bin`, `obj`, `.vs` e `.git` foram ignorados.
 
 ## Lista de verificação
 
@@ -81,7 +81,7 @@ Não foram encontrados arquivos `.pubxml` nem outros arquivos `.md` de documenta
 - [x] `10_Models_ExGolpe.md`
 - [x] `10_Models_Pergunta.md`
 - [x] `10_Models_Relato.md`
-- [ ] `10_Properties_Resources.md`
+- [x] `10_Properties_Resources_Designer.md` (documentação existente)
 - [x] `10_Services_ConteudoService.md`
 - [x] `10_Services_Responsivo.md`
 - [x] `10_FrmMenu.md`
@@ -97,11 +97,18 @@ Não foram encontrados arquivos `.pubxml` nem outros arquivos `.md` de documenta
 - [x] `10_FrmExGolpes_Designer.md`
 - [x] `10_FrmRelatos_Designer.md`
 - [x] `10_FrmQuiz_Designer.md`
-- [ ] `10_Projeto.md`
-- [ ] `10_Dados.md`
-- [ ] `90_GLOSSARIO.md`
-- [ ] `91_COMO_ALTERAR.md`
-- [ ] `92_EXERCICIOS.md`
-- [ ] Referência e histórico em `DOCUMENTACAO_PROJETO.txt`
-
-**CONTINUAR EM:** `10_Program.md`
+- [x] `10_Services_JanelaPadrao_cs.md`
+- [x] `10_Services_FundoCache_cs.md`
+- [x] `10_Services_Suavizar_cs.md`
+- [x] `10_ProtetorDigital_csproj.md`
+- [x] `10_Properties_PublishProfiles_Windows_pubxml.md`
+- [x] `10_dados_creditos_json.md`
+- [x] `10_dados_dicas_json.md`
+- [x] `10_dados_exgolpes_json.md`
+- [x] `10_dados_perguntas_json.md`
+- [x] `10_dados_relatos_json.md`
+- [x] `90_GLOSSARIO.md`
+- [x] `91_COMO_ALTERAR.md`
+- [x] `92_EXERCICIOS.md`
+- [x] `93_ACHADOS.md`
+- [x] `DOCUMENTACAO_PROJETO.txt`
