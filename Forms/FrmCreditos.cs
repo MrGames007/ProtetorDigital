@@ -57,8 +57,8 @@ public sealed class FrmCreditos : Form
         };
         _principal.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         _principal.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-        _principal.RowStyles.Add(new RowStyle(SizeType.Percent, 55));
-        _principal.RowStyles.Add(new RowStyle(SizeType.Percent, 35));
+        _principal.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+        _principal.RowStyles.Add(new RowStyle(SizeType.Percent, 40));
         _principal.RowStyles.Add(new RowStyle(SizeType.AutoSize));
         Controls.Add(_principal);
 
@@ -150,8 +150,40 @@ public sealed class FrmCreditos : Form
         }
     }
 
+    private static string? LocalizarImagem(string? nomeArquivo)
+    {
+        if (string.IsNullOrWhiteSpace(nomeArquivo))
+        {
+            return null;
+        }
+
+        // 1) Pasta de saída (bin/Debug/net10.0-windows/imagens)
+        var caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagens", nomeArquivo);
+        if (File.Exists(caminho))
+        {
+            return caminho;
+        }
+
+        // 2) Fallback para desenvolvimento: sobe as pastas até achar imagens/ do projeto
+        var pasta = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+        while (pasta != null)
+        {
+            var candidato = Path.Combine(pasta.FullName, "imagens", nomeArquivo);
+            if (File.Exists(candidato))
+            {
+                return candidato;
+            }
+            pasta = pasta.Parent;
+        }
+
+        System.Diagnostics.Debug.WriteLine($"Logo não encontrada: {nomeArquivo}");
+        return null;
+    }
+
     private static Control CriarCartao(CartaoCredito cartao)
     {
+        var verdeAzulado = Color.FromArgb(15, 124, 138);
+
         var painel = new TableLayoutPanel
         {
             Dock = DockStyle.Fill,
@@ -162,8 +194,10 @@ public sealed class FrmCreditos : Form
             CellBorderStyle = TableLayoutPanelCellBorderStyle.Single
         };
         painel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-        painel.RowStyles.Add(new RowStyle(SizeType.Percent, 65));
-        painel.RowStyles.Add(new RowStyle(SizeType.Percent, 35));
+        painel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+        painel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+
+        // Título do cartão
         painel.Controls.Add(new Label
         {
             Text = cartao.Titulo ?? string.Empty,
@@ -171,30 +205,45 @@ public sealed class FrmCreditos : Form
             TextAlign = ContentAlignment.MiddleCenter,
             AutoSize = true,
             Font = new Font("Segoe UI", 13, FontStyle.Bold),
+            ForeColor = verdeAzulado,
             Padding = new Padding(5)
         }, 0, 0);
-        var corpo = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2 };
-        corpo.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
-        corpo.RowStyles.Add(new RowStyle(SizeType.Percent, 30));
-        var logo = new PictureBox { Dock = DockStyle.Fill, SizeMode = PictureBoxSizeMode.Zoom, Margin = new Padding(8) };
-        var caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagens", cartao.Logo ?? string.Empty);
-        if (File.Exists(caminho))
+
+        // Linha fina abaixo do título
+        painel.Controls.Add(new Panel
+        {
+            Dock = DockStyle.Fill,
+            Height = 2,
+            BackColor = verdeAzulado,
+            Margin = new Padding(30, 0, 30, 6)
+        }, 0, 1);
+
+        // Logo (ou, se a imagem não for encontrada, o texto de reserva)
+        Control conteudo;
+        var caminho = LocalizarImagem(cartao.Logo);
+        if (caminho != null)
         {
             using var imagem = Image.FromFile(caminho);
-            logo.Image = new Bitmap(imagem);
+            conteudo = new PictureBox
+            {
+                Dock = DockStyle.Fill,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Margin = new Padding(8),
+                Image = new Bitmap(imagem)
+            };
         }
-        corpo.Controls.Add(logo, 0, 0);
-        corpo.Controls.Add(new Label
+        else
         {
-            Text = cartao.Texto ?? string.Empty,
-            Dock = DockStyle.Fill,
-            AutoSize = true,
-            TextAlign = ContentAlignment.MiddleCenter,
-            Font = new Font("Segoe UI", 12, FontStyle.Bold),
-            Padding = new Padding(5)
-        }, 0, 1);
-        painel.Controls.Add(corpo, 0, 1);
-        painel.Controls.Add(new Panel { Dock = DockStyle.Fill }, 0, 2);
+            conteudo = new Label
+            {
+                Text = cartao.Texto ?? string.Empty,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Padding = new Padding(5)
+            };
+        }
+        painel.Controls.Add(conteudo, 0, 2);
         return painel;
     }
 }

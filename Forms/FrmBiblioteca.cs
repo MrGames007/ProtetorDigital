@@ -48,7 +48,10 @@ namespace ProtetorDigital.Forms
             frmExGolpe.ShowDialog(this);
         }
 
-        
+        private void FrmBiblioteca_Load(object sender, EventArgs e)
+        {
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+        }
     }
 }
 
