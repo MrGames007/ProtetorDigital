@@ -184,7 +184,6 @@
             Controls.Add(BtnVoltar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmRelatos";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Relatos";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();

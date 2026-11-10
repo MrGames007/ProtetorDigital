@@ -5,10 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Text.Json;
-using System.Linq;
-using System.Collections.Generic;
+using ProtetorDigital.Services;
 
 namespace ProtetorDigital.Forms
 {
@@ -29,7 +26,6 @@ namespace ProtetorDigital.Forms
             Load += FrmDicas_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
-            StartPosition = FormStartPosition.CenterScreen;
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
         }
 
@@ -37,28 +33,13 @@ namespace ProtetorDigital.Forms
         {
             try
             {
-                string caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", "dicas.json");
-                if (!File.Exists(caminho))
-                {
-                    string caminhoProjeto = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "dados", "dicas.json");
-                    if (File.Exists(caminhoProjeto)) caminho = caminhoProjeto;
-                }
-
-                if (!File.Exists(caminho)) return;
-
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var json = File.ReadAllText(caminho, Encoding.UTF8);
-                using var doc = JsonDocument.Parse(json);
-                if (doc.RootElement.TryGetProperty("itens", out var itens))
-                {
-                    _dicas = JsonSerializer.Deserialize<List<Dica>>(itens.GetRawText(), options) ?? new List<Dica>();
-                }
-
-                if (_dicas.Any()) MostrarDica(0);
+                _dicas = ConteudoService.CarregarLista<Dica>("dicas.json");
+                MostrarDica(0);
             }
-            catch
+            catch (ConteudoException ex)
             {
-                // ignorar erro de leitura para não quebrar a UI
+                MessageBox.Show($"Não consegui abrir o conteúdo desta tela. Detalhe: {ex.Message}");
+                Close();
             }
         }
 

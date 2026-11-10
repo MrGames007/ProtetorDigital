@@ -51,7 +51,8 @@
       "titulo": "Confira o Destinatário Antes do PIX",
       "descricao": "Sempre verifique o nome do favorecido, instituição bancária e CPF/CNPJ antes de autorizar qualquer pagamento.",
       "passos_recomendados": [
-        "Caso o nome pertença a um estranho ou chave aleatória não reconhecida, cancele a operação."
+        "Caso o nome pertença a um estranho ou chave aleatória não reconhecida, cancele a operação.",
+        "Revise o valor e o destinatário na tela do banco antes de confirmar."
       ]
     },
     {
@@ -68,7 +69,8 @@
       "titulo": "Não Recorra a Números Enviados por SMS em Casos de Bloqueio",
       "descricao": "Mensagens de texto informando 'compra aprovada' ou 'conta bloqueada' trazem telefones 0800 falsos controlados por criminosos.",
       "passos_recomendados": [
-        "Ligue apenas para os telefones no verso do seu cartão físico."
+        "Ligue apenas para os telefones no verso do seu cartão físico.",
+        "Não use o número informado na mensagem para falar com o banco."
       ]
     },
     {
@@ -76,7 +78,8 @@
       "titulo": "Restrinja a Visualização da Sua Foto de Perfil",
       "descricao": "Evita que criminosos salvem sua foto de redes sociais para criar contas falsas no seu nome.",
       "passos_recomendados": [
-        "Acesse a privacidade do WhatsApp e limite a visualização da foto apenas para 'Meus Contatos'."
+        "Acesse a privacidade do WhatsApp e limite a visualização da foto apenas para 'Meus Contatos'.",
+        "Revise também quem pode adicionar você a grupos."
       ]
     },
     {
@@ -93,7 +96,8 @@
       "titulo": "Acompanhe Rastreios de Encomendas no Site Oficial",
       "descricao": "Avisos sobre taxas alfandegárias cobradas via chave PIX por SMS costumam ser falsos.",
       "passos_recomendados": [
-        "Digite o código de rastreamento diretamente na página oficial dos Correios."
+        "Digite o código de rastreamento diretamente na página oficial dos Correios.",
+        "Ignore links de cobrança recebidos por SMS e abra o site digitando o endereço."
       ]
     },
     {
@@ -101,7 +105,8 @@
       "titulo": "Crie uma Palavra-Chave Familiar para Emergências",
       "descricao": "Uma senha secreta acordada em família evita que idosos caiam no golpe do falso sequestro ou novo número.",
       "passos_recomendados": [
-        "Antes de transferir dinheiro, exija que quem está escrevendo informe a senha da família."
+        "Antes de transferir dinheiro, exija que quem está escrevendo informe a senha da família.",
+        "Confirme o pedido por uma ligação para um contato já conhecido."
       ]
     },
     {
@@ -109,7 +114,8 @@
       "titulo": "Cuidado com Vídeochamadas de Números Desconhecidos",
       "descricao": "Criminosos usam capturas da sua imagem facial para burlar sistemas de reconhecimento de aplicativos de bancos.",
       "passos_recomendados": [
-        "Não atenda chamadas de vídeo de números que não estejam gravados na sua agenda."
+        "Não atenda chamadas de vídeo de números que não estejam gravados na sua agenda.",
+        "Não envie imagens do rosto ou documentos durante uma chamada inesperada."
       ]
     },
     {
@@ -117,7 +123,8 @@
       "titulo": "Empréstimos Legítimos Não Exigem Taxas Prévias",
       "descricao": "Pedir depósitos adiantados sob pretexto de 'fiador' ou 'liberação de cadastro' é sinal claro de estelionato.",
       "passos_recomendados": [
-        "Interrompa a negociação caso exijam pagamentos adiantados para conceder crédito."
+        "Interrompa a negociação caso exijam pagamentos adiantados para conceder crédito.",
+        "Compare a proposta somente pelos canais oficiais da instituição."
       ]
     },
     {
@@ -125,7 +132,8 @@
       "titulo": "Cuidado com o Destino de Cartões Cancelados",
       "descricao": "Bancos nunca enviam funcionários ou motoboys à residência dos clientes para recolher cartões inutilizados.",
       "passos_recomendados": [
-        "Ao inutilizar um cartão, destrua por completo o chip magnético e a tarja antes do descarte."
+        "Ao inutilizar um cartão, destrua por completo o chip magnético e a tarja antes do descarte.",
+        "Nunca entregue o cartão cortado a alguém que apareça em sua casa."
       ]
     },
     {
@@ -133,7 +141,8 @@
       "titulo": "Utilize Cartão Virtual para Compras Online",
       "descricao": "Recurso oferecido por bancos que gera dados temporários, reduzindo o risco de fraude em sites falsos.",
       "passos_recomendados": [
-        "Gere um novo cartão virtual pelo aplicativo do banco antes de efetuar transações na internet."
+        "Gere um novo cartão virtual pelo aplicativo do banco antes de efetuar transações na internet.",
+        "Desative ou substitua o cartão virtual quando terminar a compra."
       ]
     },
     {
@@ -141,7 +150,8 @@
       "titulo": "Verifique a Autenticidade de E-mails Institucionais",
       "descricao": "Órgãos públicos e grandes instituições não utilizam domínios de e-mail gratuitos.",
       "passos_recomendados": [
-        "Certifique-se de que comunicações do governo utilizem a extensão @gov.br ou @org.br."
+        "Certifique-se de que comunicações do governo utilizem a extensão @gov.br ou @org.br.",
+        "Acesse o site oficial digitando o endereço, sem usar o link recebido."
       ]
     },
     {
@@ -149,7 +159,8 @@
       "titulo": "Ajuste Limites de Transferências Noturnas",
       "descricao": "Reduzir o limite diário de transações via PIX diminui o prejuízo em eventuais abordagens criminosas.",
       "passos_recomendados": [
-        "Acesse as configurações do seu aplicativo bancário e defina valores mais baixos para o período noturno."
+        "Acesse as configurações do seu aplicativo bancário e defina valores mais baixos para o período noturno.",
+        "Peça ajuda a uma pessoa de confiança se não souber alterar o limite."
       ]
     },
     {
@@ -157,7 +168,8 @@
       "titulo": "Não Confie em Ofertas de Investimento Exageradas",
       "descricao": "Promessas de ganhos expressivos em curto prazo ocultam plataformas de esquemas de pirâmide.",
       "passos_recomendados": [
-        "Consulte o registro de corretoras e instituições financeiras no site oficial da CVM."
+        "Consulte o registro de corretoras e instituições financeiras no site oficial da CVM.",
+        "Desconfie de promessas de retorno garantido ou muito rápido."
       ]
     },
     {
@@ -165,7 +177,8 @@
       "titulo": "Mantenha o Sistema Operacional e Apps Atualizados",
       "descricao": "Correções de sistema eliminam falhas conhecidas de segurança exploradas por invasores.",
       "passos_recomendados": [
-        "Habilite o download automático de atualizações no Google Play Store ou Apple App Store."
+        "Habilite o download automático de atualizações no Google Play Store ou Apple App Store.",
+        "Instale aplicativos somente pelas lojas oficiais do aparelho."
       ]
     }
   ]

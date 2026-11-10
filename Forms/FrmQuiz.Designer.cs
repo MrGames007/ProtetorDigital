@@ -146,7 +146,6 @@
             Controls.Add(lblPergunta);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmQuiz";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quiz";
             ResumeLayout(false);
             PerformLayout();

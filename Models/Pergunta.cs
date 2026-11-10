@@ -15,5 +15,8 @@ namespace ProtetorDigital
         public int RespostaCorreta { get; set; }
 
         public string? Explicacao { get; set; }
+
+        [JsonPropertyName("explicacaoOpcoesErradas")]
+        public List<string>? ExplicacaoOpcoes { get; set; }
     }
 }

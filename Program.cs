@@ -5,7 +5,6 @@ namespace ProtetorDigital
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
-        /// <None Update="imagens**">
         [STAThread]
         static void Main()
         {

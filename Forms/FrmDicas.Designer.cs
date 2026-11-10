@@ -160,7 +160,6 @@
             Controls.Add(BtnAvancar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmDicas";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Dicas";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();

@@ -11,7 +11,6 @@ namespace ProtetorDigital
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
-            StartPosition = FormStartPosition.CenterScreen;
 
             var btnCreditos = new Button
             {

@@ -27,6 +27,7 @@ namespace ProtetorDigital.Forms
         private readonly Label _lblResultado = new();
         private readonly Button _btnRefazer = new();
         private readonly Button _btnVoltarMenu = new();
+        private readonly RichTextBox _txtResultado = new();
         private TableLayoutPanel _tlpRaiz = new();
         private TableLayoutPanel _tlpBotoes = new();
         private TableLayoutPanel _cabecalho = new();
@@ -39,12 +40,11 @@ namespace ProtetorDigital.Forms
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             ConfigurarInterface();
             MinimumSize = new Size(800, 600);
-            Responsivo.Registrar(this, new Size(1201, 700));
+            Responsivo.Registrar(this, new Size(1201, 700), AjustarControlesParaCaber);
             foreach (Control controle in Controls)
             {
                 Responsivo.Registrar(controle);
             }
-            Resize += (_, _) => AjustarControlesParaCaber();
             Load += FrmQuiz_Load;
             KeyPreview = true;
             KeyDown += FrmQuiz_KeyDown;
@@ -57,7 +57,6 @@ namespace ProtetorDigital.Forms
 
         private void ConfigurarInterface()
         {
-            ClientSize = new Size(1201, 700);
             _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent, AutoScroll = true };
             foreach (var percentual in new[] { 8f, 14f, 34f, 28f, 16f }) _tlpRaiz.RowStyles.Add(new RowStyle(SizeType.Percent, percentual));
 
@@ -130,13 +129,18 @@ namespace ProtetorDigital.Forms
             _pnlResultado.BackColor = Color.White;
             _pnlResultado.Padding = new Padding(30);
             _pnlResultado.Visible = false;
-            _lblResultado.Dock = DockStyle.Fill;
+            _txtResultado.Dock = DockStyle.Fill;
+            _txtResultado.ReadOnly = true;
+            _txtResultado.ScrollBars = RichTextBoxScrollBars.Vertical;
+            _txtResultado.BackColor = Color.White;
+            _txtResultado.BorderStyle = BorderStyle.None;
+            _txtResultado.Font = new Font("Segoe UI", 16F);
             _lblResultado.Font = new Font("Segoe UI", 16F, FontStyle.Regular);
             _lblResultado.AutoEllipsis = false;
             _lblResultado.AutoSize = false;
             _lblResultado.TextAlign = ContentAlignment.TopLeft;
             _lblResultado.Dock = DockStyle.Fill;
-            _pnlResultado.Controls.Add(_lblResultado);
+            _pnlResultado.Controls.Add(_txtResultado);
             _btnRefazer.Text = "Refazer";
             _btnRefazer.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             _btnRefazer.Click += BtnRefazer_Click;
@@ -158,7 +162,7 @@ namespace ProtetorDigital.Forms
         {
             try
             {
-                _todasPerguntas = ConteudoService.CarregarObjeto<List<Pergunta>>("perguntas.json") ?? new();
+                _todasPerguntas = ConteudoService.CarregarLista<Pergunta>("perguntas.json");
                 IniciarRodada();
 
                 if (_perguntas.Any())
@@ -166,9 +170,9 @@ namespace ProtetorDigital.Forms
                     MostrarPergunta(0);
                 }
             }
-            catch (Exception ex)
+            catch (ConteudoException ex)
             {
-                MessageBox.Show($"Não foi possível carregar o quiz.\n{ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Não consegui abrir o conteúdo desta tela. Detalhe: {ex.Message}", "Conteúdo indisponível", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Close();
             }
         }
@@ -284,6 +288,11 @@ namespace ProtetorDigital.Forms
                 : "Alternativa não identificada";
 
             string explicacaoEscolhida = string.Empty;
+            if (!acertou && perguntaAtual.ExplicacaoOpcoes is { Count: > 0 } explicacoes &&
+                _opcoesExibidas[respostaSelecionada].IndiceOriginal < explicacoes.Count)
+            {
+                explicacaoEscolhida = LimparPrefixo(explicacoes[_opcoesExibidas[respostaSelecionada].IndiceOriginal]);
+            }
             string explicacao = perguntaAtual.Explicacao ?? "Não há explicação cadastrada para esta pergunta.";
             var blocos = new List<string> { acertou ? "Você acertou!" : "Você errou." };
             if (!string.IsNullOrWhiteSpace(explicacaoEscolhida)) blocos.Add(explicacaoEscolhida);
@@ -323,7 +332,7 @@ namespace ProtetorDigital.Forms
             string erros = _respostasErradas.Count == 0 ? "\nVocê acertou todas as perguntas!" :
                 "\n\nPerguntas para revisar:\n" + string.Join("\n", _respostasErradas.Select((r, i) =>
                     $"{i + 1}. {r.Pergunta}\n   A resposta certa é: {r.RespostaCorreta}"));
-            _lblResultado.Text = $"Resultado\n\nVocê acertou {_pontuacao} de {_perguntas.Count}.\n{faixa}{erros}";
+            _txtResultado.Text = $"Resultado\n\nVocê acertou {_pontuacao} de {_perguntas.Count}.\n{faixa}{erros}";
             _pnlResultado.Visible = true;
             _pnlFeedback.Visible = false;
             lblPergunta.Visible = false;
@@ -358,7 +367,26 @@ namespace ProtetorDigital.Forms
 
         private void FrmQuiz_KeyDown(object? sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) Close();
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (_pnlResultado.Visible) Close();
+                else if (MessageBox.Show("Sair do quiz? O progresso será perdido.", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Close();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            else if (!_pnlResultado.Visible && !_respostaConfirmada && e.KeyCode is Keys.D1 or Keys.NumPad1 or Keys.D2 or Keys.NumPad2 or Keys.D3 or Keys.NumPad3 or Keys.D4 or Keys.NumPad4)
+            {
+                var indice = e.KeyCode is Keys.D1 or Keys.NumPad1 ? 0 : e.KeyCode is Keys.D2 or Keys.NumPad2 ? 1 : e.KeyCode is Keys.D3 or Keys.NumPad3 ? 2 : 3;
+                new[] { RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4 }[indice].Checked = true;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            else if (!_pnlResultado.Visible && e.KeyCode == Keys.Enter)
+            {
+                BtnConfirmar.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
         private sealed record OpcaoExibida(string Texto, int IndiceOriginal);

@@ -100,7 +100,6 @@
             Controls.Add(BtnQuiz);
             Controls.Add(label1);
             Name = "FrmMenu";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Proteção Digital Aos Idosos";
             ResumeLayout(false);
         }

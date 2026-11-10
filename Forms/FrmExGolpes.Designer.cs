@@ -158,7 +158,6 @@
             Controls.Add(BtnVoltar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmExGolpes";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Exemplos de Golpes";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();

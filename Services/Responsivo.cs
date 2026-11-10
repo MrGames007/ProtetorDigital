@@ -10,18 +10,20 @@ public static class Responsivo
         public Size TamanhoBase { get; init; }
         public Dictionary<Control, float> TamanhosFonte { get; } = new();
         public float UltimaEscala { get; set; } = 1f;
+        public System.Windows.Forms.Timer? Timer { get; set; }
+        public Action? AposAplicar { get; init; }
     }
 
     private static readonly Dictionary<Form, EstadoFormulario> Estados = new();
 
-    public static void Registrar(Form formulario, Size tamanhoBase)
+    public static void Registrar(Form formulario, Size tamanhoBase, Action? aposAplicar = null)
     {
         if (Estados.ContainsKey(formulario))
         {
             return;
         }
 
-        var estado = new EstadoFormulario { TamanhoBase = tamanhoBase };
+        var estado = new EstadoFormulario { TamanhoBase = tamanhoBase, AposAplicar = aposAplicar };
         Estados[formulario] = estado;
         RegistrarControles(formulario, estado);
         formulario.Load += (_, _) =>
@@ -31,7 +33,11 @@ public static class Responsivo
             formulario.PerformLayout();
             formulario.ResumeLayout(true);
         };
-        formulario.Resize += (_, _) => Redimensionar(formulario, estado);
+        estado.Timer = new System.Windows.Forms.Timer { Interval = 60 };
+        estado.Timer.Tick += (_, _) => { estado.Timer.Stop(); Redimensionar(formulario, estado); estado.AposAplicar?.Invoke(); };
+        formulario.Resize += (_, _) => { estado.Timer.Stop(); estado.Timer.Start(); };
+        formulario.ResizeEnd += (_, _) => Redimensionar(formulario, estado);
+        formulario.SizeChanged += (_, _) => { if (formulario.WindowState != FormWindowState.Minimized) estado.Timer.Start(); };
         formulario.FormClosed += (_, _) =>
         {
             foreach (var controle in estado.TamanhosFonte.Keys.ToList())
@@ -39,6 +45,7 @@ public static class Responsivo
                 estado.TamanhosFonte.Remove(controle);
             }
             Estados.Remove(formulario);
+            estado.Timer?.Dispose();
         };
         Redimensionar(formulario, estado);
     }
@@ -112,6 +119,7 @@ public static class Responsivo
         {
             formulario.ResumeLayout(true);
         }
+        estado.AposAplicar?.Invoke();
     }
 
     public static void AjustarParaCaber(Control controle)
@@ -121,7 +129,7 @@ public static class Responsivo
             return;
         }
 
-        while (controle.Font.Size > 12f)
+        for (var tentativa = 0; tentativa < 12 && controle.Font.Size > 12f; tentativa++)
         {
             var largura = Math.Max(1, controle.ClientSize.Width - controle.Padding.Horizontal);
             var altura = Math.Max(1, controle.ClientSize.Height - controle.Padding.Vertical);

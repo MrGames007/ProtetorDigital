@@ -16,7 +16,6 @@ public sealed class FrmCreditos : Form
         var info = ConteudoService.CarregarObjeto<CreditosInfo>("creditos.json") ?? new CreditosInfo();
         Text = info.Titulo ?? string.Empty;
         MinimumSize = new Size(800, 600);
-        StartPosition = FormStartPosition.CenterScreen;
         WindowState = FormWindowState.Normal;
         KeyPreview = true;
         AcceptButton = null;

@@ -13,9 +13,6 @@
   <ItemGroup>
 	<None Update="dados\**\*" CopyToOutputDirectory="PreserveNewest" />
 	<None Update="imagens\**\*" CopyToOutputDirectory="PreserveNewest" />
-	<None Remove="dados\dados.json" />
-	<None Remove="dados\NewFile1.txt" />
-	<None Remove="Forms\NewFile1.txt" />
   </ItemGroup>
 
   <ItemGroup>
