@@ -155,6 +155,7 @@ namespace ProtetorDigital.Forms
             botoesResultado.Controls.Add(_btnRefazer);
             botoesResultado.Controls.Add(_btnVoltarMenu);
             _pnlResultado.Controls.Add(botoesResultado);
+            _txtResultado.BringToFront();
             Controls.Add(_pnlResultado);
         }
 
@@ -326,21 +327,23 @@ namespace ProtetorDigital.Forms
 
         private void MostrarResultado()
         {
-            string faixa = _pontuacao == _perguntas.Count ? "Excelente! Você demonstrou muito cuidado." :
-                _pontuacao >= (_perguntas.Count + 1) / 2 ? "Muito bem! Continue praticando os cuidados." :
-                "Tudo bem! Revise as dicas e tente novamente.";
-            string erros = _respostasErradas.Count == 0 ? "\nVocê acertou todas as perguntas!" :
-                "\n\nPerguntas para revisar:\n" + string.Join("\n", _respostasErradas.Select((r, i) =>
-                    $"{i + 1}. {r.Pergunta}\n   A resposta certa é: {r.RespostaCorreta}"));
-            _txtResultado.Text = $"Resultado\n\nVocê acertou {_pontuacao} de {_perguntas.Count}.\n{faixa}{erros}";
-            _pnlResultado.Visible = true;
-            _pnlFeedback.Visible = false;
-            lblPergunta.Visible = false;
-            _lblProgresso.Visible = false;
-            _progressQuiz.Visible = false;
-            RBtnAlt1.Visible = RBtnAlt2.Visible = RBtnAlt3.Visible = RBtnAlt4.Visible = false;
-            BtnConfirmar.Visible = false;
-            BtnVoltar.Visible = false;
+            try
+            {
+                string faixa = _pontuacao == _perguntas.Count ? "Excelente! Você demonstrou muito cuidado." :
+                    _pontuacao >= (_perguntas.Count + 1) / 2 ? "Muito bem! Continue praticando os cuidados." :
+                    "Tudo bem! Revise as dicas e tente novamente.";
+                string erros = _respostasErradas.Count == 0 ? "\nVocê acertou todas as perguntas!" :
+                    "\n\nPerguntas para revisar:\n" + string.Join("\n", _respostasErradas.Select((r, i) =>
+                        $"{i + 1}. {r.Pergunta}\n   A resposta certa é: {r.RespostaCorreta}"));
+                _txtResultado.Text = $"Resultado\n\nVocê acertou {_pontuacao} de {_perguntas.Count}.\n{faixa}{erros}";
+                _tlpRaiz.Visible = false;
+                _pnlResultado.Visible = true;
+                _pnlResultado.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Não foi possível exibir o resultado.\n{ex.Message}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnRefazer_Click(object? sender, EventArgs e)
@@ -350,12 +353,8 @@ namespace ProtetorDigital.Forms
             _respostasErradas.Clear();
             IniciarRodada();
             _pnlResultado.Visible = false;
-            lblPergunta.Visible = true;
-            _lblProgresso.Visible = true;
-            _progressQuiz.Visible = true;
-            RBtnAlt1.Visible = RBtnAlt2.Visible = RBtnAlt3.Visible = RBtnAlt4.Visible = true;
-            BtnConfirmar.Visible = true;
-            BtnVoltar.Visible = true;
+            _tlpRaiz.Visible = true;
+            _tlpRaiz.BringToFront();
             MostrarPergunta(0);
         }
 
@@ -371,6 +370,11 @@ namespace ProtetorDigital.Forms
             {
                 if (_pnlResultado.Visible) Close();
                 else if (MessageBox.Show("Sair do quiz? O progresso será perdido.", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) Close();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            else if (_pnlResultado.Visible && e.KeyCode == Keys.Enter)
+            {
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }

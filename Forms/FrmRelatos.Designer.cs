@@ -1,4 +1,4 @@
-﻿namespace ProtetorDigital.Forms
+namespace ProtetorDigital.Forms
 {
     partial class FrmRelatos
     {
@@ -22,15 +22,16 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblTitulo = new Label();
             lblFonte = new Label();
+            lnkMateria = new LinkLabel();
             lblVitima = new Label();
             lblRelato = new Label();
             lblTexto = new Label();
             lblLicoesAprendidas = new Label();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
+            //
             // BtnVoltar (relato anterior)
-            // 
+            //
             BtnVoltar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
             BtnVoltar.Cursor = Cursors.Hand;
@@ -48,9 +49,9 @@
             BtnVoltar.Text = "◀ Anterior";
             BtnVoltar.UseVisualStyleBackColor = false;
             BtnVoltar.Click += BtnVoltar_Click;
-            // 
+            //
             // BtnAvancar
-            // 
+            //
             BtnAvancar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             BtnAvancar.BackColor = Color.FromArgb(0, 120, 215);
             BtnAvancar.Cursor = Cursors.Hand;
@@ -67,9 +68,9 @@
             BtnAvancar.TabIndex = 2;
             BtnAvancar.Text = "Avançar ▶";
             BtnAvancar.UseVisualStyleBackColor = false;
-            // 
+            //
             // BtnRetorno (botão do topo)
-            // 
+            //
             BtnRetorno.BackColor = Color.FromArgb(0, 120, 215);
             BtnRetorno.Cursor = Cursors.Hand;
             BtnRetorno.FlatAppearance.BorderSize = 0;
@@ -86,14 +87,15 @@
             BtnRetorno.Text = "◀ Retornar";
             BtnRetorno.UseVisualStyleBackColor = false;
             BtnRetorno.Click += BtnRetorno_Click;
-            // 
+            //
             // flowLayoutPanel1 (card de conteúdo)
-            // 
+            //
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = Color.FromArgb(248, 249, 250);
             flowLayoutPanel1.Controls.Add(lblTitulo);
             flowLayoutPanel1.Controls.Add(lblFonte);
+            flowLayoutPanel1.Controls.Add(lnkMateria);
             flowLayoutPanel1.Controls.Add(lblVitima);
             flowLayoutPanel1.Controls.Add(lblRelato);
             flowLayoutPanel1.Controls.Add(lblTexto);
@@ -105,9 +107,9 @@
             flowLayoutPanel1.Size = new Size(1165, 550);
             flowLayoutPanel1.TabIndex = 3;
             flowLayoutPanel1.WrapContents = false;
-            // 
+            //
             // lblTitulo
-            // 
+            //
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.FromArgb(0, 99, 177);
@@ -116,9 +118,9 @@
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(0, 45);
             lblTitulo.TabIndex = 5;
-            // 
+            //
             // lblFonte
-            // 
+            //
             lblFonte.AutoSize = true;
             lblFonte.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblFonte.ForeColor = Color.FromArgb(90, 98, 106);
@@ -127,9 +129,23 @@
             lblFonte.Name = "lblFonte";
             lblFonte.Size = new Size(0, 21);
             lblFonte.TabIndex = 6;
-            // 
+            //
+            // lnkMateria
+            //
+            lnkMateria.AutoSize = true;
+            lnkMateria.Font = new Font("Segoe UI", 16F);
+            lnkMateria.LinkColor = Color.FromArgb(11, 92, 173);
+            lnkMateria.Margin = new Padding(3, 0, 3, 8);
+            lnkMateria.MaximumSize = new Size(1080, 0);
+            lnkMateria.Name = "lnkMateria";
+            lnkMateria.Size = new Size(0, 30);
+            lnkMateria.TabIndex = 12;
+            lnkMateria.Text = "Ler a matéria original ↗";
+            lnkMateria.VisitedLinkColor = Color.FromArgb(111, 66, 193);
+            lnkMateria.LinkClicked += LnkMateria_LinkClicked;
+            //
             // lblVitima
-            // 
+            //
             lblVitima.AutoSize = true;
             lblVitima.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVitima.ForeColor = Color.FromArgb(33, 37, 41);
@@ -138,9 +154,9 @@
             lblVitima.Name = "lblVitima";
             lblVitima.Size = new Size(0, 25);
             lblVitima.TabIndex = 7;
-            // 
+            //
             // lblRelato
-            // 
+            //
             lblRelato.AutoSize = true;
             lblRelato.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRelato.ForeColor = Color.FromArgb(33, 37, 41);
@@ -149,9 +165,9 @@
             lblRelato.Name = "lblRelato";
             lblRelato.Size = new Size(0, 25);
             lblRelato.TabIndex = 8;
-            // 
+            //
             // lblTexto ("Lições Aprendidas")
-            // 
+            //
             lblTexto.AutoSize = true;
             lblTexto.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTexto.ForeColor = Color.FromArgb(33, 136, 56);
@@ -160,9 +176,9 @@
             lblTexto.Size = new Size(190, 30);
             lblTexto.TabIndex = 9;
             lblTexto.Text = "Lições Aprendidas";
-            // 
+            //
             // lblLicoesAprendidas
-            // 
+            //
             lblLicoesAprendidas.AutoSize = true;
             lblLicoesAprendidas.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLicoesAprendidas.ForeColor = Color.FromArgb(33, 37, 41);
@@ -171,9 +187,9 @@
             lblLicoesAprendidas.Name = "lblLicoesAprendidas";
             lblLicoesAprendidas.Size = new Size(0, 25);
             lblLicoesAprendidas.TabIndex = 10;
-            // 
+            //
             // FrmRelatos
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
@@ -202,5 +218,6 @@
         private Label lblRelato;
         private Label lblTexto;
         private Label lblLicoesAprendidas;
+        private LinkLabel lnkMateria;
     }
 }

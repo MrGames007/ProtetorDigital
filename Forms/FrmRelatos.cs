@@ -9,8 +9,6 @@ namespace ProtetorDigital.Forms
     {
         private List<Relato> _relatos = new();
         private int _indice = 0;
-        private LinkLabel _linkMateria = new();
-
         private Form _janelaOrigem;
         public FrmRelatos(Form origem)
         {
@@ -25,21 +23,6 @@ namespace ProtetorDigital.Forms
             MaximizeBox = true;
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
             Resize += (_, _) => AjustarLarguras();
-            _linkMateria = new LinkLabel
-            {
-                AutoSize = true,
-                Font = new Font("Segoe UI", 16F),
-                Text = "Ler a matéria original",
-                Visible = false
-            };
-            _linkMateria.LinkClicked += (_, _) =>
-            {
-                if (_linkMateria.Tag is string url)
-                {
-                    try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true }); } catch { }
-                }
-            };
-            Controls.Add(_linkMateria);
         }
 
         private void FrmRelatos_Load(object? sender, EventArgs e)
@@ -65,7 +48,6 @@ namespace ProtetorDigital.Forms
                 label.MaximumSize = new Size(largura, 0);
                 label.AutoSize = true;
             }
-            _linkMateria.Location = new Point(18, Math.Min(ClientSize.Height - 90, lblLicoesAprendidas.Bottom + 12));
         }
         private void MostrarRelato(int indice)
         {
@@ -82,12 +64,19 @@ namespace ProtetorDigital.Forms
             lblFonte.Text = !string.IsNullOrWhiteSpace(r.Tipo) && r.Tipo == "ilustrativo"
                 ? "Caso ilustrativo, baseado em modalidades reais"
                 : r.Tipo == "alerta_oficial" ? "Alerta oficial do INSS" : $"Fonte: {r.Fonte} ({r.Data})";
-            _linkMateria.Tag = r.Url;
-            _linkMateria.Visible = !string.IsNullOrWhiteSpace(r.Url);
+            lnkMateria.Tag = r.Url;
+            lnkMateria.Visible = Uri.TryCreate(r.Url, UriKind.Absolute, out var uri) && uri.Scheme is "http" or "https";
 
             // Atualiza estado dos botões de navegação
             BtnVoltar.Enabled = _indice > 0;
             BtnAvancar.Enabled = _indice < _relatos.Count - 1;
+        }
+
+        private void LnkMateria_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (lnkMateria.Tag is not string url) return;
+            try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true }); }
+            catch { MessageBox.Show($"Não foi possível abrir o navegador. Endereço da matéria: {url}"); }
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
