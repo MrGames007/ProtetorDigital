@@ -60,6 +60,9 @@ namespace ProtetorDigital.Forms
             {
                 lblPassos.Text = string.Empty;
             }
+
+            BtnVoltar.Enabled = _indice > 0;
+            BtnAvancar.Enabled = _indice < _dicas.Count - 1;
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
@@ -70,7 +73,6 @@ namespace ProtetorDigital.Forms
         private void BtnVoltar_Click(object? sender, EventArgs e)
         {
             if (_indice - 1 >= 0) MostrarDica(_indice - 1);
-            else Close();
         }
 
         private void BtnRetornar_Click(object? sender, EventArgs e)
