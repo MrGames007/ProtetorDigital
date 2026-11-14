@@ -22,6 +22,7 @@ namespace ProtetorDigital.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    // A aplicação usa esta classe gerada para acessar recursos incorporados do projeto.
     internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;

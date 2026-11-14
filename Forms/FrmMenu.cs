@@ -4,14 +4,17 @@ namespace ProtetorDigital
 {
     public partial class FrmMenu : Form
     {
+        // Janela inicial que concentra as entradas para Quiz, Biblioteca, Créditos e saída.
         public FrmMenu()
         {
+            // O layout final é organizado em código para manter os comandos centralizados.
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
 
+            // Créditos é criado dinamicamente porque não fazia parte do layout original do Designer.
             var btnCreditos = new Button
             {
                 Name = "BtnCreditos",
@@ -30,6 +33,7 @@ namespace ProtetorDigital
                 creditos.ShowDialog(this);
             };
 
+            // Substitui a composição inicial por uma grade percentual que se adapta à janela.
             Controls.Clear();
             var layout = new TableLayoutPanel
             {
@@ -61,22 +65,26 @@ namespace ProtetorDigital
 
         protected override void OnShown(EventArgs e)
         {
+            // Mantém o ponto de extensão do ciclo de exibição da janela principal.
             base.OnShown(e);
             _ = Task.Run(() => { });
         }
 
         private void BtnQuiz_Click(object sender, EventArgs e)
         {
+            // O quiz recebe o menu como origem e é aberto modalmente.
             FrmQuiz segundaJanela = new FrmQuiz(this);
             segundaJanela.ShowDialog(this);
         }
         private void BtnSair_Click(object sender, EventArgs e)
         {
+            // Encerra todo o ciclo de mensagens do Windows Forms.
             Application.Exit();
         }
 
         private void BtnBiblioteca_Click(object sender, EventArgs e)
         {
+            // A biblioteca concentra as telas de dicas, golpes e relatos.
             FrmBiblioteca quartaJanela = new FrmBiblioteca(this);
             quartaJanela.ShowDialog(this);
         }

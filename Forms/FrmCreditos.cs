@@ -6,13 +6,16 @@ namespace ProtetorDigital.Forms;
 
 public sealed class FrmCreditos : Form
 {
+    // Tela modal que monta créditos institucionais a partir de creditos.json.
     private readonly TableLayoutPanel _principal;
     private readonly Button _fechar;
 
     public FrmCreditos()
     {
+        // O layout é criado em código porque a quantidade de linhas e cartões vem do JSON.
         JanelaPadrao.Registrar(this);
         Suavizar.Aplicar(this);
+        // O modelo fornece títulos, linhas e cartões sem acoplar o conteúdo à interface.
         var info = ConteudoService.CarregarObjeto<CreditosInfo>("creditos.json") ?? new CreditosInfo();
         Text = info.Titulo ?? string.Empty;
         MinimumSize = new Size(800, 600);
@@ -85,6 +88,7 @@ public sealed class FrmCreditos : Form
         };
         _principal.Controls.Add(subtitulo, 0, 1);
 
+        // A tabela distribui rótulos e valores em duas colunas responsivas.
         var linhas = new TableLayoutPanel
         {
             Dock = DockStyle.Fill,
@@ -127,6 +131,7 @@ public sealed class FrmCreditos : Form
         linhasCartao.Controls.Add(linhas);
         _principal.Controls.Add(linhasCartao, 0, 2);
 
+        // Cartões opcionais ocupam duas colunas na parte inferior dos créditos.
         var cartoes = new TableLayoutPanel
         {
             Dock = DockStyle.Fill,
@@ -151,6 +156,7 @@ public sealed class FrmCreditos : Form
 
     private static string? LocalizarImagem(string? nomeArquivo)
     {
+        // Procura primeiro na publicação e depois sobe diretórios para facilitar o desenvolvimento local.
         if (string.IsNullOrWhiteSpace(nomeArquivo))
         {
             return null;

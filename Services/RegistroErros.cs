@@ -4,10 +4,12 @@ namespace ProtetorDigital.Services;
 
 public static class RegistroErros
 {
+    // Gera relatórios objetivos para diagnosticar falhas ocorridas durante a execução.
     private const string NomeProjeto = "ProtetorDigital";
 
     public static string? Registrar(Exception excecao, string origem)
     {
+        // A pasta e o arquivo são criados ao lado do executável, com data, hora e nome do projeto.
         try
         {
             var pasta = Path.Combine(AppContext.BaseDirectory, "Erros");

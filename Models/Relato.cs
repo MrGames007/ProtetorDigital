@@ -4,6 +4,7 @@ namespace ProtetorDigital
 {
     public class Relato
     {
+        // Modelo de um caso educativo/noticiado exibido na tela de Relatos.
         public int Id { get; set; }
 
         public string? Titulo { get; set; }
@@ -12,6 +13,7 @@ namespace ProtetorDigital
 
         public string? Vitima { get; set; }
 
+        // Faz a ponte entre os nomes dos campos do JSON e os nomes usados na UI.
         [JsonPropertyName("relato")]
         public string? Conteudo { get; set; }
 

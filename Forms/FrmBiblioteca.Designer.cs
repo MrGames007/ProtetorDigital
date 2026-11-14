@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            // O Designer monta o hub visual que encaminha para Relatos, Dicas e Exemplos de Golpes.
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBiblioteca));
             tlpBiblioteca = new TableLayoutPanel();
             label1 = new Label();

@@ -16,6 +16,7 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            // O Designer fornece pergunta, alternativas e comandos; FrmQuiz.cs cria os painéis dinâmicos do quiz.
             lblPergunta = new Label();
             RBtnAlt1 = new RadioButton();
             RBtnAlt2 = new RadioButton();

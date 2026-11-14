@@ -5,8 +5,10 @@ namespace ProtetorDigital.Services;
 
 public static class LarguraTexto
 {
+    // Mantém textos longos das telas de conteúdo dentro da largura útil do painel rolável.
     public static void Ajustar(FlowLayoutPanel painel, params Label[] labels)
     {
+        // Desconta padding, rolagem e margem antes de permitir a quebra vertical dos textos.
         var largura = Math.Max(200, painel.ClientSize.Width - painel.Padding.Horizontal - SystemInformation.VerticalScrollBarWidth);
         foreach (var label in labels)
         {

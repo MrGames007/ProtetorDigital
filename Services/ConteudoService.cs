@@ -5,6 +5,7 @@ namespace ProtetorDigital.Services;
 
 public static class ConteudoService
 {
+    // Centraliza a leitura e a desserialização dos JSONs usados pelas telas educativas.
     private static readonly JsonSerializerOptions Opcoes = new()
     {
         PropertyNameCaseInsensitive = true,
@@ -14,6 +15,7 @@ public static class ConteudoService
 
     public static T? CarregarObjeto<T>(string nomeArquivo)
     {
+        // Carrega arquivos cuja raiz representa um único objeto, como creditos.json.
         var caminho = LocalizarArquivo(nomeArquivo);
         if (caminho is null)
         {
@@ -32,6 +34,7 @@ public static class ConteudoService
 
     public static List<T> CarregarLista<T>(string nomeArquivo)
     {
+        // Aceita tanto um array JSON direto quanto uma raiz com a propriedade "itens".
         var caminho = LocalizarArquivo(nomeArquivo) ?? throw Falha(nomeArquivo, "arquivo não encontrado");
         try
         {
@@ -50,6 +53,7 @@ public static class ConteudoService
 
     public static string? LocalizarArquivo(string nomeArquivo)
     {
+        // Os dados publicados ficam ao lado do executável, dentro da pasta dados.
         var caminhoSaida = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", nomeArquivo);
         if (File.Exists(caminhoSaida))
         {
@@ -67,6 +71,7 @@ public static class ConteudoService
 
     private static ConteudoException Falha(string arquivo, string detalhe, Exception? inner = null)
     {
+        // Converte falhas técnicas em erro de conteúdo e mantém um log de diagnóstico no perfil do usuário.
         var erro = new ConteudoException($"{arquivo}: {detalhe}", inner);
         try
         {

@@ -11,12 +11,14 @@ namespace ProtetorDigital.Forms
 {
     public partial class FrmDicas : Form
     {
+        // Apresenta uma dica por vez e mantém o índice da navegação local.
         private List<Dica> _dicas = new();
         private int _indice = 0;
 
         private Form _janelaOrigem;
         public FrmDicas(Form origem)
         {
+            // A tela filha herda serviços visuais e responsivos da aplicação.
             _janelaOrigem = origem;
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
@@ -36,11 +38,13 @@ namespace ProtetorDigital.Forms
 
         private void AjustarLarguras()
         {
+            // Recalcula o espaço dos textos quando o painel ou as fontes mudam.
             LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblDescricao, label3, lblPassos);
         }
 
         private void FrmDicas_Load(object? sender, EventArgs e)
         {
+            // O conteúdo educativo é carregado somente quando a janela fica pronta.
             try
             {
                 _dicas = ConteudoService.CarregarLista<Dica>("dicas.json");
@@ -56,6 +60,7 @@ namespace ProtetorDigital.Forms
 
         private void MostrarDica(int indice)
         {
+            // Atualiza todos os campos da dica e limita os botões aos extremos da lista.
             if (indice < 0 || indice >= _dicas.Count) return;
             _indice = indice;
             var d = _dicas[indice];
@@ -79,21 +84,25 @@ namespace ProtetorDigital.Forms
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
         {
+            // Avança sem permitir índice além do último item.
             if (_indice + 1 < _dicas.Count) MostrarDica(_indice + 1);
         }
 
         private void BtnAnterior_Click(object? sender, EventArgs e)
         {
+            // Retorna ao item anterior sem fechar a tela de dicas.
             if (_indice - 1 >= 0) MostrarDica(_indice - 1);
         }
 
         private void BtnVoltar_Click(object? sender, EventArgs e)
         {
+            // Fecha a janela modal de conteúdo.
             Close();
         }
 
         private static void ConfigurarBotaoNavegacao(Button botao)
         {
+            // Corrige a aparência do texto branco quando um botão fica desabilitado.
             botao.EnabledChanged += (_, _) => botao.BackColor = botao.Enabled
                 ? Color.FromArgb(0, 120, 215)
                 : Color.FromArgb(127, 169, 214);

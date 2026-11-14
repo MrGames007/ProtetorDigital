@@ -16,6 +16,7 @@ namespace ProtetorDigital.Forms
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            // O Designer monta os controles de relato; FrmRelatos.cs preenche dados, links e navegação.
             BtnAnterior = new Button();
             BtnAvancar = new Button();
             BtnVoltar = new Button();

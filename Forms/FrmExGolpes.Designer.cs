@@ -16,6 +16,7 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            // O Designer prepara a área de navegação e os Labels preenchidos por FrmExGolpes.cs.
             BtnAnterior = new Button();
             BtnAvancar = new Button();
             BtnVoltar = new Button();

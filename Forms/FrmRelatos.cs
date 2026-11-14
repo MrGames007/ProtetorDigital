@@ -7,11 +7,13 @@ namespace ProtetorDigital.Forms
 {
     public partial class FrmRelatos : Form
     {
+        // Exibe casos, fontes e lições aprendidas com navegação sequencial.
         private List<Relato> _relatos = new();
         private int _indice = 0;
         private Form _janelaOrigem;
         public FrmRelatos(Form origem)
         {
+            // Configura o formulário, o link da matéria e o ajuste responsivo dos textos.
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
@@ -31,6 +33,7 @@ namespace ProtetorDigital.Forms
 
         private void FrmRelatos_Load(object? sender, EventArgs e)
         {
+            // Carrega os relatos e inicia a exibição pelo primeiro registro.
             try
             {
                 _relatos = ConteudoService.CarregarLista<Relato>("relatos.json");
@@ -46,6 +49,7 @@ namespace ProtetorDigital.Forms
 
         private void MostrarRelato(int indice)
         {
+            // Mapeia o relato para os controles, valida o link e atualiza a navegação.
             if (indice < 0 || indice >= _relatos.Count) return;
             _indice = indice;
             var r = _relatos[indice];
@@ -70,6 +74,7 @@ namespace ProtetorDigital.Forms
 
         private void LnkMateria_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
         {
+            // Abre somente URLs HTTP/HTTPS válidas no navegador padrão do sistema.
             if (lnkMateria.Tag is not string url) return;
             try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(url) { UseShellExecute = true }); }
             catch { MessageBox.Show($"Não foi possível abrir o navegador. Endereço da matéria: {url}"); }
@@ -77,22 +82,26 @@ namespace ProtetorDigital.Forms
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
         {
+            // Avança para o próximo relato quando o índice ainda está dentro da lista.
             if (_indice + 1 < _relatos.Count) MostrarRelato(_indice + 1);
         }
 
         private void BtnAnterior_Click(object? sender, EventArgs e)
         {
+            // Retorna ao relato anterior sem fechar a janela.
             // Navega para o relato anterior, se existir
             if (_indice - 1 >= 0) MostrarRelato(_indice - 1);
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
+            // Fecha a janela modal de relatos.
             this.Close();
         }
 
         private static void ConfigurarBotaoNavegacao(Button botao)
         {
+            // Redesenha o estado desabilitado para conservar contraste e legibilidade.
             botao.EnabledChanged += (_, _) => botao.BackColor = botao.Enabled
                 ? Color.FromArgb(0, 120, 215)
                 : Color.FromArgb(127, 169, 214);

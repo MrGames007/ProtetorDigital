@@ -9,6 +9,7 @@ namespace ProtetorDigital.Forms
 {
     public partial class FrmQuiz : Form
     {
+        // Coordena a rodada do quiz: perguntas sorteadas, pontuação, feedback e resultado final.
         private List<Pergunta> _perguntas = new();
         private List<Pergunta> _todasPerguntas = new();
         private const int QuantidadePorRodada = 10;
@@ -35,6 +36,7 @@ namespace ProtetorDigital.Forms
 
         public FrmQuiz()
         {
+            // Monta a interface e conecta os serviços comuns antes do carregamento das perguntas.
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
@@ -52,11 +54,13 @@ namespace ProtetorDigital.Forms
 
         public FrmQuiz(FrmMenu origem) : this()
         {
+            // Guarda o menu para que os botões de saída possam devolvê-lo ao primeiro plano.
             _janelaOrigem = origem;
         }
 
         private void ConfigurarInterface()
         {
+            // Cria a grade principal, o cabeçalho, as alternativas, o feedback e o painel de resultado.
             _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent, AutoScroll = true };
             foreach (var percentual in new[] { 8f, 14f, 34f, 28f, 16f }) _tlpRaiz.RowStyles.Add(new RowStyle(SizeType.Percent, percentual));
 
@@ -161,6 +165,7 @@ namespace ProtetorDigital.Forms
 
         private void FrmQuiz_Load(object? sender, EventArgs e)
         {
+            // Carrega o banco de perguntas e inicia uma rodada limitada a dez questões.
             try
             {
                 _todasPerguntas = ConteudoService.CarregarLista<Pergunta>("perguntas.json");
@@ -180,6 +185,7 @@ namespace ProtetorDigital.Forms
 
         private void IniciarRodada()
         {
+            // Sorteia perguntas apenas em memória, preservando o JSON original.
             var sorteadas = _todasPerguntas.ToArray();
             Random.Shared.Shuffle(sorteadas);
             _perguntas = sorteadas.Take(QuantidadePorRodada).ToList();
@@ -187,6 +193,7 @@ namespace ProtetorDigital.Forms
 
         private void AjustarControlesParaCaber()
         {
+            // Harmoniza fontes de alternativas depois de reduzir controles que não couberam.
             var controles = new Control[] { _lblProgresso, lblPergunta, RBtnAlt1, RBtnAlt2, RBtnAlt3, RBtnAlt4, BtnVoltar, BtnConfirmar };
             foreach (var controle in controles) Responsivo.AjustarParaCaber(controle);
 
@@ -204,6 +211,7 @@ namespace ProtetorDigital.Forms
         }
         private void MostrarPergunta(int indice)
         {
+            // Preenche o enunciado, embaralha alternativas exibidas e redefine a seleção.
             if (indice < 0 || indice >= _perguntas.Count) return;
 
             _indiceAtual = indice;
@@ -238,12 +246,14 @@ namespace ProtetorDigital.Forms
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
+            // Abandona o quiz e retorna ao menu de origem.
             _janelaOrigem?.Show();
             Close();
         }
 
         private void BtnConfirmar_Click(object sender, EventArgs e)
         {
+            // Confirma uma resposta ou avança para a próxima pergunta/resultado.
             if (_respostaConfirmada)
             {
                 if (_indiceAtual + 1 < _perguntas.Count)
@@ -320,6 +330,7 @@ namespace ProtetorDigital.Forms
 
         private static string LimparPrefixo(string texto)
         {
+            // Remove marcadores editoriais antes de mostrar a explicação ao participante.
             if (texto.StartsWith("Errado!", StringComparison.OrdinalIgnoreCase)) return texto[7..].Trim();
             if (texto.StartsWith("Correta!", StringComparison.OrdinalIgnoreCase)) return texto[8..].Trim();
             return texto;
@@ -327,6 +338,7 @@ namespace ProtetorDigital.Forms
 
         private void MostrarResultado()
         {
+            // Troca o painel de perguntas pelo resumo da pontuação e das questões erradas.
             try
             {
                 string faixa = _pontuacao == _perguntas.Count ? "Excelente! Você demonstrou muito cuidado." :
@@ -348,6 +360,7 @@ namespace ProtetorDigital.Forms
 
         private void BtnRefazer_Click(object? sender, EventArgs e)
         {
+            // Reinicia pontuação, erros e sorteio para uma nova rodada.
             _indiceAtual = 0;
             _pontuacao = 0;
             _respostasErradas.Clear();
@@ -360,12 +373,14 @@ namespace ProtetorDigital.Forms
 
         private void BtnVoltarMenu_Click(object? sender, EventArgs e)
         {
+            // Fecha o resultado e devolve o usuário ao menu principal.
             _janelaOrigem?.Show();
             Close();
         }
 
         private void FrmQuiz_KeyDown(object? sender, KeyEventArgs e)
         {
+            // Oferece Esc para sair e Enter/atalhos para confirmar respostas.
             if (e.KeyCode == Keys.Escape)
             {
                 if (_pnlResultado.Visible) Close();

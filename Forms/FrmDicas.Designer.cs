@@ -16,6 +16,7 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            // O Designer organiza topo, rodapé e painel rolável consumidos pela lógica de dicas.
             BtnAvancar = new Button();
             BtnAnterior = new Button();
             BtnVoltar = new Button();

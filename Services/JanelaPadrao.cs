@@ -8,6 +8,7 @@ namespace ProtetorDigital.Services;
 
 public static class JanelaPadrao
 {
+    // Compartilha tamanho, posição e estado das janelas para manter a navegação visual consistente.
     public static readonly Size TamanhoPadrao = new(1201, 700);
 
     private static Rectangle? _bounds;
@@ -18,6 +19,7 @@ public static class JanelaPadrao
 
     public static void Registrar(Form f)
     {
+        // Cada formulário recebe os eventos de restauração e salvamento apenas uma vez.
         if (FormulariosRegistrados.TryGetValue(f, out _)) return;
 
         FormulariosRegistrados.Add(f, new object());
@@ -34,6 +36,7 @@ public static class JanelaPadrao
 
     public static void Aplicar(Form f)
     {
+        // Restaura a janela dentro de um monitor válido ou usa o tamanho padrão centralizado.
         if (_aplicando) return;
         _aplicando = true;
         try
@@ -87,6 +90,7 @@ public static class JanelaPadrao
 
     private static void Salvar(Form f)
     {
+        // Guarda Bounds ou RestoreBounds para a próxima janela aberta.
         if (_aplicando || f.WindowState == FormWindowState.Minimized) return;
 
         if (f.WindowState == FormWindowState.Maximized)

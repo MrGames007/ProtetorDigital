@@ -11,12 +11,14 @@ namespace ProtetorDigital.Forms
 {
     public partial class FrmExGolpes : Form
     {
+        // Apresenta exemplos de golpes e seus sinais de alerta, um registro por vez.
         private List<ExGolpe> _golpes = new();
         private int _indice = 0;
 
         private Form _janelaOrigem;
         public FrmExGolpes(Form origem)
         {
+            // Configura serviços comuns, navegação e limites de fonte dos botões.
             _janelaOrigem = origem;
             InitializeComponent();
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
@@ -36,11 +38,13 @@ namespace ProtetorDigital.Forms
 
         private void AjustarLarguras()
         {
+            // Mantém nomes, explicações e alertas dentro da área rolável.
             LarguraTexto.Ajustar(flowLayoutPanel1, lblNomeGolpe, lblFuncionamento, lblTexto, lblSinaisAlerta);
         }
 
         private void FrmExGolpes_Load(object? sender, EventArgs e)
         {
+            // Carrega os exemplos do JSON quando a tela é exibida.
             try
             {
                 _golpes = ConteudoService.CarregarLista<ExGolpe>("exgolpes.json");
@@ -56,6 +60,7 @@ namespace ProtetorDigital.Forms
 
         private void MostrarGolpe(int indice)
         {
+            // Preenche o golpe atual e atualiza os limites da navegação.
             if (indice < 0 || indice >= _golpes.Count) return;
             _indice = indice;
             var g = _golpes[indice];
@@ -79,21 +84,25 @@ namespace ProtetorDigital.Forms
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
         {
+            // Mostra o próximo exemplo somente se ele existir.
             if (_indice + 1 < _golpes.Count) MostrarGolpe(_indice + 1);
         }
 
         private void BtnAnterior_Click(object? sender, EventArgs e)
         {
+            // Mostra o exemplo anterior sem alterar a lista original.
             if (_indice - 1 >= 0) MostrarGolpe(_indice - 1);
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
         {
+            // Fecha a janela modal de exemplos.
             this.Close();
         }
 
         private static void ConfigurarBotaoNavegacao(Button botao)
         {
+            // Mantém o texto do botão legível mesmo no estado desabilitado.
             botao.EnabledChanged += (_, _) => botao.BackColor = botao.Enabled
                 ? Color.FromArgb(0, 120, 215)
                 : Color.FromArgb(127, 169, 214);

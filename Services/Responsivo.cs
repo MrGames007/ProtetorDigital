@@ -5,8 +5,10 @@ namespace ProtetorDigital.Services;
 
 public static class Responsivo
 {
+    // Redimensiona fontes sem alterar a lógica das telas e permite callbacks de layout após a escala.
     private sealed class EstadoFormulario
     {
+        // Estado isolado de cada Form: fontes originais, limites, timer e ação pós-aplicação.
         public Size TamanhoBase { get; init; }
         public Dictionary<Control, float> TamanhosFonte { get; } = new();
         public Dictionary<Control, (float Minimo, float Maximo)> LimitesFonte { get; } = new();
@@ -17,6 +19,7 @@ public static class Responsivo
 
     public static void LimitarFonte(Control controle, float minimo, float maximo)
     {
+        // Alguns botões têm faixa própria para continuar legíveis em telas maximizadas.
         if (controle.FindForm() is Form formulario && Estados.TryGetValue(formulario, out var estado))
         {
             estado.LimitesFonte[controle] = (minimo, maximo);
@@ -28,6 +31,7 @@ public static class Responsivo
 
     public static void Registrar(Form formulario, Size tamanhoBase, Action? aposAplicar = null)
     {
+        // Registra a árvore de controles e agenda os ajustes durante Resize/SizeChanged.
         if (Estados.ContainsKey(formulario))
         {
             return;
@@ -95,6 +99,7 @@ public static class Responsivo
 
     private static void Redimensionar(Form formulario, EstadoFormulario estado)
     {
+        // Calcula uma escala limitada e recria as fontes a partir do tamanho original, sem acumular erro.
         var larguraBase = Math.Max(1, estado.TamanhoBase.Width);
         var alturaBase = Math.Max(1, estado.TamanhoBase.Height);
         var escala = Math.Clamp(
@@ -140,6 +145,7 @@ public static class Responsivo
 
     public static void AjustarParaCaber(Control controle)
     {
+        // Reduz gradualmente textos que não cabem em Labels, RadioButtons ou Buttons.
         if (controle is not (Label or RadioButton or Button) || controle.Width <= 0 || controle.Height <= 0)
         {
             return;
