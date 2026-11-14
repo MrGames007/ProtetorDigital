@@ -17,12 +17,16 @@ namespace ProtetorDigital.Forms
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             _janelaOrigem = origem;
             BtnAvancar.Click += BtnAvancar_Click;
-            BtnAnterior.Click += BtnVoltar_Click;
+            BtnAnterior.Click += BtnAnterior_Click;
+            ConfigurarBotaoNavegacao(BtnAnterior);
+            ConfigurarBotaoNavegacao(BtnAvancar);
+            flowLayoutPanel1.SizeChanged += (_, _) => LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas);
             Load += FrmRelatos_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
-            ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
-            Resize += (_, _) => AjustarLarguras();
+            ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650), () => LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas));
+            ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAnterior, 14f, 22f);
+            ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAvancar, 14f, 22f);
         }
 
         private void FrmRelatos_Load(object? sender, EventArgs e)
@@ -31,7 +35,7 @@ namespace ProtetorDigital.Forms
             {
                 _relatos = ConteudoService.CarregarLista<Relato>("relatos.json");
                 MostrarRelato(0);
-                AjustarLarguras();
+                LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas);
             }
             catch (ConteudoException ex)
             {
@@ -40,15 +44,6 @@ namespace ProtetorDigital.Forms
             }
         }
 
-        private void AjustarLarguras()
-        {
-            var largura = Math.Max(100, ClientSize.Width - 70);
-            foreach (var label in new[] { lblFonte, lblVitima, lblRelato, lblLicoesAprendidas })
-            {
-                label.MaximumSize = new Size(largura, 0);
-                label.AutoSize = true;
-            }
-        }
         private void MostrarRelato(int indice)
         {
             if (indice < 0 || indice >= _relatos.Count) return;
@@ -70,6 +65,7 @@ namespace ProtetorDigital.Forms
             // Atualiza estado dos botões de navegação
             BtnAnterior.Enabled = _indice > 0;
             BtnAvancar.Enabled = _indice < _relatos.Count - 1;
+            LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas);
         }
 
         private void LnkMateria_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
@@ -84,16 +80,29 @@ namespace ProtetorDigital.Forms
             if (_indice + 1 < _relatos.Count) MostrarRelato(_indice + 1);
         }
 
-        private void BtnVoltar_Click(object? sender, EventArgs e)
+        private void BtnAnterior_Click(object? sender, EventArgs e)
         {
             // Navega para o relato anterior, se existir
             if (_indice - 1 >= 0) MostrarRelato(_indice - 1);
         }
 
-        private void BtnRetorno_Click(object sender, EventArgs e)
+        private void BtnVoltar_Click(object sender, EventArgs e)
         {
-            _janelaOrigem.Show();
             this.Close();
+        }
+
+        private static void ConfigurarBotaoNavegacao(Button botao)
+        {
+            botao.EnabledChanged += (_, _) => botao.BackColor = botao.Enabled
+                ? Color.FromArgb(0, 120, 215)
+                : Color.FromArgb(127, 169, 214);
+            botao.Paint += (_, e) =>
+            {
+                if (botao.Enabled) return;
+                e.Graphics.Clear(botao.BackColor);
+                TextRenderer.DrawText(e.Graphics, botao.Text, botao.Font, botao.ClientRectangle,
+                    Color.White, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
+            };
         }
 
         

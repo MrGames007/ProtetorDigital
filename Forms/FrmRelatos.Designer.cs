@@ -19,6 +19,8 @@ namespace ProtetorDigital.Forms
             BtnAnterior = new Button();
             BtnAvancar = new Button();
             BtnVoltar = new Button();
+            pnlTopo = new TableLayoutPanel();
+            pnlRodape = new TableLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblTitulo = new Label();
             lblFonte = new Label();
@@ -27,12 +29,13 @@ namespace ProtetorDigital.Forms
             lblRelato = new Label();
             lblTexto = new Label();
             lblLicoesAprendidas = new Label();
+            pnlTopo.SuspendLayout();
+            pnlRodape.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
+            //
             // BtnAnterior
-            // 
-            BtnAnterior.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            //
             BtnAnterior.BackColor = Color.FromArgb(0, 120, 215);
             BtnAnterior.Cursor = Cursors.Hand;
             BtnAnterior.FlatAppearance.BorderSize = 0;
@@ -41,18 +44,21 @@ namespace ProtetorDigital.Forms
             BtnAnterior.FlatStyle = FlatStyle.Flat;
             BtnAnterior.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnAnterior.ForeColor = Color.White;
-            BtnAnterior.Location = new Point(18, 555);
-            BtnAnterior.Margin = new Padding(3, 2, 3, 2);
+            BtnAnterior.AutoEllipsis = false;
+            BtnAnterior.AutoSize = true;
+            BtnAnterior.AutoSizeMode = AutoSizeMode.GrowOnly;
+            BtnAnterior.Margin = new Padding(0);
             BtnAnterior.Name = "BtnAnterior";
-            BtnAnterior.Size = new Size(160, 48);
+            BtnAnterior.MinimumSize = new Size(190, 56);
+            BtnAnterior.Padding = new Padding(18, 8, 18, 8);
             BtnAnterior.TabIndex = 0;
             BtnAnterior.Text = "◀ Anterior";
+            BtnAnterior.TextAlign = ContentAlignment.MiddleCenter;
             BtnAnterior.UseVisualStyleBackColor = false;
-            BtnAnterior.Click += BtnVoltar_Click;
-            // 
+            BtnAnterior.Click += BtnAnterior_Click;
+            //
             // BtnAvancar
-            // 
-            BtnAvancar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            //
             BtnAvancar.BackColor = Color.FromArgb(0, 120, 215);
             BtnAvancar.Cursor = Cursors.Hand;
             BtnAvancar.FlatAppearance.BorderSize = 0;
@@ -61,12 +67,16 @@ namespace ProtetorDigital.Forms
             BtnAvancar.FlatStyle = FlatStyle.Flat;
             BtnAvancar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnAvancar.ForeColor = Color.White;
-            BtnAvancar.Location = new Point(938, 555);
-            BtnAvancar.Margin = new Padding(3, 2, 3, 2);
+            BtnAvancar.AutoEllipsis = false;
+            BtnAvancar.AutoSize = true;
+            BtnAvancar.AutoSizeMode = AutoSizeMode.GrowOnly;
+            BtnAvancar.Margin = new Padding(0);
             BtnAvancar.Name = "BtnAvancar";
-            BtnAvancar.Size = new Size(160, 48);
+            BtnAvancar.MinimumSize = new Size(190, 56);
+            BtnAvancar.Padding = new Padding(18, 8, 18, 8);
             BtnAvancar.TabIndex = 2;
             BtnAvancar.Text = "Avançar ▶";
+            BtnAvancar.TextAlign = ContentAlignment.MiddleCenter;
             BtnAvancar.UseVisualStyleBackColor = false;
             // 
             // BtnVoltar
@@ -79,18 +89,55 @@ namespace ProtetorDigital.Forms
             BtnVoltar.FlatStyle = FlatStyle.Flat;
             BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(18, 11);
-            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
+            BtnVoltar.AutoEllipsis = false;
+            BtnVoltar.AutoSize = true;
+            BtnVoltar.AutoSizeMode = AutoSizeMode.GrowOnly;
+            BtnVoltar.Margin = new Padding(0);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(160, 44);
+            BtnVoltar.MinimumSize = new Size(190, 56);
+            BtnVoltar.Padding = new Padding(18, 8, 18, 8);
             BtnVoltar.TabIndex = 11;
             BtnVoltar.Text = "◀ Voltar";
+            BtnVoltar.TextAlign = ContentAlignment.MiddleCenter;
             BtnVoltar.UseVisualStyleBackColor = false;
-            BtnVoltar.Click += BtnRetorno_Click;
+            BtnVoltar.Click += BtnVoltar_Click;
+            //
+            // pnlTopo
+            //
+            pnlTopo.AutoSize = true;
+            pnlTopo.ColumnCount = 2;
+            pnlTopo.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            pnlTopo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            pnlTopo.Controls.Add(BtnVoltar, 0, 0);
+            pnlTopo.Dock = DockStyle.Top;
+            pnlTopo.Location = new Point(18, 0);
+            pnlTopo.Margin = new Padding(0);
+            pnlTopo.Name = "pnlTopo";
+            pnlTopo.Padding = new Padding(0, 10, 0, 6);
+            pnlTopo.RowCount = 1;
+            pnlTopo.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            pnlTopo.TabIndex = 4;
+            //
+            // pnlRodape
+            //
+            pnlRodape.AutoSize = true;
+            pnlRodape.ColumnCount = 3;
+            pnlRodape.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            pnlRodape.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            pnlRodape.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            pnlRodape.Controls.Add(BtnAnterior, 0, 0);
+            pnlRodape.Controls.Add(BtnAvancar, 2, 0);
+            pnlRodape.Dock = DockStyle.Bottom;
+            pnlRodape.Location = new Point(18, 550);
+            pnlRodape.Margin = new Padding(0);
+            pnlRodape.Name = "pnlRodape";
+            pnlRodape.Padding = new Padding(0, 6, 0, 12);
+            pnlRodape.RowCount = 1;
+            pnlRodape.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            pnlRodape.TabIndex = 5;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = Color.FromArgb(248, 249, 250);
             flowLayoutPanel1.Controls.Add(lblTitulo);
@@ -101,10 +148,9 @@ namespace ProtetorDigital.Forms
             flowLayoutPanel1.Controls.Add(lblTexto);
             flowLayoutPanel1.Controls.Add(lblLicoesAprendidas);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(18, 70);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(20, 16, 20, 16);
-            flowLayoutPanel1.Size = new Size(1080, 468);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.TabIndex = 3;
             flowLayoutPanel1.WrapContents = false;
             // 
@@ -115,7 +161,6 @@ namespace ProtetorDigital.Forms
             lblTitulo.ForeColor = Color.FromArgb(0, 99, 177);
             lblTitulo.Location = new Point(23, 16);
             lblTitulo.Margin = new Padding(3, 0, 3, 6);
-            lblTitulo.MaximumSize = new Size(1080, 0);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(0, 45);
             lblTitulo.TabIndex = 5;
@@ -127,7 +172,6 @@ namespace ProtetorDigital.Forms
             lblFonte.ForeColor = Color.FromArgb(90, 98, 106);
             lblFonte.Location = new Point(23, 67);
             lblFonte.Margin = new Padding(3, 0, 3, 18);
-            lblFonte.MaximumSize = new Size(1080, 0);
             lblFonte.Name = "lblFonte";
             lblFonte.Size = new Size(0, 21);
             lblFonte.TabIndex = 6;
@@ -139,7 +183,6 @@ namespace ProtetorDigital.Forms
             lnkMateria.LinkColor = Color.FromArgb(11, 92, 173);
             lnkMateria.Location = new Point(23, 106);
             lnkMateria.Margin = new Padding(3, 0, 3, 8);
-            lnkMateria.MaximumSize = new Size(1080, 0);
             lnkMateria.Name = "lnkMateria";
             lnkMateria.Size = new Size(239, 30);
             lnkMateria.TabIndex = 12;
@@ -155,7 +198,6 @@ namespace ProtetorDigital.Forms
             lblVitima.ForeColor = Color.FromArgb(33, 37, 41);
             lblVitima.Location = new Point(23, 144);
             lblVitima.Margin = new Padding(3, 0, 3, 10);
-            lblVitima.MaximumSize = new Size(1080, 0);
             lblVitima.Name = "lblVitima";
             lblVitima.Size = new Size(0, 25);
             lblVitima.TabIndex = 7;
@@ -167,7 +209,6 @@ namespace ProtetorDigital.Forms
             lblRelato.ForeColor = Color.FromArgb(33, 37, 41);
             lblRelato.Location = new Point(23, 179);
             lblRelato.Margin = new Padding(3, 0, 3, 26);
-            lblRelato.MaximumSize = new Size(1080, 0);
             lblRelato.Name = "lblRelato";
             lblRelato.Size = new Size(0, 25);
             lblRelato.TabIndex = 8;
@@ -190,7 +231,6 @@ namespace ProtetorDigital.Forms
             lblLicoesAprendidas.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblLicoesAprendidas.ForeColor = Color.FromArgb(33, 37, 41);
             lblLicoesAprendidas.Location = new Point(23, 268);
-            lblLicoesAprendidas.MaximumSize = new Size(1080, 0);
             lblLicoesAprendidas.Name = "lblLicoesAprendidas";
             lblLicoesAprendidas.Size = new Size(0, 25);
             lblLicoesAprendidas.TabIndex = 10;
@@ -201,13 +241,18 @@ namespace ProtetorDigital.Forms
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
+            Padding = new Padding(18, 0, 18, 0);
+            Controls.Add(pnlTopo);
+            Controls.Add(pnlRodape);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(BtnVoltar);
-            Controls.Add(BtnAvancar);
-            Controls.Add(BtnAnterior);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmRelatos";
             Text = "Relatos";
+            flowLayoutPanel1.BringToFront();
+            pnlTopo.ResumeLayout(false);
+            pnlTopo.PerformLayout();
+            pnlRodape.ResumeLayout(false);
+            pnlRodape.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -218,6 +263,8 @@ namespace ProtetorDigital.Forms
         private Button BtnAnterior;
         private Button BtnAvancar;
         private Button BtnVoltar;
+        private TableLayoutPanel pnlTopo;
+        private TableLayoutPanel pnlRodape;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblTitulo;
         private Label lblFonte;

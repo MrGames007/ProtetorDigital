@@ -1,7 +1,7 @@
 # `Forms/FrmRelatos.Designer.cs`
 
 **Nível predominante:** 🟡 intermediário  
-**Para que serve:** declara os botões e Labels usados pela tela de relatos.  
+**Para que serve:** declara os painéis, botões e Labels usados pela tela de relatos.
 **Depende de:** Windows Forms.  
 **É usado por:** `FrmRelatos.cs`.
 
@@ -12,22 +12,19 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre Designer, Anchor, Labels, eventos 
 ## Explicação por blocos de linhas
 
 - **1–18:** namespace, classe parcial, componente, descarte e início de montagem.
-- **19–48:** cria e configura botão anterior, ancorado embaixo à esquerda, com evento.
-- **50–68:** cria e configura botão avançar, ancorado embaixo à direita.
-- **69–85:** configura `lblTitulo` e `lblFonte` com posições iniciais e textos provisórios do Designer.
-- **87–103:** configura `lblTexto` e `lblLicoesAprendidas`.
-- **105–121:** configura `lblRelato` e `lblVitima`.
-- **123–131:** cria botão de retorno e liga `BtnRetorno_Click`.
-- **133–153:** configura Form, adiciona controles, retoma e executa layout.
-- **156–168:** declara campos privados e fecha arquivo.
+- **19–29:** cria três botões, dois painéis e os Labels do relato.
+- **30–118:** configura os botões com tamanho mínimo, crescimento automático, padding, fonte, cores e eventos.
+- **119–169:** configura `pnlTopo` e `pnlRodape` com colunas `AutoSize`, `100%` e `AutoSize`.
+- **170–188:** configura `flowLayoutPanel1` com `Dock = Fill`, rolagem, direção vertical, controles e padding.
+- **190–230:** configura Labels e LinkLabel sem `MaximumSize` fixo; a largura é calculada em tempo de execução.
 
 ### Controles
 
 | Controle | Tipo | Uso |
 |---|---|---|
-| `BtnVoltar` | `Button` | Relato anterior |
+| `BtnAnterior` | `Button` | Relato anterior |
 | `BtnAvancar` | `Button` | Próximo relato |
-| `BtnRetorno` | `Button` | Voltar à Biblioteca |
+| `BtnVoltar` | `Button` | Fechar a tela |
 | `lblTitulo` | `Label` | Título |
 | `lblFonte` | `Label` | Fonte |
 | `lblVitima` | `Label` | Vítima |
@@ -37,7 +34,7 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre Designer, Anchor, Labels, eventos 
 
 ## Pontos de atenção
 
-É arquivo gerado. Os textos `label1` são valores iniciais do Designer; a lógica substitui vários deles ao carregar. O formulário usa posições fixas no Designer, embora o código registre responsividade.
+É arquivo gerado. Os textos iniciais são substituídos ao carregar. Os botões e o conteúdo não usam posições fixas; o painel central ocupa o espaço restante e `LarguraTexto` dimensiona os textos.
 
 ## Se der erro aqui
 
@@ -49,8 +46,8 @@ Ajuste visual pelo Designer. Para novos dados, atualize modelo, JSON e lógica, 
 
 ## Mini-resumo
 
-1. Declara controles de relatos.
-2. Configura navegação.
-3. Reserva Labels para dados.
-4. Liga eventos.
-5. A lógica atualiza os textos.
+1. Declara painéis e controles de relatos.
+2. Configura navegação com botões que crescem com a fonte.
+3. Reserva Labels e LinkLabel para dados.
+4. Liga eventos de fechamento e navegação.
+5. A lógica atualiza textos e larguras.

@@ -2,7 +2,7 @@
 
 **Nível predominante:** 🟡 intermediário  
 **Para que serve:** carrega exemplos de golpes e navega entre eles.  
-**Depende de:** `ExGolpe`, `exgolpes.json`, JSON, LINQ e controles do Designer.  
+**Depende de:** `ExGolpe`, `exgolpes.json`, JSON, LINQ, `Responsivo`, `LarguraTexto` e controles do Designer.
 **É usado por:** `FrmBiblioteca`.
 
 ## Antes de ler
@@ -15,22 +15,23 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre JSON, listas, nulos, `try/catch`, 
 |---:|---|---|---|---|
 | 1–11 | imports | Importam tipos de coleção, arquivo, JSON, LINQ e Forms; há um using duplicado. | Fornecem as ferramentas do arquivo. | 🟢 |
 | 13–18 | classe e campos | Declaram lista de golpes e índice. | Guardam dados e posição. | 🟡 |
-| 20–31 | construtor | Guarda origem, monta controles, liga eventos e responsividade. | Prepara a janela. | 🟡 |
+| 20–34 | construtor | Monta controles, liga eventos, configura pintura dos botões e registra responsividade com limites de fonte e ajuste de largura. | Prepara a janela. | 🟡 |
 | 34–60 | `FrmExGolpes_Load` | Localiza arquivo, lê raiz e desserializa itens. | Alimenta a tela. | 🟡 |
 | 38–43 | caminhos | Usa saída e fallback de desenvolvimento. | Aceita os dois ambientes. | 🟡 |
 | 45–53 | leitura do documento | Confere existência, configura opções e lê `itens`. | O JSON tem raiz objeto. | 🟡 |
 | 55 | primeira exibição | Mostra o primeiro golpe quando a lista não está vazia. | Inicia navegação. | 🟢 |
 | 57–59 | `catch` vazio | Ignora falhas. | Evita quebrar UI, mas não informa causa. | 🟡 |
-| 62–79 | `MostrarGolpe` | Valida índice, pega golpe e preenche Labels. | Atualiza conteúdo visível. | 🟡 |
+| 62–81 | `MostrarGolpe` | Valida índice, pega golpe, preenche Labels, atualiza botões e recalcula larguras. | Atualiza conteúdo visível. | 🟡 |
 | 69–78 | sinais | Junta alertas com hífen ou limpa o Label. | Exibe a lista de forma simples. | 🟢 |
 | 81–84 | avançar | Mostra próximo golpe se existir. | Impede índice além do fim. | 🟢 |
-| 86–90 | voltar | Mostra anterior ou fecha no primeiro. | Define retorno local. | 🟢 |
-| 92–96 | retornar | Mostra origem e fecha. | Volta à Biblioteca. | 🟢 |
+| 86–89 | `BtnAnterior_Click` | Mostra o golpe anterior quando ele existe. | Define o limite da navegação de conteúdo. | 🟢 |
+| 91–94 | `BtnVoltar_Click` | Fecha a tela atual. | O formulário é modal e a origem permanece sob ele. | 🟢 |
+| 96–111 | `ConfigurarBotaoNavegacao` | Desenha texto branco em botão desabilitado e troca a cor de fundo. | Mantém os botões legíveis nas pontas da lista. | 🟡 |
 | 98–100 | linhas vazia e chaves | Não executam e fecham blocos. | Organização. | 🟢 |
 
 ## Pontos de atenção
 
-Há um `using` duplicado. O `catch` não informa erros. O nome `BtnRetornar_Click` existe mesmo que o botão possa estar ligado pelo Designer.
+Há um `using` duplicado. O `catch` não informa erros. A largura dos textos é recalculada por `LarguraTexto` em todos os eventos relevantes da tela.
 
 ## Se der erro aqui
 
@@ -46,4 +47,4 @@ Falha de arquivo ou JSON deixa a lista sem dados. Índices fora da faixa são ig
 2. Carrega objeto raiz com `itens`.
 3. Mostra nome e funcionamento.
 4. Mostra sinais em linhas.
-5. Possui navegação e retorno.
+5. Possui navegação por item e botão separado para fechar a tela.

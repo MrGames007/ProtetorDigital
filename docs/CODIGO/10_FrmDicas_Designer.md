@@ -1,7 +1,7 @@
 # `Forms/FrmDicas.Designer.cs`
 
 **Nível predominante:** 🟡 intermediário  
-**Para que serve:** monta botões de navegação e um `FlowLayoutPanel` com os textos da dica.  
+**Para que serve:** monta painéis de topo e rodapé, botões de navegação e um `FlowLayoutPanel` com os textos da dica.
 **Depende de:** Windows Forms.  
 **É usado por:** `FrmDicas.cs`.
 
@@ -12,13 +12,11 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre Designer, `FlowLayoutPanel`, Ancho
 ## Explicação por blocos de linhas
 
 - **1–18:** namespace, classe parcial, componente, descarte e início de `InitializeComponent`.
-- **19–28:** cria três botões, um fluxo e quatro Labels; suspende os layouts.
-- **30–47:** configura `BtnAvancar`, ancorado embaixo à direita, azul e ligado à aparência de botão.
-- **49–66:** configura `BtnVoltar`, ancorado embaixo à esquerda, com texto anterior.
-- **68–85:** configura `BtnRetornar`, botão superior com evento de retorno.
-- **87–102:** configura `flowLayoutPanel1`: rolagem, direção vertical, controles filhos, padding, Anchor e sem quebra horizontal.
-- **104–115:** configura `lblTitulo` com fonte grande, cor azul e `MaximumSize`.
-- **116–127:** configura `lblDescricao` com fonte regular e largura máxima.
+- **19–29:** cria três botões, dois `TableLayoutPanel`, um fluxo e quatro Labels; suspende os layouts.
+- **30–118:** configura os botões com `AutoSize`, tamanho mínimo, padding, fonte, cores e eventos.
+- **119–169:** configura `pnlTopo` e `pnlRodape` com colunas `AutoSize`, `100%` e `AutoSize`.
+- **170–188:** configura `flowLayoutPanel1` com `Dock = Fill`, rolagem, direção vertical, controles filhos, padding e sem quebra horizontal.
+- **190–225:** configura os Labels sem `MaximumSize` fixo; a largura é calculada por `LarguraTexto`.
 - **128–138:** configura `label3`, texto fixo de seção e destaque verde.
 - **139–181:** configura `lblPassos`, define o Form, adiciona controles, retoma layout e declara campos.
 
@@ -27,8 +25,8 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre Designer, `FlowLayoutPanel`, Ancho
 | Controle | Tipo | Uso |
 |---|---|---|
 | `BtnAvancar` | `Button` | Próxima dica |
-| `BtnVoltar` | `Button` | Dica anterior |
-| `BtnRetornar` | `Button` | Voltar à Biblioteca |
+| `BtnAnterior` | `Button` | Dica anterior |
+| `BtnVoltar` | `Button` | Fechar a tela |
 | `flowLayoutPanel1` | `FlowLayoutPanel` | Área rolável vertical |
 | `lblTitulo` | `Label` | Título carregado |
 | `lblDescricao` | `Label` | Descrição carregada |
@@ -37,7 +35,7 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre Designer, `FlowLayoutPanel`, Ancho
 
 ## Pontos de atenção
 
-É gerado pelo Visual Studio. A largura máxima dos textos é importante para quebra de linha. A classe de lógica liga alguns eventos novamente no construtor.
+É gerado pelo Visual Studio. O conteúdo ocupa o espaço entre os painéis de topo e rodapé. Os Labels não possuem largura fixa: `LarguraTexto` calcula a largura disponível do painel.
 
 ## Se der erro aqui
 
@@ -45,12 +43,12 @@ Um evento ou campo com nome diferente quebra a compilação. O painel ainda pode
 
 ## O que posso mudar com segurança?
 
-Ajuste aparência no Designer. Preserve `AutoScroll`, `FlowDirection`, `WrapContents` e `MaximumSize` se textos longos forem esperados.
+Ajuste aparência no Designer. Preserve `AutoScroll`, `FlowDirection`, `WrapContents` e o callback de `LarguraTexto` se textos longos forem esperados.
 
 ## Mini-resumo
 
-1. Cria botões de navegação.
-2. Cria painel com rolagem.
-3. Organiza conteúdo verticalmente.
-4. Limita largura de textos.
+1. Cria painéis de topo e rodapé.
+2. Cria botões com tamanho mínimo e crescimento automático.
+3. Cria painel com rolagem e `Dock = Fill`.
+4. Organiza conteúdo verticalmente.
 5. Declara campos para o `.cs` usar.

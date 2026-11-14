@@ -97,7 +97,7 @@ O arquivo `.Designer.cs` guarda a criação visual feita pelo Visual Studio. `In
 
 - `Dock` cola um controle a uma borda ou ocupa o contêiner; `FrmCreditos.cs`, linhas 51–52.
 - `Anchor` mantém distância de bordas durante o redimensionamento; `FrmQuiz.Designer.cs`, linhas 116–117.
-- `MaximumSize` limita o tamanho máximo; `FrmDicas.Designer.cs`, linhas 105–106.
+- `MaximumSize` limita o tamanho máximo; nas telas de conteúdo, `Services/LarguraTexto.cs` calcula esse limite em tempo de execução conforme o painel.
 
 ### Modal e não modal
 

@@ -1,0 +1,363 @@
+﻿
+[
+  {
+    "id": 1,
+    "pergunta": "Uma pessoa liga dizendo ser do banco e pede sua senha. O que fazer?",
+    "opcoes": [
+      "Informar a senha para confirmar a identidade",
+      "Desligar e entrar em contato com o banco por um canal oficial",
+      "Passar apenas os quatro primeiros números da senha",
+      "Pedir para a pessoa ligar novamente depois"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Senhas e códigos de segurança não devem ser informados por telefone. O contato deve ser encerrado e o banco procurado por um canal oficial.",
+    "explicacaoOpcoesErradas": [
+      "Errado! A senha é como a chave do seu cofre. Se você der a senha, o ladrão entra na sua conta e pega o seu dinheiro.",
+      "Correta!",
+      "Errado! Mesmo pedindo só um pedaço da senha, o ladrão usa o resto para tentar adivinhar a chave inteira.",
+      "Errado! Pedir para ligar depois não adianta, porque continua sendo um ladrão do outro lado da linha."
+    ]
+  },
+  {
+    "id": 2,
+    "pergunta": "Qual atitude ajuda a prevenir golpes pela internet?",
+    "opcoes": [
+      "Clicar em qualquer link recebido por mensagem",
+      "Compartilhar códigos de confirmação com familiares e desconhecidos",
+      "Verificar a origem da mensagem antes de fornecer qualquer informação",
+      "Enviar uma foto do cartão quando solicitada"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Antes de fornecer informações ou clicar em links, é importante verificar a origem da mensagem e confirmar se o contato é realmente legítimo.",
+    "explicacaoOpcoesErradas": [
+      "Errado! Clicar em qualquer link é como abrir a porta da sua casa para um estranho entrar sem pedir licença.",
+      "Errado! Esse código é o segredo do seu aplicativo. Se der o código para alguém, a pessoa rouba a sua conta.",
+      "Correta!",
+      "Errado! Com a foto do seu cartão, o ladrão consegue fazer compras pela internet usando o seu dinheiro."
+    ]
+  },
+  {
+    "id": 3,
+    "pergunta": "O que fazer ao receber uma mensagem suspeita pedindo dinheiro?",
+    "opcoes": [
+      "Enviar imediatamente para evitar problemas",
+      "Confirmar a identidade da pessoa por outro meio confiável",
+      "Compartilhar a mensagem com todos os contatos",
+      "Fornecer os dados bancários para confirmar a transferência"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Antes de realizar qualquer transferência, confirme diretamente com a pessoa por um meio confiável.",
+    "explicacaoOpcoesErradas": [
+      "Errado! Mandar dinheiro sem pensar faz você entregar o seu dinheirinho direto na mão de um golpista.",
+      "Correta!",
+      "Errado! Compartilhar a mensagem espalha o mentiroso para outras pessoas que também podem ser enganadas.",
+      "Errado! Entregar seus dados facilita para que o ladrão tire mais dinheiro da sua conta."
+    ]
+  },
+  {
+    "id": 4,
+    "pergunta": "Você recebe um e-mail dizendo que sua conta será bloqueada e pedindo para clicar em um link. O que fazer?",
+    "opcoes": [
+      "Clicar no link imediatamente",
+      "Responder ao e-mail com seus dados",
+      "Não clicar e verificar a informação por um canal oficial",
+      "Encaminhar o e-mail para amigos"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Links recebidos por e-mail podem ser usados em golpes de phishing. É mais seguro não clicar e verificar a situação diretamente no site ou aplicativo oficial.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O link serve de armadilha para te levar a um site falso que rouba suas senhas.",
+      "Errado! Responder essa mensagem entrega suas informações direitinho para o mentiroso.",
+      "Correta!",
+      "Errado! Se você mandar para seus amigos, eles podem clicar no link falso e cair na armadilha também."
+    ]
+  },
+  {
+    "id": 5,
+    "pergunta": "Ao criar uma senha para uma conta, qual é a opção mais segura?",
+    "opcoes": [
+      "Usar 123456",
+      "Usar o nome e a data de nascimento",
+      "Usar uma senha longa, única e difícil de adivinhar",
+      "Usar a mesma senha em todas as contas"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Uma senha longa, única e difícil de adivinhar aumenta a segurança da conta e reduz os riscos caso outra senha seja descoberta.",
+    "explicacaoOpcoesErradas": [
+      "Errado! '123456' é super fácil e qualquer pessoa consegue adivinhar em um segundo.",
+      "Errado! Seu nome e aniversário são fáceis de descobrir olhando suas redes sociais.",
+      "Correta!",
+      "Errado! Se usar a mesma senha em tudo e o ladrão descobrir uma, ele abre todas as suas contas."
+    ]
+  },
+  {
+    "id": 6,
+    "pergunta": "Você recebe uma mensagem informando que ganhou um prêmio, mas precisa pagar uma taxa para recebê-lo. O que fazer?",
+    "opcoes": [
+      "Pagar a taxa imediatamente",
+      "Enviar seus dados pessoais",
+      "Desconfiar e verificar a informação antes de tomar qualquer atitude",
+      "Compartilhar a mensagem com outras pessoas"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Mensagens que prometem prêmios e exigem pagamentos antecipados podem ser tentativas de golpe. Verifique a informação em fontes oficiais antes de fornecer dados ou dinheiro.",
+    "explicacaoOpcoesErradas": [
+      "Errado! Prêmio de verdade não cobra nada para você receber. Cobrar taxa é mentira para pegar seu dinheiro.",
+      "Errado! Enviar dados faz o ladrão usar seu nome para aprontar outras coisas ruins.",
+      "Correta!",
+      "Errado! Passar para a frente ajuda os golpistas a enganar outras pessoas com a mesma história falsa."
+    ]
+  },
+  {
+    "id": 7,
+    "pergunta": "Ao usar uma rede Wi-Fi pública, qual atitude ajuda a proteger seus dados?",
+    "opcoes": [
+      "Acessar livremente contas bancárias",
+      "Compartilhar senhas com outras pessoas",
+      "Evitar acessar informações sensíveis e usar uma conexão segura",
+      "Desativar todas as senhas do celular"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Redes Wi-Fi públicas podem apresentar riscos de segurança. Evite realizar atividades sensíveis e prefira conexões confiáveis e seguras.",
+    "explicacaoOpcoesErradas": [
+      "Errado! A internet da rua é aberta e qualquer pessoa maliciosa conectada nela pode ver seu banco aberto.",
+      "Errado! Dar sua senha para estranhos libera a entrada nas suas coisas particulares.",
+      "Correta!",
+      "Errado! Sem senha no celular, se você perder o aparelho, qualquer pessoa mexe em tudo o que é seu."
+    ]
+  },
+  {
+    "id": 8,
+    "pergunta": "Uma pessoa desconhecida pede o código de verificação enviado para o seu celular. O que fazer?",
+    "opcoes": [
+      "Informar o código para confirmar sua identidade",
+      "Enviar apenas parte do código",
+      "Não informar o código e encerrar o contato",
+      "Pedir outro código e enviar também"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Códigos de verificação são pessoais e podem permitir o acesso às suas contas. Eles nunca devem ser compartilhados com outras pessoas.",
+    "explicacaoOpcoesErradas": [
+      "Errado! Esse código serve para provar que você é você. Se entregar, o ladrão entra na sua conta do WhatsApp ou do banco.",
+      "Errado! Dar um pedaço do código ajuda o ladrão a adivinhar o resto bem rapidinho.",
+      "Correta!",
+      "Errado! Enviar um novo código dá mais uma chance para o golpista invadir suas contas."
+    ]
+  },
+  {
+    "id": 9,
+    "pergunta": "O que é a verificação em duas etapas (2FA) e por que ela é importante?",
+    "opcoes": [
+      "Uma segunda senha fixa que nunca muda",
+      "Uma camada extra de segurança que exige um código além da senha para entrar na conta",
+      "Um teste do banco enviado semanalmente para o seu e-mail",
+      "Um programa que apaga os dados do seu celular automaticamente"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "A verificação em duas etapas adiciona uma camada extra de proteção ao exigir uma segunda confirmação (como um código gerado por app ou enviado por SMS) no momento do login.",
+    "explicacaoOpcoesErradas": [
+      "Errado! Uma senha fixa só não protege direito se o ladrão conseguir descobrir esse segredo único.",
+      "Correta!",
+      "Errado! O banco não fica mandando testes toda semana para o e-mail das pessoas.",
+      "Errado! A verificação serve para trancar suas contas e não para apagar o celular."
+    ]
+  },
+  {
+    "id": 10,
+    "pergunta": "Você recebe uma mensagem de um familiar no WhatsApp pedindo um PIX urgente porque trocou de número. O que fazer?",
+    "opcoes": [
+      "Fazer o PIX imediatamente para ajudar o familiar",
+      "Pedir a chave PIX e transferir sem fazer perguntas",
+      "Ligar para o número antigo ou falar com a pessoa por outro meio antes de enviar qualquer valor",
+      "Apenas responder perguntando se ela precisa de mais dinheiro"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Criminosos usam fotos de conhecidos e novos números para aplicar golpes. Sempre confirme a identidade da pessoa ligando ou conversando por outro canal antes de fazer transferências.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O ladrão pega a foto do seu parente e finge ser ele para roubar seu dinheiro.",
+      "Errado! Mandar dinheiro sem ter certeza de quem é faz você entregar a quantia para o golpista.",
+      "Correta!",
+      "Errado! Oferecer mais ajuda faz você perder ainda mais dinheiro com o falso parente."
+    ]
+  },
+  {
+    "id": 11,
+    "pergunta": "Uma ligação diz ser da central do banco e pede que você faça um PIX de segurança. O que fazer?",
+    "opcoes": [
+      "Seguir a ligação e informar senha, token e dados do cartão para proteger a conta",
+      "Desligar e procurar o banco pelo aplicativo ou telefone oficial",
+      "Transferir um valor pequeno para testar a conta indicada",
+      "Manter a ligação aberta e pedir que o atendente confirme seus dados pessoais"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Bancos não pedem transferências de segurança nem senhas por ligações inesperadas. Encerre o contato e use um canal oficial.",
+    "explicacaoOpcoesErradas": [
+      "Errado! Informar esses dados permite que o golpista tente entrar na sua conta.",
+      "Correta!",
+      "Errado! Um valor pequeno ainda é uma transferência para o golpista e não protege sua conta.",
+      "Errado! Continuar na ligação mantém você sob pressão e expõe mais informações pessoais."
+    ]
+  },
+  {
+    "id": 12,
+    "pergunta": "Antes de pagar usando um QR Code ou PIX, qual cuidado é importante?",
+    "opcoes": [
+      "Conferir o nome do destinatário e o valor antes de confirmar",
+      "Pagar rapidamente porque o código pode vencer",
+      "Enviar o comprovante para qualquer pessoa que pedir",
+      "Aceitar o código mesmo quando o nome exibido for desconhecido"
+    ],
+    "respostaCorreta": 1,
+    "explicacao": "A tela de confirmação mostra o destinatário e o valor. Confira essas informações antes de autorizar o pagamento.",
+    "explicacaoOpcoesErradas": [
+      "Correta!",
+      "Errado! A pressa pode fazer você confirmar um pagamento para a pessoa errada.",
+      "Errado! O comprovante pode revelar dados da operação e não deve ser enviado a desconhecidos.",
+      "Errado! Um destinatário desconhecido é um motivo para interromper e verificar a cobrança."
+    ]
+  },
+  {
+    "id": 13,
+    "pergunta": "Uma pessoa oferece empréstimo consignado e cobra uma taxa antes da liberação. O que fazer?",
+    "opcoes": [
+      "Pagar a taxa para garantir a aprovação do empréstimo",
+      "Consultar o INSS ou o banco por um canal oficial antes de decidir",
+      "Enviar foto dos documentos para agilizar o cadastro",
+      "Pedir dinheiro emprestado a um familiar para pagar a taxa exigida"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Cobrança antecipada para liberar crédito é um sinal de alerta. Confirme a proposta diretamente com a instituição oficial.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O pagamento antecipado pode ser apenas uma forma de retirar dinheiro sem liberar crédito.",
+      "Correta!",
+      "Errado! Documentos enviados a desconhecidos podem ser usados em outras fraudes.",
+      "Errado! Pedir dinheiro para pagar uma cobrança suspeita aumenta o prejuízo."
+    ]
+  },
+  {
+    "id": 14,
+    "pergunta": "Alguém usa uma gravação parecida com a voz de um familiar e pede dinheiro. Como confirmar?",
+    "opcoes": [
+      "Perguntar apenas o nome do familiar na mesma ligação",
+      "Fazer o PIX e confirmar depois para não atrasar a ajuda",
+      "Ligar para o contato conhecido e fazer uma pergunta combinada em família",
+      "Confiar na gravação porque a voz parece verdadeira"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "A voz pode ser imitada ou usada fora de contexto. Confirme por outro canal e use uma pergunta que somente a família conheça.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O golpista pode saber o nome e continuar fingindo ser o familiar.",
+      "Errado! Depois de transferir, pode ser difícil recuperar o dinheiro.",
+      "Correta!",
+      "Errado! Uma voz parecida não prova quem está fazendo o pedido."
+    ]
+  },
+  {
+    "id": 15,
+    "pergunta": "Em um relacionamento pela internet, a pessoa pede dinheiro antes de vocês se conhecerem. O que fazer?",
+    "opcoes": [
+      "Enviar a quantia para demonstrar confiança",
+      "Não enviar dinheiro e conversar com alguém de confiança",
+      "Mandar documentos para provar que você é uma pessoa sincera",
+      "Fazer um empréstimo para resolver o problema da pessoa rapidamente"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Pedidos de dinheiro em relacionamentos virtuais podem fazer parte do golpe do amor. Não transfira valores e procure apoio antes de decidir.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O pedido pode ser uma estratégia para explorar sua confiança e obter dinheiro.",
+      "Correta!",
+      "Errado! Documentos pessoais não devem ser enviados a alguém que você não conhece pessoalmente.",
+      "Errado! Um empréstimo transforma uma conversa virtual em uma dívida real para você."
+    ]
+  },
+  {
+    "id": 16,
+    "pergunta": "Um suposto suporte técnico pede acesso remoto ao seu celular. O que fazer?",
+    "opcoes": [
+      "Instalar o aplicativo indicado e aceitar todas as permissões",
+      "Passar o código de acesso para o atendente continuar o suporte",
+      "Desligar e procurar o suporte no aplicativo ou site oficial",
+      "Deixar o aplicativo instalado depois que a ligação terminar"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "Instituições não precisam controlar seu aparelho por uma ligação inesperada. Use somente canais oficiais e não conceda acesso remoto.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O aplicativo e as permissões podem permitir que o golpista veja ou controle o aparelho.",
+      "Errado! Códigos de acesso são pessoais e não devem ser informados durante uma ligação inesperada.",
+      "Correta!",
+      "Errado! Um aplicativo de acesso remoto esquecido pode continuar oferecendo risco."
+    ]
+  },
+  {
+    "id": 17,
+    "pergunta": "Você recebe um QR Code para pagar uma cobrança, mas o destinatário não corresponde à empresa. O que fazer?",
+    "opcoes": [
+      "Confirmar o pagamento porque o QR Code parece oficial",
+      "Salvar o código para pagar mais tarde sem verificar",
+      "Interromper e confirmar a cobrança diretamente com a empresa",
+      "Pagar metade do valor para descobrir se a cobrança é verdadeira"
+    ],
+    "respostaCorreta": 3,
+    "explicacao": "O destinatário exibido no aplicativo precisa corresponder à cobrança. Se houver divergência, não confirme e procure a empresa por um canal conhecido.",
+    "explicacaoOpcoesErradas": [
+      "Errado! A aparência do código não garante que ele pertence à empresa.",
+      "Errado! Adiar o pagamento não resolve a divergência do destinatário.",
+      "Correta!",
+      "Errado! Qualquer valor enviado pode ser perdido e não confirma a origem da cobrança."
+    ]
+  },
+  {
+    "id": 18,
+    "pergunta": "Uma mensagem promete aumentar o benefício do INSS após o envio de documentos. O que fazer?",
+    "opcoes": [
+      "Enviar os documentos pelo link recebido para não perder a oportunidade",
+      "Confirmar a informação no Meu INSS ou em canal oficial",
+      "Pagar uma taxa para liberar a análise do benefício",
+      "Compartilhar a mensagem com outros aposentados"
+    ],
+    "respostaCorreta": 2,
+    "explicacao": "Mensagens sobre benefícios devem ser conferidas em canais oficiais. Não envie documentos nem pague taxas por links inesperados.",
+    "explicacaoOpcoesErradas": [
+      "Errado! O link pode capturar documentos e dados pessoais.",
+      "Correta!",
+      "Errado! A taxa pode ser uma cobrança criada para aplicar o golpe.",
+      "Errado! Compartilhar uma mensagem suspeita pode expor outras pessoas ao mesmo golpe."
+    ]
+  },
+  {
+    "id": 19,
+    "pergunta": "Uma pessoa conhecida envia mensagem pedindo ajuda, mas escreve de um número novo. O que fazer primeiro?",
+    "opcoes": [
+      "Verificar a identidade por uma ligação no contato antigo",
+      "Transferir o dinheiro e pedir confirmação depois",
+      "Perguntar quanto dinheiro a pessoa precisa e enviar em seguida",
+      "Publicar o pedido para descobrir se alguém reconhece o número"
+    ],
+    "respostaCorreta": 1,
+    "explicacao": "Um número novo pode estar usando a foto e o nome de um conhecido. Confirme a identidade por um contato que você já tinha salvo.",
+    "explicacaoOpcoesErradas": [
+      "Correta!",
+      "Errado! A transferência pode ir para o golpista antes da confirmação.",
+      "Errado! Fazer mais perguntas no mesmo número não prova quem está escrevendo.",
+      "Errado! Publicar a conversa expõe informações pessoais e não confirma a identidade."
+    ]
+  },
+  {
+    "id": 20,
+    "pergunta": "Qual atitude ajuda a evitar golpes quando alguém oferece suporte por telefone?",
+    "opcoes": [
+      "Usar somente o telefone ou aplicativo oficial da instituição",
+      "Informar o código recebido para confirmar o atendimento",
+      "Permitir que a pessoa instale um aplicativo de suporte",
+      "Seguir a ligação até que todas as etapas indicadas sejam concluídas"
+    ],
+    "respostaCorreta": 1,
+    "explicacao": "O contato deve ser iniciado por você em um canal oficial. Senhas, códigos e acesso remoto não devem ser compartilhados.",
+    "explicacaoOpcoesErradas": [
+      "Correta!",
+      "Errado! Códigos recebidos no celular são pessoais e não devem ser compartilhados.",
+      "Errado! O aplicativo pode dar controle do aparelho a um criminoso.",
+      "Errado! Permanecer na ligação mantém a pressão e facilita que você siga instruções perigosas."
+    ]
+  }
+]

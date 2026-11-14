@@ -22,11 +22,21 @@ namespace ProtetorDigital.Forms
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             BtnAvancar.Click += BtnAvancar_Click;
-            BtnAnterior.Click += BtnVoltar_Click;
+            BtnAnterior.Click += BtnAnterior_Click;
+            ConfigurarBotaoNavegacao(BtnAnterior);
+            ConfigurarBotaoNavegacao(BtnAvancar);
+            flowLayoutPanel1.SizeChanged += (_, _) => AjustarLarguras();
             Load += FrmExGolpes_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
-            ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650));
+            ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650), () => LarguraTexto.Ajustar(flowLayoutPanel1, lblNomeGolpe, lblFuncionamento, lblTexto, lblSinaisAlerta));
+            ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAnterior, 14f, 22f);
+            ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAvancar, 14f, 22f);
+        }
+
+        private void AjustarLarguras()
+        {
+            LarguraTexto.Ajustar(flowLayoutPanel1, lblNomeGolpe, lblFuncionamento, lblTexto, lblSinaisAlerta);
         }
 
         private void FrmExGolpes_Load(object? sender, EventArgs e)
@@ -35,6 +45,7 @@ namespace ProtetorDigital.Forms
             {
                 _golpes = ConteudoService.CarregarLista<ExGolpe>("exgolpes.json");
                 MostrarGolpe(0);
+                AjustarLarguras();
             }
             catch (ConteudoException ex)
             {
@@ -63,6 +74,7 @@ namespace ProtetorDigital.Forms
 
             BtnAnterior.Enabled = _indice > 0;
             BtnAvancar.Enabled = _indice < _golpes.Count - 1;
+            AjustarLarguras();
         }
 
         private void BtnAvancar_Click(object? sender, EventArgs e)
@@ -70,15 +82,28 @@ namespace ProtetorDigital.Forms
             if (_indice + 1 < _golpes.Count) MostrarGolpe(_indice + 1);
         }
 
-        private void BtnVoltar_Click(object? sender, EventArgs e)
+        private void BtnAnterior_Click(object? sender, EventArgs e)
         {
             if (_indice - 1 >= 0) MostrarGolpe(_indice - 1);
         }
 
-        private void BtnRetornar_Click(object sender, EventArgs e)
+        private void BtnVoltar_Click(object sender, EventArgs e)
         {
-            _janelaOrigem.Show();
             this.Close();
+        }
+
+        private static void ConfigurarBotaoNavegacao(Button botao)
+        {
+            botao.EnabledChanged += (_, _) => botao.BackColor = botao.Enabled
+                ? Color.FromArgb(0, 120, 215)
+                : Color.FromArgb(127, 169, 214);
+            botao.Paint += (_, e) =>
+            {
+                if (botao.Enabled) return;
+                e.Graphics.Clear(botao.BackColor);
+                TextRenderer.DrawText(e.Graphics, botao.Text, botao.Font, botao.ClientRectangle,
+                    Color.White, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.NoPadding);
+            };
         }
 
         

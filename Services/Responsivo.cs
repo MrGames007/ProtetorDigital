@@ -9,9 +9,19 @@ public static class Responsivo
     {
         public Size TamanhoBase { get; init; }
         public Dictionary<Control, float> TamanhosFonte { get; } = new();
+        public Dictionary<Control, (float Minimo, float Maximo)> LimitesFonte { get; } = new();
         public float UltimaEscala { get; set; } = 1f;
         public System.Windows.Forms.Timer? Timer { get; set; }
         public Action? AposAplicar { get; init; }
+    }
+
+    public static void LimitarFonte(Control controle, float minimo, float maximo)
+    {
+        if (controle.FindForm() is Form formulario && Estados.TryGetValue(formulario, out var estado))
+        {
+            estado.LimitesFonte[controle] = (minimo, maximo);
+            Redimensionar(formulario, estado);
+        }
     }
 
     private static readonly Dictionary<Form, EstadoFormulario> Estados = new();
@@ -43,6 +53,7 @@ public static class Responsivo
             foreach (var controle in estado.TamanhosFonte.Keys.ToList())
             {
                 estado.TamanhosFonte.Remove(controle);
+                estado.LimitesFonte.Remove(controle);
             }
             Estados.Remove(formulario);
             estado.Timer?.Dispose();
@@ -102,10 +113,15 @@ public static class Responsivo
             {
                 if (controle.IsDisposed)
                 {
+                    estado.TamanhosFonte.Remove(controle);
+                    estado.LimitesFonte.Remove(controle);
                     continue;
                 }
 
-                var tamanho = Math.Clamp(tamanhoBaseFonte * escala, 12f, 36f);
+                var limites = estado.LimitesFonte.TryGetValue(controle, out var limite)
+                    ? limite
+                    : (12f, 36f);
+                var tamanho = Math.Clamp(tamanhoBaseFonte * escala, limites.Item1, limites.Item2);
                 var fonteAnterior = controle.Font;
                 controle.Font = new Font(fonteAnterior.FontFamily, tamanho, fonteAnterior.Style, fonteAnterior.Unit, fonteAnterior.GdiCharSet, fonteAnterior.GdiVerticalFont);
                 if (!ReferenceEquals(fonteAnterior, formulario.Font))
