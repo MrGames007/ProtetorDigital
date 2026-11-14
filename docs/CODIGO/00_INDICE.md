@@ -28,6 +28,7 @@ Os números de linha apontam para os arquivos reais lidos em 10/11/2026.
 - `Services/ConteudoService.cs`
 - `Services/Responsivo.cs`
 - `Services/LarguraTexto.cs`
+- `Services/RegistroErros.cs`
 - `Forms/FrmMenu.cs`
 - `Forms/FrmBiblioteca.cs`
 - `Forms/FrmDicas.cs`
@@ -86,6 +87,7 @@ Existe `Properties/PublishProfiles/Windows.pubxml`; `bin`, `obj`, `.vs` e `.git`
 - [x] `10_Services_ConteudoService.md`
 - [x] `10_Services_Responsivo.md`
 - [x] `10_Services_LarguraTexto.md`
+- [x] `10_Services_RegistroErros.md`
 - [x] `10_FrmMenu.md`
 - [x] `10_FrmBiblioteca.md`
 - [x] `10_FrmDicas.md`

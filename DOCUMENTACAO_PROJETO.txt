@@ -69,8 +69,11 @@ O público e o conteúdo indicam uma aplicação educativa, com navegação visu
 |   |-- ConteudoService.cs
 |   |-- FundoCache.cs
 |   |-- JanelaPadrao.cs
+|   |-- LarguraTexto.cs
 |   |-- Responsivo.cs
+|   |-- RegistroErros.cs
 |   |-- Suavizar.cs
+|-- Erros/                                  <- relatórios de exceções da execução
 |-- docs/CODIGO/
 |   |-- documentação detalhada dos arquivos
 
@@ -388,6 +391,10 @@ Histórico incremental:
 - Correção registrada: as transições passaram a abrir filhas com ShowDialog sem ocultar os pais, JanelaPadrao aplica o estado antes da exibição, e foram adicionados Suavizar e FundoCache para reduzir repintura e faixas no fundo da Biblioteca. Relatos recebeu largura máxima para quebra de texto, link de matéria e etiquetas de fonte/tipo; dados/relatos.json teve os metadados solicitados dos relatos 1 a 7 atualizados.
 - Correção registrada: conteúdos de perguntas, dicas e golpes foram restaurados do commit 5792e72 e validados (20 perguntas, ids únicos, quatro alternativas e respostas válidas; duas etapas por dica e três sinais por golpe). Relatos 8–15 foram marcados como ilustrativos e o serviço ConteudoService passou a centralizar listas, mensagens de erro e log em AppData.
 - Correção registrada: removida a centralização duplicada das janelas, adicionado debounce de fontes no Responsivo, atalhos do Quiz (Esc, Enter e 1–4), resultado rolável, explicações por alternativa e arquivos de publicação/README. Pendente: validação visual manual de todas as transições e publicação win-x64.
+- Pedido atual: registrar objetivamente os erros ocorridos durante a execução em arquivos `.txt` na pasta `Erros`, usando data, horário e nome do projeto no arquivo.
+- Arquivos alterados/criados: Program.cs, Services/RegistroErros.cs, README.md, docs/CODIGO/00_INDICE.md, docs/CODIGO/10_Program.md, docs/CODIGO/10_Services_RegistroErros.md e esta documentação.
+- Comportamento esperado e implementado: exceções da interface, do AppDomain, de tarefas não observadas e da inicialização/ciclo principal geram `Erros/yyyy-MM-dd_HH-mm-ss-fff_ProtetorDigital.txt` com origem, tipo, mensagem e stack trace. Falhas ao gravar o próprio relatório não geram uma segunda exceção.
+- Validação: compilação da solução concluída com sucesso após esta alteração. A validação funcional deve provocar uma exceção controlada em ambiente de teste e confirmar a criação do arquivo na pasta `Erros`.
 - Correção registrada: as telas FrmDicas, FrmExGolpes e FrmRelatos foram reorganizadas sem posições fixas, usando painéis de topo/rodapé e conteúdo com Dock Fill; os botões passaram a crescer com a fonte, respeitar limites de 14–22 pt e desenhar texto branco quando desabilitados.
 - Correção registrada: os handlers foram separados em BtnAnterior_Click, para navegação entre itens, e BtnVoltar_Click, para fechar a tela; o conteúdo e a navegação entre itens não foram alterados.
 - Correção registrada: criado Services/LarguraTexto.cs para calcular a largura útil dos Labels e LinkLabel, incluindo título, fonte, link, vítima, relato, lições, descrição, passos, funcionamento e sinais de alerta.

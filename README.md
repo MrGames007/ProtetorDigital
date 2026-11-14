@@ -82,5 +82,6 @@ Não há arquivo de configuração de conexão porque não existe banco de dados
 - `Services/`: serviços de conteúdo, janelas, responsividade e largura de textos.
 - `dados/`: arquivos JSON de perguntas, dicas, golpes, relatos e créditos.
 - `imagens/`: imagens usadas pela interface.
+- `Erros/`: relatórios `.txt` gerados automaticamente para exceções durante a execução.
 - `docs/CODIGO/`: documentação técnica dos arquivos e componentes.
 - `DOCUMENTACAO_PROJETO.txt`: documentação de manutenção e histórico das alterações.
