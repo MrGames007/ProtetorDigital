@@ -81,7 +81,7 @@
             BtnExGolpe.BackColor = Color.FromArgb(220, 53, 69);
             BtnExGolpe.Dock = DockStyle.Fill;
             BtnExGolpe.FlatStyle = FlatStyle.Flat;
-            BtnExGolpe.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            BtnExGolpe.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnExGolpe.ForeColor = SystemColors.ButtonHighlight;
             BtnExGolpe.Location = new Point(8, 142);
             BtnExGolpe.Margin = new Padding(8);
@@ -97,7 +97,7 @@
             BtnDicas.BackColor = Color.FromArgb(25, 135, 84);
             BtnDicas.Dock = DockStyle.Fill;
             BtnDicas.FlatStyle = FlatStyle.Flat;
-            BtnDicas.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnDicas.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnDicas.ForeColor = SystemColors.ButtonHighlight;
             BtnDicas.Location = new Point(8, 285);
             BtnDicas.Margin = new Padding(8);
@@ -113,7 +113,7 @@
             BtnRelatos.BackColor = Color.FromArgb(0, 120, 215);
             BtnRelatos.Dock = DockStyle.Fill;
             BtnRelatos.FlatStyle = FlatStyle.Flat;
-            BtnRelatos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            BtnRelatos.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnRelatos.ForeColor = SystemColors.ButtonHighlight;
             BtnRelatos.Location = new Point(8, 432);
             BtnRelatos.Margin = new Padding(8);
@@ -133,7 +133,7 @@
             BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnVoltar.FlatStyle = FlatStyle.Flat;
-            BtnVoltar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+            BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnVoltar.ForeColor = Color.White;
             BtnVoltar.Location = new Point(8, 579);
             BtnVoltar.Margin = new Padding(8);

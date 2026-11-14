@@ -22,7 +22,7 @@ namespace ProtetorDigital.Forms
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             BtnAvancar.Click += BtnAvancar_Click;
-            BtnVoltar.Click += BtnVoltar_Click;
+            BtnAnterior.Click += BtnVoltar_Click;
             Load += FrmDicas_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
@@ -61,7 +61,7 @@ namespace ProtetorDigital.Forms
                 lblPassos.Text = string.Empty;
             }
 
-            BtnVoltar.Enabled = _indice > 0;
+            BtnAnterior.Enabled = _indice > 0;
             BtnAvancar.Enabled = _indice < _dicas.Count - 1;
         }
 

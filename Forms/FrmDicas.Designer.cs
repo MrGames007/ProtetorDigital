@@ -17,8 +17,8 @@
         private void InitializeComponent()
         {
             BtnAvancar = new Button();
+            BtnAnterior = new Button();
             BtnVoltar = new Button();
-            BtnRetornar = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblTitulo = new Label();
             lblDescricao = new Label();
@@ -36,9 +36,9 @@
             BtnAvancar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnAvancar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnAvancar.FlatStyle = FlatStyle.Flat;
-            BtnAvancar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnAvancar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnAvancar.ForeColor = Color.White;
-            BtnAvancar.Location = new Point(941, 556);
+            BtnAvancar.Location = new Point(944, 559);
             BtnAvancar.Margin = new Padding(3, 2, 3, 2);
             BtnAvancar.Name = "BtnAvancar";
             BtnAvancar.Size = new Size(160, 48);
@@ -46,43 +46,43 @@
             BtnAvancar.Text = "Avançar ▶";
             BtnAvancar.UseVisualStyleBackColor = false;
             // 
+            // BtnAnterior
+            // 
+            BtnAnterior.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnAnterior.BackColor = Color.FromArgb(0, 120, 215);
+            BtnAnterior.Cursor = Cursors.Hand;
+            BtnAnterior.FlatAppearance.BorderSize = 0;
+            BtnAnterior.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
+            BtnAnterior.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
+            BtnAnterior.FlatStyle = FlatStyle.Flat;
+            BtnAnterior.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            BtnAnterior.ForeColor = Color.White;
+            BtnAnterior.Location = new Point(18, 556);
+            BtnAnterior.Margin = new Padding(3, 2, 3, 2);
+            BtnAnterior.Name = "BtnAnterior";
+            BtnAnterior.Size = new Size(160, 48);
+            BtnAnterior.TabIndex = 1;
+            BtnAnterior.Text = "◀ Anterior";
+            BtnAnterior.UseVisualStyleBackColor = false;
+            // 
             // BtnVoltar
             // 
-            BtnVoltar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
             BtnVoltar.Cursor = Cursors.Hand;
             BtnVoltar.FlatAppearance.BorderSize = 0;
             BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnVoltar.FlatStyle = FlatStyle.Flat;
-            BtnVoltar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(18, 556);
+            BtnVoltar.Location = new Point(18, 11);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(160, 48);
-            BtnVoltar.TabIndex = 1;
-            BtnVoltar.Text = "◀ Anterior";
+            BtnVoltar.Size = new Size(160, 44);
+            BtnVoltar.TabIndex = 3;
+            BtnVoltar.Text = "◀ Voltar";
             BtnVoltar.UseVisualStyleBackColor = false;
-            // 
-            // BtnRetornar
-            // 
-            BtnRetornar.BackColor = Color.FromArgb(0, 120, 215);
-            BtnRetornar.Cursor = Cursors.Hand;
-            BtnRetornar.FlatAppearance.BorderSize = 0;
-            BtnRetornar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
-            BtnRetornar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
-            BtnRetornar.FlatStyle = FlatStyle.Flat;
-            BtnRetornar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnRetornar.ForeColor = Color.White;
-            BtnRetornar.Location = new Point(18, 11);
-            BtnRetornar.Margin = new Padding(3, 2, 3, 2);
-            BtnRetornar.Name = "BtnRetornar";
-            BtnRetornar.Size = new Size(160, 44);
-            BtnRetornar.TabIndex = 3;
-            BtnRetornar.Text = "◀ Voltar";
-            BtnRetornar.UseVisualStyleBackColor = false;
-            BtnRetornar.Click += BtnRetornar_Click;
+            BtnVoltar.Click += BtnRetornar_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -155,8 +155,8 @@
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(BtnRetornar);
             Controls.Add(BtnVoltar);
+            Controls.Add(BtnAnterior);
             Controls.Add(BtnAvancar);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmDicas";
@@ -169,8 +169,8 @@
         #endregion
 
         private Button BtnAvancar;
+        private Button BtnAnterior;
         private Button BtnVoltar;
-        private Button BtnRetornar;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblTitulo;
         private Label lblDescricao;

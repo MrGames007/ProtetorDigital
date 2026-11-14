@@ -17,7 +17,7 @@ namespace ProtetorDigital.Forms
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             _janelaOrigem = origem;
             BtnAvancar.Click += BtnAvancar_Click;
-            BtnVoltar.Click += BtnVoltar_Click;
+            BtnAnterior.Click += BtnVoltar_Click;
             Load += FrmRelatos_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
@@ -68,7 +68,7 @@ namespace ProtetorDigital.Forms
             lnkMateria.Visible = Uri.TryCreate(r.Url, UriKind.Absolute, out var uri) && uri.Scheme is "http" or "https";
 
             // Atualiza estado dos botões de navegação
-            BtnVoltar.Enabled = _indice > 0;
+            BtnAnterior.Enabled = _indice > 0;
             BtnAvancar.Enabled = _indice < _relatos.Count - 1;
         }
 

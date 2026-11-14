@@ -16,9 +16,9 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            BtnVoltar = new Button();
+            BtnAnterior = new Button();
             BtnAvancar = new Button();
-            BtnRetornar = new Button();
+            BtnVoltar = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblNomeGolpe = new Label();
             lblFuncionamento = new Label();
@@ -27,24 +27,24 @@
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
-            // BtnVoltar (golpe anterior)
+            // BtnAnterior
             // 
-            BtnVoltar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
-            BtnVoltar.Cursor = Cursors.Hand;
-            BtnVoltar.FlatAppearance.BorderSize = 0;
-            BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
-            BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
-            BtnVoltar.FlatStyle = FlatStyle.Flat;
-            BtnVoltar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(18, 556);
-            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
-            BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(160, 48);
-            BtnVoltar.TabIndex = 1;
-            BtnVoltar.Text = "◀ Anterior";
-            BtnVoltar.UseVisualStyleBackColor = false;
+            BtnAnterior.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnAnterior.BackColor = Color.FromArgb(0, 120, 215);
+            BtnAnterior.Cursor = Cursors.Hand;
+            BtnAnterior.FlatAppearance.BorderSize = 0;
+            BtnAnterior.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
+            BtnAnterior.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
+            BtnAnterior.FlatStyle = FlatStyle.Flat;
+            BtnAnterior.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            BtnAnterior.ForeColor = Color.White;
+            BtnAnterior.Location = new Point(18, 556);
+            BtnAnterior.Margin = new Padding(3, 2, 3, 2);
+            BtnAnterior.Name = "BtnAnterior";
+            BtnAnterior.Size = new Size(160, 48);
+            BtnAnterior.TabIndex = 1;
+            BtnAnterior.Text = "◀ Anterior";
+            BtnAnterior.UseVisualStyleBackColor = false;
             // 
             // BtnAvancar
             // 
@@ -55,9 +55,9 @@
             BtnAvancar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
             BtnAvancar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
             BtnAvancar.FlatStyle = FlatStyle.Flat;
-            BtnAvancar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnAvancar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             BtnAvancar.ForeColor = Color.White;
-            BtnAvancar.Location = new Point(941, 556);
+            BtnAvancar.Location = new Point(944, 559);
             BtnAvancar.Margin = new Padding(3, 2, 3, 2);
             BtnAvancar.Name = "BtnAvancar";
             BtnAvancar.Size = new Size(160, 48);
@@ -66,26 +66,26 @@
             BtnAvancar.UseVisualStyleBackColor = false;
             BtnAvancar.Click += BtnAvancar_Click;
             // 
-            // BtnRetornar (botão do topo)
+            // BtnVoltar
             // 
-            BtnRetornar.BackColor = Color.FromArgb(0, 120, 215);
-            BtnRetornar.Cursor = Cursors.Hand;
-            BtnRetornar.FlatAppearance.BorderSize = 0;
-            BtnRetornar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
-            BtnRetornar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
-            BtnRetornar.FlatStyle = FlatStyle.Flat;
-            BtnRetornar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnRetornar.ForeColor = Color.White;
-            BtnRetornar.Location = new Point(18, 11);
-            BtnRetornar.Margin = new Padding(3, 2, 3, 2);
-            BtnRetornar.Name = "BtnRetornar";
-            BtnRetornar.Size = new Size(160, 44);
-            BtnRetornar.TabIndex = 4;
-            BtnRetornar.Text = "◀ Retornar";
-            BtnRetornar.UseVisualStyleBackColor = false;
-            BtnRetornar.Click += BtnRetornar_Click;
+            BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
+            BtnVoltar.Cursor = Cursors.Hand;
+            BtnVoltar.FlatAppearance.BorderSize = 0;
+            BtnVoltar.FlatAppearance.MouseDownBackColor = Color.FromArgb(0, 80, 145);
+            BtnVoltar.FlatAppearance.MouseOverBackColor = Color.FromArgb(0, 99, 177);
+            BtnVoltar.FlatStyle = FlatStyle.Flat;
+            BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            BtnVoltar.ForeColor = Color.White;
+            BtnVoltar.Location = new Point(18, 11);
+            BtnVoltar.Margin = new Padding(3, 2, 3, 2);
+            BtnVoltar.Name = "BtnVoltar";
+            BtnVoltar.Size = new Size(160, 44);
+            BtnVoltar.TabIndex = 4;
+            BtnVoltar.Text = "◀ Voltar";
+            BtnVoltar.UseVisualStyleBackColor = false;
+            BtnVoltar.Click += BtnRetornar_Click;
             // 
-            // flowLayoutPanel1 (card de conteúdo)
+            // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.AutoScroll = true;
@@ -107,6 +107,7 @@
             lblNomeGolpe.AutoSize = true;
             lblNomeGolpe.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNomeGolpe.ForeColor = Color.FromArgb(0, 99, 177);
+            lblNomeGolpe.Location = new Point(23, 16);
             lblNomeGolpe.Margin = new Padding(3, 0, 3, 14);
             lblNomeGolpe.MaximumSize = new Size(1000, 0);
             lblNomeGolpe.Name = "lblNomeGolpe";
@@ -118,20 +119,22 @@
             lblFuncionamento.AutoSize = true;
             lblFuncionamento.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFuncionamento.ForeColor = Color.FromArgb(33, 37, 41);
+            lblFuncionamento.Location = new Point(23, 75);
             lblFuncionamento.Margin = new Padding(3, 0, 3, 26);
             lblFuncionamento.MaximumSize = new Size(1000, 0);
             lblFuncionamento.Name = "lblFuncionamento";
             lblFuncionamento.Size = new Size(0, 25);
             lblFuncionamento.TabIndex = 6;
             // 
-            // lblTexto ("Sinais de Alerta")
+            // lblTexto
             // 
             lblTexto.AutoSize = true;
             lblTexto.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTexto.ForeColor = Color.FromArgb(220, 53, 69);
+            lblTexto.Location = new Point(23, 126);
             lblTexto.Margin = new Padding(3, 0, 3, 8);
             lblTexto.Name = "lblTexto";
-            lblTexto.Size = new Size(212, 30);
+            lblTexto.Size = new Size(225, 30);
             lblTexto.TabIndex = 7;
             lblTexto.Text = "⚠ Sinais de Alerta!!";
             // 
@@ -140,7 +143,7 @@
             lblSinaisAlerta.AutoSize = true;
             lblSinaisAlerta.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSinaisAlerta.ForeColor = Color.FromArgb(33, 37, 41);
-            lblSinaisAlerta.Margin = new Padding(3, 0, 3, 0);
+            lblSinaisAlerta.Location = new Point(23, 164);
             lblSinaisAlerta.MaximumSize = new Size(1000, 0);
             lblSinaisAlerta.Name = "lblSinaisAlerta";
             lblSinaisAlerta.Size = new Size(0, 25);
@@ -153,9 +156,9 @@
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(BtnRetornar);
-            Controls.Add(BtnAvancar);
             Controls.Add(BtnVoltar);
+            Controls.Add(BtnAvancar);
+            Controls.Add(BtnAnterior);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmExGolpes";
             Text = "Exemplos de Golpes";
@@ -166,9 +169,9 @@
 
         #endregion
 
-        private Button BtnVoltar;
+        private Button BtnAnterior;
         private Button BtnAvancar;
-        private Button BtnRetornar;
+        private Button BtnVoltar;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblNomeGolpe;
         private Label lblFuncionamento;
