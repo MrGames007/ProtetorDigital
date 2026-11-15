@@ -219,4 +219,18 @@ public sealed class FrmCreditos : Form
         painel.Controls.Add(conteudo, 0, 2);
         return painel;
     }
+
+    private void InitializeComponent()
+    {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreditos));
+        SuspendLayout();
+        // 
+        // FrmCreditos
+        // 
+        ClientSize = new Size(284, 261);
+        Icon = (Icon)resources.GetObject("$this.Icon");
+        Name = "FrmCreditos";
+        ResumeLayout(false);
+
+    }
 }

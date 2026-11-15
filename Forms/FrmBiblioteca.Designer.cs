@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            // O Designer monta o hub visual que encaminha para Relatos, Dicas e Exemplos de Golpes.
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBiblioteca));
             tlpBiblioteca = new TableLayoutPanel();
             label1 = new Label();
@@ -155,6 +154,7 @@
             ClientSize = new Size(1201, 687);
             Controls.Add(tlpBiblioteca);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmBiblioteca";
             Text = "Biblioteca";
