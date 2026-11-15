@@ -154,37 +154,6 @@ public sealed class FrmCreditos : Form
         }
     }
 
-    private static string? LocalizarImagem(string? nomeArquivo)
-    {
-        // Procura primeiro na publicação e depois sobe diretórios para facilitar o desenvolvimento local.
-        if (string.IsNullOrWhiteSpace(nomeArquivo))
-        {
-            return null;
-        }
-
-        // 1) Pasta de saída (bin/Debug/net10.0-windows/imagens)
-        var caminho = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "imagens", nomeArquivo);
-        if (File.Exists(caminho))
-        {
-            return caminho;
-        }
-
-        // 2) Fallback para desenvolvimento: sobe as pastas até achar imagens/ do projeto
-        var pasta = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-        while (pasta != null)
-        {
-            var candidato = Path.Combine(pasta.FullName, "imagens", nomeArquivo);
-            if (File.Exists(candidato))
-            {
-                return candidato;
-            }
-            pasta = pasta.Parent;
-        }
-
-        System.Diagnostics.Debug.WriteLine($"Logo não encontrada: {nomeArquivo}");
-        return null;
-    }
-
     private static Control CriarCartao(CartaoCredito cartao)
     {
         var verdeAzulado = Color.FromArgb(15, 124, 138);
@@ -225,16 +194,15 @@ public sealed class FrmCreditos : Form
 
         // Logo (ou, se a imagem não for encontrada, o texto de reserva)
         Control conteudo;
-        var caminho = LocalizarImagem(cartao.Logo);
-        if (caminho != null)
+        var imagem = string.IsNullOrWhiteSpace(cartao.Logo) ? null : RecursosApp.CarregarImagem("imagens", cartao.Logo);
+        if (imagem != null)
         {
-            using var imagem = Image.FromFile(caminho);
             conteudo = new PictureBox
             {
                 Dock = DockStyle.Fill,
                 SizeMode = PictureBoxSizeMode.Zoom,
                 Margin = new Padding(8),
-                Image = new Bitmap(imagem)
+                Image = imagem
             };
         }
         else

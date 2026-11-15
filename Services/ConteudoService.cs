@@ -16,15 +16,14 @@ public static class ConteudoService
     public static T? CarregarObjeto<T>(string nomeArquivo)
     {
         // Carrega arquivos cuja raiz representa um único objeto, como creditos.json.
-        var caminho = LocalizarArquivo(nomeArquivo);
-        if (caminho is null)
+        var json = RecursosApp.LerTexto("dados", nomeArquivo);
+        if (json is null)
         {
             throw Falha(nomeArquivo, "arquivo não encontrado");
         }
 
         try
         {
-            var json = File.ReadAllText(caminho);
             return JsonSerializer.Deserialize<T>(json, Opcoes) ?? throw Falha(nomeArquivo, "conteúdo vazio");
         }
         catch (ConteudoException) { throw; }
@@ -35,10 +34,10 @@ public static class ConteudoService
     public static List<T> CarregarLista<T>(string nomeArquivo)
     {
         // Aceita tanto um array JSON direto quanto uma raiz com a propriedade "itens".
-        var caminho = LocalizarArquivo(nomeArquivo) ?? throw Falha(nomeArquivo, "arquivo não encontrado");
+        var json = RecursosApp.LerTexto("dados", nomeArquivo) ?? throw Falha(nomeArquivo, "arquivo não encontrado");
         try
         {
-            using var documento = JsonDocument.Parse(File.ReadAllText(caminho));
+            using var documento = JsonDocument.Parse(json);
             var raiz = documento.RootElement.ValueKind == JsonValueKind.Array
                 ? documento.RootElement
                 : documento.RootElement.GetProperty("itens");
@@ -49,18 +48,6 @@ public static class ConteudoService
         catch (ConteudoException) { throw; }
         catch (JsonException ex) { throw Falha(nomeArquivo, $"JSON inválido na linha {ex.LineNumber}", ex); }
         catch (Exception ex) { throw Falha(nomeArquivo, ex.Message, ex); }
-    }
-
-    public static string? LocalizarArquivo(string nomeArquivo)
-    {
-        // Os dados publicados ficam ao lado do executável, dentro da pasta dados.
-        var caminhoSaida = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dados", nomeArquivo);
-        if (File.Exists(caminhoSaida))
-        {
-            return caminhoSaida;
-        }
-
-        return null;
     }
 
     public static string ObterVersaoAssembly()

@@ -35,7 +35,7 @@ Para gerar uma publicação de Release usando o perfil configurado:
 dotnet publish -c Release -p:PublishProfile=Windows
 ```
 
-Os arquivos publicados ficam no diretório de saída definido pelo perfil de publicação. A aplicação requer que as pastas `dados/` e `imagens/` acompanhem a publicação.
+Os JSONs de `dados/` e as duas logos usadas nos Créditos ficam embutidos no executável publicado. Arquivos externos ao lado do executável têm prioridade, permitindo editar o conteúdo sem recompilar; a publicação single-file não precisa das pastas `dados/` e `imagens/`.
 
 ## Dependências necessárias
 
@@ -53,25 +53,25 @@ Os arquivos publicados ficam no diretório de saída definido pelo perfil de pub
 - `dados/relatos.json`: relatos e metadados das matérias.
 - `imagens/`: imagens usadas pela interface.
 
-Durante a publicação, os arquivos de `dados/` e `imagens/` são copiados para a saída com `PreserveNewest`. O carregamento também possui fallback para a estrutura de desenvolvimento quando aplicável.
+Durante o desenvolvimento, os arquivos de `dados/` e `imagens/` continuam sendo copiados para a saída com `PreserveNewest`. Em execução, o aplicativo procura primeiro esses arquivos externos e depois usa os recursos embutidos.
 
 ## Banco de dados
 
 A aplicação não utiliza banco de dados. Não há servidor, conexão, credenciais, migrações, procedimentos de instalação, importação ou restauração de banco de dados.
 
-O conteúdo é mantido em arquivos JSON externos, que podem ser editados sem modificar a lógica das telas, desde que o formato e os nomes das propriedades sejam preservados.
+O conteúdo é mantido nos JSONs do projeto e também embutido no executável. Uma pasta `dados/` ao lado do executável tem prioridade e permite editar o conteúdo sem recompilar. Para alterar o conteúdo embutido, edite `dados/*.json` no projeto e publique novamente.
 
 ## Edição e configuração do conteúdo
 
-Edite os arquivos `dados/*.json` mantendo seus formatos e propriedades. Os créditos ficam em `dados/creditos.json`; alterações de conteúdo não exigem recompilação da lógica, mas os arquivos precisam estar disponíveis na pasta da aplicação.
+Edite os arquivos `dados/*.json` mantendo seus formatos e propriedades. Os créditos ficam em `dados/creditos.json`; alterações podem ser usadas imediatamente colocando a pasta `dados/` ao lado do executável, ou podem ser embutidas publicando novamente o projeto.
 
 Não há arquivo de configuração de conexão porque não existe banco de dados. Configurações de compilação e publicação ficam em `ProtetorDigital.csproj` e nos perfis de publicação.
 
 ## Solução de problemas comuns
 
 - **A aplicação não inicia:** confirme que o Windows e o .NET 10 estão instalados ou use uma publicação autocontida.
-- **Conteúdo não aparece:** verifique se as pastas `dados/` e os arquivos JSON foram copiados para o diretório da aplicação.
-- **Imagens ausentes:** confirme se a pasta `imagens/` acompanha o executável.
+- **Conteúdo não aparece:** verifique a sintaxe do JSON externo; sem ele, o executável usa o conteúdo embutido.
+- **Imagens ausentes:** confirme o nome da logo; as duas logos dos Créditos são embutidas no executável.
 - **Erro após editar JSON:** valide a sintaxe JSON e mantenha os nomes das propriedades esperados pelos modelos.
 - **Falha ao compilar:** execute `dotnet restore` e depois `dotnet build` na raiz do projeto; confira se o SDK do .NET 10 está disponível.
 

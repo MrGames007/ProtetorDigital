@@ -10,9 +10,20 @@
 	<AssemblyName>ProtetorDigital</AssemblyName>
   </PropertyGroup>
 
+	<ItemGroup>
+	<None Update="dados\**\*" CopyToOutputDirectory="PreserveNewest" />
+	<None Update="imagens\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(PublishSingleFile)' == 'true'">
+	<None Remove="dados\**\*" />
+	<None Remove="imagens\**\*" />
+  </ItemGroup>
+
   <ItemGroup>
-	  <None Update="dados\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-	  <None Update="imagens\**\*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+	<EmbeddedResource Include="dados\*.json" LogicalName="dados.%(Filename)%(Extension)" />
+	<EmbeddedResource Include="imagens\Ciencias_da_computacao.png" LogicalName="imagens.%(Filename)%(Extension)" />
+	<EmbeddedResource Include="imagens\Coordenadoria-de-extensao.png" LogicalName="imagens.%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>
