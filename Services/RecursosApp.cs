@@ -5,6 +5,7 @@ namespace ProtetorDigital.Services;
 
 public static class RecursosApp
 {
+    // Lê primeiro uma versão externa editável e usa o recurso embutido como fallback.
     public static string? LerTexto(string subpasta, string arquivo)
     {
         try
@@ -83,6 +84,7 @@ public static class RecursosApp
 
     private static string? LocalizarArquivoExterno(string subpasta, string arquivo)
     {
+        // A pasta do processo atende à publicação e a base da aplicação atende ao desenvolvimento.
         var candidatos = new[]
         {
             ObterPastaDoProcesso(),
@@ -109,6 +111,7 @@ public static class RecursosApp
 
     private static Stream? AbrirRecurso(string subpasta, string arquivo)
     {
+        // O nome lógico permite localizar diretamente o recurso; o sufixo cobre nomes gerados pelo MSBuild.
         var assembly = Assembly.GetExecutingAssembly();
         var nome = $"{subpasta}.{arquivo}";
         var fluxo = assembly.GetManifestResourceStream(nome);
