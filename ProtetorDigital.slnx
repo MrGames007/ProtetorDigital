@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="../Protetor/Protetor/Protetor.vdproj" Type="Installer" />
+  <Project Path="../Protetor/Protetor/Protetor/Protetor.vdproj" Type="Installer" />
   <Project Path="ProtetorDigital.csproj">
     <BuildType Project="Release" />
   </Project>
