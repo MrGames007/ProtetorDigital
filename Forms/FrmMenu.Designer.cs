@@ -16,7 +16,7 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
-            // O Designer fornece os controles-base; FrmMenu.cs reorganiza a grade principal em tempo de execução.
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             label1 = new Label();
             BtnQuiz = new Button();
             BtnBiblioteca = new Button();
@@ -103,6 +103,7 @@
             Controls.Add(BtnBiblioteca);
             Controls.Add(BtnQuiz);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenu";
             Text = "Proteção Digital Aos Idosos";
