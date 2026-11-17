@@ -31,7 +31,7 @@
             lblPergunta.AutoSize = true;
             lblPergunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPergunta.ForeColor = Color.FromArgb(33, 37, 41);
-            lblPergunta.Location = new Point(15, 75);
+            lblPergunta.Location = new Point(32, 126);
             lblPergunta.MaximumSize = new Size(1170, 0);
             lblPergunta.Name = "lblPergunta";
             lblPergunta.Size = new Size(0, 30);
@@ -43,7 +43,7 @@
             RBtnAlt1.Cursor = Cursors.Hand;
             RBtnAlt1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt1.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt1.Location = new Point(15, 170);
+            RBtnAlt1.Location = new Point(28, 220);
             RBtnAlt1.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt1.Name = "RBtnAlt1";
             RBtnAlt1.Size = new Size(14, 13);
@@ -57,7 +57,7 @@
             RBtnAlt2.Cursor = Cursors.Hand;
             RBtnAlt2.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt2.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt2.Location = new Point(15, 235);
+            RBtnAlt2.Location = new Point(28, 285);
             RBtnAlt2.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt2.Name = "RBtnAlt2";
             RBtnAlt2.Size = new Size(14, 13);
@@ -71,7 +71,7 @@
             RBtnAlt3.Cursor = Cursors.Hand;
             RBtnAlt3.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt3.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt3.Location = new Point(15, 300);
+            RBtnAlt3.Location = new Point(28, 350);
             RBtnAlt3.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt3.Name = "RBtnAlt3";
             RBtnAlt3.Size = new Size(14, 13);
@@ -85,7 +85,7 @@
             RBtnAlt4.Cursor = Cursors.Hand;
             RBtnAlt4.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point, 0);
             RBtnAlt4.ForeColor = Color.FromArgb(50, 50, 50);
-            RBtnAlt4.Location = new Point(15, 365);
+            RBtnAlt4.Location = new Point(28, 415);
             RBtnAlt4.Margin = new Padding(3, 6, 3, 6);
             RBtnAlt4.Name = "RBtnAlt4";
             RBtnAlt4.Size = new Size(14, 13);
@@ -95,6 +95,7 @@
             // 
             // BtnVoltar
             // 
+            BtnVoltar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             BtnVoltar.BackColor = Color.FromArgb(0, 120, 215);
             BtnVoltar.Cursor = Cursors.Hand;
             BtnVoltar.FlatAppearance.BorderSize = 0;
@@ -103,10 +104,10 @@
             BtnVoltar.FlatStyle = FlatStyle.Flat;
             BtnVoltar.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnVoltar.ForeColor = Color.White;
-            BtnVoltar.Location = new Point(18, 11);
+            BtnVoltar.Location = new Point(30, 614);
             BtnVoltar.Margin = new Padding(3, 2, 3, 2);
             BtnVoltar.Name = "BtnVoltar";
-            BtnVoltar.Size = new Size(160, 44);
+            BtnVoltar.Size = new Size(215, 86);
             BtnVoltar.TabIndex = 5;
             BtnVoltar.Text = "◀ Voltar";
             BtnVoltar.UseVisualStyleBackColor = false;
@@ -114,7 +115,7 @@
             // 
             // BtnConfirmar
             // 
-            BtnConfirmar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            BtnConfirmar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             BtnConfirmar.BackColor = Color.FromArgb(40, 167, 69);
             BtnConfirmar.Cursor = Cursors.Hand;
             BtnConfirmar.FlatAppearance.BorderSize = 0;
@@ -123,12 +124,12 @@
             BtnConfirmar.FlatStyle = FlatStyle.Flat;
             BtnConfirmar.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnConfirmar.ForeColor = Color.White;
-            BtnConfirmar.Location = new Point(1036, 15);
+            BtnConfirmar.Location = new Point(955, 614);
             BtnConfirmar.Margin = new Padding(3, 2, 3, 2);
             BtnConfirmar.Name = "BtnConfirmar";
-            BtnConfirmar.Size = new Size(150, 32);
+            BtnConfirmar.Size = new Size(215, 86);
             BtnConfirmar.TabIndex = 6;
-            BtnConfirmar.Text = "Confirmar ✓";
+            BtnConfirmar.Text = "Concluír ✓";
             BtnConfirmar.UseVisualStyleBackColor = false;
             BtnConfirmar.Click += BtnConfirmar_Click;
             // 
@@ -137,7 +138,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1201, 476);
+            ClientSize = new Size(1201, 700);
             Controls.Add(BtnConfirmar);
             Controls.Add(BtnVoltar);
             Controls.Add(RBtnAlt4);

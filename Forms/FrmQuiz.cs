@@ -61,8 +61,9 @@ namespace ProtetorDigital.Forms
         private void ConfigurarInterface()
         {
             // Cria a grade principal, o cabeçalho, as alternativas, o feedback e o painel de resultado.
-            _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent, AutoScroll = true };
-            foreach (var percentual in new[] { 8f, 14f, 34f, 28f, 16f }) _tlpRaiz.RowStyles.Add(new RowStyle(SizeType.Percent, percentual));
+            // Reserva mais espaço para as respostas e mantém os botões no rodapé, como na tela de execução.
+            _tlpRaiz = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(24, 20, 24, 20), ColumnCount = 1, RowCount = 5, BackColor = Color.Transparent, AutoScroll = true };
+            foreach (var percentual in new[] { 9f, 16f, 38f, 21f, 16f }) _tlpRaiz.RowStyles.Add(new RowStyle(SizeType.Percent, percentual));
 
             _cabecalho = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1, BackColor = Color.Transparent };
             _cabecalho.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25));
