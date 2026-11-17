@@ -46,16 +46,16 @@ flowchart TD
 	H --> D
 ```
 
-`ConteudoService` é usado diretamente por Créditos. As telas antigas de conteúdo ainda fazem sua própria localização e desserialização, em vez de usar esse serviço. Isso é uma diferença importante entre a arquitetura desejada e a arquitetura atual.
+`ConteudoService` centraliza a leitura e a desserialização dos JSONs usados por Créditos, Dicas, Golpes, Relatos e Quiz. `RecursosApp` resolve a prioridade dos arquivos externos e o fallback para recursos embutidos.
 
 ## Fluxo do Quiz
 
-1. `FrmQuiz_Load` procura `dados/perguntas.json` na saída e depois no diretório de desenvolvimento.
-2. O texto é lido e convertido para `List<Pergunta>`.
+1. `FrmQuiz_Load` solicita `perguntas.json` ao `ConteudoService`.
+2. `RecursosApp` procura o arquivo externo e, se necessário, lê o recurso embutido; o texto é convertido para `List<Pergunta>`.
 3. `MostrarPergunta` escolhe a pergunta pelo índice.
 4. As alternativas são copiadas para uma sequência temporária.
 5. `Select` associa cada alternativa à informação de correta.
-6. `OrderBy(_ => Random.Shared.Next())` embaralha a cópia, sem mudar o JSON.
+6. `Random.Shared.Shuffle` embaralha a cópia, sem mudar o JSON.
 7. A nova posição correta fica em `_respostaCorretaExibida`.
 8. O usuário marca um `RadioButton` e clica em Confirmar.
 9. O método verifica se houve seleção, compara com a posição correta e soma `_pontuacao` quando acerta.

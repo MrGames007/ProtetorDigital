@@ -15,7 +15,7 @@ A tabela cobre cada linha do arquivo, em ordem. Arquivos Designer são gerados p
 | 2 | `` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |
 | 3 | `  <PropertyGroup>` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |
 | 4 | `	<OutputType>WinExe</OutputType>` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |
-| 5 | `	<TargetFramework>net10.0-windows</TargetFramework>` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |
+| 5 | `	<TargetFramework>net10.0-windows10.0.17763.0</TargetFramework>` | Define o Windows mínimo compatível | Mantém a configuração real documentada | 🟢 |
 | 6 | `	<Nullable>enable</Nullable>` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |
 | 7 | `	<UseWindowsForms>true</UseWindowsForms>` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |
 | 8 | `	<ImplicitUsings>enable</ImplicitUsings>` | Linha do arquivo | Mantém a responsabilidade documentada | 🟢 |

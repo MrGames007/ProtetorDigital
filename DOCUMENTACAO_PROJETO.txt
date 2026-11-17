@@ -18,7 +18,7 @@ A documentação descreve o estado observado no workspace no momento da sua cria
 Nome técnico do assembly: ProtetorDigital
 Projeto: ProtetorDigital
 Tipo: aplicação desktop Windows Forms
-Target framework: .NET 10 para Windows (net10.0-windows)
+Target framework: .NET 10 para Windows (net10.0-windows10.0.17763.0)
 Namespace principal: ProtetorDigital
 Arquivo de solução: ProtetorDigital.slnx
 Arquivo de projeto: ProtetorDigital.csproj
@@ -84,7 +84,7 @@ Os arquivos *.Designer.cs e *.resx são gerados/administrados pelo Windows Forms
 --------------------------
 O ProtetorDigital.csproj define:
 - OutputType WinExe;
-- TargetFramework net10.0-windows;
+- TargetFramework net10.0-windows10.0.17763.0;
 - UseWindowsForms true;
 - Nullable enable;
 - ImplicitUsings enable;
@@ -202,13 +202,13 @@ FrmBiblioteca
 
 FrmDicas
 - Carrega dados/dicas.json.
-- Procura primeiro em bin/Debug/.../dados e depois usa fallback para ../../../../dados a partir da base de execução.
+- Solicita o conteúdo ao ConteudoService, que usa RecursosApp para procurar primeiro arquivos externos e depois recursos embutidos no executável.
 - Faz JsonDocument.Parse, obtém itens e desserializa List<Dica>.
 - Mostra uma dica por vez.
 - BtnAvancar navega para o próximo item.
 - BtnVoltar navega para o item anterior ou fecha a tela no primeiro item.
 - Os passos são apresentados como linhas iniciadas por hífen.
-- O tratamento de erro atual ignora falhas de leitura para não interromper a UI.
+- Falhas de leitura e JSON inválido são convertidos em ConteudoException e apresentados pela tela com mensagem amigável.
 
 FrmExGolpes
 - Tem fluxo equivalente ao de FrmDicas.
@@ -236,10 +236,10 @@ FrmQuiz
 
 FrmCreditos
 - Carrega dados/creditos.json por meio de ConteudoService.CarregarObjeto<T>.
-- O arquivo aceita comentários // e vírgulas finais; cada valor possui uma marcação TODO para revisão editorial.
+- O arquivo aceita comentários // e vírgulas finais; os cartões podem usar logos embutidas ou texto alternativo.
 - A versão com valor "auto" é obtida do assembly; qualquer outro valor do JSON é exibido literalmente.
 - Exibe linhas de identificação e cartões de Desenvolvimento e Apoio em layouts responsivos.
-- Logos opcionais são procurados em imagens; quando ausentes, o texto do cartão continua sendo exibido.
+- Logos opcionais são procurados externamente e depois nos recursos embutidos; quando ausentes, o texto do cartão continua sendo exibido.
 - Enter e Esc fecham a janela modal.
 
 Serviços compartilhados
@@ -281,7 +281,7 @@ Como deveria ser:
 
 Como ficou:
 - FrmQuiz.cs cria opcoesComResposta usando Select.
-- A ordenação usa OrderBy(_ => Random.Shared.Next()).
+- O embaralhamento usa Random.Shared.Shuffle em cópias na memória.
 - _opcoesExibidas recebe a ordem embaralhada.
 - _respostaCorretaExibida recebe o novo índice correto.
 - O JSON continua com a ordem original.
@@ -300,16 +300,12 @@ Motivação:
 
 9. PADRÕES DE CARREGAMENTO DE DADOS
 -----------------------------------
-Todas as telas que carregam JSON procuram o arquivo em dois locais:
-1. AppDomain.CurrentDomain.BaseDirectory/dados/<arquivo>;
-2. fallback relativo ao diretório do executável, voltando pastas até o diretório de desenvolvimento.
-
-Essa estratégia permite funcionar tanto com arquivos copiados para a saída quanto diretamente durante o desenvolvimento. O csproj copia dados/** e imagens/** para a saída com PreserveNewest. ConteudoService centraliza a leitura de objetos JSON e usa JsonCommentHandling.Skip e AllowTrailingCommas.
+Todas as telas que carregam JSON usam ConteudoService e RecursosApp. A ordem é: pasta de Environment.ProcessPath, AppContext.BaseDirectory e, por fim, recurso embutido com nome lógico previsível. O csproj copia dados/** e imagens/** para a saída de desenvolvimento com PreserveNewest, mas a publicação single-file remove esses arquivos externos da saída. ConteudoService usa JsonCommentHandling.Skip e AllowTrailingCommas.
 
 
 9.1 RESPONSIVIDADE (REGRA 13)
 -----------------------------
-Services/Responsivo.cs registra cada formulário com um tamanho-base e registra recursivamente seus controles. No Resize, a escala é limitada entre 0,85 e 2,0, não altera a fonte do Form, respeita mínimo de 12 pt e descarta as fontes substituídas. Labels longos têm MaximumSize.Width recalculado para permanecer dentro do contêiner. Menu, Biblioteca e Créditos usam TableLayoutPanel para distribuir os controles.
+Services/Responsivo.cs registra cada formulário com um tamanho-base e registra recursivamente seus controles. No Resize, a escala é limitada entre 0,85 e 1,6, não altera a fonte do Form, respeita mínimo de 12 pt e descarta as fontes substituídas. Labels longos têm MaximumSize.Width recalculado para permanecer dentro do contêiner. Menu, Biblioteca e Créditos usam TableLayoutPanel para distribuir os controles.
 
 Para editar os créditos sem recompilar, altere dados/creditos.json (ou o arquivo copiado para a pasta de saída), mantendo os nomes das propriedades e o formato das listas. Os arquivos de imagem opcionais devem ficar em imagens/ com o nome indicado pela propriedade logo.
 
@@ -333,11 +329,11 @@ A navegação entre telas foi feita com referências às janelas de origem porqu
 ------------------------------------------------------
 As melhorias abaixo não foram aplicadas automaticamente nesta documentação:
 
-- Centralizar a localização e leitura dos JSONs em um serviço/utilitário compartilhado, eliminando código repetido entre FrmDicas, FrmExGolpes e FrmRelatos.
-- Trocar catch vazio por mensagens de erro ou logging controlado, para que problemas de conteúdo sejam diagnosticáveis.
+- A leitura dos JSONs já está centralizada em ConteudoService, com RecursosApp fornecendo prioridade aos arquivos externos e fallback para recursos embutidos.
+- O tratamento de conteúdo já usa ConteudoException nas telas; o catch vazio restante em ConteudoService protege somente a gravação do log para não gerar uma segunda exceção.
 - Remover usings duplicados, observados em FrmDicas.cs e FrmExGolpes.cs.
 - Configurar explicitamente no csproj a cópia dos arquivos da pasta dados para o diretório de saída/publicação.
-- Usar um algoritmo Fisher-Yates ou Random.Shared.Shuffle para embaralhamento estatisticamente uniforme; a implementação atual atende ao requisito funcional, mas OrderBy com valores aleatórios não é a alternativa mais rigorosa.
+- O quiz já usa Random.Shared.Shuffle para embaralhar cópias em memória, sem alterar os JSONs.
 - Criar testes para desserialização, navegação e preservação do índice da resposta correta após o embaralhamento.
 - Validar os JSONs no carregamento e informar o arquivo/linha em caso de erro.
 - Separar a lógica de apresentação da lógica de navegação/dados se o projeto crescer.
@@ -353,7 +349,8 @@ As melhorias abaixo não foram aplicadas automaticamente nesta documentação:
 - O embaralhamento ocorre somente em memória.
 - A compilação/execução do projeto foi iniciada pelo depurador após as alterações anteriores; não foram observadas exceções no carregamento do projeto.
 - Não há testes automatizados identificados no projeto.
-- A validação visual completa do fluxo depende de abrir as telas e interagir com os botões. Não há testes automatizados.
+- A validação realizada é manual: fluxo Menu → Biblioteca → Dicas/Golpes/Relatos, Quiz e Créditos, nos tamanhos 800x600, 1366x768 e maximizado.
+- Os dados do quiz foram conferidos por script: 20 perguntas, ids únicos, quatro alternativas por pergunta e resposta correta entre 1 e 4.
 
 
 13. REGRA PARA PRÓXIMOS PEDIDOS
@@ -416,3 +413,5 @@ Histórico incremental:
 - Divergências encontradas e corrigidas: inventário sem `CreditosInfo`, serviços, `creditos.json`, imagens de créditos e perfil de publicação; descrição antiga ignorava campos extras de `Relato`, o resultado final do Quiz e a escala atual do `Responsivo`.
 - Contagens conferidas nos JSONs: 20 perguntas, 20 dicas, 15 golpes e 15 relatos. `creditos.json` usa comentários e vírgulas aceitos por `ConteudoService`, portanto não é JSON estrito para ferramentas que não aplicam essas opções.
 - Documentação atualizada em 2026-11-10 para o commit a1c33b1.
+- Correção registrada: as respostas corretas de `dados/perguntas.json` foram redistribuídas de forma equilibrada, com cinco ocorrências em cada posição de 1 a 4. As alternativas e suas explicações foram reordenadas em conjunto, sem alterar o conteúdo textual.
+- O `FrmQuiz` continua embaralhando as alternativas em memória com `Random.Shared.Shuffle` e recalculando a posição correta exibida; a distribuição do JSON não influencia a correção durante a execução.

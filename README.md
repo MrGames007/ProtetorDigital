@@ -8,7 +8,7 @@
 - **Tipo:** aplicação desktop Windows Forms.
 - **Sistema operacional compatível:** Windows com suporte ao .NET 10 para Windows.
 - **Arquitetura publicada:** Windows x64, conforme o perfil de publicação disponível.
-- **Framework utilizado:** .NET 10 (`net10.0-windows`) com Windows Forms.
+- **Framework utilizado:** .NET 10 (`net10.0-windows10.0.17763.0`) com Windows Forms.
 
 ## Requisitos mínimos
 
@@ -29,18 +29,20 @@ Também é possível abrir `ProtetorDigital.slnx` no Visual Studio e executar o 
 
 ## Publicação
 
-Para gerar uma publicação de Release usando o perfil configurado:
+Para gerar uma publicação de Release autocontida, single-file e Windows x64:
 
 ```powershell
-dotnet publish -c Release -p:PublishProfile=Windows
+dotnet publish .\ProtetorDigital.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false -o executavel
 ```
+
+O arquivo gerado é `executavel/ProtetorDigital.exe`. O repositório não contém um perfil `Windows.pubxml`; a publicação é feita diretamente pelo comando acima.
 
 Os JSONs de `dados/` e as duas logos usadas nos Créditos ficam embutidos no executável publicado. Arquivos externos ao lado do executável têm prioridade, permitindo editar o conteúdo sem recompilar; a publicação single-file não precisa das pastas `dados/` e `imagens/`.
 
 ## Dependências necessárias
 
 - .NET 10 SDK para compilar e publicar.
-- .NET 10 Runtime para executar uma publicação dependente do framework.
+- .NET 10 Runtime somente para execução dependente do framework; a publicação autocontida não exige runtime instalado.
 - Windows Forms, incluído no SDK/runtime do .NET para Windows.
 - Não há pacotes NuGet adicionais declarados no projeto.
 
@@ -52,6 +54,8 @@ Os JSONs de `dados/` e as duas logos usadas nos Créditos ficam embutidos no exe
 - `dados/perguntas.json`: perguntas do quiz.
 - `dados/relatos.json`: relatos e metadados das matérias.
 - `imagens/`: imagens usadas pela interface.
+
+As respostas corretas do quiz estão distribuídas entre as quatro posições das alternativas. A tela ainda embaralha as opções em memória com `Random.Shared.Shuffle`, preservando a associação entre alternativa e resposta correta.
 
 Durante o desenvolvimento, os arquivos de `dados/` e `imagens/` continuam sendo copiados para a saída com `PreserveNewest`. Em execução, o aplicativo procura primeiro esses arquivos externos e depois usa os recursos embutidos.
 

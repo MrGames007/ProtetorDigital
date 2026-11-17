@@ -135,7 +135,7 @@ Generic é um molde que funciona com vários tipos. Analogia: uma caixa que rece
 
 ### LINQ
 
-LINQ permite consultar coleções. `Forms/FrmQuiz.cs`, linhas 83–90, usa `Select` e `OrderBy`; `Any` aparece nas linhas 61 e 70. `Where` não aparece no código atual.
+LINQ permite consultar coleções. `Forms/FrmQuiz.cs` usa `Select` para associar alternativas às respostas corretas; `Any` aparece nas validações. O embaralhamento atual usa `Random.Shared.Shuffle`, não `OrderBy`.
 
 ### Lambdas e delegates
 
@@ -151,7 +151,7 @@ Classe estática é uma caixa de ferramentas sem objeto próprio. `ConteudoServi
 
 ### Responsividade por escala de fontes
 
-`Responsivo` calcula uma escala com base no tamanho da janela e recria fontes, sem mudar a fonte do formulário. O cálculo está em `Services/Responsivo.cs`, linhas 70–103. O limite é de 0,85 a 2,0 e o mínimo é 12 pontos.
+`Responsivo` calcula uma escala com base no tamanho da janela e recria fontes, sem mudar a fonte do formulário. O cálculo está em `Services/Responsivo.cs`. O limite é de 0,85 a 1,6 e o mínimo é 12 pontos.
 
 ### Separação de responsabilidades
 
@@ -159,8 +159,8 @@ O projeto separa modelos de dados em `Models`, janelas em `Forms` e utilitários
 
 ### Projeto e Git
 
-`Nullable`, `ImplicitUsings`, `TargetFramework` e cópia de conteúdo aparecem em `ProtetorDigital.csproj`, linhas 3–40. Git registra versões; o commit consultado está no `00_INDICE.md`. Publicação autocontida e single-file não aparecem no projeto atual.
+`Nullable`, `ImplicitUsings`, `TargetFramework` e cópia de conteúdo aparecem em `ProtetorDigital.csproj`. Git registra versões. O projeto embute os JSONs e as logos e pode ser publicado como executável autocontido single-file.
 
 ### Itens avançados que não existem
 
-Não há `Tema.cs`, `HistoricoService.cs`, `ConteudoException`, `GraphicsPath`, `Random.Shared.Shuffle`, `CarregarLista<T>` ou arquivo `.pubxml` no código atual. Por isso eles não são explicados como se existissem.
+Não há `Tema.cs`, `HistoricoService.cs`, `GraphicsPath` ou arquivo `.pubxml` no repositório atual. `ConteudoException`, `Random.Shared.Shuffle`, `CarregarLista<T>` e `RecursosApp` fazem parte do código e são usados no carregamento e nas telas.

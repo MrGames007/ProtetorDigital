@@ -56,7 +56,7 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre campos, listas, JSON, LINQ, lambda
 
 ## Pontos de atenção
 
-`RespostaCorreta` começa em 1 no JSON, mas listas começam em 0; a linha 86 faz a conversão. `OrderBy(Random.Shared.Next())` embaralha uma cópia, não o JSON. Não existe histórico persistente: a pontuação fica na memória.
+`RespostaCorreta` começa em 1 no JSON, mas listas começam em 0; o código faz a conversão. As 20 perguntas mantêm cinco respostas corretas em cada posição de 1 a 4, e `Random.Shared.Shuffle` embaralha uma cópia das alternativas, não o JSON. Não existe histórico persistente: a pontuação fica na memória.
 
 ## Mini-resumo
 
