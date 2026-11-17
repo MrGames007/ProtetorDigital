@@ -129,7 +129,7 @@
             BtnConfirmar.Name = "BtnConfirmar";
             BtnConfirmar.Size = new Size(215, 86);
             BtnConfirmar.TabIndex = 6;
-            BtnConfirmar.Text = "Concluír ✓";
+            BtnConfirmar.Text = "Concluir ✓";
             BtnConfirmar.UseVisualStyleBackColor = false;
             BtnConfirmar.Click += BtnConfirmar_Click;
             // 

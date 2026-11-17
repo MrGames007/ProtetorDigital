@@ -242,7 +242,7 @@ namespace ProtetorDigital.Forms
             RBtnAlt1.Checked = RBtnAlt2.Checked = RBtnAlt3.Checked = RBtnAlt4.Checked = false;
             RBtnAlt1.Enabled = RBtnAlt2.Enabled = RBtnAlt3.Enabled = RBtnAlt4.Enabled = true;
             _pnlFeedback.Visible = false;
-            BtnConfirmar.Text = indice + 1 == _perguntas.Count ? "Confirmar" : "Confirmar ✓";
+            BtnConfirmar.Text = indice + 1 == _perguntas.Count ? "Concluir ✓" : "Concluir ✓";
         }
 
         private void BtnVoltar_Click(object sender, EventArgs e)
