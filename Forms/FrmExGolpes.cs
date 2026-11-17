@@ -14,6 +14,7 @@ namespace ProtetorDigital.Forms
         // Apresenta exemplos de golpes e seus sinais de alerta, um registro por vez.
         private List<ExGolpe> _golpes = new();
         private int _indice = 0;
+        private FormWindowState _estadoJanelaAnterior;
 
         private Form _janelaOrigem;
         public FrmExGolpes(Form origem)
@@ -21,6 +22,7 @@ namespace ProtetorDigital.Forms
             // Configura serviços comuns, navegação e limites de fonte dos botões.
             _janelaOrigem = origem;
             InitializeComponent();
+            _estadoJanelaAnterior = WindowState;
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             BtnAvancar.Click += BtnAvancar_Click;
@@ -28,12 +30,33 @@ namespace ProtetorDigital.Forms
             ConfigurarBotaoNavegacao(BtnAnterior);
             ConfigurarBotaoNavegacao(BtnAvancar);
             flowLayoutPanel1.SizeChanged += (_, _) => AjustarLarguras();
+            ResizeEnd += FrmExGolpes_ResizeEnd;
             Load += FrmExGolpes_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650), () => LarguraTexto.Ajustar(flowLayoutPanel1, lblNomeGolpe, lblFuncionamento, lblTexto, lblSinaisAlerta));
             ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAnterior, 14f, 22f);
             ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAvancar, 14f, 22f);
+        }
+
+        private void FrmExGolpes_ResizeEnd(object? sender, EventArgs e)
+        {
+            // Restaura o início do conteúdo quando a janela alterna entre normal e maximizada.
+            var estadoAlterado = WindowState != _estadoJanelaAnterior;
+            _estadoJanelaAnterior = WindowState;
+            AjustarLarguras();
+
+            if (!estadoAlterado)
+            {
+                return;
+            }
+
+            BeginInvoke(() =>
+            {
+                flowLayoutPanel1.AutoScrollPosition = Point.Empty;
+                flowLayoutPanel1.PerformLayout();
+                AjustarLarguras();
+            });
         }
 
         private void AjustarLarguras()

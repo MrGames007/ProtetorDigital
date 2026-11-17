@@ -10,11 +10,13 @@ namespace ProtetorDigital.Forms
         // Exibe casos, fontes e lições aprendidas com navegação sequencial.
         private List<Relato> _relatos = new();
         private int _indice = 0;
+        private FormWindowState _estadoJanelaAnterior;
         private Form _janelaOrigem;
         public FrmRelatos(Form origem)
         {
             // Configura o formulário, o link da matéria e o ajuste responsivo dos textos.
             InitializeComponent();
+            _estadoJanelaAnterior = WindowState;
             ProtetorDigital.Services.JanelaPadrao.Registrar(this);
             ProtetorDigital.Services.Suavizar.Aplicar(this);
             _janelaOrigem = origem;
@@ -23,12 +25,33 @@ namespace ProtetorDigital.Forms
             ConfigurarBotaoNavegacao(BtnAnterior);
             ConfigurarBotaoNavegacao(BtnAvancar);
             flowLayoutPanel1.SizeChanged += (_, _) => LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas);
+            ResizeEnd += FrmRelatos_ResizeEnd;
             Load += FrmRelatos_Load;
             MinimumSize = new Size(800, 600);
             MaximizeBox = true;
             ProtetorDigital.Services.Responsivo.Registrar(this, new Size(1100, 650), () => LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas));
             ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAnterior, 14f, 22f);
             ProtetorDigital.Services.Responsivo.LimitarFonte(BtnAvancar, 14f, 22f);
+        }
+
+        private void FrmRelatos_ResizeEnd(object? sender, EventArgs e)
+        {
+            // Recalcula o painel e volta ao início quando a janela alterna entre normal e maximizada.
+            var estadoAlterado = WindowState != _estadoJanelaAnterior;
+            _estadoJanelaAnterior = WindowState;
+            LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas);
+
+            if (!estadoAlterado)
+            {
+                return;
+            }
+
+            BeginInvoke(() =>
+            {
+                flowLayoutPanel1.AutoScrollPosition = Point.Empty;
+                flowLayoutPanel1.PerformLayout();
+                LarguraTexto.Ajustar(flowLayoutPanel1, lblTitulo, lblFonte, lnkMateria, lblVitima, lblRelato, lblTexto, lblLicoesAprendidas);
+            });
         }
 
         private void FrmRelatos_Load(object? sender, EventArgs e)
