@@ -44,7 +44,7 @@ namespace ProtetorDigital.Forms
 
         private void FrmDicas_Load(object? sender, EventArgs e)
         {
-            // O conteúdo educativo é carregado somente quando a janela fica pronta.
+            // O conteúdo das dicas é carregado somente quando a janela fica pronta.
             try
             {
                 _dicas = ConteudoService.CarregarLista<Dica>("dicas.json");
