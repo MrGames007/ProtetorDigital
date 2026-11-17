@@ -199,9 +199,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
-            Controls.Add(pnlTopo);
-            Controls.Add(pnlRodape);
             Controls.Add(flowLayoutPanel1);
+            Controls.Add(pnlRodape);
+            Controls.Add(pnlTopo);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmDicas";

@@ -24,8 +24,8 @@ namespace ProtetorDigital.Forms
             pnlRodape = new TableLayoutPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             lblTitulo = new Label();
-            lblFonte = new Label();
             lnkMateria = new LinkLabel();
+            lblFonte = new Label();
             lblVitima = new Label();
             lblRelato = new Label();
             lblTexto = new Label();
@@ -106,7 +106,7 @@ namespace ProtetorDigital.Forms
             pnlTopo.ColumnCount = 2;
             pnlTopo.ColumnStyles.Add(new ColumnStyle());
             pnlTopo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            pnlTopo.Controls.Add(BtnVoltar, 0, 0);
+            pnlTopo.Controls.Add(BtnVoltar, 1, 0);
             pnlTopo.Dock = DockStyle.Top;
             pnlTopo.Location = new Point(18, 0);
             pnlTopo.Margin = new Padding(0);
@@ -167,17 +167,6 @@ namespace ProtetorDigital.Forms
             lblTitulo.Size = new Size(0, 45);
             lblTitulo.TabIndex = 5;
             // 
-            // lblFonte
-            // 
-            lblFonte.AutoSize = true;
-            lblFonte.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblFonte.ForeColor = Color.FromArgb(90, 98, 106);
-            lblFonte.Location = new Point(23, 67);
-            lblFonte.Margin = new Padding(3, 0, 3, 18);
-            lblFonte.Name = "lblFonte";
-            lblFonte.Size = new Size(0, 21);
-            lblFonte.TabIndex = 6;
-            // 
             // lnkMateria
             // 
             lnkMateria.AutoSize = true;
@@ -192,6 +181,17 @@ namespace ProtetorDigital.Forms
             lnkMateria.Text = "Ler a matéria original ↗";
             lnkMateria.VisitedLinkColor = Color.FromArgb(111, 66, 193);
             lnkMateria.LinkClicked += LnkMateria_LinkClicked;
+            // 
+            // lblFonte
+            // 
+            lblFonte.AutoSize = true;
+            lblFonte.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblFonte.ForeColor = Color.FromArgb(90, 98, 106);
+            lblFonte.Location = new Point(23, 67);
+            lblFonte.Margin = new Padding(3, 0, 3, 18);
+            lblFonte.Name = "lblFonte";
+            lblFonte.Size = new Size(0, 21);
+            lblFonte.TabIndex = 6;
             // 
             // lblVitima
             // 
@@ -243,9 +243,9 @@ namespace ProtetorDigital.Forms
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1116, 618);
-            Controls.Add(pnlTopo);
-            Controls.Add(pnlRodape);
             Controls.Add(flowLayoutPanel1);
+            Controls.Add(pnlRodape);
+            Controls.Add(pnlTopo);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmRelatos";
