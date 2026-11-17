@@ -24,14 +24,14 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre campos, listas, JSON, LINQ, lambda
 | 16–20 | campos | Guardam perguntas, índice, pontuação, opções exibidas e posição correta. | Mantêm o estado do jogo. | 🟡 |
 | 22–31 | origem e construtor | Recebe `FrmMenu`, monta componentes, liga Load e registra responsividade. | Prepara o Quiz. | 🟡 |
 | 34–74 | `FrmQuiz_Load` | Executa o carregamento protegido por `try/catch`. | Erros viram aviso visual. | 🟡 |
-| 38–49 | caminhos | Procura em saída e fallback. | Permite rodar no build e no desenvolvimento. | 🟡 |
-| 51–55 | arquivo ausente | Mostra `MessageBox` e retorna. | Não tenta desserializar caminho inexistente. | 🟢 |
-| 57–63 | opções e desserialização | Lê o array para `List<Pergunta>`. | Perguntas têm array direto na raiz. | 🟡 |
+| 38–49 | carregamento | `ConteudoService` usa `RecursosApp`, priorizando arquivo externo e depois recurso embutido. | Permite rodar no build e na publicação single-file. | 🟡 |
+| 51–55 | arquivo ausente ou inválido | `ConteudoException` é capturada e exibida em `MessageBox`. | Não tenta continuar sem conteúdo válido. | 🟢 |
+| 57–63 | opções e desserialização | Recebe o array como `List<Pergunta>` pelo serviço. | Perguntas têm array direto na raiz. | 🟡 |
 | 65–68 | primeira pergunta | Chama `MostrarPergunta(0)` se houver itens. | Inicia o jogo. | 🟢 |
 | 70–73 | `catch` | Mostra exceção de carregamento. | Ajuda a identificar problema no conteúdo. | 🟡 |
 | 76–106 | `MostrarPergunta` | Valida índice, prepara alternativas, embaralha e preenche controles. | É a atualização de uma rodada. | 🔴 |
 | 78–83 | índice e texto | Salva índice, pega pergunta e atualiza Label. | Define o registro atual. | 🟢 |
-| 85–94 | cópia e embaralhamento | Converte resposta base 1 para índice 0, associa corretas e ordena aleatoriamente. | Embaralha sem perder a identidade da correta. | 🔴 |
+| 85–94 | cópia e embaralhamento | Converte resposta base 1 para índice 0, associa corretas e usa `Random.Shared.Shuffle`. | Embaralha sem perder a identidade da correta. | 🔴 |
 | 96–98 | listas de exibição | Salva ordem exibida e posição correta nova. | A validação usa a posição visual. | 🔴 |
 | 100–105 | RadioButtons | Distribui até quatro textos e limpa seleção. | Atualiza alternativas para a nova pergunta. | 🟡 |
 | 108–112 | `BtnVoltar_Click` | Mostra origem e fecha. | Abandona o Quiz. | 🟢 |

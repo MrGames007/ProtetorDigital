@@ -16,11 +16,11 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre JSON, listas, nulos, `try/catch`, 
 | 1–11 | imports | Importam tipos de coleção, arquivo, JSON, LINQ e Forms; há um using duplicado. | Fornecem as ferramentas do arquivo. | 🟢 |
 | 13–18 | classe e campos | Declaram lista de golpes e índice. | Guardam dados e posição. | 🟡 |
 | 20–34 | construtor | Monta controles, liga eventos, configura pintura dos botões e registra responsividade com limites de fonte e ajuste de largura. | Prepara a janela. | 🟡 |
-| 34–60 | `FrmExGolpes_Load` | Localiza arquivo, lê raiz e desserializa itens. | Alimenta a tela. | 🟡 |
-| 38–43 | caminhos | Usa saída e fallback de desenvolvimento. | Aceita os dois ambientes. | 🟡 |
+| 34–60 | `FrmExGolpes_Load` | Solicita e desserializa os golpes por `ConteudoService`. | Alimenta a tela. | 🟡 |
+| 38–43 | carregamento | `ConteudoService` usa `RecursosApp`, priorizando arquivo externo e depois recurso embutido. | Aceita desenvolvimento e publicação single-file. | 🟡 |
 | 45–53 | leitura do documento | Confere existência, configura opções e lê `itens`. | O JSON tem raiz objeto. | 🟡 |
 | 55 | primeira exibição | Mostra o primeiro golpe quando a lista não está vazia. | Inicia navegação. | 🟢 |
-| 57–59 | `catch` vazio | Ignora falhas. | Evita quebrar UI, mas não informa causa. | 🟡 |
+| 57–59 | `catch (ConteudoException)` | Mostra a falha do conteúdo e fecha a tela. | Informa a causa sem deixar a tela em estado inválido. | 🟡 |
 | 62–81 | `MostrarGolpe` | Valida índice, pega golpe, preenche Labels, atualiza botões e recalcula larguras. | Atualiza conteúdo visível. | 🟡 |
 | 69–78 | sinais | Junta alertas com hífen ou limpa o Label. | Exibe a lista de forma simples. | 🟢 |
 | 81–84 | avançar | Mostra próximo golpe se existir. | Impede índice além do fim. | 🟢 |

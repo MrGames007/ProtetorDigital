@@ -16,12 +16,12 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre listas, JSON, `try/catch`, `Any`, 
 | 1–11 | imports | Importam arquivos, JSON, LINQ e Windows Forms; `System.Collections.Generic` aparece duas vezes. | Fornecem os tipos usados. | 🟢 |
 | 13–18 | classe e campos | Declaram lista de dicas e índice atual. | Guardam conteúdo e posição. | 🟡 |
 | 20–34 | construtor | Monta controles, liga eventos, configura pintura dos botões e registra responsividade com limites de fonte e ajuste de largura. | Prepara a tela sem corte de texto. | 🟡 |
-| 34–61 | `FrmDicas_Load` | Procura, lê e desserializa dicas. | Executa ao carregar a janela. | 🟡 |
-| 38–43 | caminhos | Tenta saída e depois pasta de desenvolvimento. | Funciona no build e no ambiente local. | 🟡 |
-| 45 | arquivo ausente | Retorna silenciosamente. | Evita continuar sem dados. | 🟢 |
-| 47–53 | opções, documento e lista | Lê objeto raiz e pega propriedade `itens`. | Os dados não são um array direto. | 🟡 |
+| 34–61 | `FrmDicas_Load` | Solicita e desserializa dicas por `ConteudoService`. | Executa ao carregar a janela. | 🟡 |
+| 38–43 | carregamento | `ConteudoService` usa `RecursosApp`, priorizando arquivo externo e depois recurso embutido. | Funciona no build e na publicação single-file. | 🟡 |
+| 45 | arquivo ausente ou inválido | Recebe `ConteudoException`. | Permite mostrar mensagem amigável e fechar a tela. | 🟢 |
+| 47–53 | lista | Recebe a lista já desserializada pelo serviço. | Os formatos de array e `itens` ficam centralizados. | 🟡 |
 | 55 | `Any` e primeira dica | Mostra índice 0 se houver itens. | Começa a navegação. | 🟢 |
-| 57–60 | `catch` vazio com comentário | Ignora erro de leitura. | A UI não é interrompida, mas o erro fica sem diagnóstico. | 🟡 |
+| 57–60 | `catch (ConteudoException)` | Mostra a falha do conteúdo e fecha a tela. | Evita ocultar a causa do erro. | 🟡 |
 | 63–82 | `MostrarDica` | Valida índice, salva posição, preenche Labels, atualiza os botões e recalcula as larguras. | Atualiza a tela para uma dica. | 🟡 |
 | 65–69 | validação e campos | Evita índice inválido e usa `?? string.Empty`. | Protege a interface contra nulos. | 🟢 |
 | 70–79 | passos | Junta cada passo com hífen ou limpa o Label. | Apresenta lista de forma legível. | 🟡 |

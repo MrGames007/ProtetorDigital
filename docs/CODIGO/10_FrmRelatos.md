@@ -16,10 +16,10 @@ Leia [01_CONCEITOS.md](01_CONCEITOS.md) sobre campos, JSON, `try/catch`, compara
 | 1–10 | imports | Importam tipos de texto, arquivo, JSON, LINQ e Forms. | Fornecem as ferramentas do arquivo. | 🟢 |
 | 12–17 | namespace, classe e campos | Declaram lista de relatos e índice. | Guardam dados e posição. | 🟡 |
 | 19–30 | construtor | Monta tela, liga eventos, configura pintura dos botões e registra responsividade com limites de fonte e ajuste de largura. | Prepara o formulário. | 🟡 |
-| 33–60 | `FrmRelatos_Load` | Localiza arquivo, lê `itens` e cria a lista. | Alimenta a tela. | 🟡 |
-| 37–43 | caminhos | Tenta saída e fallback. | Funciona em build e desenvolvimento. | 🟡 |
-| 44–54 | leitura | Confere arquivo, desserializa e mostra primeiro relato. | Começa o fluxo. | 🟡 |
-| 56–59 | `catch` | Ignora erro de leitura. | Evita interromper a interface, mas esconde causa. | 🟡 |
+| 33–60 | `FrmRelatos_Load` | Solicita e desserializa os relatos por `ConteudoService`. | Alimenta a tela. | 🟡 |
+| 37–43 | carregamento | `ConteudoService` usa `RecursosApp`, priorizando arquivo externo e depois recurso embutido. | Funciona em build e publicação single-file. | 🟡 |
+| 44–54 | leitura | Recebe a lista validada, desserializada e mostra o primeiro relato. | Começa o fluxo. | 🟡 |
+| 56–59 | `catch (ConteudoException)` | Mostra a falha do conteúdo e fecha a tela. | Evita ocultar a causa. | 🟡 |
 | 62–79 | `MostrarRelato` | Valida índice, pega objeto, preenche campos, atualiza botões e recalcula as larguras. | Exibe registro atual sem corte de texto. | 🟡 |
 | 69–73 | atribuições | Colocam título, fonte, vítima, conteúdo e lições na tela. | Cada propriedade tem seu campo visual. | 🟢 |
 | 75–77 | `Enabled` | Habilita anterior e próximo conforme o índice. | Evita navegar para fora da lista. | 🟡 |

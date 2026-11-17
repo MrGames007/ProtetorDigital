@@ -1,18 +1,18 @@
 {
-  "titulo": "Créditos", // TODO versão final
-  "subtitulo": "Aplicativo desenvolvido no contexto da disciplina Programação de Computadores", // TODO versão final
+  "titulo": "Créditos", 
+  "subtitulo": "Aplicativo desenvolvido no contexto da disciplina Programação de Computadores", 
   "linhas": [
-    { "rotulo": "Disciplina:", "valor": "Programação de Computadores" }, // TODO versão final
-    { "rotulo": "Professor responsável:", "valor": "Prof. Dr. Elvio Gilberto da Silva" }, // TODO versão final
-    { "rotulo": "Desenvolvedores:", "valor": "Lucas Gabriel Henriques Paulo; Thiago Forelli Cordeiro; Ricardo Kenji Korin Yogui; Pedro Mendonça Paulin" }, // TODO versão final
-    { "rotulo": "Curso:", "valor": "Ciência da Computação" }, // TODO versão final
-    { "rotulo": "Instituição:", "valor": "Centro Universitário Sagrado Coração - UNISAGRADO" }, // TODO versão final
-    { "rotulo": "Período:", "valor": "2º semestre de 2026" }, // TODO versão final
-    { "rotulo": "Versão:", "valor": "auto" }, // TODO versão final
-    { "rotulo": "Tecnologias:", "valor": "C#, .NET 10 e Windows Forms" } // TODO versão final
+    { "rotulo": "Disciplina:", "valor": "Programação de Computadores" }, 
+    { "rotulo": "Professor responsável:", "valor": "Prof. Dr. Elvio Gilberto da Silva" }, 
+    { "rotulo": "Desenvolvedores:", "valor": "Lucas Gabriel Henriques Paulo; Thiago Forelli Cordeiro; Ricardo Kenji Korin Yogui; Pedro Mendonça Paulin" }, 
+    { "rotulo": "Curso:", "valor": "Ciência da Computação" }, 
+    { "rotulo": "Instituição:", "valor": "Centro Universitário Sagrado Coração - UNISAGRADO" },
+    { "rotulo": "Período:", "valor": "2º semestre de 2026" }, 
+    { "rotulo": "Versão:", "valor": "auto" }, 
+    { "rotulo": "Tecnologias:", "valor": "C#, .NET 10 e Windows Forms" } 
   ],
   "cartoes": [
-  { "titulo": "Desenvolvimento", "logo": "Ciencias_da_computacao.png", "texto": "CIÊNCIA DA COMPUTAÇÃO" }, // TODO versão final
-  { "titulo": "Apoio", "logo": "Coordenadoria-de-extensao.png", "texto": "COORDENADORIA DE EXTENSÃO" } // TODO versão final
+  { "titulo": "Desenvolvimento", "logo": "Ciencias_da_computacao.png", "texto": "CIÊNCIA DA COMPUTAÇÃO" }, 
+  { "titulo": "Apoio", "logo": "Coordenadoria-de-extensao.png", "texto": "COORDENADORIA DE EXTENSÃO" } 
 ]
 }
